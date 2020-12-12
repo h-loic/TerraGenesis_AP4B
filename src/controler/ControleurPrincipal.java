@@ -19,6 +19,7 @@ public class ControleurPrincipal {
     private VueMenuPopulation vueMenuPopulation = null;
     private VueMenuSatellites vueMenuSatellites = null;
     private VueMenuGouverneurs vueMenuGouverneurs = null;
+    private VueAvantPoste vueAvantPoste = null;
 
     //private Planete planete;
 
@@ -42,6 +43,7 @@ public class ControleurPrincipal {
         this.vueMenuPopulation = navigateur.getVueMenuPopulation();;
         this.vueMenuGouverneurs = navigateur.getVueMenuGouverneurs();
         this.vueMenuSatellites = navigateur.getVueMenuSatellites();
+        this.vueAvantPoste = navigateur.getVueAvantPoste();
         this.vueMenuPrincipal.initialiserMenuPrincipal();
         this.navigateur.naviguerVersVueMenuPrincipal();
     }
@@ -95,4 +97,8 @@ public class ControleurPrincipal {
         return instance;
     }
 
+    public void notifierNaviguerAfficherAvPoste(AvantPoste avantPoste) {
+        this.vueAvantPoste.initialiserVueAvantPoste(avantPoste);
+        this.navigateur.naviguerVersAvantPoste();
+    }
 }

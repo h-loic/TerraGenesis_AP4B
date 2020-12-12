@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import modele.AvantPoste;
 
@@ -51,8 +52,19 @@ public class VueMenuPopulation extends Scene {
         this.grilleAvPostes.add(this.labelAvPostes, 0, 0);
 
         for (AvantPoste avantPoste : listeAvantPostes){
-            this.grilleAvPostes.add(new Label(avantPoste.getNom()), 0, lignesAvPostes);
+            Label labelNom = new Label(avantPoste.getNom());
+            Button btnAfficher = new Button("afficher");
+
+            btnAfficher.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    controleur.notifierNaviguerAfficherAvPoste(avantPoste);
+                }
+            });
             lignesAvPostes++;
+
+            this.grilleAvPostes.add(labelNom, 0, lignesAvPostes);
+            this.grilleAvPostes.add(btnAfficher, 1, lignesAvPostes);
         }
 
         this.grilleAvPostes.add(this.btnAjouterAvPoste, 0, lignesAvPostes+1);
