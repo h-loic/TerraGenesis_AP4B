@@ -23,14 +23,14 @@ public class ControleurPrincipal {
 
     //private Planete planete;
 
-    private ArrayList<AvantPoste> avantPostes; //TODO : remplacer par la liste de Planete
+    private ArrayList<AvantPoste> listeAvantPostes; //TODO : remplacer par la liste de Planete
 
     public ControleurPrincipal()
     {
         System.out.println("Initialisation du controleur");
         this.navigateur = NavigateurDesVues.getInstance();
-        this.avantPostes = new ArrayList<>();
-        avantPostes.add(new AvantPoste("Belfort", new Coordonnee(10,10,10), new ArrayList<Mine>()));
+        this.listeAvantPostes = new ArrayList<>();
+        listeAvantPostes.add(new AvantPoste("Belfort", new Coordonnee(10,10,10), new ArrayList<Mine>()));
 ;    }
 
     public void activerVues(NavigateurDesVues navigateur)
@@ -69,7 +69,7 @@ public class ControleurPrincipal {
 
     public void notifierNaviguerMenuPopulation()
     {
-        this.vueMenuPopulation.initialiserMenuPopulation(avantPostes);
+        this.vueMenuPopulation.initialiserMenuPopulation(listeAvantPostes);
         this.navigateur.naviguerVersMenuPopulation();
     }
 
@@ -92,7 +92,7 @@ public class ControleurPrincipal {
     }
 
     public void notifierAjouterAvantPoste(){
-        this.avantPostes.add(this.vueAjouterAvantPoste.getAvantPoste());
+        this.listeAvantPostes.add(this.vueAjouterAvantPoste.getAvantPoste());
         this.notifierNaviguerMenuPopulation();
     }
 
@@ -103,13 +103,27 @@ public class ControleurPrincipal {
         return instance;
     }
 
-    public void notifierNaviguerAfficherAvPoste(AvantPoste avantPoste) {
-        this.vueAvantPoste.initialiserVueAvantPoste(avantPoste);
+    public void notifierNaviguerAfficherAvPoste(int id) {
+        this.vueAvantPoste.initialiserVueAvantPoste(getAvantPoste(id));
         this.navigateur.naviguerVersAvantPoste();
     }
 
     public void notifierNaviguerAjouterAvPoste() {
         this.vueAjouterAvantPoste.initialiserVueAjouterAvantPoste();
         this.navigateur.naviguerVersAjouterAvantPoste();
+    }
+
+    public AvantPoste getAvantPoste(int id){
+        for (AvantPoste avantPoste : listeAvantPostes) {
+            if (avantPoste.getId() == id){
+                return avantPoste;
+            }
+        }
+        return null;
+    }
+
+    public void notifierDetruireAvantPoste(int idAvantPoste) {
+        listeAvantPostes.remove(getAvantPoste(idAvantPoste));
+        notifierNaviguerMenuPopulation();
     }
 }
