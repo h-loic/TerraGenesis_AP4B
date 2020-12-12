@@ -56,11 +56,12 @@ public class VueMenuPopulation extends Scene {
         for (AvantPoste avantPoste : listeAvantPostes){
             Label labelNom = new Label(avantPoste.getNom());
             Button btnAfficher = new Button("afficher");
+            btnAfficher.setUserData(avantPoste.getId());
 
             btnAfficher.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    controleur.notifierNaviguerAfficherAvPoste(avantPoste);
+                    controleur.notifierNaviguerAfficherAvPoste((int)((Button)event.getSource()).getUserData());
                 }
             });
             lignesAvPostes++;

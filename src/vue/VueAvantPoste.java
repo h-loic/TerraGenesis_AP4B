@@ -15,18 +15,20 @@ public class VueAvantPoste extends Scene {
     private controler.ControleurPrincipal controleur = null;
     private Label labelNom;
     private Label labelCoordonnees;
-    private AvantPoste avantPoste;
+    private int idAvantPoste;
     private Button btnRetour;
+    private Button btnDetruire;
 
     public VueAvantPoste() {
         super(new GridPane(), 400,400);
         grillePrincipale = (GridPane) this.getRoot();
         btnRetour = new Button("Retour");
+        btnDetruire = new Button("Detruire");
     }
 
     public void initialiserVueAvantPoste(AvantPoste avantPoste) {
+        idAvantPoste = avantPoste.getId();
         grillePrincipale.getChildren().clear();
-        this.avantPoste = avantPoste;
         labelNom = new Label(avantPoste.getNom());
         labelCoordonnees = new Label("("+Double.toString(avantPoste.getCoordonnee().getX())+", "+Double.toString(avantPoste.getCoordonnee().getY())+", "+Double.toString(avantPoste.getCoordonnee().getZ())+")");
         btnRetour.setOnAction(new EventHandler<ActionEvent>() {
@@ -35,9 +37,18 @@ public class VueAvantPoste extends Scene {
                 controleur.notifierNaviguerMenuPopulation();
             }
         });
+
+        btnDetruire.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controleur.notifierDetruireAvantPoste(idAvantPoste);
+            }
+        });
+
         grillePrincipale.add(labelNom,0,0);
         grillePrincipale.add(labelCoordonnees,1,0);
         grillePrincipale.add(btnRetour,0,1);
+        grillePrincipale.add(btnDetruire,1,1);
     }
 
     public void setControleur(controler.ControleurPrincipal controleur) {
