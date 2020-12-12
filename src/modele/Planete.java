@@ -31,4 +31,21 @@ public class Planete {
     public HashMap<TypeInfrastructure, Boolean> getEtatTypesInfrastructure() {
         return etatTypesInfrastructure;
     }
+
+    public AvantPoste getAvantPoste(int id){
+        for (AvantPoste avantPoste : this.avantPostes) {
+            if (avantPoste.getId() == id){
+                return avantPoste;
+            }
+        }
+        return null;
+    }
+
+    public void DetruireAvantPoste(int idAvantPoste) {
+        this.avantPostes.remove(getAvantPoste(idAvantPoste));
+    }
+
+    public void AjouterAvantPoste(AvantPoste avantPoste) {
+        this.avantPostes.add(avantPoste);
+    }
 }

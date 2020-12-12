@@ -1,12 +1,11 @@
 package controler;
 
 
-import modele.AvantPoste;
-import modele.Coordonnee;
-import modele.Mine;
+import modele.*;
 import vue.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ControleurPrincipal {
 
@@ -21,16 +20,16 @@ public class ControleurPrincipal {
     private VueAvantPoste vueAvantPoste = null;
     private VueAjouterAvantPoste vueAjouterAvantPoste = null;
 
-    //private Planete planete;
+    private Planete planete;
 
-    private ArrayList<AvantPoste> listeAvantPostes; //TODO : remplacer par la liste de Planete
 
     public ControleurPrincipal()
     {
         System.out.println("Initialisation du controleur");
         this.navigateur = NavigateurDesVues.getInstance();
-        this.listeAvantPostes = new ArrayList<>();
-        listeAvantPostes.add(new AvantPoste("Belfort", new Coordonnee(10,10,10), new ArrayList<Mine>()));
+        ArrayList<AvantPoste> listeAvantPostes = new ArrayList<>();
+        listeAvantPostes.add(new AvantPoste("Mogadiscio", new Coordonnee(10,10,10), new ArrayList<Mine>()));
+        this.planete = new Planete(new ArrayList<Ville>(), listeAvantPostes, new ArrayList<Donnee>(), new HashMap<TypeInfrastructure, Boolean>())
 ;    }
 
     public void activerVues(NavigateurDesVues navigateur)
@@ -69,7 +68,7 @@ public class ControleurPrincipal {
 
     public void notifierNaviguerMenuPopulation()
     {
-        this.vueMenuPopulation.initialiserMenuPopulation(listeAvantPostes);
+        this.vueMenuPopulation.initialiserMenuPopulation(planete.getAvantPostes());
         this.navigateur.naviguerVersMenuPopulation();
     }
 
@@ -92,7 +91,7 @@ public class ControleurPrincipal {
     }
 
     public void notifierAjouterAvantPoste(){
-        this.listeAvantPostes.add(this.vueAjouterAvantPoste.getAvantPoste());
+        this.planete.AjouterAvantPoste(this.vueAjouterAvantPoste.getAvantPoste());
         this.notifierNaviguerMenuPopulation();
     }
 
@@ -104,7 +103,7 @@ public class ControleurPrincipal {
     }
 
     public void notifierNaviguerAfficherAvPoste(int id) {
-        this.vueAvantPoste.initialiserVueAvantPoste(getAvantPoste(id));
+        this.vueAvantPoste.initialiserVueAvantPoste(planete.getAvantPoste(id));
         this.navigateur.naviguerVersAvantPoste();
     }
 
@@ -113,17 +112,9 @@ public class ControleurPrincipal {
         this.navigateur.naviguerVersAjouterAvantPoste();
     }
 
-    public AvantPoste getAvantPoste(int id){
-        for (AvantPoste avantPoste : listeAvantPostes) {
-            if (avantPoste.getId() == id){
-                return avantPoste;
-            }
-        }
-        return null;
-    }
 
     public void notifierDetruireAvantPoste(int idAvantPoste) {
-        listeAvantPostes.remove(getAvantPoste(idAvantPoste));
+        planete.DetruireAvantPoste(idAvantPoste);
         notifierNaviguerMenuPopulation();
     }
 }
