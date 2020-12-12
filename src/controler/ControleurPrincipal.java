@@ -4,7 +4,6 @@ package controler;
 import modele.AvantPoste;
 import modele.Coordonnee;
 import modele.Mine;
-import modele.Planete;
 import vue.*;
 
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ public class ControleurPrincipal {
     private VueMenuSatellites vueMenuSatellites = null;
     private VueMenuGouverneurs vueMenuGouverneurs = null;
     private VueAvantPoste vueAvantPoste = null;
+    private VueAjouterAvantPoste vueAjouterAvantPoste = null;
 
     //private Planete planete;
 
@@ -44,6 +44,7 @@ public class ControleurPrincipal {
         this.vueMenuGouverneurs = navigateur.getVueMenuGouverneurs();
         this.vueMenuSatellites = navigateur.getVueMenuSatellites();
         this.vueAvantPoste = navigateur.getVueAvantPoste();
+        this.vueAjouterAvantPoste = navigateur.getVueAjouterAvantPoste();
         this.vueMenuPrincipal.initialiserMenuPrincipal();
         this.navigateur.naviguerVersVueMenuPrincipal();
     }
@@ -90,6 +91,11 @@ public class ControleurPrincipal {
         this.navigateur.naviguerVersMenuGouverneurs();
     }
 
+    public void notifierAjouterAvantPoste(){
+        this.avantPostes.add(this.vueAjouterAvantPoste.getAvantPoste());
+        this.notifierNaviguerMenuPopulation();
+    }
+
     private static ControleurPrincipal instance = null;
     public static ControleurPrincipal getInstance()
     {
@@ -100,5 +106,10 @@ public class ControleurPrincipal {
     public void notifierNaviguerAfficherAvPoste(AvantPoste avantPoste) {
         this.vueAvantPoste.initialiserVueAvantPoste(avantPoste);
         this.navigateur.naviguerVersAvantPoste();
+    }
+
+    public void notifierNaviguerAjouterAvPoste() {
+        this.vueAjouterAvantPoste.initialiserVueAjouterAvantPoste();
+        this.navigateur.naviguerVersAjouterAvantPoste();
     }
 }

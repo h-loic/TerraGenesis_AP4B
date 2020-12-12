@@ -14,6 +14,7 @@ public class NavigateurDesVues extends Application{
     private VueMenuSatellites vueMenuSatellites  = null;
     private VueMenuGouverneurs vueMenuGouverneurs = null;
     private VueAvantPoste vueAvantPoste = null;
+    private VueAjouterAvantPoste vueAjouterAvantPoste = null;
 
     private controler.ControleurPrincipal controleur = null;
 
@@ -29,6 +30,7 @@ public class NavigateurDesVues extends Application{
         this.vueMenuSatellites = new VueMenuSatellites();
         this.vueMenuGouverneurs = new VueMenuGouverneurs();
         this.vueAvantPoste = new VueAvantPoste();
+        this.vueAjouterAvantPoste = new VueAjouterAvantPoste();
     }
 
     static public NavigateurDesVues getInstance()
@@ -53,6 +55,7 @@ public class NavigateurDesVues extends Application{
         this.vueMenuSatellites.setControleur(controleur);
         this.vueMenuGouverneurs.setControleur(controleur);
         this.vueAvantPoste.setControleur(controleur);
+        this.vueAjouterAvantPoste.setControleur(controleur);
     }
 
     public void naviguerVersVueMenuPrincipal()
@@ -96,8 +99,17 @@ public class NavigateurDesVues extends Application{
         stage.show();
     }
 
+    public void naviguerVersAjouterAvantPoste(){
+        stage.setScene(this.vueAjouterAvantPoste);
+        stage.show();
+    }
+
     public VueAvantPoste getVueAvantPoste() {
         return vueAvantPoste;
+    }
+
+    public VueAjouterAvantPoste getVueAjouterAvantPoste() {
+        return vueAjouterAvantPoste;
     }
 
     public VueMenuPrincipal getVueMenuPrincipal() {

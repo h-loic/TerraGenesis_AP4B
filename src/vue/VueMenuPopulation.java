@@ -45,6 +45,8 @@ public class VueMenuPopulation extends Scene {
     public void initialiserMenuPopulation(ArrayList<AvantPoste> listeAvantPostes) {
         int lignesAvPostes = 1;
         this.grillePrincipale.getChildren().clear();
+        this.grilleVilles.getChildren().clear();
+        this.grilleAvPostes.getChildren().clear();
 
         this.grilleVilles.add(this.labelVilles, 0, 0);
         this.grilleVilles.add(this.btnAjouterVille, 0, 1);
@@ -66,7 +68,12 @@ public class VueMenuPopulation extends Scene {
             this.grilleAvPostes.add(labelNom, 0, lignesAvPostes);
             this.grilleAvPostes.add(btnAfficher, 1, lignesAvPostes);
         }
-
+        btnAjouterAvPoste.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controleur.notifierNaviguerAjouterAvPoste();
+            }
+        });
         this.grilleAvPostes.add(this.btnAjouterAvPoste, 0, lignesAvPostes+1);
 
         this.grillePrincipale.add(this.grilleVilles, 0, 0);
