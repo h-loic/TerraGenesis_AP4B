@@ -1,7 +1,13 @@
 package controler;
 
 
+import modele.AvantPoste;
+import modele.Coordonnee;
+import modele.Mine;
+import modele.Planete;
 import vue.*;
+
+import java.util.ArrayList;
 
 public class ControleurPrincipal {
 
@@ -14,10 +20,16 @@ public class ControleurPrincipal {
     private VueMenuSatellites vueMenuSatellites = null;
     private VueMenuGouverneurs vueMenuGouverneurs = null;
 
+    //private Planete planete;
+
+    private ArrayList<AvantPoste> avantPostes; //TODO : remplacer par la liste de Planete
+
     public ControleurPrincipal()
     {
         System.out.println("Initialisation du controleur");
         this.navigateur = NavigateurDesVues.getInstance();
+        this.avantPostes = new ArrayList<>();
+        avantPostes.add(new AvantPoste("Belfort", new Coordonnee(10,10,10), new ArrayList<Mine>()));
 ;    }
 
     public void activerVues(NavigateurDesVues navigateur)
@@ -54,7 +66,7 @@ public class ControleurPrincipal {
 
     public void notifierNaviguerMenuPopulation()
     {
-        this.vueMenuPopulation.initialiserMenuPopulation();
+        this.vueMenuPopulation.initialiserMenuPopulation(avantPostes);
         this.navigateur.naviguerVersMenuPopulation();
     }
 

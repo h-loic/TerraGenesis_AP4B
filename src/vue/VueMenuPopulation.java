@@ -6,6 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import modele.AvantPoste;
+
+import java.util.ArrayList;
 
 
 public class VueMenuPopulation extends Scene {
@@ -13,9 +16,12 @@ public class VueMenuPopulation extends Scene {
     protected GridPane grillePrincipale;
     protected GridPane grilleVilles;
     protected GridPane grilleAvPostes;
+
     private controler.ControleurPrincipal controleur = null;
+
     private Label labelVilles;
     private Label labelAvPostes;
+
     private Button boutonRetour;
     private Button btnAjouterVille;
     private Button btnAjouterAvPoste;
@@ -35,14 +41,21 @@ public class VueMenuPopulation extends Scene {
         this.btnAjouterAvPoste = new Button("+ Avant-poste");
     }
 
-    public void initialiserMenuPopulation() {
+    public void initialiserMenuPopulation(ArrayList<AvantPoste> listeAvantPostes) {
+        int lignesAvPostes = 1;
         this.grillePrincipale.getChildren().clear();
 
         this.grilleVilles.add(this.labelVilles, 0, 0);
         this.grilleVilles.add(this.btnAjouterVille, 0, 1);
 
         this.grilleAvPostes.add(this.labelAvPostes, 0, 0);
-        this.grilleAvPostes.add(this.btnAjouterAvPoste, 0, 1);
+
+        for (AvantPoste avantPoste : listeAvantPostes){
+            this.grilleAvPostes.add(new Label(avantPoste.getNom()), 0, lignesAvPostes);
+            lignesAvPostes++;
+        }
+
+        this.grilleAvPostes.add(this.btnAjouterAvPoste, 0, lignesAvPostes+1);
 
         this.grillePrincipale.add(this.grilleVilles, 0, 0);
         this.grillePrincipale.add(this.grilleAvPostes, 0, 1);
