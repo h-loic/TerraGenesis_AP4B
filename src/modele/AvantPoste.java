@@ -21,6 +21,14 @@ public class AvantPoste {
         this.mines.add(mine);
     }
 
+    public double getBeneficesMines(){
+        double benefices = 0;
+        for(Mine mine : this.mines){
+            benefices+=mine.getBenefice();
+        }
+        return benefices;
+    }
+
     public String getNom() {
         return nom;
     }

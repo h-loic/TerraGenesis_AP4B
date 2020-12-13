@@ -19,6 +19,7 @@ public class VueAvantPoste extends Scene {
     private controler.ControleurPrincipal controleur = null;
     private Label labelNom;
     private Label labelCoordonnees;
+    private Label labelBenefices;
     private int idAvantPoste;
     private Button btnRetour;
     private Button btnDetruire;
@@ -48,6 +49,7 @@ public class VueAvantPoste extends Scene {
             Label labelNomMine = new Label(mine.getNom()+" : ");
             Label labelBenefice = new Label(", benefice/min : "+Double.toString(mine.getBenefice()));
             Label labelRendement = new Label("kg/min "+Double.toString(mine.getRendement()));
+            Label labelRessource = new Label(", ressource : " + mine.getRessource().getSymbole());
 
             Button btnAmeliorer = new Button("Améliorer");
             btnAmeliorer.setUserData(mine.getId());
@@ -58,6 +60,7 @@ public class VueAvantPoste extends Scene {
             grilleMine.add(labelNomMine, 0, 0);
             grilleMine.add(labelRendement, 1, 0);
             grilleMine.add(labelBenefice, 2, 0);
+            grilleMine.add(labelRessource, 3, 0);
             grilleMine.add(btnAmeliorer, 1, 1);
             grilleMine.add(btnDetruire, 2, 1);
 
@@ -91,8 +94,10 @@ public class VueAvantPoste extends Scene {
 
         }
 
-        labelNom = new Label(avantPoste.getNom());
-        labelCoordonnees = new Label("("+Double.toString(avantPoste.getCoordonnee().getX())+", "+Double.toString(avantPoste.getCoordonnee().getY())+", "+Double.toString(avantPoste.getCoordonnee().getZ())+")");
+        this.labelNom = new Label(avantPoste.getNom());
+        this.labelCoordonnees = new Label("("+Double.toString(avantPoste.getCoordonnee().getX())+", "+Double.toString(avantPoste.getCoordonnee().getY())+", "+Double.toString(avantPoste.getCoordonnee().getZ())+")");
+        this.labelBenefices = new Label(", €/min : " + Double.toString(avantPoste.getBeneficesMines()));
+
         btnRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -117,6 +122,7 @@ public class VueAvantPoste extends Scene {
 
         grilleAvantPoste.add(labelNom,0,0);
         grilleAvantPoste.add(labelCoordonnees,1,0);
+        grilleAvantPoste.add(labelBenefices,2,0);
         grilleAvantPoste.add(btnRetour,0,1);
         grilleAvantPoste.add(btnDetruire,1,1);
         grillePrincipale.add(grilleAvantPoste, 0, 0);

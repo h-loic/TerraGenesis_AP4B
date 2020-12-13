@@ -43,11 +43,10 @@ public class VueAjouterMine extends Scene {
 
     private ComboBox comboBoxRessources;
 
-
-    private String nomMine;
     private double xMine;
     private double yMine;
     private double zMine;
+    private Ressource ressourceMine;
 
     public VueAjouterMine() {
         super(new GridPane(), 400,400);
@@ -137,6 +136,35 @@ public class VueAjouterMine extends Scene {
             erreur = true;
         }
 
+        try{
+            String ressource = (String)comboBoxRessources.getValue();
+            switch (ressource){
+                case "C":
+                    this.ressourceMine = Ressource.CARBONE;
+                    break;
+                case "Fe":
+                    this.ressourceMine = Ressource.FER;
+                    break;
+                case "Ag":
+                    this.ressourceMine = Ressource.ARGENT;
+                    break;
+                case "Pd":
+                    this.ressourceMine = Ressource.PALLADIUM;
+                    break;
+                case "Rh":
+                    this.ressourceMine = Ressource.RHODIUM;
+                    break;
+                default:
+                    this.ressourceMine = Ressource.CARBONE;
+                    break;
+            }
+        }catch (Exception e){
+            System.out.println(e.getCause());
+            messageErreurs+=" Veuillez choisir un type de ressource";
+            labelErreurs.setText(messageErreurs);
+            erreur = true;
+        }
+
         if (!erreur){
             System.out.println("c'est bon");
             this.controleur.notifierAjouterMine(idAvantPoste);
@@ -145,7 +173,8 @@ public class VueAjouterMine extends Scene {
 
     public Mine getMine()
     {
-        Mine mine = new Mine(Ressource.ARGENT, 265, new Coordonnee(xMine, yMine, zMine));
+        Mine mine = new Mine(ressourceMine, 265, new Coordonnee(xMine, yMine, zMine));
+        System.out.println(comboBoxRessources.getValue());
         return mine;
     }
 
