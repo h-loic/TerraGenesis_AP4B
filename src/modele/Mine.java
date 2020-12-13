@@ -32,7 +32,7 @@ public class Mine extends Infrastructure {
 
         this.rendement =  rendement; //kg/min
 
-        this.benefice = (rendement / 60)*this.ressource.getValeur(); // benefice par seconde
+        this.benefice = /*(rendement / 60)**/this.ressource.getValeur(); // benefice par seconde
 
         System.out.println(dateEpuissement);
 
@@ -42,7 +42,7 @@ public class Mine extends Infrastructure {
     public void AmeliorerMine(){
         niveau++;
         rendement*=1.5;
-        this.benefice = (rendement / 60)*this.ressource.getValeur();
+        this.benefice =/* (rendement / 60)**/this.ressource.getValeur();
 
         //la date d'epuisement est avancée de deux heures
         Calendar c = Calendar.getInstance();
@@ -83,5 +83,9 @@ public class Mine extends Infrastructure {
 
     public int getNiveau() {
         return niveau;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 }

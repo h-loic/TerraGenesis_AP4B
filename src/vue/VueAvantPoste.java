@@ -6,10 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import modele.AvantPoste;
-import modele.Coordonnee;
-import modele.Mine;
-import modele.Ressource;
+import modele.*;
+
+import java.util.HashMap;
 
 
 public class VueAvantPoste extends Scene {
@@ -37,16 +36,18 @@ public class VueAvantPoste extends Scene {
 
     public void initialiserVueAvantPoste(AvantPoste avantPoste) {
         idAvantPoste = avantPoste.getId();
+
         this.grilleAvantPoste.getChildren().clear();
         this.grilleMines.getChildren().clear();
+        this.grillePrincipale.getChildren().clear();
+
         int ligneMine=0;
-        avantPoste.getMines().add(new Mine(Ressource.CARBONE, 256.5, new Coordonnee(12, 12, 1)));
 
         //affichage des listes et de leurs données
         for(Mine mine : avantPoste.getMines()){
-            Label labelNomMine = new Label(mine.getNom());
-            Label labelBenefice = new Label(" "+Double.toString(mine.getBenefice()));
-            Label labelRendement = new Label(" "+Double.toString(mine.getRendement()));
+            Label labelNomMine = new Label(mine.getNom()+" : ");
+            Label labelBenefice = new Label(", benefice/min : "+Double.toString(mine.getBenefice()));
+            Label labelRendement = new Label("kg/min "+Double.toString(mine.getRendement()));
 
             Button btnAmeliorer = new Button("Améliorer");
             Button btnDetruire = new Button("Detruire");
@@ -99,6 +100,7 @@ public class VueAvantPoste extends Scene {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Ajouter mine");
+                controleur.notifierNaviguerAjouterMine(idAvantPoste);
             }
         });
 

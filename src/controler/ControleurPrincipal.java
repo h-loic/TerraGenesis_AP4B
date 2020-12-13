@@ -19,6 +19,7 @@ public class ControleurPrincipal {
     private VueMenuGouverneurs vueMenuGouverneurs = null;
     private VueAvantPoste vueAvantPoste = null;
     private VueAjouterAvantPoste vueAjouterAvantPoste = null;
+    private VueAjouterMine vueAjouterMine = null;
 
     private Planete planete;
 
@@ -46,6 +47,7 @@ public class ControleurPrincipal {
         this.vueMenuSatellites = navigateur.getVueMenuSatellites();
         this.vueAvantPoste = navigateur.getVueAvantPoste();
         this.vueAjouterAvantPoste = navigateur.getVueAjouterAvantPoste();
+        this.vueAjouterMine = navigateur.getVueAjouterMine();
         this.vueMenuPrincipal.initialiserMenuPrincipal();
         this.navigateur.naviguerVersVueMenuPrincipal();
     }
@@ -92,11 +94,6 @@ public class ControleurPrincipal {
         this.navigateur.naviguerVersMenuGouverneurs();
     }
 
-    public void notifierAjouterAvantPoste(){
-        this.planete.AjouterAvantPoste(this.vueAjouterAvantPoste.getAvantPoste());
-        this.notifierNaviguerMenuPopulation();
-    }
-
     private static ControleurPrincipal instance = null;
     public static ControleurPrincipal getInstance()
     {
@@ -118,5 +115,23 @@ public class ControleurPrincipal {
     public void notifierDetruireAvantPoste(int idAvantPoste) {
         planete.DetruireAvantPoste(idAvantPoste);
         notifierNaviguerMenuPopulation();
+    }
+
+    public void notifierAjouterAvantPoste(){
+        this.planete.AjouterAvantPoste(this.vueAjouterAvantPoste.getAvantPoste());
+        this.notifierNaviguerMenuPopulation();
+    }
+
+    public void notifierAjouterMine(int idAvantPoste) {
+        Mine mine;
+        mine = this.vueAjouterMine.getMine();
+        mine.setNom("Mine n° "+Integer.toString(this.planete.getAvantPoste(idAvantPoste).getMines().size()+1));
+        this.planete.getAvantPoste(idAvantPoste).ajouterMine(mine);
+        this.notifierNaviguerAfficherAvPoste(idAvantPoste);
+    }
+
+    public void notifierNaviguerAjouterMine(int idAvantPoste) {
+        this.vueAjouterMine.initialiserVueAjouterMine(idAvantPoste);
+        this.navigateur.naviguerVersVueAjouterMine();
     }
 }

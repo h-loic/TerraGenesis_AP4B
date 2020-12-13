@@ -15,10 +15,12 @@ public class NavigateurDesVues extends Application{
     private VueMenuGouverneurs vueMenuGouverneurs = null;
     private VueAvantPoste vueAvantPoste = null;
     private VueAjouterAvantPoste vueAjouterAvantPoste = null;
+    private VueAjouterMine vueAjouterMine= null;
 
     private controler.ControleurPrincipal controleur = null;
 
     static private NavigateurDesVues instance = null;
+
     public NavigateurDesVues()
     {
         NavigateurDesVues.instance=this;
@@ -31,6 +33,7 @@ public class NavigateurDesVues extends Application{
         this.vueMenuGouverneurs = new VueMenuGouverneurs();
         this.vueAvantPoste = new VueAvantPoste();
         this.vueAjouterAvantPoste = new VueAjouterAvantPoste();
+        this.vueAjouterMine = new VueAjouterMine();
     }
 
     static public NavigateurDesVues getInstance()
@@ -39,8 +42,8 @@ public class NavigateurDesVues extends Application{
     }
 
     @Override
-    public void start(Stage stade) throws Exception {
-        this.stage = stade;
+    public void start(Stage stage) throws Exception {
+        this.stage = stage;
 
         this.stage.setScene(null);
         this.stage.show();
@@ -56,6 +59,7 @@ public class NavigateurDesVues extends Application{
         this.vueMenuGouverneurs.setControleur(controleur);
         this.vueAvantPoste.setControleur(controleur);
         this.vueAjouterAvantPoste.setControleur(controleur);
+        this.vueAjouterMine.setControleur(controleur);
     }
 
     public void naviguerVersVueMenuPrincipal()
@@ -104,6 +108,11 @@ public class NavigateurDesVues extends Application{
         stage.show();
     }
 
+    public void naviguerVersVueAjouterMine() {
+        stage.setScene(this.vueAjouterMine);
+        stage.show();
+    }
+
     public VueAvantPoste getVueAvantPoste() {
         return vueAvantPoste;
     }
@@ -138,5 +147,9 @@ public class NavigateurDesVues extends Application{
 
     public VueMenuStatistiques getVueMenuStatistiques() {
         return vueMenuStatistiques;
+    }
+
+    public VueAjouterMine getVueAjouterMine() {
+        return this.vueAjouterMine;
     }
 }

@@ -17,6 +17,10 @@ public class AvantPoste {
         this.mines = mines;
     }
 
+    public void ajouterMine(Mine mine){
+        this.mines.add(mine);
+    }
+
     public String getNom() {
         return nom;
     }
