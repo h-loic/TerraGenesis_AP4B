@@ -18,6 +18,7 @@ import modele.Mine;
 import modele.Coordonnee;
 import modele.Ressource;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -84,10 +85,15 @@ public class VueAjouterMine extends Scene {
         this.grilleBoutons = new GridPane();
     }
 
-    private void initCanvas(){
+    private void initCanvas(ArrayList<Mine> mines){
         gcCanva.clearRect(0, 0, canvasCoords.getWidth(), canvasCoords.getHeight());
         gcCanva.setFill(Color.ORANGERED);
         gcCanva.fillRect(0, 0, canvasCoords.getWidth(), canvasCoords.getHeight());
+        gcCanva.setFill(Color.GRAY);
+        //dessin des mines de l'avant poste
+        for (Mine mine : mines){
+            dessinePoint(mine.getCoordonnee().getX(), mine.getCoordonnee().getY());
+        }
         gcCanva.setFill(Color.BLUE);
     }
 
@@ -100,19 +106,19 @@ public class VueAjouterMine extends Scene {
         labelZmine.setText(Double.toString(z));
     }
 
-    public void initialiserVueAjouterMine(int idAvantPoste) {
+    public void initialiserVueAjouterMine(int idAvantPoste, ArrayList<Mine> mines) {
         this.idAvantPoste = idAvantPoste;
         this.grillePrincipale.getChildren().clear();
         this.grilleForm.getChildren().clear();
         this.grilleBoutons.getChildren().clear();
 
         this.gcCanva = this.canvasCoords.getGraphicsContext2D();
-        this.initCanvas();
+        this.initCanvas(mines);
         this.canvasCoords.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println(event.getX()+" "+event.getY()+" "+event.getZ());
-                initCanvas();
+                initCanvas(mines);
                 dessinePoint(event.getX(), event.getY());
             }
         });

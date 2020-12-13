@@ -133,7 +133,7 @@ public class ControleurPrincipal {
     }
 
     public void notifierNaviguerAjouterMine(int idAvantPoste) {
-        this.vueAjouterMine.initialiserVueAjouterMine(idAvantPoste);
+        this.vueAjouterMine.initialiserVueAjouterMine(idAvantPoste, planete.getAvantPoste(idAvantPoste).getMines());
         this.navigateur.naviguerVersVueAjouterMine();
     }
 
