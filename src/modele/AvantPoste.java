@@ -17,6 +17,18 @@ public class AvantPoste {
         this.mines = mines;
     }
 
+    public void ajouterMine(Mine mine){
+        this.mines.add(mine);
+    }
+
+    public double getBeneficesMines(){
+        double benefices = 0;
+        for(Mine mine : this.mines){
+            benefices+=mine.getBenefice();
+        }
+        return benefices;
+    }
+
     public String getNom() {
         return nom;
     }
@@ -43,5 +55,18 @@ public class AvantPoste {
 
     public void setMines(ArrayList<Mine> mines) {
         this.mines = mines;
+    }
+
+    public void detruireMine(int idAvantPoste) {
+        this.mines.remove(getMine(idAvantPoste));
+    }
+
+    public Mine getMine(int idMine) {
+        for (Mine mine : this.mines){
+            if (mine.getId() == idMine){
+                return mine;
+            }
+        }
+        return null;
     }
 }

@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import modele.AvantPoste;
@@ -17,6 +18,7 @@ public class VueMenuPopulation extends Scene {
     protected GridPane grillePrincipale;
     protected GridPane grilleVilles;
     protected GridPane grilleAvPostes;
+    private ScrollPane scrollPaneAvPostes;
 
     private controler.ControleurPrincipal controleur = null;
 
@@ -33,6 +35,7 @@ public class VueMenuPopulation extends Scene {
 
         grilleAvPostes = new GridPane();
         grilleVilles = new GridPane();
+        scrollPaneAvPostes = new ScrollPane();
 
         this.labelVilles = new Label("Villes");
         this.labelAvPostes = new Label("Avant-postes");
@@ -75,10 +78,14 @@ public class VueMenuPopulation extends Scene {
                 controleur.notifierNaviguerAjouterAvPoste();
             }
         });
-        this.grilleAvPostes.add(this.btnAjouterAvPoste, 0, lignesAvPostes+1);
+
+        this.scrollPaneAvPostes.setContent(this.grilleAvPostes);
+        this.scrollPaneAvPostes.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        this.scrollPaneAvPostes.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 
         this.grillePrincipale.add(this.grilleVilles, 0, 0);
-        this.grillePrincipale.add(this.grilleAvPostes, 0, 1);
+        this.grillePrincipale.add(this.scrollPaneAvPostes, 0, 1);
+        this.grillePrincipale.add(this.btnAjouterAvPoste, 0, 2);
 
         this.boutonRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override

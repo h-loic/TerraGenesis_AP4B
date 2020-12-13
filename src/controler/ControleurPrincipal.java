@@ -20,6 +20,7 @@ public class ControleurPrincipal {
     private VueAvantPoste vueAvantPoste = null;
     private VueGouverneur vueGouverneur = null;
     private VueAjouterAvantPoste vueAjouterAvantPoste = null;
+    private VueAjouterMine vueAjouterMine = null;
 
     private Planete planete;
 
@@ -47,8 +48,16 @@ public class ControleurPrincipal {
         this.vueAvantPoste = navigateur.getVueAvantPoste();
         this.vueGouverneur = navigateur.getVueGouverneur();
         this.vueAjouterAvantPoste = navigateur.getVueAjouterAvantPoste();
+        this.vueAjouterMine = navigateur.getVueAjouterMine();
         this.vueMenuPrincipal.initialiserMenuPrincipal();
         this.navigateur.naviguerVersVueMenuPrincipal();
+    }
+
+    private static ControleurPrincipal instance = null;
+    public static ControleurPrincipal getInstance()
+    {
+        if(null == instance) instance = new ControleurPrincipal();
+        return instance;
     }
 
     public void notifierNaviguerMenuStatistiques()
@@ -94,20 +103,10 @@ public class ControleurPrincipal {
         this.navigateur.naviguerVersMenuGouverneurs();
     }
 
-    public void notifierAjouterAvantPoste(){
-        this.planete.AjouterAvantPoste(this.vueAjouterAvantPoste.getAvantPoste());
-        this.notifierNaviguerMenuPopulation();
-    }
-
-    private static ControleurPrincipal instance = null;
-    public static ControleurPrincipal getInstance()
-    {
-        if(null == instance) instance = new ControleurPrincipal();
-        return instance;
-    }
-
+    private static int idAvantPosteCourant = 0;
     public void notifierNaviguerAfficherAvPoste(int id) {
         this.vueAvantPoste.initialiserVueAvantPoste(planete.getAvantPoste(id));
+        idAvantPosteCourant = id;
         this.navigateur.naviguerVersAvantPoste();
     }
 

@@ -17,6 +17,7 @@ public class NavigateurDesVues extends Application{
     private VueAvantPoste vueAvantPoste = null;
     private VueGouverneur vueGouverneur = null;
     private VueAjouterAvantPoste vueAjouterAvantPoste = null;
+    private VueAjouterMine vueAjouterMine= null;
 
     private controler.ControleurPrincipal controleur = null;
 
@@ -35,6 +36,7 @@ public class NavigateurDesVues extends Application{
         this.vueAvantPoste = new VueAvantPoste();
         this.vueGouverneur = new VueGouverneur();
         this.vueAjouterAvantPoste = new VueAjouterAvantPoste();
+        this.vueAjouterMine = new VueAjouterMine();
     }
 
     static public NavigateurDesVues getInstance()
@@ -43,8 +45,8 @@ public class NavigateurDesVues extends Application{
     }
 
     @Override
-    public void start(Stage stade) throws Exception {
-        this.stage = stade;
+    public void start(Stage stage) throws Exception {
+        this.stage = stage;
 
         this.stage.setScene(null);
         this.stage.show();
@@ -61,6 +63,7 @@ public class NavigateurDesVues extends Application{
         this.vueAvantPoste.setControleur(controleur);
         this.vueGouverneur.setControleur(controleur);
         this.vueAjouterAvantPoste.setControleur(controleur);
+        this.vueAjouterMine.setControleur(controleur);
     }
 
     public void naviguerVersVueMenuPrincipal()
@@ -114,6 +117,11 @@ public class NavigateurDesVues extends Application{
         stage.show();
     }
 
+    public void naviguerVersVueAjouterMine() {
+        stage.setScene(this.vueAjouterMine);
+        stage.show();
+    }
+
     public VueAvantPoste getVueAvantPoste() {
         return vueAvantPoste;
     }
@@ -154,4 +162,7 @@ public class NavigateurDesVues extends Application{
         return vueMenuStatistiques;
     }
 
+    public VueAjouterMine getVueAjouterMine() {
+        return this.vueAjouterMine;
+    }
 }
