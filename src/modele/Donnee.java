@@ -4,4 +4,18 @@ public class Donnee {
     private TypeDonne typeDonne;
     private double valeurActuelle;
     private double croissance;
+
+    public Donnee(TypeDonne typeDonne, double valeurActuelle, double croissance) {
+        this.typeDonne = typeDonne;
+        this.valeurActuelle = valeurActuelle;
+        this.croissance = croissance;
+    }
+
+    public void setCroissance(double croissance) {
+        this.croissance = croissance;
+    }
+
+    public double getCroissance() {
+        return croissance;
+    }
 }

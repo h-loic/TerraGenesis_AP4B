@@ -27,9 +27,10 @@ public class ControleurPrincipal {
     {
         System.out.println("Initialisation du controleur");
         this.navigateur = NavigateurDesVues.getInstance();
-        ArrayList<AvantPoste> listeAvantPostes = new ArrayList<>();
-        listeAvantPostes.add(new AvantPoste("Mogadiscio", new Coordonnee(10,10,10), new ArrayList<Mine>()));
-        this.planete = new Planete(new ArrayList<Ville>(), listeAvantPostes, new ArrayList<Donnee>(), new HashMap<TypeInfrastructure, Boolean>())
+        this.planete = new Planete();
+        this.planete.addAvantPoste(new AvantPoste("Mogadiscio", new Coordonnee(10,10,10), new ArrayList<Mine>()));
+        this.planete.initialiserDonnees();
+        this.planete.initialiserGouverneur();
 ;    }
 
     public void activerVues(NavigateurDesVues navigateur)
@@ -111,7 +112,6 @@ public class ControleurPrincipal {
         this.vueAjouterAvantPoste.initialiserVueAjouterAvantPoste();
         this.navigateur.naviguerVersAjouterAvantPoste();
     }
-
 
     public void notifierDetruireAvantPoste(int idAvantPoste) {
         planete.DetruireAvantPoste(idAvantPoste);

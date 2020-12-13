@@ -8,12 +8,22 @@ public class Planete {
     private ArrayList<AvantPoste> avantPostes;
     private ArrayList<Donnee> donnees;
     private HashMap<TypeInfrastructure, Boolean> etatTypesInfrastructure;
+    private ArrayList<Gouverneur> gouverneurs;
 
-    public Planete(ArrayList<Ville> villes, ArrayList<AvantPoste> avantPostes, ArrayList<Donnee> donnees, HashMap<TypeInfrastructure, Boolean> etatTypesInfrastructure) {
+    public Planete(ArrayList<Ville> villes, ArrayList<AvantPoste> avantPostes, ArrayList<Donnee> donnees, HashMap<TypeInfrastructure, Boolean> etatTypesInfrastructure,ArrayList<Gouverneur> gouverneurs) {
         this.villes = villes;
         this.avantPostes = avantPostes;
         this.donnees = donnees;
         this.etatTypesInfrastructure = etatTypesInfrastructure;
+        this.gouverneurs = gouverneurs;
+    }
+
+    public Planete(){
+        this.villes = new ArrayList<Ville>();
+        this.avantPostes = new ArrayList<AvantPoste>();
+        this.donnees = new ArrayList<Donnee>();
+        this.etatTypesInfrastructure = new HashMap<TypeInfrastructure, Boolean>();
+        this.gouverneurs = new ArrayList<Gouverneur>();
     }
 
     public ArrayList<Ville> getVilles() {
@@ -26,6 +36,10 @@ public class Planete {
 
     public ArrayList<Donnee> getDonnees() {
         return donnees;
+    }
+
+    public void addAvantPoste(AvantPoste avantPoste){
+        this.avantPostes.add(avantPoste);
     }
 
     public HashMap<TypeInfrastructure, Boolean> getEtatTypesInfrastructure() {
@@ -47,5 +61,16 @@ public class Planete {
 
     public void AjouterAvantPoste(AvantPoste avantPoste) {
         this.avantPostes.add(avantPoste);
+    }
+
+    public void initialiserGouverneur() {
+        HashMap<Donnee, Double> effets = new HashMap<Donnee, Double>();
+        //effets.put()
+        //Gouverneur(false, 0, "Miguel", false, HashMap<Donnee, Double> effets);
+    }
+
+
+    public void initialiserDonnees() {
+        //Donnee temperature = new Donnee();
     }
 }
