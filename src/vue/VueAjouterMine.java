@@ -5,16 +5,20 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import modele.Mine;
 import modele.Coordonnee;
 import modele.Ressource;
 
-import java.util.ArrayList;
+import java.util.Random;
 
 
 public class VueAjouterMine extends Scene {
@@ -34,9 +38,12 @@ public class VueAjouterMine extends Scene {
     private Label labelRessource;
     private Label labelErreurs;
 
-    private TextField textFieldX;
-    private TextField textFieldY;
-    private TextField textFieldZ;
+    private Canvas canvasCoords;
+    private GraphicsContext gcCanva;
+
+    private Label labelXmine;
+    private Label labelYmine;
+    private Label labelZmine;
 
     private Button btnRetourMenuAvantPoste;
     private Button btnAjouterMine;
@@ -60,6 +67,8 @@ public class VueAjouterMine extends Scene {
         this.labelRessource = new Label("Resource : ");
         this.labelErreurs = new Label("");
 
+        this.canvasCoords = new Canvas(250,250);
+
         ObservableList<String> options =
                 FXCollections.observableArrayList(
                         Ressource.CARBONE.getSymbole(),
@@ -69,11 +78,26 @@ public class VueAjouterMine extends Scene {
                         Ressource.RHODIUM.getSymbole()
                 );
         this.comboBoxRessources = new ComboBox(options);
-        this.comboBoxRessources.setValue(Ressource.CARBONE.getSymbole());
 
         this.grillePrincipale = (GridPane) this.getRoot();
         this.grilleForm = new GridPane();
         this.grilleBoutons = new GridPane();
+    }
+
+    private void initCanvas(){
+        gcCanva.clearRect(0, 0, canvasCoords.getWidth(), canvasCoords.getHeight());
+        gcCanva.setFill(Color.ORANGERED);
+        gcCanva.fillRect(0, 0, canvasCoords.getWidth(), canvasCoords.getHeight());
+        gcCanva.setFill(Color.BLUE);
+    }
+
+    private void dessinePoint(double x, double y){
+        Random random = new Random();
+        double z = -1 + (50 - (-1)) * random.nextDouble();
+        gcCanva.fillOval(x, y, 10,10);
+        labelXmine.setText(Double.toString(x));
+        labelYmine.setText(Double.toString(y));
+        labelZmine.setText(Double.toString(z));
     }
 
     public void initialiserVueAjouterMine(int idAvantPoste) {
@@ -82,18 +106,32 @@ public class VueAjouterMine extends Scene {
         this.grilleForm.getChildren().clear();
         this.grilleBoutons.getChildren().clear();
 
-        this.textFieldX = new TextField();
-        this.textFieldY = new TextField();
-        this.textFieldZ = new TextField();
+        this.gcCanva = this.canvasCoords.getGraphicsContext2D();
+        this.initCanvas();
+        this.canvasCoords.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println(event.getX()+" "+event.getY()+" "+event.getZ());
+                initCanvas();
+                dessinePoint(event.getX(), event.getY());
+            }
+        });
+
+        this.labelXmine = new Label();
+        this.labelYmine = new Label();
+        this.labelZmine = new Label();
+
+
+        this.comboBoxRessources.setValue(Ressource.CARBONE.getSymbole());
 
         grilleForm.add(this.labelX,0,1);
-        grilleForm.add(this.textFieldX,1,1);
+        grilleForm.add(this.labelXmine,1,1);
 
         grilleForm.add(this.labelY,0,2);
-        grilleForm.add(this.textFieldY,1,2);
+        grilleForm.add(this.labelYmine,1,2);
 
         grilleForm.add(this.labelZ,0,3);
-        grilleForm.add(this.textFieldZ,1,3);
+        grilleForm.add(this.labelZmine,1,3);
 
         grilleForm.add(this.labelRessource, 0, 4);
         grilleForm.add(this.comboBoxRessources, 1, 4);
@@ -118,7 +156,8 @@ public class VueAjouterMine extends Scene {
         grilleBoutons.add(this.btnRetourMenuAvantPoste, 1, 0);
 
         grillePrincipale.add(this.grilleForm, 0, 0);
-        grillePrincipale.add(this.grilleBoutons, 0, 1);
+        grillePrincipale.add(this.canvasCoords, 0, 1);
+        grillePrincipale.add(this.grilleBoutons, 0, 2);
     }
 
     private void validerDonnees() {
@@ -126,9 +165,9 @@ public class VueAjouterMine extends Scene {
         String messageErreurs = "";
 
         try {
-            xMine = Double.parseDouble(textFieldX.getText());
-            yMine = Double.parseDouble(textFieldY.getText());
-            zMine = Double.parseDouble(textFieldZ.getText());
+            xMine = Double.parseDouble(labelXmine.getText());
+            yMine = Double.parseDouble(labelYmine.getText());
+            zMine = Double.parseDouble(labelZmine.getText());
         }catch (Exception e){
             System.out.println(e.getMessage());
             messageErreurs+=" Veuillez entrer des coordonnées valides";
