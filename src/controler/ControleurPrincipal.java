@@ -115,6 +115,11 @@ public class ControleurPrincipal {
         this.navigateur.naviguerVersAjouterAvantPoste();
     }
 
+    public void notifierAjouterAvantPoste(){
+        this.planete.AjouterAvantPoste(this.vueAjouterAvantPoste.getAvantPoste());
+        this.notifierNaviguerMenuPopulation();
+    }
+
     public void notifierDetruireAvantPoste(int idAvantPoste) {
         planete.DetruireAvantPoste(idAvantPoste);
         notifierNaviguerMenuPopulation();
@@ -123,5 +128,33 @@ public class ControleurPrincipal {
     public void notifierNaviguerAffichergouverneur(Gouverneur gouverneur) {
         this.vueGouverneur.initialiserVueGouverneur(gouverneur);
         this.navigateur.naviguerVersGouverneur();
+    }
+
+    public void notifierAjouterMine(int idAvantPoste) {
+        Mine mine;
+        mine = this.vueAjouterMine.getMine();
+        mine.setNom("Mine n° "+Integer.toString(this.planete.getAvantPoste(idAvantPoste).getMines().size()+1));
+        this.planete.getAvantPoste(idAvantPoste).ajouterMine(mine);
+        this.notifierNaviguerAfficherAvPoste(idAvantPoste);
+    }
+
+    public void notifierNaviguerAjouterMine(int idAvantPoste) {
+        this.vueAjouterMine.initialiserVueAjouterMine(idAvantPoste, planete.getAvantPoste(idAvantPoste).getMines());
+        this.navigateur.naviguerVersVueAjouterMine();
+    }
+
+    public void notifierAmeliorerMine(int idMine, int idAvantPoste) throws Exception{
+        Mine mine = planete.getAvantPoste(idAvantPoste).getMine(idMine);
+        if (mine.getNiveau()>= 5){
+            Exception exception = new Exception("Amélioration impossible : la mine est au niveau maximal");
+            throw exception;
+        }
+        mine.ameliorerMine();
+        this.notifierNaviguerAfficherAvPoste(idAvantPoste);
+    }
+
+    public void notifierDetruireMine(int id) {
+        this.planete.getAvantPoste(idAvantPosteCourant).detruireMine(id);
+        this.notifierNaviguerAfficherAvPoste(idAvantPosteCourant);
     }
 }

@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import modele.AvantPoste;
 
@@ -25,7 +24,7 @@ public class VueMenuPopulation extends Scene {
     private Label labelVilles;
     private Label labelAvPostes;
 
-    private Button boutonRetour;
+    private Button btnRetour;
     private Button btnAjouterVille;
     private Button btnAjouterAvPoste;
 
@@ -40,7 +39,7 @@ public class VueMenuPopulation extends Scene {
         this.labelVilles = new Label("Villes");
         this.labelAvPostes = new Label("Avant-postes");
 
-        this.boutonRetour = new Button("retour");
+        this.btnRetour = new Button("retour");
         this.btnAjouterVille = new Button("+ Ville");
         this.btnAjouterAvPoste = new Button("+ Avant-poste");
     }
@@ -79,6 +78,13 @@ public class VueMenuPopulation extends Scene {
             }
         });
 
+        this.btnRetour.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controleur.notifierNaviguerMenuPrincipal();
+            }
+        });
+
         this.scrollPaneAvPostes.setContent(this.grilleAvPostes);
         this.scrollPaneAvPostes.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         this.scrollPaneAvPostes.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
@@ -86,13 +92,10 @@ public class VueMenuPopulation extends Scene {
         this.grillePrincipale.add(this.grilleVilles, 0, 0);
         this.grillePrincipale.add(this.scrollPaneAvPostes, 0, 1);
         this.grillePrincipale.add(this.btnAjouterAvPoste, 0, 2);
+        this.grillePrincipale.add(this.btnRetour, 0, 3);
 
-        this.boutonRetour.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                controleur.notifierNaviguerMenuPrincipal();
-            }
-        });
+
+
     }
 
     public void setControleur(controler.ControleurPrincipal controleur) {
