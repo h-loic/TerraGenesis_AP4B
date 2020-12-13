@@ -82,6 +82,7 @@ public class VueAvantPoste extends Scene {
                 @Override
                 public void handle(ActionEvent event) {
                     System.out.println("Destruction Mine");
+                    controleur.notifierDetruireMine(mine.getId());
                 }
             });
 

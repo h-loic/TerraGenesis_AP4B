@@ -52,6 +52,13 @@ public class ControleurPrincipal {
         this.navigateur.naviguerVersVueMenuPrincipal();
     }
 
+    private static ControleurPrincipal instance = null;
+    public static ControleurPrincipal getInstance()
+    {
+        if(null == instance) instance = new ControleurPrincipal();
+        return instance;
+    }
+
     public void notifierNaviguerMenuStatistiques()
     {
         this.vueMenuStatistiques.initialiserMenuStatistiques();
@@ -94,15 +101,10 @@ public class ControleurPrincipal {
         this.navigateur.naviguerVersMenuGouverneurs();
     }
 
-    private static ControleurPrincipal instance = null;
-    public static ControleurPrincipal getInstance()
-    {
-        if(null == instance) instance = new ControleurPrincipal();
-        return instance;
-    }
-
+    private static int idAvantPosteCourant = 0;
     public void notifierNaviguerAfficherAvPoste(int id) {
         this.vueAvantPoste.initialiserVueAvantPoste(planete.getAvantPoste(id));
+        idAvantPosteCourant = id;
         this.navigateur.naviguerVersAvantPoste();
     }
 
@@ -143,5 +145,10 @@ public class ControleurPrincipal {
         }
         mine.ameliorerMine();
         this.notifierNaviguerAfficherAvPoste(idAvantPoste);
+    }
+
+    public void notifierDetruireMine(int id) {
+        this.planete.getAvantPoste(idAvantPosteCourant).detruireMine(id);
+        this.notifierNaviguerAfficherAvPoste(idAvantPosteCourant);
     }
 }

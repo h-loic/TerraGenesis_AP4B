@@ -49,6 +49,10 @@ public class AvantPoste {
         this.mines = mines;
     }
 
+    public void detruireMine(int idAvantPoste) {
+        this.mines.remove(getMine(idAvantPoste));
+    }
+
     public Mine getMine(int idMine) {
         for (Mine mine : this.mines){
             if (mine.getId() == idMine){
