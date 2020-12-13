@@ -3,6 +3,8 @@ package modele;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static modele.TypeDonne.*;
+
 public class Planete {
     private ArrayList<Ville> villes;
     private ArrayList<AvantPoste> avantPostes;
@@ -71,6 +73,11 @@ public class Planete {
 
 
     public void initialiserDonnees() {
-        //Donnee temperature = new Donnee();
+        Donnee temperature = new Donnee(TEMPERATURE,0,0);
+        Donnee pression = new Donnee(PRESSION,0,0);
+        Donnee oxygene = new Donnee(OXYGENE,0,0);
+        Donnee eau = new Donnee(EAU,0,0);
+        Donnee population = new Donnee(POPULATION,0,0);
+        Donnee finance = new Donnee(FINANCES,0,0);
     }
 }
