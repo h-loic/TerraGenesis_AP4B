@@ -1,9 +1,12 @@
 package vue;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -28,6 +31,7 @@ public class VueAjouterMine extends Scene {
     private Label labelX;
     private Label labelY;
     private Label labelZ;
+    private Label labelRessource;
     private Label labelErreurs;
 
     private TextField textFieldX;
@@ -36,6 +40,9 @@ public class VueAjouterMine extends Scene {
 
     private Button btnRetourMenuAvantPoste;
     private Button btnAjouterMine;
+
+    private ComboBox comboBoxRessources;
+
 
     private String nomMine;
     private double xMine;
@@ -51,7 +58,19 @@ public class VueAjouterMine extends Scene {
         this.labelX = new Label("X : ");
         this.labelY = new Label("Y : ");
         this.labelZ = new Label("Z : ");
+        this.labelRessource = new Label("Resource : ");
         this.labelErreurs = new Label("");
+
+        ObservableList<String> options =
+                FXCollections.observableArrayList(
+                        Ressource.CARBONE.getSymbole(),
+                        Ressource.FER.getSymbole(),
+                        Ressource.ARGENT.getSymbole(),
+                        Ressource.PALLADIUM.getSymbole(),
+                        Ressource.RHODIUM.getSymbole()
+                );
+        this.comboBoxRessources = new ComboBox(options);
+        this.comboBoxRessources.setValue(Ressource.CARBONE.getSymbole());
 
         this.grillePrincipale = (GridPane) this.getRoot();
         this.grilleForm = new GridPane();
@@ -77,7 +96,10 @@ public class VueAjouterMine extends Scene {
         grilleForm.add(this.labelZ,0,3);
         grilleForm.add(this.textFieldZ,1,3);
 
-        grilleForm.add(this.labelErreurs, 0, 4);
+        grilleForm.add(this.labelRessource, 0, 4);
+        grilleForm.add(this.comboBoxRessources, 1, 4);
+
+        grilleForm.add(this.labelErreurs, 0, 5);
 
         btnRetourMenuAvantPoste.setOnAction(new EventHandler<ActionEvent>() {
             @Override
