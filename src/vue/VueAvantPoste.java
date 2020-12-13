@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import modele.*;
 
@@ -16,6 +17,8 @@ public class VueAvantPoste extends Scene {
     private GridPane grillePrincipale;
     private GridPane grilleAvantPoste;
     private GridPane grilleMines;
+    private ScrollPane scrollPaneMines;
+
     private controler.ControleurPrincipal controleur = null;
     private Label labelNom;
     private Label labelCoordonnees;
@@ -30,6 +33,7 @@ public class VueAvantPoste extends Scene {
         this.grillePrincipale = (GridPane) this.getRoot();
         this.grilleMines = new GridPane();
         this.grilleAvantPoste = new GridPane();
+        this.scrollPaneMines = new ScrollPane();
         btnRetour = new Button("Retour");
         btnDetruire = new Button("Détruire");
         btnAjouterMine = new Button("+ Mine");
@@ -120,13 +124,17 @@ public class VueAvantPoste extends Scene {
             }
         });
 
+        scrollPaneMines.setContent(grilleMines);
+        scrollPaneMines.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPaneMines.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+
         grilleAvantPoste.add(labelNom,0,0);
         grilleAvantPoste.add(labelCoordonnees,1,0);
         grilleAvantPoste.add(labelBenefices,2,0);
         grilleAvantPoste.add(btnRetour,0,1);
         grilleAvantPoste.add(btnDetruire,1,1);
         grillePrincipale.add(grilleAvantPoste, 0, 0);
-        grillePrincipale.add(grilleMines, 0, 1);
+        grillePrincipale.add(scrollPaneMines, 0, 1);
         grillePrincipale.add(btnAjouterMine, 0, 2);
     }
 
