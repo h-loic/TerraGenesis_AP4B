@@ -134,4 +134,14 @@ public class ControleurPrincipal {
         this.vueAjouterMine.initialiserVueAjouterMine(idAvantPoste);
         this.navigateur.naviguerVersVueAjouterMine();
     }
+
+    public void notifierAmeliorerMine(int idMine, int idAvantPoste) throws Exception{
+        Mine mine = planete.getAvantPoste(idAvantPoste).getMine(idMine);
+        if (mine.getNiveau()>= 5){
+            Exception exception = new Exception("Amélioration impossible : la mine est au niveau maximal");
+            throw exception;
+        }
+        mine.ameliorerMine();
+        this.notifierNaviguerAfficherAvPoste(idAvantPoste);
+    }
 }

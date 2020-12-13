@@ -50,6 +50,7 @@ public class VueAvantPoste extends Scene {
             Label labelRendement = new Label("kg/min "+Double.toString(mine.getRendement()));
 
             Button btnAmeliorer = new Button("Améliorer");
+            btnAmeliorer.setUserData(mine.getId());
             Button btnDetruire = new Button("Detruire");
             //btnAfficher.setUserData(mine.getId());
 
@@ -60,11 +61,20 @@ public class VueAvantPoste extends Scene {
             grilleMine.add(btnAmeliorer, 1, 1);
             grilleMine.add(btnDetruire, 2, 1);
 
+            if (mine.getNiveau()>=5){
+                btnAmeliorer.setDisable(true);
+            }
+
             btnAmeliorer.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     //controleur.notifierNaviguerAfficherAvPoste((int)((Button)event.getSource()).getUserData());
                     System.out.println("Amélioration Mine");
+                    try {
+                        controleur.notifierAmeliorerMine((int)btnAmeliorer.getUserData(), avantPoste.getId());
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
             });
 

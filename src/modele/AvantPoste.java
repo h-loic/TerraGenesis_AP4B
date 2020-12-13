@@ -48,4 +48,13 @@ public class AvantPoste {
     public void setMines(ArrayList<Mine> mines) {
         this.mines = mines;
     }
+
+    public Mine getMine(int idMine) {
+        for (Mine mine : this.mines){
+            if (mine.getId() == idMine){
+                return mine;
+            }
+        }
+        return null;
+    }
 }

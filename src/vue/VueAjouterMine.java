@@ -104,7 +104,7 @@ public class VueAjouterMine extends Scene {
         btnRetourMenuAvantPoste.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                controleur.notifierNaviguerMenuPopulation();
+                controleur.notifierNaviguerAfficherAvPoste(idAvantPoste);
             }
         });
 

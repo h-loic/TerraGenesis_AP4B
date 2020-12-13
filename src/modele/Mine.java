@@ -14,9 +14,11 @@ public class Mine extends Infrastructure {
     private Coordonnee coordonnee;
     private int niveau;
     private String nom;
+    private int id;
 
     public Mine(Ressource ressource, double rendement, Coordonnee coordonnee) {
         Random random = new Random();
+        this.id = random.nextInt();
         this.nom = "Mine" + Integer.toString(random.nextInt());
         this.ressource = ressource;
         this.coordonnee = coordonnee;
@@ -32,17 +34,17 @@ public class Mine extends Infrastructure {
 
         this.rendement =  rendement; //kg/min
 
-        this.benefice = /*(rendement / 60)**/this.ressource.getValeur(); // benefice par seconde
+        this.benefice = (rendement /*/ 60*/)*this.ressource.getValeur();
 
         System.out.println(dateEpuissement);
 
         niveau = 1;
     }
 
-    public void AmeliorerMine(){
+    public void ameliorerMine(){
         niveau++;
         rendement*=1.5;
-        this.benefice =/* (rendement / 60)**/this.ressource.getValeur();
+        this.benefice = (this.rendement /*/ 60*/)*this.ressource.getValeur();
 
         //la date d'epuisement est avancée de deux heures
         Calendar c = Calendar.getInstance();
@@ -87,5 +89,9 @@ public class Mine extends Infrastructure {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public int getId(){
+        return this.id;
     }
 }
