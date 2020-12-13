@@ -18,6 +18,7 @@ public class ControleurPrincipal {
     private VueMenuSatellites vueMenuSatellites = null;
     private VueMenuGouverneurs vueMenuGouverneurs = null;
     private VueAvantPoste vueAvantPoste = null;
+    private VueGouverneur vueGouverneur = null;
     private VueAjouterAvantPoste vueAjouterAvantPoste = null;
 
     private Planete planete;
@@ -28,7 +29,7 @@ public class ControleurPrincipal {
         System.out.println("Initialisation du controleur");
         this.navigateur = NavigateurDesVues.getInstance();
         this.planete = new Planete();
-        this.planete.addAvantPoste(new AvantPoste("Mogadiscio", new Coordonnee(10,10,10), new ArrayList<Mine>()));
+        this.planete.ajouterAvantPoste(new AvantPoste("Mogadiscio", new Coordonnee(10,10,10), new ArrayList<Mine>()));
         this.planete.initialiserDonnees();
         this.planete.initialiserGouverneur();
 ;    }
@@ -44,6 +45,7 @@ public class ControleurPrincipal {
         this.vueMenuGouverneurs = navigateur.getVueMenuGouverneurs();
         this.vueMenuSatellites = navigateur.getVueMenuSatellites();
         this.vueAvantPoste = navigateur.getVueAvantPoste();
+        this.vueGouverneur = navigateur.getVueGouverneur();
         this.vueAjouterAvantPoste = navigateur.getVueAjouterAvantPoste();
         this.vueMenuPrincipal.initialiserMenuPrincipal();
         this.navigateur.naviguerVersVueMenuPrincipal();
@@ -87,7 +89,8 @@ public class ControleurPrincipal {
 
     public void notifierNaviguerMenuGouverneurs()
     {
-        this.vueMenuGouverneurs.initialiserMenuGouverneurs();
+        ArrayList<Gouverneur> listeGouverneur = this.planete.recupererListeGouverneur();
+        this.vueMenuGouverneurs.initialiserMenuGouverneurs(listeGouverneur);
         this.navigateur.naviguerVersMenuGouverneurs();
     }
 
@@ -116,5 +119,10 @@ public class ControleurPrincipal {
     public void notifierDetruireAvantPoste(int idAvantPoste) {
         planete.DetruireAvantPoste(idAvantPoste);
         notifierNaviguerMenuPopulation();
+    }
+
+    public void notifierNaviguerAffichergouverneur(Gouverneur gouverneur) {
+        this.vueGouverneur.initialiserVueGouverneur(gouverneur);
+        this.navigateur.naviguerVersGouverneur();
     }
 }

@@ -9,7 +9,7 @@ public class Gouverneur {
     private boolean estAffecter;
     private HashMap<Donnee, Double> effets;
 
-    public Gouverneur(boolean estDebloque, int niveau, String nom, boolean estAffecter, HashMap<Donnee, Double> effets) {
+    public Gouverneur(boolean estDebloque, int niveau, String nom, boolean estAffecter, HashMap<Donnee,Double> effets) {
         this.estDebloque = estDebloque;
         this.niveau = niveau;
         this.nom = nom;

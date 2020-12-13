@@ -1,5 +1,6 @@
 package vue;
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class NavigateurDesVues extends Application{
@@ -14,11 +15,13 @@ public class NavigateurDesVues extends Application{
     private VueMenuSatellites vueMenuSatellites  = null;
     private VueMenuGouverneurs vueMenuGouverneurs = null;
     private VueAvantPoste vueAvantPoste = null;
+    private VueGouverneur vueGouverneur = null;
     private VueAjouterAvantPoste vueAjouterAvantPoste = null;
 
     private controler.ControleurPrincipal controleur = null;
 
     static private NavigateurDesVues instance = null;
+
     public NavigateurDesVues()
     {
         NavigateurDesVues.instance=this;
@@ -30,6 +33,7 @@ public class NavigateurDesVues extends Application{
         this.vueMenuSatellites = new VueMenuSatellites();
         this.vueMenuGouverneurs = new VueMenuGouverneurs();
         this.vueAvantPoste = new VueAvantPoste();
+        this.vueGouverneur = new VueGouverneur();
         this.vueAjouterAvantPoste = new VueAjouterAvantPoste();
     }
 
@@ -55,6 +59,7 @@ public class NavigateurDesVues extends Application{
         this.vueMenuSatellites.setControleur(controleur);
         this.vueMenuGouverneurs.setControleur(controleur);
         this.vueAvantPoste.setControleur(controleur);
+        this.vueGouverneur.setControleur(controleur);
         this.vueAjouterAvantPoste.setControleur(controleur);
     }
 
@@ -99,6 +104,11 @@ public class NavigateurDesVues extends Application{
         stage.show();
     }
 
+    public void naviguerVersGouverneur() {
+        stage.setScene(this.vueGouverneur);
+        stage.show();
+    }
+
     public void naviguerVersAjouterAvantPoste(){
         stage.setScene(this.vueAjouterAvantPoste);
         stage.show();
@@ -106,6 +116,10 @@ public class NavigateurDesVues extends Application{
 
     public VueAvantPoste getVueAvantPoste() {
         return vueAvantPoste;
+    }
+
+    public VueGouverneur getVueGouverneur() {
+        return vueGouverneur;
     }
 
     public VueAjouterAvantPoste getVueAjouterAvantPoste() {
@@ -139,4 +153,5 @@ public class NavigateurDesVues extends Application{
     public VueMenuStatistiques getVueMenuStatistiques() {
         return vueMenuStatistiques;
     }
+
 }

@@ -40,7 +40,7 @@ public class Planete {
         return donnees;
     }
 
-    public void addAvantPoste(AvantPoste avantPoste){
+    public void ajouterAvantPoste(AvantPoste avantPoste){
         this.avantPostes.add(avantPoste);
     }
 
@@ -65,19 +65,37 @@ public class Planete {
         this.avantPostes.add(avantPoste);
     }
 
-    public void initialiserGouverneur() {
-        HashMap<Donnee, Double> effets = new HashMap<Donnee, Double>();
-        //effets.put()
-        //Gouverneur(false, 0, "Miguel", false, HashMap<Donnee, Double> effets);
+    private void ajouterGouverneur(Gouverneur gouverneur) {
+        this.gouverneurs.add(gouverneur);
     }
 
+    public void initialiserGouverneur() {
+        HashMap<Donnee, Double> effets = new HashMap<Donnee, Double>();
+        effets.put(this.donnees.get(0), 10.0);
+        this.ajouterGouverneur(new Gouverneur(false, 0, "Michou", false,effets));
+        effets.clear();
+        effets.put(this.donnees.get(1), 10.0);
+        this.ajouterGouverneur(new Gouverneur(false, 0, "Sriky", false,effets));
+    }
+
+    public ArrayList<Gouverneur> recupererListeGouverneur() {
+        return this.gouverneurs;
+    }
 
     public void initialiserDonnees() {
+        ArrayList<Donnee> donneesPlanete = new ArrayList<Donnee>();
         Donnee temperature = new Donnee(TEMPERATURE,0,0);
+        donneesPlanete.add(temperature);
         Donnee pression = new Donnee(PRESSION,0,0);
+        donneesPlanete.add(pression);
         Donnee oxygene = new Donnee(OXYGENE,0,0);
+        donneesPlanete.add(oxygene);
         Donnee eau = new Donnee(EAU,0,0);
+        donneesPlanete.add(eau);
         Donnee population = new Donnee(POPULATION,0,0);
+        donneesPlanete.add(population);
         Donnee finance = new Donnee(FINANCES,0,0);
+        donneesPlanete.add(finance);
+        this.donnees = donneesPlanete;
     }
 }
