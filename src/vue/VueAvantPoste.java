@@ -7,28 +7,78 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import modele.AvantPoste;
+import modele.Coordonnee;
+import modele.Mine;
+import modele.Ressource;
 
 
 public class VueAvantPoste extends Scene {
 
-    protected GridPane grillePrincipale;
+    private GridPane grillePrincipale;
+    private GridPane grilleAvantPoste;
+    private GridPane grilleMines;
     private controler.ControleurPrincipal controleur = null;
     private Label labelNom;
     private Label labelCoordonnees;
     private int idAvantPoste;
     private Button btnRetour;
     private Button btnDetruire;
+    private Button btnAjouterMine;
 
     public VueAvantPoste() {
         super(new GridPane(), 400,400);
-        grillePrincipale = (GridPane) this.getRoot();
+        this.grillePrincipale = (GridPane) this.getRoot();
+        this.grilleMines = new GridPane();
+        this.grilleAvantPoste = new GridPane();
         btnRetour = new Button("Retour");
-        btnDetruire = new Button("Detruire");
+        btnDetruire = new Button("Détruire");
+        btnAjouterMine = new Button("+ Mine");
     }
 
     public void initialiserVueAvantPoste(AvantPoste avantPoste) {
         idAvantPoste = avantPoste.getId();
-        grillePrincipale.getChildren().clear();
+        this.grilleAvantPoste.getChildren().clear();
+        this.grilleMines.getChildren().clear();
+        int ligneMine=0;
+        avantPoste.getMines().add(new Mine(Ressource.CARBONE, 256.5, new Coordonnee(12, 12, 1)));
+
+        //affichage des listes et de leurs données
+        for(Mine mine : avantPoste.getMines()){
+            Label labelNomMine = new Label(mine.getNom());
+            Label labelBenefice = new Label(" "+Double.toString(mine.getBenefice()));
+            Label labelRendement = new Label(" "+Double.toString(mine.getRendement()));
+
+            Button btnAmeliorer = new Button("Améliorer");
+            Button btnDetruire = new Button("Detruire");
+            //btnAfficher.setUserData(mine.getId());
+
+            GridPane grilleMine = new GridPane();
+            grilleMine.add(labelNomMine, 0, 0);
+            grilleMine.add(labelRendement, 1, 0);
+            grilleMine.add(labelBenefice, 2, 0);
+            grilleMine.add(btnAmeliorer, 1, 1);
+            grilleMine.add(btnDetruire, 2, 1);
+
+            btnAmeliorer.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    //controleur.notifierNaviguerAfficherAvPoste((int)((Button)event.getSource()).getUserData());
+                    System.out.println("Amélioration Mine");
+                }
+            });
+
+            btnDetruire.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.out.println("Destruction Mine");
+                }
+            });
+
+            grilleMines.add(grilleMine, 0, ligneMine);
+            ligneMine++;
+
+        }
+
         labelNom = new Label(avantPoste.getNom());
         labelCoordonnees = new Label("("+Double.toString(avantPoste.getCoordonnee().getX())+", "+Double.toString(avantPoste.getCoordonnee().getY())+", "+Double.toString(avantPoste.getCoordonnee().getZ())+")");
         btnRetour.setOnAction(new EventHandler<ActionEvent>() {
@@ -45,10 +95,20 @@ public class VueAvantPoste extends Scene {
             }
         });
 
-        grillePrincipale.add(labelNom,0,0);
-        grillePrincipale.add(labelCoordonnees,1,0);
-        grillePrincipale.add(btnRetour,0,1);
-        grillePrincipale.add(btnDetruire,1,1);
+        btnAjouterMine.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Ajouter mine");
+            }
+        });
+
+        grilleAvantPoste.add(labelNom,0,0);
+        grilleAvantPoste.add(labelCoordonnees,1,0);
+        grilleAvantPoste.add(btnRetour,0,1);
+        grilleAvantPoste.add(btnDetruire,1,1);
+        grillePrincipale.add(grilleAvantPoste, 0, 0);
+        grillePrincipale.add(grilleMines, 0, 1);
+        grillePrincipale.add(btnAjouterMine, 0, 2);
     }
 
     public void setControleur(controler.ControleurPrincipal controleur) {

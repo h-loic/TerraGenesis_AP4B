@@ -27,9 +27,11 @@ public class ControleurPrincipal {
     {
         System.out.println("Initialisation du controleur");
         this.navigateur = NavigateurDesVues.getInstance();
+
         ArrayList<AvantPoste> listeAvantPostes = new ArrayList<>();
         listeAvantPostes.add(new AvantPoste("Mogadiscio", new Coordonnee(10,10,10), new ArrayList<Mine>()));
         this.planete = new Planete(new ArrayList<Ville>(), listeAvantPostes, new ArrayList<Donnee>(), new HashMap<TypeInfrastructure, Boolean>())
+
 ;    }
 
     public void activerVues(NavigateurDesVues navigateur)

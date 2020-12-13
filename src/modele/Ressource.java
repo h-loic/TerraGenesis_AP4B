@@ -17,4 +17,15 @@ public enum Ressource {
         this.valeur = valeur;
     }
 
+    public String getSymbole() {
+        return symbole;
+    }
+
+    public Rarete getRarete() {
+        return rarete;
+    }
+
+    public double getValeur() {
+        return valeur;
+    }
 }

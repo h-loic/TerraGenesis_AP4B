@@ -53,11 +53,6 @@ public class VueAjouterAvantPoste extends Scene {
         this.labelZ = new Label("Z : ");
         this.labelErreurs = new Label("");
 
-        this.textFieldNom = new TextField();
-        this.textFieldX = new TextField();
-        this.textFieldY = new TextField();
-        this.textFieldZ = new TextField();
-
         this.grillePrincipale = (GridPane) this.getRoot();
         this.grilleForm = new GridPane();
         this.grilleBoutons = new GridPane();
@@ -67,6 +62,11 @@ public class VueAjouterAvantPoste extends Scene {
         this.grillePrincipale.getChildren().clear();
         this.grilleForm.getChildren().clear();
         this.grilleBoutons.getChildren().clear();
+
+        this.textFieldNom = new TextField();
+        this.textFieldX = new TextField();
+        this.textFieldY = new TextField();
+        this.textFieldZ = new TextField();
 
         grilleForm.add(this.labelNom,0,0);
         grilleForm.add(this.textFieldNom,1,0);
