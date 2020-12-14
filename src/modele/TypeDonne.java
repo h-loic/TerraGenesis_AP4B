@@ -1,11 +1,11 @@
 package modele;
 
 public enum TypeDonne {
-    TEMPERATURE("blabla", "°C"),
-    PRESSION("blabla", "Pa"),
-    OXYGENE("blabla", "ppm"),
-    EAU("blabla", "cm"),
-    POPULATION("blabla", ""),
+    TEMPERATURE("Temperature", "°C"),
+    PRESSION("Pression", "Pa"),
+    OXYGENE("Oxygene", "ppm"),
+    EAU("Eau", "cm"),
+    POPULATION("Population", ""),
     FINANCES("Fonds disponibles", "c");
 
     private String description;
