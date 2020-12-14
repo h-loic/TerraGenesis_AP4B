@@ -1,12 +1,12 @@
 package modele;
 
 public class Donnee {
-    private TypeDonne typeDonne;
+    private TypeDonnee typeDonnee;
     private double valeurActuelle;
     private double croissance;
 
-    public Donnee(TypeDonne typeDonne, double valeurActuelle, double croissance) {
-        this.typeDonne = typeDonne;
+    public Donnee(TypeDonnee typeDonnee, double valeurActuelle, double croissance) {
+        this.typeDonnee = typeDonnee;
         this.valeurActuelle = valeurActuelle;
         this.croissance = croissance;
     }
@@ -27,7 +27,7 @@ public class Donnee {
         return croissance;
     }
 
-    public String getTypeDonne() {
-        return typeDonne.name();
+    public TypeDonnee getTypeDonnee() {
+        return typeDonnee;
     }
 }

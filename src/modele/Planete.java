@@ -1,11 +1,10 @@
 package modele;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import static modele.TypeDonne.*;
+import static modele.TypeDonnee.*;
 
 public class Planete {
     private ArrayList<Ville> villes;
@@ -14,12 +13,6 @@ public class Planete {
     private HashMap<TypeInfrastructure, Boolean> etatTypesInfrastructure;
     private ArrayList<Gouverneur> gouverneurs;
 
-    private final static int POS_TEMPERATURE = 0;
-    private final static int POS_PRESSION = 1;
-    private final static int POS_OXYGENE = 2;
-    private final static int POS_EAU = 3;
-    private final static int POS_POPULATION = 4;
-    private final static int POS_FINANCES = 5;
 
     public Planete(ArrayList<Ville> villes, ArrayList<AvantPoste> avantPostes, ArrayList<Donnee> donnees, HashMap<TypeInfrastructure, Boolean> etatTypesInfrastructure,ArrayList<Gouverneur> gouverneurs) {
         this.villes = villes;
@@ -37,8 +30,19 @@ public class Planete {
         this.gouverneurs = new ArrayList<Gouverneur>();
     }
 
+    public void ajouterVille(Ville ville) {
+        this.villes.add(ville);
+    }
+
     public ArrayList<Ville> getVilles() {
         return villes;
+    }
+
+    public Ville getVille(int id) {
+        for (Ville ville : villes) {
+            if (ville.getId() == id) return ville;
+        }
+        return null;
     }
 
     public ArrayList<AvantPoste> getAvantPostes() {
@@ -79,15 +83,15 @@ public class Planete {
     }
 
     public void initialiserGouverneur() {
-        HashMap<Donnee, Double> effets = new HashMap<Donnee, Double>();
-        effets.put(this.donnees.get(0), 10.0);
-        this.ajouterGouverneur(new Gouverneur(false, 0, "Michou", false,effets));
-        effets.clear();
-        effets.put(this.donnees.get(1), 10.0);
-        this.ajouterGouverneur(new Gouverneur(false, 0, "Sriky", false,effets));
-        effets.clear();
-        effets.put(this.donnees.get(2), 10.0);
-        this.ajouterGouverneur(new Gouverneur(false, 0, "Alembert", false,effets));
+        this.ajouterGouverneur(new Gouverneur(false, 0, "Michou", false,
+                new HashMap<Donnee, Double>(){{ put(getDonnee(TEMPERATURE), 10.0); }})
+        );
+        this.ajouterGouverneur(new Gouverneur(false, 0, "Sriky", false,
+                new HashMap<Donnee, Double>(){{ put(getDonnee(PRESSION), 10.0); }})
+        );
+        this.ajouterGouverneur(new Gouverneur(false, 0, "Alembert", false,
+                new HashMap<Donnee, Double>() {{ put(getDonnee(OXYGENE), 10.0); }})
+        );
     }
 
     public ArrayList<Gouverneur> recupererListeGouverneur() {
@@ -95,35 +99,35 @@ public class Planete {
     }
 
     public boolean peutPayer(int montant){
-        System.out.println(this.donnees.get(POS_FINANCES).getValeurActuelle() >= Double.parseDouble(Integer.toString(montant)));
-        System.out.println(this.donnees.get(POS_FINANCES).getValeurActuelle() - Double.parseDouble(Integer.toString(montant)));
-        return this.donnees.get(POS_FINANCES).getValeurActuelle() >= Double.parseDouble(Integer.toString(montant));
+        System.out.println(getDonnee(FINANCES).getValeurActuelle() >= Double.parseDouble(Integer.toString(montant)));
+        System.out.println(getDonnee(FINANCES).getValeurActuelle() - Double.parseDouble(Integer.toString(montant)));
+        return getDonnee(FINANCES).getValeurActuelle() >= Double.parseDouble(Integer.toString(montant));
     }
 
     public void payer(int montant){
-        this.donnees.get(POS_FINANCES).setCroissance(-(Double.parseDouble(Integer.toString(montant))));
-        this.donnees.get(POS_FINANCES).majValeur();
+        getDonnee(FINANCES).setCroissance(-(Double.parseDouble(Integer.toString(montant))));
+        getDonnee(FINANCES).majValeur();
     }
 
     public double getFinances(){
-        return this.donnees.get(POS_FINANCES).getValeurActuelle();
+        return getDonnee(FINANCES).getValeurActuelle();
     }
 
     public void initialiserDonnees() {
-        ArrayList<Donnee> donneesPlanete = new ArrayList<Donnee>();
-        Donnee temperature = new Donnee(TEMPERATURE,0,0);
-        donneesPlanete.add(temperature);
-        Donnee pression = new Donnee(PRESSION,0,0);
-        donneesPlanete.add(pression);
-        Donnee oxygene = new Donnee(OXYGENE,0,0);
-        donneesPlanete.add(oxygene);
-        Donnee eau = new Donnee(EAU,0,0);
-        donneesPlanete.add(eau);
-        Donnee population = new Donnee(POPULATION,0,0);
-        donneesPlanete.add(population);
-        Donnee finance = new Donnee(FINANCES,100000,0);
-        donneesPlanete.add(finance);
-        this.donnees = donneesPlanete;
+        for (TypeDonnee typeDonnee : TypeDonnee.values()) {
+            donnees.add(new Donnee(typeDonnee, typeDonnee.getValeurDefaut(),0));
+        }
+    }
+
+    public void initialiserVilles() {
+        ajouterVille(new Ville("Niederschaeffolsheim", new Coordonnee(100,100,100)));
+    }
+
+    public Donnee getDonnee(TypeDonnee typeDonnee) {
+        for (Donnee donnee : donnees) {
+            if (donnee.getTypeDonnee() == typeDonnee) return donnee;
+        }
+        return null;
     }
 
     public void trierGouverneurParNom() {

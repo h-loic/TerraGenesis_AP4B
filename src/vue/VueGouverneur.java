@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import modele.AvantPoste;
 import modele.Donnee;
 import modele.Gouverneur;
 
@@ -52,7 +51,7 @@ public class VueGouverneur extends Scene{
         int compteurLigne = 2;
         for (Donnee donnee : gouverneur.getEffets().keySet()) {
             compteurLigne++;
-            grillePrincipale.add(new Label(donnee.getTypeDonne()),1,compteurLigne);
+            grillePrincipale.add(new Label(donnee.getTypeDonnee().name()),1,compteurLigne);
             grillePrincipale.add(new Label(Double.toString(gouverneur.getEffets().get(donnee))),2,compteurLigne);
         }
         grillePrincipale.add(btnAmeliorer,2,1);

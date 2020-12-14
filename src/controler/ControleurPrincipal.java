@@ -31,6 +31,7 @@ public class ControleurPrincipal {
         this.navigateur = NavigateurDesVues.getInstance();
         this.planete = new Planete();
         this.planete.ajouterAvantPoste(new AvantPoste("Mogadiscio", new Coordonnee(10,10,10), new ArrayList<Mine>()));
+        this.planete.initialiserVilles();
         this.planete.initialiserDonnees();
         this.planete.initialiserGouverneur();
 ;    }
@@ -80,7 +81,7 @@ public class ControleurPrincipal {
 
     public void notifierNaviguerMenuPopulation()
     {
-        this.vueMenuPopulation.initialiserMenuPopulation(planete.getAvantPostes());
+        this.vueMenuPopulation.initialiserMenuPopulation(planete.getVilles(), planete.getAvantPostes());
         this.navigateur.naviguerVersMenuPopulation();
     }
 
