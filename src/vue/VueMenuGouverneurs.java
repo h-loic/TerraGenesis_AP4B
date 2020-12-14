@@ -34,8 +34,6 @@ public class VueMenuGouverneurs extends Scene {
     public void initialiserMenuGouverneurs(ArrayList<Gouverneur> listeGouverneur) {
         int lignesGouverneur = 1;
         this.grillePrincipale.getChildren().clear();
-        this.grillePrincipale.add(this.labelGouverneurs, 0, 0);
-        this.grillePrincipale.add(this.boutonRetour, 1, 0);
         for (Gouverneur gouverneur : listeGouverneur){
             Label labelNom = new Label(gouverneur.getNom());
             Button btnAfficher = new Button("afficher");
@@ -46,13 +44,15 @@ public class VueMenuGouverneurs extends Scene {
                     controleur.notifierNaviguerAffichergouverneur(gouverneur);
                 }
             });
-            lignesGouverneur++;
+            lignesGouverneur+=2;
 
             this.grilleGouverneur.add(labelNom, 0, lignesGouverneur);
-            this.grilleGouverneur.add(btnAfficher, 1, lignesGouverneur);
+            this.grilleGouverneur.add(btnAfficher, 4, lignesGouverneur);
         }
-
-        this.grillePrincipale.add(this.grilleGouverneur, 0, 0);
+        lignesGouverneur+=2;
+        this.grillePrincipale.add(this.labelGouverneurs, 0, 0);
+        this.grillePrincipale.add(this.boutonRetour, 1, lignesGouverneur);
+        this.grillePrincipale.add(this.grilleGouverneur, 0, 1);
 
         this.boutonRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
