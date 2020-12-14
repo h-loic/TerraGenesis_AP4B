@@ -7,6 +7,9 @@ import java.util.Random;
 
 public class Mine extends Infrastructure {
 
+    public static final int PRIX_BASE_MINE = 25000;
+    public static final int PRIX_BASE_AMELIORATION   = 1500;
+
     private Ressource ressource;
     private double rendement;
     private double benefice;
@@ -56,7 +59,7 @@ public class Mine extends Infrastructure {
     }
 
     public int  getPrixAmelioration(){
-        return  25000 * this.niveau/2;
+        return  PRIX_BASE_AMELIORATION * this.niveau;
     }
 
     public Ressource getRessource() {

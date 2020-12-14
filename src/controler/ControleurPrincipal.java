@@ -136,13 +136,17 @@ public class ControleurPrincipal {
 
     public void notifierAjouterMine(int idAvantPoste) {
         Mine mine;
+        this.planete.payer(this.planete.getAvantPoste(idAvantPoste).getPrixNouvMine());
         mine = this.vueAjouterMine.getMine();
         mine.setNom("Mine n° "+Integer.toString(this.planete.getAvantPoste(idAvantPoste).getMines().size()+1));
         this.planete.getAvantPoste(idAvantPoste).ajouterMine(mine);
         this.notifierNaviguerAfficherAvPoste(idAvantPoste);
     }
 
-    public void notifierNaviguerAjouterMine(int idAvantPoste) {
+    public void notifierNaviguerAjouterMine(int idAvantPoste) throws Exception{
+        if (!planete.peutPayer(planete.getAvantPoste(idAvantPoste).getPrixNouvMine())){
+            throw new Exception("Fonds insuffisants : requis : " + planete.getAvantPoste(idAvantPoste).getPrixNouvMine() + ", disponibles : " + this.planete.getFinances());
+        }
         this.vueAjouterMine.initialiserVueAjouterMine(idAvantPoste, planete.getAvantPoste(idAvantPoste).getMines());
         this.navigateur.naviguerVersVueAjouterMine();
     }
@@ -152,7 +156,11 @@ public class ControleurPrincipal {
         if (mine.getNiveau()>= 5){
             Exception exception = new Exception("Amélioration impossible : la mine est au niveau maximal");
             throw exception;
+        }else if (!this.planete.peutPayer(mine.getPrixAmelioration())){
+            Exception exception = new Exception("Amélioration impossible : fonds insuffisants");
+            throw exception;
         }
+        this.planete.payer(mine.getPrixAmelioration());
         mine.ameliorerMine();
         this.notifierNaviguerAfficherAvPoste(idAvantPoste);
     }
