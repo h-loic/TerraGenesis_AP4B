@@ -53,7 +53,6 @@ public class VueMenuPopulation extends Scene {
         this.grilleVilles.add(this.labelVilles, 0, 0);
         this.grilleVilles.add(this.btnAjouterVille, 0, 1);
 
-        this.grilleAvPostes.add(this.labelAvPostes, 0, 0);
 
         for (AvantPoste avantPoste : listeAvantPostes){
             Label labelNom = new Label(avantPoste.getNom());
@@ -90,9 +89,10 @@ public class VueMenuPopulation extends Scene {
         this.scrollPaneAvPostes.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 
         this.grillePrincipale.add(this.grilleVilles, 0, 0);
-        this.grillePrincipale.add(this.scrollPaneAvPostes, 0, 1);
-        this.grillePrincipale.add(this.btnAjouterAvPoste, 0, 2);
-        this.grillePrincipale.add(this.btnRetour, 0, 3);
+        this.grillePrincipale.add(this.labelAvPostes, 0, 1);
+        this.grillePrincipale.add(this.scrollPaneAvPostes, 0, 2);
+        this.grillePrincipale.add(this.btnAjouterAvPoste, 0, 3);
+        this.grillePrincipale.add(this.btnRetour, 0, 4);
 
 
 

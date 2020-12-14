@@ -111,7 +111,7 @@ public class ControleurPrincipal {
     }
 
     public void notifierNaviguerAjouterAvPoste() {
-        this.vueAjouterAvantPoste.initialiserVueAjouterAvantPoste();
+        this.vueAjouterAvantPoste.initialiserVueAjouterAvantPoste(planete.getAvantPostes());
         this.navigateur.naviguerVersAjouterAvantPoste();
     }
 

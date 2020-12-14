@@ -39,7 +39,7 @@ public class VueAjouterMine extends Scene {
     private Label labelRessource;
     private Label labelErreurs;
 
-    private Canvas canvasCoords;
+    private final Canvas canvasCoords;
     private GraphicsContext gcCanva;
 
     private Label labelXmine;
