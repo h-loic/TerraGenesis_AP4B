@@ -81,8 +81,12 @@ public class VueAvantPoste extends Scene {
                     System.out.println("Amélioration Mine");
                     try {
                         controleur.notifierAmeliorerMine((int)btnAmeliorer.getUserData(), avantPoste.getId());
+                        labelMessages.setVisible(false);
+                        labelMessages.setText("");
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
+                        labelMessages.setText(e.getMessage());
+                        labelMessages.setVisible(true);
                     }
                 }
             });

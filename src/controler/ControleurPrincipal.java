@@ -153,8 +153,11 @@ public class ControleurPrincipal {
 
     public void notifierAmeliorerMine(int idMine, int idAvantPoste) throws Exception{
         Mine mine = planete.getAvantPoste(idAvantPoste).getMine(idMine);
-        if (mine.getNiveau()>= 5 && this.planete.peutPayer(mine.getPrixAmelioration())){
+        if (mine.getNiveau()>= 5){
             Exception exception = new Exception("Amélioration impossible : la mine est au niveau maximal");
+            throw exception;
+        }else if (!this.planete.peutPayer(mine.getPrixAmelioration())){
+            Exception exception = new Exception("Amélioration impossible : fonds insuffisants");
             throw exception;
         }
         this.planete.payer(mine.getPrixAmelioration());

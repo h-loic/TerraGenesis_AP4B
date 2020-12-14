@@ -116,7 +116,7 @@ public class Planete {
         donneesPlanete.add(eau);
         Donnee population = new Donnee(POPULATION,0,0);
         donneesPlanete.add(population);
-        Donnee finance = new Donnee(FINANCES,2000000,0);
+        Donnee finance = new Donnee(FINANCES,100000,0);
         donneesPlanete.add(finance);
         this.donnees = donneesPlanete;
     }

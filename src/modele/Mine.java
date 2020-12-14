@@ -59,7 +59,7 @@ public class Mine extends Infrastructure {
     }
 
     public int  getPrixAmelioration(){
-        return  PRIX_BASE_AMELIORATION * this.niveau/2;
+        return  PRIX_BASE_AMELIORATION * this.niveau;
     }
 
     public Ressource getRessource() {
