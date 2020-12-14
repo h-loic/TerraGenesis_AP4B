@@ -56,6 +56,9 @@ public class VueMenuPopulation extends Scene {
 
         for (AvantPoste avantPoste : listeAvantPostes){
             Label labelNom = new Label(avantPoste.getNom());
+            Label labelBenefices = new Label(" €/min : "+avantPoste.getBeneficesMines());
+            Label labelNbMines = new Label(", "+avantPoste.getMines().size()+" mine(s)");
+
             Button btnAfficher = new Button("afficher");
             btnAfficher.setUserData(avantPoste.getId());
 
@@ -68,7 +71,9 @@ public class VueMenuPopulation extends Scene {
             lignesAvPostes++;
 
             this.grilleAvPostes.add(labelNom, 0, lignesAvPostes);
-            this.grilleAvPostes.add(btnAfficher, 1, lignesAvPostes);
+            this.grilleAvPostes.add(labelBenefices, 1, lignesAvPostes);
+            this.grilleAvPostes.add(labelNbMines, 2, lignesAvPostes);
+            this.grilleAvPostes.add(btnAfficher, 3, lignesAvPostes);
         }
         btnAjouterAvPoste.setOnAction(new EventHandler<ActionEvent>() {
             @Override
