@@ -23,6 +23,7 @@ public class VueAvantPoste extends Scene {
     private Label labelNom;
     private Label labelCoordonnees;
     private Label labelBenefices;
+    private Label labelMessages;
     private int idAvantPoste;
     private Button btnRetour;
     private Button btnDetruire;
@@ -37,6 +38,7 @@ public class VueAvantPoste extends Scene {
         btnRetour = new Button("Retour");
         btnDetruire = new Button("Détruire");
         btnAjouterMine = new Button("+ Mine");
+        labelMessages = new Label("");
     }
 
     public void initialiserVueAvantPoste(AvantPoste avantPoste) {
@@ -120,7 +122,15 @@ public class VueAvantPoste extends Scene {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Ajouter mine");
-                controleur.notifierNaviguerAjouterMine(idAvantPoste);
+                try {
+                    controleur.notifierNaviguerAjouterMine(idAvantPoste);
+                    labelMessages.setVisible(false);
+                    labelMessages.setText("");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    labelMessages.setText(e.getMessage());
+                    labelMessages.setVisible(true);
+                }
             }
         });
 
@@ -136,6 +146,8 @@ public class VueAvantPoste extends Scene {
         grillePrincipale.add(grilleAvantPoste, 0, 0);
         grillePrincipale.add(scrollPaneMines, 0, 1);
         grillePrincipale.add(btnAjouterMine, 0, 2);
+        grillePrincipale.add(labelMessages, 0, 3);
+        this.labelMessages.setVisible(false);
     }
 
     public void setControleur(controler.ControleurPrincipal controleur) {

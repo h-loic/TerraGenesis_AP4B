@@ -54,6 +54,10 @@ public class AvantPoste {
         return id;
     }
 
+    public int getPrixNouvMine(){
+        return (this.mines.size()+1)*Mine.PRIX_BASE_MINE;
+    }
+
     public void setMines(ArrayList<Mine> mines) {
         this.mines = mines;
     }
