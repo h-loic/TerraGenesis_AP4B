@@ -38,7 +38,8 @@ public class VueGouverneur extends Scene{
         btnAmeliorer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                gouverneur.ameliorer();
+                controleur.notifierAmeliorerGouverneur(gouverneur);
+                controleur.notifierNaviguerAffichergouverneur(gouverneur);
             }
         });
         btnAffecter = new Button("affecter");
@@ -51,7 +52,6 @@ public class VueGouverneur extends Scene{
         int compteurLigne = 2;
         for (Donnee donnee : gouverneur.getEffets().keySet()) {
             compteurLigne++;
-            System.out.println("key: " + donnee.getTypeDonne() + " value: " + gouverneur.getEffets().get(donnee));
             grillePrincipale.add(new Label(donnee.getTypeDonne()),1,compteurLigne);
             grillePrincipale.add(new Label(Double.toString(gouverneur.getEffets().get(donnee))),2,compteurLigne);
         }

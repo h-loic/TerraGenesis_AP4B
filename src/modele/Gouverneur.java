@@ -1,5 +1,6 @@
 package modele;
 
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class Gouverneur {
@@ -41,10 +42,6 @@ public class Gouverneur {
         this.estDebloque = estDebloque;
     }
 
-    public void setNiveau(int niveau) {
-        this.niveau = niveau;
-    }
-
     public void setEstAffecter(boolean estAffecter) {
         this.estAffecter = estAffecter;
     }
@@ -54,15 +51,15 @@ public class Gouverneur {
         for (Donnee donnee : effets.keySet()) {
             System.out.println(effets.get(donnee));
         }
-        /*
         for (Donnee donnee : effets.keySet()) {
-            donnee.setCroissance(donnee.getCroissance() - effets.get(donnee));
+            this.effets.put(donnee, this.effets.get(donnee)*1.5);
         }
-        for (Donnee donnee : effets.keySet()) {
-            effets.get(donnee) = 2.2;
-        }
-        */
     }
 
-
+    public static Comparator<Gouverneur> ComparatorNom = new Comparator<Gouverneur>() {
+        @Override
+        public int compare(Gouverneur gouv1, Gouverneur gouv2) {
+            return gouv1.getNom().compareTo(gouv2.getNom());
+        }
+    };
 }

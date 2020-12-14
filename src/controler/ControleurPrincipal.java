@@ -157,4 +157,16 @@ public class ControleurPrincipal {
         this.planete.getAvantPoste(idAvantPosteCourant).detruireMine(id);
         this.notifierNaviguerAfficherAvPoste(idAvantPosteCourant);
     }
+
+    public void notifierAmeliorerGouverneur(Gouverneur gouverneur) {
+        if (gouverneur.getNiveau() < 5){
+            gouverneur.ameliorer();
+        } else {
+            System.out.println("IMPOSSIBLE > 5");
+        }
+    }
+
+    public void notifierTrierParNomListeGouverneur() {
+        this.planete.trierGouverneurParNom();
+    }
 }

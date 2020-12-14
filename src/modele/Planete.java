@@ -1,6 +1,8 @@
 package modele;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import static modele.TypeDonne.*;
@@ -76,6 +78,9 @@ public class Planete {
         effets.clear();
         effets.put(this.donnees.get(1), 10.0);
         this.ajouterGouverneur(new Gouverneur(false, 0, "Sriky", false,effets));
+        effets.clear();
+        effets.put(this.donnees.get(2), 10.0);
+        this.ajouterGouverneur(new Gouverneur(false, 0, "Alembert", false,effets));
     }
 
     public ArrayList<Gouverneur> recupererListeGouverneur() {
@@ -97,5 +102,9 @@ public class Planete {
         Donnee finance = new Donnee(FINANCES,0,0);
         donneesPlanete.add(finance);
         this.donnees = donneesPlanete;
+    }
+
+    public void trierGouverneurParNom() {
+        Collections.sort(gouverneurs, Gouverneur.ComparatorNom);
     }
 }
