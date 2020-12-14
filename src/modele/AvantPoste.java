@@ -8,6 +8,7 @@ public class AvantPoste {
     private String nom;
     private Coordonnee coordonnee;
     private ArrayList<Mine> mines;
+    public static final int PRIX_BASE_AVPOSTE = 1000000;
 
     public AvantPoste(String nom, Coordonnee coordonnee, ArrayList<Mine> mines) {
         Random random = new Random();

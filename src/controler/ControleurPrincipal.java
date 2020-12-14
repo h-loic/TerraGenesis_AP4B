@@ -104,18 +104,22 @@ public class ControleurPrincipal {
     }
 
     private static int idAvantPosteCourant = 0;
-    public void notifierNaviguerAfficherAvPoste(int id) {
+    public void notifierNaviguerAfficherAvPoste(int id)  {
         this.vueAvantPoste.initialiserVueAvantPoste(planete.getAvantPoste(id));
         idAvantPosteCourant = id;
         this.navigateur.naviguerVersAvantPoste();
     }
 
-    public void notifierNaviguerAjouterAvPoste() {
+    public void notifierNaviguerAjouterAvPoste() throws Exception{
+        if (!planete.peutPayer((planete.getAvantPostes().size()+1)*AvantPoste.PRIX_BASE_AVPOSTE)){
+            throw new Exception("Fonds insuffisants : " + (planete.getAvantPostes().size()+1)*AvantPoste.PRIX_BASE_AVPOSTE + " requis, disponibles : "+planete.getFinances());
+        }
         this.vueAjouterAvantPoste.initialiserVueAjouterAvantPoste(planete.getAvantPostes());
         this.navigateur.naviguerVersAjouterAvantPoste();
     }
 
     public void notifierAjouterAvantPoste(){
+        this.planete.payer((planete.getAvantPostes().size()+1)*AvantPoste.PRIX_BASE_AVPOSTE);
         this.planete.AjouterAvantPoste(this.vueAjouterAvantPoste.getAvantPoste());
         this.notifierNaviguerMenuPopulation();
     }

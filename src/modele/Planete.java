@@ -12,6 +12,13 @@ public class Planete {
     private HashMap<TypeInfrastructure, Boolean> etatTypesInfrastructure;
     private ArrayList<Gouverneur> gouverneurs;
 
+    private final static int POS_TEMPERATURE = 0;
+    private final static int POS_PRESSION = 1;
+    private final static int POS_OXYGENE = 2;
+    private final static int POS_EAU = 3;
+    private final static int POS_POPULATION = 4;
+    private final static int POS_FINANCES = 5;
+
     public Planete(ArrayList<Ville> villes, ArrayList<AvantPoste> avantPostes, ArrayList<Donnee> donnees, HashMap<TypeInfrastructure, Boolean> etatTypesInfrastructure,ArrayList<Gouverneur> gouverneurs) {
         this.villes = villes;
         this.avantPostes = avantPostes;
@@ -82,6 +89,21 @@ public class Planete {
         return this.gouverneurs;
     }
 
+    public boolean peutPayer(int montant){
+        System.out.println(this.donnees.get(POS_FINANCES).getValeurActuelle() >= Double.parseDouble(Integer.toString(montant)));
+        System.out.println(this.donnees.get(POS_FINANCES).getValeurActuelle() - Double.parseDouble(Integer.toString(montant)));
+        return this.donnees.get(POS_FINANCES).getValeurActuelle() >= Double.parseDouble(Integer.toString(montant));
+    }
+
+    public void payer(int montant){
+        this.donnees.get(POS_FINANCES).setCroissance(-(Double.parseDouble(Integer.toString(montant))));
+        this.donnees.get(POS_FINANCES).majValeur();
+    }
+
+    public double getFinances(){
+        return this.donnees.get(POS_FINANCES).getValeurActuelle();
+    }
+
     public void initialiserDonnees() {
         ArrayList<Donnee> donneesPlanete = new ArrayList<Donnee>();
         Donnee temperature = new Donnee(TEMPERATURE,0,0);
@@ -94,7 +116,7 @@ public class Planete {
         donneesPlanete.add(eau);
         Donnee population = new Donnee(POPULATION,0,0);
         donneesPlanete.add(population);
-        Donnee finance = new Donnee(FINANCES,0,0);
+        Donnee finance = new Donnee(FINANCES,2000000,0);
         donneesPlanete.add(finance);
         this.donnees = donneesPlanete;
     }

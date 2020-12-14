@@ -15,6 +15,14 @@ public class Donnee {
         this.croissance = croissance;
     }
 
+    public void majValeur(){
+        this.valeurActuelle+=croissance;
+    }
+
+    public double getValeurActuelle(){
+        return valeurActuelle;
+    }
+
     public double getCroissance() {
         return croissance;
     }

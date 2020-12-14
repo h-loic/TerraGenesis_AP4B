@@ -23,6 +23,7 @@ public class VueMenuPopulation extends Scene {
 
     private Label labelVilles;
     private Label labelAvPostes;
+    private Label labelMessages;
 
     private Button btnRetour;
     private Button btnAjouterVille;
@@ -38,6 +39,7 @@ public class VueMenuPopulation extends Scene {
 
         this.labelVilles = new Label("Villes");
         this.labelAvPostes = new Label("Avant-postes");
+        this.labelMessages = new Label("");
 
         this.btnRetour = new Button("retour");
         this.btnAjouterVille = new Button("+ Ville");
@@ -78,7 +80,15 @@ public class VueMenuPopulation extends Scene {
         btnAjouterAvPoste.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                controleur.notifierNaviguerAjouterAvPoste();
+                try {
+                    labelMessages.setText("");
+                    labelMessages.setVisible(false);
+                    controleur.notifierNaviguerAjouterAvPoste();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    labelMessages.setText(e.getMessage());
+                    labelMessages.setVisible(true);
+                }
             }
         });
 
@@ -97,7 +107,9 @@ public class VueMenuPopulation extends Scene {
         this.grillePrincipale.add(this.labelAvPostes, 0, 1);
         this.grillePrincipale.add(this.scrollPaneAvPostes, 0, 2);
         this.grillePrincipale.add(this.btnAjouterAvPoste, 0, 3);
-        this.grillePrincipale.add(this.btnRetour, 0, 4);
+        this.grillePrincipale.add(this.labelMessages, 0, 4);
+        this.grillePrincipale.add(this.btnRetour, 0, 5);
+        this.labelMessages.setVisible(false);
 
 
 

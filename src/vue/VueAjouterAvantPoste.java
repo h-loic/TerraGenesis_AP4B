@@ -57,6 +57,7 @@ public class VueAjouterAvantPoste extends Scene {
         this.btnAjouterAvPoste = new Button("Ajouter");
 
         this.canvasCoords = new Canvas(250,250);
+        this.gcCanva = this.canvasCoords.getGraphicsContext2D();
 
         this.labelNom = new Label("Nom : ");
         this.labelX = new Label("X : ");
@@ -100,7 +101,6 @@ public class VueAjouterAvantPoste extends Scene {
         this.labelYAvPoste = new Label();
         this.labelZAvPoste = new Label();
 
-        this.gcCanva = this.canvasCoords.getGraphicsContext2D();
         this.initCanvas(avantPostes);
         this.canvasCoords.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
