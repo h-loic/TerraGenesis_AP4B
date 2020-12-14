@@ -33,6 +33,10 @@ public class Gouverneur {
         return effets;
     }
 
+    public Double getEffetsValeur(int index) {
+        return effets.get(index);
+    }
+
     public void setEstDebloque(boolean estDebloque) {
         this.estDebloque = estDebloque;
     }

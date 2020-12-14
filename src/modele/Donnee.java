@@ -18,4 +18,8 @@ public class Donnee {
     public double getCroissance() {
         return croissance;
     }
+
+    public String getTypeDonne() {
+        return typeDonne.name();
+    }
 }
