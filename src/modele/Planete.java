@@ -107,4 +107,8 @@ public class Planete {
     public void trierGouverneurParNom() {
         Collections.sort(gouverneurs, Gouverneur.ComparatorNom);
     }
+
+    public void trierGouverneurParDebloque() {
+        Collections.sort(gouverneurs, Gouverneur.ComparatorDebloque);
+    }
 }

@@ -169,4 +169,12 @@ public class ControleurPrincipal {
     public void notifierTrierParNomListeGouverneur() {
         this.planete.trierGouverneurParNom();
     }
+
+    public void notifierTrierParDebloqueListeGouverneur() {
+        this.planete.trierGouverneurParDebloque();
+    }
+
+    public void notifierDebloquerGouverneur(Gouverneur gouverneur) {
+        gouverneur.setEstDebloque();
+    }
 }

@@ -18,6 +18,10 @@ public class Gouverneur {
         this.effets = effets;
     }
 
+    public boolean estDebloque(){
+        return  this.estDebloque;
+    }
+
     public int getNiveau() {
         return niveau;
     }
@@ -38,8 +42,8 @@ public class Gouverneur {
         return effets.get(index);
     }
 
-    public void setEstDebloque(boolean estDebloque) {
-        this.estDebloque = estDebloque;
+    public void setEstDebloque() {
+        this.estDebloque = true;
     }
 
     public void setEstAffecter(boolean estAffecter) {
@@ -60,6 +64,13 @@ public class Gouverneur {
         @Override
         public int compare(Gouverneur gouv1, Gouverneur gouv2) {
             return gouv1.getNom().compareTo(gouv2.getNom());
+        }
+    };
+
+    public static Comparator<Gouverneur> ComparatorDebloque = new Comparator<Gouverneur>() {
+        @Override
+        public int compare(Gouverneur gouv1, Gouverneur gouv2) {
+            return Boolean.compare(gouv2.estDebloque, gouv1.estDebloque);
         }
     };
 }

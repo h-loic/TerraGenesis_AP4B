@@ -37,20 +37,32 @@ public class VueMenuGouverneurs extends Scene {
         grilleGouverneur = new GridPane();
         int lignesGouverneur = 1;
         this.grillePrincipale.getChildren().clear();
+
         for (Gouverneur gouverneur : listeGouverneur){
             Label labelNom = new Label(gouverneur.getNom());
-            Button btnAfficher = new Button("afficher");
-
-            btnAfficher.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    controleur.notifierNaviguerAffichergouverneur(gouverneur);
-                }
-            });
             lignesGouverneur+=2;
-
             this.grilleGouverneur.add(labelNom, 0, lignesGouverneur);
-            this.grilleGouverneur.add(btnAfficher, 4, lignesGouverneur);
+            if (gouverneur.estDebloque()){
+                Button btnAfficher = new Button("afficher");
+                btnAfficher.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        controleur.notifierNaviguerAffichergouverneur(gouverneur);
+                    }
+                });
+                this.grilleGouverneur.add(btnAfficher, 4, lignesGouverneur);
+            }else{
+                Button btnDebloque = new Button("debloquer");
+                btnDebloque.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        controleur.notifierDebloquerGouverneur(gouverneur);
+                        controleur.notifierNaviguerMenuGouverneurs();
+                    }
+                });
+                this.grilleGouverneur.add(btnDebloque, 4, lignesGouverneur);
+            }
+
         }
         lignesGouverneur+=2;
         this.grillePrincipale.add(this.labelGouverneurs, 0, 0);
@@ -70,6 +82,14 @@ public class VueMenuGouverneurs extends Scene {
             @Override
             public void handle(ActionEvent event) {
                 controleur.notifierTrierParNomListeGouverneur();
+                controleur.notifierNaviguerMenuGouverneurs();
+            }
+        });
+
+        boutonTrierParDebloque.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controleur.notifierTrierParDebloqueListeGouverneur();
                 controleur.notifierNaviguerMenuGouverneurs();
             }
         });
