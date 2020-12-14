@@ -111,6 +111,10 @@ public class VueAjouterAvantPoste extends Scene {
             }
         });
 
+        this.labelXAvPoste.setText("");
+        this.labelYAvPoste.setText("");
+        this.labelZAvPoste.setText("");
+
         grilleForm.add(this.labelNom,0,0);
         grilleForm.add(this.textFieldNomAvantPoste,1,0);
 
