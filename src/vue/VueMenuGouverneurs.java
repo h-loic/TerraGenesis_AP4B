@@ -20,44 +20,77 @@ public class VueMenuGouverneurs extends Scene {
 
     private Label labelGouverneurs;
     private Button boutonRetour;
+    private Button boutonTrierParNom;
+    private Button boutonTrierParDebloque;
 
     public VueMenuGouverneurs() {
         super(new GridPane(), 400,400);
         grillePrincipale = (GridPane) this.getRoot();
 
-        grilleGouverneur = new GridPane();
-
         this.labelGouverneurs = new Label("Gouverneurs");
         this.boutonRetour = new Button("retour");
+        this.boutonTrierParNom = new Button("Trier par nom");
+        this.boutonTrierParDebloque = new Button("Trier par debloquer");
     }
 
     public void initialiserMenuGouverneurs(ArrayList<Gouverneur> listeGouverneur) {
+        grilleGouverneur = new GridPane();
         int lignesGouverneur = 1;
         this.grillePrincipale.getChildren().clear();
-        this.grillePrincipale.add(this.labelGouverneurs, 0, 0);
-        this.grillePrincipale.add(this.boutonRetour, 1, 0);
+
         for (Gouverneur gouverneur : listeGouverneur){
             Label labelNom = new Label(gouverneur.getNom());
-            Button btnAfficher = new Button("afficher");
-
-            btnAfficher.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    controleur.notifierNaviguerAffichergouverneur(gouverneur);
-                }
-            });
-            lignesGouverneur++;
-
+            lignesGouverneur+=2;
             this.grilleGouverneur.add(labelNom, 0, lignesGouverneur);
-            this.grilleGouverneur.add(btnAfficher, 1, lignesGouverneur);
-        }
+            if (gouverneur.estDebloque()){
+                Button btnAfficher = new Button("afficher");
+                btnAfficher.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        controleur.notifierNaviguerAffichergouverneur(gouverneur);
+                    }
+                });
+                this.grilleGouverneur.add(btnAfficher, 4, lignesGouverneur);
+            }else{
+                Button btnDebloque = new Button("debloquer");
+                btnDebloque.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        controleur.notifierDebloquerGouverneur(gouverneur);
+                        controleur.notifierNaviguerMenuGouverneurs();
+                    }
+                });
+                this.grilleGouverneur.add(btnDebloque, 4, lignesGouverneur);
+            }
 
-        this.grillePrincipale.add(this.grilleGouverneur, 0, 0);
+        }
+        lignesGouverneur+=2;
+        this.grillePrincipale.add(this.labelGouverneurs, 0, 0);
+        this.grillePrincipale.add(this.boutonTrierParNom, 1, 0);
+        this.grillePrincipale.add(this.boutonTrierParDebloque, 2, 0);
+        this.grillePrincipale.add(this.boutonRetour, 1, lignesGouverneur);
+        this.grillePrincipale.add(this.grilleGouverneur, 0, 1);
 
         this.boutonRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 controleur.notifierNaviguerMenuPrincipal();
+            }
+        });
+
+        boutonTrierParNom.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controleur.notifierTrierParNomListeGouverneur();
+                controleur.notifierNaviguerMenuGouverneurs();
+            }
+        });
+
+        boutonTrierParDebloque.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controleur.notifierTrierParDebloqueListeGouverneur();
+                controleur.notifierNaviguerMenuGouverneurs();
             }
         });
     }

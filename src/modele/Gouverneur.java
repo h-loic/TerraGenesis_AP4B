@@ -1,5 +1,6 @@
 package modele;
 
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class Gouverneur {
@@ -15,6 +16,10 @@ public class Gouverneur {
         this.nom = nom;
         this.estAffecter = estAffecter;
         this.effets = effets;
+    }
+
+    public boolean estDebloque(){
+        return  this.estDebloque;
     }
 
     public int getNiveau() {
@@ -33,12 +38,12 @@ public class Gouverneur {
         return effets;
     }
 
-    public void setEstDebloque(boolean estDebloque) {
-        this.estDebloque = estDebloque;
+    public Double getEffetsValeur(int index) {
+        return effets.get(index);
     }
 
-    public void setNiveau(int niveau) {
-        this.niveau = niveau;
+    public void setEstDebloque() {
+        this.estDebloque = true;
     }
 
     public void setEstAffecter(boolean estAffecter) {
@@ -50,15 +55,22 @@ public class Gouverneur {
         for (Donnee donnee : effets.keySet()) {
             System.out.println(effets.get(donnee));
         }
-        /*
         for (Donnee donnee : effets.keySet()) {
-            donnee.setCroissance(donnee.getCroissance() - effets.get(donnee));
+            this.effets.put(donnee, this.effets.get(donnee)*1.5);
         }
-        for (Donnee donnee : effets.keySet()) {
-            effets.get(donnee) = 2.2;
-        }
-        */
     }
 
+    public static Comparator<Gouverneur> ComparatorNom = new Comparator<Gouverneur>() {
+        @Override
+        public int compare(Gouverneur gouv1, Gouverneur gouv2) {
+            return gouv1.getNom().compareTo(gouv2.getNom());
+        }
+    };
 
+    public static Comparator<Gouverneur> ComparatorDebloque = new Comparator<Gouverneur>() {
+        @Override
+        public int compare(Gouverneur gouv1, Gouverneur gouv2) {
+            return Boolean.compare(gouv2.estDebloque, gouv1.estDebloque);
+        }
+    };
 }
