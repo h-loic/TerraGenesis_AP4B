@@ -1,0 +1,263 @@
+@startuml
+
+title __MODELE's Class Diagram__\n
+
+  namespace modele {
+    class modele.AvantPoste {
+        {static} + PRIX_BASE_AVPOSTE : int
+        - id : int
+        - mines : ArrayList<Mine>
+        - nom : String
+        + AvantPoste()
+        + ajouterMine()
+        + detruireMine()
+        + getBeneficesMines()
+        + getCoordonnee()
+        + getId()
+        + getMine()
+        + getMines()
+        + getNom()
+        + getPrixNouvMine()
+        + setCoordonnee()
+        + setMines()
+        + setNom()
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Batiment {
+        - dateFinConstruction : Date
+        - description : String
+        - effets : HashMap<Donnee, Double>
+        - estDesactive : boolean
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Coordonnee {
+        - x : double
+        - y : double
+        - z : double
+        + Coordonnee()
+        + getX()
+        + getY()
+        + getZ()
+        + setX()
+        + setY()
+        + setZ()
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Donnee {
+        - croissance : double
+        - valeurActuelle : double
+        + Donnee()
+        + getCroissance()
+        + getTypeDonnee()
+        + getValeurActuelle()
+        + majValeur()
+        + setCroissance()
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Gouverneur {
+        {static} + ComparatorDebloque : Comparator<Gouverneur>
+        {static} + ComparatorNom : Comparator<Gouverneur>
+        {static} - PRIX_BASE_AMELIORATION : int
+        {static} - PRIX_BASE_GOUVERNEUR : int
+        - effets : HashMap<Donnee, Double>
+        - estAffecter : boolean
+        - estDebloque : boolean
+        - niveau : int
+        - nom : String
+        + Gouverneur()
+        + ameliorer()
+        + estDebloque()
+        + getEffets()
+        + getEffetsValeur()
+        + getNiveau()
+        + getNom()
+        + getPrixAmelioration()
+        + getPrixBaseGouverneur()
+        + isEstAffecter()
+        + setEstAffecter()
+        + setEstDebloque()
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Infrastructure {
+        - niveau : int
+        - nom : String
+        - prix : int
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Mine {
+        {static} + PRIX_BASE_AMELIORATION : int
+        {static} + PRIX_BASE_MINE : int
+        - benefice : double
+        - dateEpuissement : Date
+        - id : int
+        - niveau : int
+        - nom : String
+        - rendement : double
+        + Mine()
+        + ameliorerMine()
+        + getBenefice()
+        + getCoordonnee()
+        + getDateEpuissement()
+        + getId()
+        + getNiveau()
+        + getNom()
+        + getPrixAmelioration()
+        + getRendement()
+        + getRessource()
+        + setNom()
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Planete {
+        - avantPostes : ArrayList<AvantPoste>
+        - donnees : ArrayList<Donnee>
+        - etatTypesInfrastructure : HashMap<TypeInfrastructure, Boolean>
+        - gouverneurs : ArrayList<Gouverneur>
+        - villes : ArrayList<Ville>
+        + AjouterAvantPoste()
+        + DetruireAvantPoste()
+        + Planete()
+        + Planete()
+        + ajouterAvantPoste()
+        + ajouterVille()
+        + getAvantPoste()
+        + getAvantPostes()
+        + getDonnee()
+        + getDonnees()
+        + getEtatTypesInfrastructure()
+        + getFinances()
+        + getVille()
+        + getVilles()
+        + initialiserDonnees()
+        + initialiserGouverneur()
+        + initialiserVilles()
+        + payer()
+        + peutPayer()
+        + recupererListeGouverneur()
+        + trierGouverneurParDebloque()
+        + trierGouverneurParNom()
+        - ajouterGouverneur()
+    }
+  }
+  
+
+  namespace modele {
+    enum Rarete {
+      CLASSIQUE
+      ORDINAIRE
+      RARE
+      TRES_ORDINAIRE
+      TRES_RARE
+      valeur
+    }
+  }
+  
+
+  namespace modele {
+    enum Ressource {
+      ARGENT
+      CARBONE
+      FER
+      PALLADIUM
+      RHODIUM
+      rarete
+      symbole
+      valeur
+    }
+  }
+  
+
+  namespace modele {
+    enum TypeDonnee {
+      EAU
+      FINANCES
+      OXYGENE
+      POPULATION
+      PRESSION
+      TEMPERATURE
+      description
+      unite
+      valeurDefaut
+    }
+  }
+  
+
+  namespace modele {
+    enum TypeInfrastructure {
+      USINE_DE_REFROIDISSEMENT
+      cout
+      description
+      nom
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Ville {
+        - batiments : ArrayList<Batiment>
+        - habitation : int
+        - id : int
+        - nom : String
+        - nombrePlaceBatiment : int
+        - population : int
+        {static} - sequence : AtomicInteger
+        + Ville()
+        + assignerGouverneur()
+        + getBatiments()
+        + getCoordonnee()
+        + getGouverneur()
+        + getHabitation()
+        + getId()
+        + getNom()
+        + getNombrePlaceBatiment()
+        + getPopulation()
+        + revoquerGouverneur()
+        + setBatiments()
+        + setHabitation()
+        + setNombrePlaceBatiment()
+        + setPopulation()
+        - genererId()
+    }
+  }
+  
+
+  modele.AvantPoste o-- modele.Coordonnee : coordonnee
+  modele.Batiment -up-|> modele.Infrastructure
+  modele.Donnee o-- modele.TypeDonnee : typeDonnee
+  modele.Infrastructure o-- modele.TypeInfrastructure : typeInfrastructure
+  modele.Mine -up-|> modele.Infrastructure
+  modele.Mine o-- modele.Coordonnee : coordonnee
+  modele.Mine o-- modele.Ressource : ressource
+  modele.Ressource o-- modele.Rarete : rarete
+  modele.Ville o-- modele.Coordonnee : coordonnee
+  modele.Ville o-- modele.Gouverneur : gouverneur
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

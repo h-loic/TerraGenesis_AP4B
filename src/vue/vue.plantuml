@@ -1,0 +1,295 @@
+@startuml
+
+title __VUE's Class Diagram__\n
+
+  namespace vue {
+    class vue.NavigateurDesVues {
+        {static} - instance : NavigateurDesVues
+        - stage : Stage
+        + NavigateurDesVues()
+        {static} + getInstance()
+        + getVueAjouterAvantPoste()
+        + getVueAjouterMine()
+        + getVueAvantPoste()
+        + getVueGouverneur()
+        + getVueMenuCulture()
+        + getVueMenuGouverneurs()
+        + getVueMenuPopulation()
+        + getVueMenuPrincipal()
+        + getVueMenuRecherche()
+        + getVueMenuSatellites()
+        + getVueMenuStatistiques()
+        + naviguerVersAjouterAvantPoste()
+        + naviguerVersAvantPoste()
+        + naviguerVersGouverneur()
+        + naviguerVersMenuCulture()
+        + naviguerVersMenuGouverneurs()
+        + naviguerVersMenuPopulation()
+        + naviguerVersMenuRecherche()
+        + naviguerVersMenuSatellites()
+        + naviguerVersMenuStatistiques()
+        + naviguerVersVueAjouterMine()
+        + naviguerVersVueMenuPrincipal()
+        + start()
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueAjouterAvantPoste {
+        # grilleBoutons : GridPane
+        # grilleForm : GridPane
+        # grillePrincipale : GridPane
+        - btnAjouterAvPoste : Button
+        - btnRetourMenuAvantPoste : Button
+        - canvasCoords : Canvas
+        - gcCanva : GraphicsContext
+        - labelErreurs : Label
+        - labelNom : Label
+        - labelX : Label
+        - labelXAvPoste : Label
+        - labelY : Label
+        - labelYAvPoste : Label
+        - labelZ : Label
+        - labelZAvPoste : Label
+        - nomAvanPoste : String
+        - textFieldNomAvantPoste : TextField
+        - xAvanPoste : double
+        - yAvanPoste : double
+        - zAvanPoste : double
+        + VueAjouterAvantPoste()
+        + getAvantPoste()
+        + initialiserVueAjouterAvantPoste()
+        + setControleur()
+        - dessinePoint()
+        - initCanvas()
+        - validerDonnees()
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueAjouterMine {
+        # grilleBoutons : GridPane
+        # grilleForm : GridPane
+        # grillePrincipale : GridPane
+        - btnAjouterMine : Button
+        - btnRetourMenuAvantPoste : Button
+        - canvasCoords : Canvas
+        - comboBoxRessources : ComboBox
+        - gcCanva : GraphicsContext
+        - idAvantPoste : int
+        - labelErreurs : Label
+        - labelNom : Label
+        - labelRessource : Label
+        - labelX : Label
+        - labelXmine : Label
+        - labelY : Label
+        - labelYmine : Label
+        - labelZ : Label
+        - labelZmine : Label
+        - xMine : double
+        - yMine : double
+        - zMine : double
+        + VueAjouterMine()
+        + getMine()
+        + initialiserVueAjouterMine()
+        + setControleur()
+        - dessinePoint()
+        - initCanvas()
+        - validerDonnees()
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueAvantPoste {
+        - btnAjouterMine : Button
+        - btnDetruire : Button
+        - btnRetour : Button
+        - grilleAvantPoste : GridPane
+        - grilleMines : GridPane
+        - grillePrincipale : GridPane
+        - idAvantPoste : int
+        - labelBenefices : Label
+        - labelCoordonnees : Label
+        - labelMessages : Label
+        - labelNom : Label
+        - scrollPaneMines : ScrollPane
+        + VueAvantPoste()
+        + initialiserVueAvantPoste()
+        + setControleur()
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueGouverneur {
+        # grillePrincipale : GridPane
+        - btnAffecter : Button
+        - btnAmeliorer : Button
+        - btnRetour : Button
+        - labelNiveau : Label
+        - labelNom : Label
+        + VueGouverneur()
+        + initialiserVueGouverneur()
+        + setControleur()
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuCulture {
+        # grilleAvions : GridPane
+        - boutonRetour : Button
+        - labelCulture : Label
+        + VueMenuCulture()
+        + initialiserMenuCulture()
+        + setControleur()
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuGouverneurs {
+        # grilleGouverneur : GridPane
+        # grillePrincipale : GridPane
+        - boutonRetour : Button
+        - boutonTrierParDebloque : Button
+        - boutonTrierParNom : Button
+        - labelGouverneurs : Label
+        + VueMenuGouverneurs()
+        + initialiserMenuGouverneurs()
+        + setControleur()
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuPopulation {
+        # grilleAvPostes : GridPane
+        # grillePrincipale : GridPane
+        # grilleVilles : GridPane
+        - btnAjouterAvPoste : Button
+        - btnAjouterVille : Button
+        - btnRetour : Button
+        - labelAvPostes : Label
+        - labelMessages : Label
+        - labelVilles : Label
+        - scrollPaneAvPostes : ScrollPane
+        - scrollPaneVilles : ScrollPane
+        + VueMenuPopulation()
+        + initialiserMenuPopulation()
+        + setControleur()
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuPrincipal {
+        # grilleAvions : GridPane
+        - actionNaviguerGouverneurs : Button
+        - actionNaviguerPointsCulture : Button
+        - actionNaviguerPopulation : Button
+        - actionNaviguerRecherche : Button
+        - actionNaviguerSatellites : Button
+        - actionNaviguerStatistiques : Button
+        + VueMenuPrincipal()
+        + initialiserMenuPrincipal()
+        + setControleur()
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuRecherche {
+        # grilleAvions : GridPane
+        - boutonRetour : Button
+        - labelRecherche : Label
+        + VueMenuRecherche()
+        + initialiserMenuRecherche()
+        + setControleur()
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuSatellites {
+        # grilleAvions : GridPane
+        - boutonRetour : Button
+        - labelSatellites : Label
+        + VueMenuSatellites()
+        + initialiserMenuSatellites()
+        + setControleur()
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuStatistiques {
+        # grillePrincipale : GridPane
+        - boutonRetour : Button
+        - labelEau : Label
+        - labelFinances : Label
+        - labelFinancesVal : Label
+        - labelOxygene : Label
+        - labelPopulation : Label
+        - labelPression : Label
+        - labelTemperature : Label
+        - sliderEau : Slider
+        - sliderOxygene : Slider
+        - sliderPression : Slider
+        - sliderTemperature : Slider
+        + VueMenuStatistiques()
+        + initialiserMenuStatistiques()
+        + setControleur()
+    }
+  }
+  
+
+  vue.NavigateurDesVues -up-|> javafx.application.Application
+  vue.NavigateurDesVues o-- controler.ControleurPrincipal : controleur
+  vue.NavigateurDesVues o-- vue.VueAjouterAvantPoste : vueAjouterAvantPoste
+  vue.NavigateurDesVues o-- vue.VueAjouterMine : vueAjouterMine
+  vue.NavigateurDesVues o-- vue.VueAvantPoste : vueAvantPoste
+  vue.NavigateurDesVues o-- vue.VueGouverneur : vueGouverneur
+  vue.NavigateurDesVues o-- vue.VueMenuCulture : vueMenuCulture
+  vue.NavigateurDesVues o-- vue.VueMenuGouverneurs : vueMenuGouverneurs
+  vue.NavigateurDesVues o-- vue.VueMenuPopulation : vueMenuPopulation
+  vue.NavigateurDesVues o-- vue.VueMenuPrincipal : vueMenuPrincipal
+  vue.NavigateurDesVues o-- vue.VueMenuRecherche : vueMenuRecherche
+  vue.NavigateurDesVues o-- vue.VueMenuSatellites : vueMenuSatellites
+  vue.NavigateurDesVues o-- vue.VueMenuStatistiques : vueMenuStatistiques
+  vue.VueAjouterAvantPoste -up-|> javafx.scene.Scene
+  vue.VueAjouterAvantPoste o-- controler.ControleurPrincipal : controleur
+  vue.VueAjouterMine -up-|> javafx.scene.Scene
+  vue.VueAjouterMine o-- controler.ControleurPrincipal : controleur
+  vue.VueAjouterMine o-- modele.Ressource : ressourceMine
+  vue.VueAvantPoste -up-|> javafx.scene.Scene
+  vue.VueAvantPoste o-- controler.ControleurPrincipal : controleur
+  vue.VueGouverneur -up-|> javafx.scene.Scene
+  vue.VueGouverneur o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuCulture -up-|> javafx.scene.Scene
+  vue.VueMenuCulture o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuGouverneurs -up-|> javafx.scene.Scene
+  vue.VueMenuGouverneurs o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuPopulation -up-|> javafx.scene.Scene
+  vue.VueMenuPopulation o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuPrincipal -up-|> javafx.scene.Scene
+  vue.VueMenuPrincipal o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuRecherche -up-|> javafx.scene.Scene
+  vue.VueMenuRecherche o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuSatellites -up-|> javafx.scene.Scene
+  vue.VueMenuSatellites o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuStatistiques -up-|> javafx.scene.Scene
+  vue.VueMenuStatistiques o-- controler.ControleurPrincipal : controleur
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

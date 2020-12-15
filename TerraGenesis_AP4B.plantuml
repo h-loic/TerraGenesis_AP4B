@@ -1,0 +1,235 @@
+@startuml
+
+title __TERRAGENESIS_AP4B's Class Diagram__\n
+
+  namespace controler {
+    class controler.ControleurPrincipal {
+    }
+  }
+  
+
+  namespace modele {
+    class modele.AvantPoste {
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Batiment {
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Coordonnee {
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Donnee {
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Gouverneur {
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Infrastructure {
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Mine {
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Planete {
+    }
+  }
+  
+
+  namespace modele {
+    enum Rarete {
+    }
+  }
+  
+
+  namespace modele {
+    enum Ressource {
+    }
+  }
+  
+
+  namespace modele {
+    enum TypeDonnee {
+    }
+  }
+  
+
+  namespace modele {
+    enum TypeInfrastructure {
+    }
+  }
+  
+
+  namespace modele {
+    class modele.Ville {
+    }
+  }
+  
+
+  namespace sample {
+    class sample.App {
+    }
+  }
+  
+
+  namespace vue {
+    class vue.NavigateurDesVues {
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueAjouterAvantPoste {
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueAjouterMine {
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueAvantPoste {
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueGouverneur {
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuCulture {
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuGouverneurs {
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuPopulation {
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuPrincipal {
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuRecherche {
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuSatellites {
+    }
+  }
+  
+
+  namespace vue {
+    class vue.VueMenuStatistiques {
+    }
+  }
+  
+
+  controler.ControleurPrincipal o-- vue.NavigateurDesVues : navigateur
+  controler.ControleurPrincipal o-- modele.Planete : planete
+  controler.ControleurPrincipal o-- vue.VueAjouterAvantPoste : vueAjouterAvantPoste
+  controler.ControleurPrincipal o-- vue.VueAjouterMine : vueAjouterMine
+  controler.ControleurPrincipal o-- vue.VueAvantPoste : vueAvantPoste
+  controler.ControleurPrincipal o-- vue.VueGouverneur : vueGouverneur
+  controler.ControleurPrincipal o-- vue.VueMenuCulture : vueMenuCulture
+  controler.ControleurPrincipal o-- vue.VueMenuGouverneurs : vueMenuGouverneurs
+  controler.ControleurPrincipal o-- vue.VueMenuPopulation : vueMenuPopulation
+  controler.ControleurPrincipal o-- vue.VueMenuPrincipal : vueMenuPrincipal
+  controler.ControleurPrincipal o-- vue.VueMenuRecherche : vueMenuRecherche
+  controler.ControleurPrincipal o-- vue.VueMenuSatellites : vueMenuSatellites
+  controler.ControleurPrincipal o-- vue.VueMenuStatistiques : vueMenuStatistiques
+  modele.AvantPoste o-- modele.Coordonnee : coordonnee
+  modele.Batiment -up-|> modele.Infrastructure
+  modele.Donnee o-- modele.TypeDonnee : typeDonnee
+  modele.Infrastructure o-- modele.TypeInfrastructure : typeInfrastructure
+  modele.Mine -up-|> modele.Infrastructure
+  modele.Mine o-- modele.Coordonnee : coordonnee
+  modele.Mine o-- modele.Ressource : ressource
+  modele.Ressource o-- modele.Rarete : rarete
+  modele.Ville o-- modele.Coordonnee : coordonnee
+  modele.Ville o-- modele.Gouverneur : gouverneur
+  vue.NavigateurDesVues -up-|> javafx.application.Application
+  vue.NavigateurDesVues o-- controler.ControleurPrincipal : controleur
+  vue.NavigateurDesVues o-- vue.VueAjouterAvantPoste : vueAjouterAvantPoste
+  vue.NavigateurDesVues o-- vue.VueAjouterMine : vueAjouterMine
+  vue.NavigateurDesVues o-- vue.VueAvantPoste : vueAvantPoste
+  vue.NavigateurDesVues o-- vue.VueGouverneur : vueGouverneur
+  vue.NavigateurDesVues o-- vue.VueMenuCulture : vueMenuCulture
+  vue.NavigateurDesVues o-- vue.VueMenuGouverneurs : vueMenuGouverneurs
+  vue.NavigateurDesVues o-- vue.VueMenuPopulation : vueMenuPopulation
+  vue.NavigateurDesVues o-- vue.VueMenuPrincipal : vueMenuPrincipal
+  vue.NavigateurDesVues o-- vue.VueMenuRecherche : vueMenuRecherche
+  vue.NavigateurDesVues o-- vue.VueMenuSatellites : vueMenuSatellites
+  vue.NavigateurDesVues o-- vue.VueMenuStatistiques : vueMenuStatistiques
+  vue.VueAjouterAvantPoste -up-|> javafx.scene.Scene
+  vue.VueAjouterAvantPoste o-- controler.ControleurPrincipal : controleur
+  vue.VueAjouterMine -up-|> javafx.scene.Scene
+  vue.VueAjouterMine o-- controler.ControleurPrincipal : controleur
+  vue.VueAjouterMine o-- modele.Ressource : ressourceMine
+  vue.VueAvantPoste -up-|> javafx.scene.Scene
+  vue.VueAvantPoste o-- controler.ControleurPrincipal : controleur
+  vue.VueGouverneur -up-|> javafx.scene.Scene
+  vue.VueGouverneur o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuCulture -up-|> javafx.scene.Scene
+  vue.VueMenuCulture o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuGouverneurs -up-|> javafx.scene.Scene
+  vue.VueMenuGouverneurs o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuPopulation -up-|> javafx.scene.Scene
+  vue.VueMenuPopulation o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuPrincipal -up-|> javafx.scene.Scene
+  vue.VueMenuPrincipal o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuRecherche -up-|> javafx.scene.Scene
+  vue.VueMenuRecherche o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuSatellites -up-|> javafx.scene.Scene
+  vue.VueMenuSatellites o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuStatistiques -up-|> javafx.scene.Scene
+  vue.VueMenuStatistiques o-- controler.ControleurPrincipal : controleur
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
