@@ -172,10 +172,13 @@ public class ControleurPrincipal {
     }
 
     public void notifierAmeliorerGouverneur(Gouverneur gouverneur) {
-        if (gouverneur.getNiveau() < 5){
+        if (gouverneur.getNiveau() < 5 && this.planete.peutPayer(gouverneur.getPrixAmelioration())){
+            this.planete.payer(gouverneur.getPrixAmelioration());
             gouverneur.ameliorer();
-        } else {
+        } else if (gouverneur.getNiveau() >= 5){
             System.out.println("IMPOSSIBLE > 5");
+        } else {
+            System.out.println("pas assez d'argent frr");
         }
     }
 
@@ -188,6 +191,11 @@ public class ControleurPrincipal {
     }
 
     public void notifierDebloquerGouverneur(Gouverneur gouverneur) {
-        gouverneur.setEstDebloque();
+        if (!planete.peutPayer(gouverneur.getPrixBaseGouverneur())){
+            System.out.println("pas assez d'argent");
+        }else{
+            planete.payer(gouverneur.getPrixBaseGouverneur());
+            gouverneur.setEstDebloque();
+        }
     }
 }

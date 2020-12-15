@@ -4,6 +4,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 public class Gouverneur {
+
+    private static final int PRIX_BASE_GOUVERNEUR = 25000;
+    private static final int PRIX_BASE_AMELIORATION   = 1500;
+
     private boolean estDebloque;
     private int niveau;
     private String nom;
@@ -44,6 +48,14 @@ public class Gouverneur {
 
     public void setEstDebloque() {
         this.estDebloque = true;
+    }
+
+    public int getPrixBaseGouverneur() {
+        return PRIX_BASE_GOUVERNEUR;
+    }
+
+    public int getPrixAmelioration() {
+        return PRIX_BASE_AMELIORATION * this.niveau;
     }
 
     public void setEstAffecter(boolean estAffecter) {
