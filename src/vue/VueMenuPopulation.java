@@ -59,7 +59,7 @@ public class VueMenuPopulation extends Scene {
         /* VILLES */
         for (Ville ville : listeVilles){
             Label labelNom = new Label(ville.getNom());
-            Label labelPopulation = new Label(" pop: "+ville.getPopulation());
+            Label labelPopulation = new Label(" pop. "+ville.getPopulation());
 
             Button btnAfficher = new Button("afficher");
             btnAfficher.setUserData(ville.getId());
@@ -82,7 +82,7 @@ public class VueMenuPopulation extends Scene {
                 try {
                     labelMessages.setText("");
                     labelMessages.setVisible(false);
-                    controleur.notifierNaviguerAjouterAvPoste();
+                    controleur.notifierNaviguerAjouterVille();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                     labelMessages.setText(e.getMessage());

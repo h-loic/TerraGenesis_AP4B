@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Ville {
 
     private static final AtomicInteger sequence = new AtomicInteger();
-
+    public static final int PRIX_BASE_VILLE = 10;
     private int id;
     private String nom;
     private ArrayList<Batiment> batiments;
