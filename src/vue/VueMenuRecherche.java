@@ -10,22 +10,22 @@ import javafx.scene.layout.GridPane;
 
 public class VueMenuRecherche extends Scene {
 
-    protected GridPane grilleAvions;
+    protected GridPane grillePrincipale;
     private controler.ControleurPrincipal controleur = null;
     private Label labelRecherche;
     private Button boutonRetour;
 
     public VueMenuRecherche() {
         super(new GridPane(), 400,400);
-        grilleAvions = (GridPane) this.getRoot();
+        grillePrincipale = (GridPane) this.getRoot();
         this.labelRecherche = new Label("Recherche");
         this.boutonRetour = new Button("retour");
     }
 
     public void initialiserMenuRecherche() {
-        this.grilleAvions.getChildren().clear();
-        this.grilleAvions.add(this.labelRecherche, 0, 0);
-        this.grilleAvions.add(this.boutonRetour, 1, 0);
+        this.grillePrincipale.getChildren().clear();
+        this.grillePrincipale.add(this.labelRecherche, 0, 0);
+        this.grillePrincipale.add(this.boutonRetour, 1, 0);
         this.boutonRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

@@ -10,22 +10,22 @@ import javafx.scene.layout.GridPane;
 
 public class VueMenuSatellites extends Scene {
 
-    protected GridPane grilleAvions;
+    protected GridPane grillePrincipale;
     private controler.ControleurPrincipal controleur = null;
     private Label labelSatellites;
     private Button boutonRetour;
 
     public VueMenuSatellites() {
         super(new GridPane(), 400,400);
-        grilleAvions = (GridPane) this.getRoot();
+        grillePrincipale = (GridPane) this.getRoot();
         this.labelSatellites = new Label("Satellites");
         this.boutonRetour = new Button("retour");
     }
 
     public void initialiserMenuSatellites() {
-        this.grilleAvions.getChildren().clear();
-        this.grilleAvions.add(this.labelSatellites, 0, 0);
-        this.grilleAvions.add(this.boutonRetour, 1, 0);
+        this.grillePrincipale.getChildren().clear();
+        this.grillePrincipale.add(this.labelSatellites, 0, 0);
+        this.grillePrincipale.add(this.boutonRetour, 1, 0);
         this.boutonRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
