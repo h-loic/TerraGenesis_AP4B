@@ -9,7 +9,7 @@ public class Batiment {
     private TypeBatiment typeBatiment;
     private int niveau;
     private boolean estDesactive;
-    private HashMap<Donnee, Double> effets;
+    private HashMap<TypeDonnee, Double> effets;
     private Date dateFinConstruction;
 
 }
