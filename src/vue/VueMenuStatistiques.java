@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 
@@ -60,22 +61,45 @@ public class VueMenuStatistiques extends Scene {
         this.sliderPression.setMin(10);
         this.sliderPression.setMax(190);
         this.sliderPression.setValue(pression);
+        this.sliderPression.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                sliderPression.setValue(pression);
+            }
+        });
         this.sliderPression.setShowTickLabels(true);
 
         this.sliderOxygene.setMin(100);
         this.sliderOxygene.setMax(320);
         this.sliderOxygene.setValue(oxygene);
-        this.sliderOxygene.setDisable(true);
+        this.sliderOxygene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                sliderOxygene.setValue(oxygene);
+            }
+        });
         this.sliderOxygene.setShowTickLabels(true);
 
         this.sliderEau.setMin(150);
         this.sliderEau.setMax(1050);
         this.sliderEau.setValue(eau);
+        this.sliderEau.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                sliderEau.setValue(eau);
+            }
+        });
         this.sliderEau.setShowTickLabels(true);
 
         this.sliderTemperature.setMin(200);
         this.sliderTemperature.setMax(374);
         this.sliderTemperature.setValue(temperature);
+        this.sliderTemperature.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                sliderTemperature.setValue(temperature);
+            }
+        });
         this.sliderTemperature.setShowTickLabels(true);
 
         this.labelPopVal.setText(String.valueOf(population));
