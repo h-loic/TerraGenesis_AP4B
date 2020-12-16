@@ -62,7 +62,7 @@ public class ControleurPrincipal {
 
     public void notifierNaviguerMenuStatistiques()
     {
-        this.vueMenuStatistiques.initialiserMenuStatistiques();
+        this.vueMenuStatistiques.initialiserMenuStatistiques(this.planete);
         this.navigateur.naviguerVersMenuStatistiques();
     }
 

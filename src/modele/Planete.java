@@ -14,13 +14,6 @@ public class Planete {
     private HashMap<TypeInfrastructure, Boolean> etatTypesInfrastructure;
     private ArrayList<Gouverneur> gouverneurs;
 
-    private final static int POS_TEMPERATURE = 0;
-    private final static int POS_PRESSION = 1;
-    private final static int POS_OXYGENE = 2;
-    private final static int POS_EAU = 3;
-    private final static int POS_POPULATION = 4;
-    private final static int POS_FINANCES = 5;
-
     public Planete(ArrayList<Ville> villes, ArrayList<AvantPoste> avantPostes, ArrayList<Donnee> donnees, HashMap<TypeInfrastructure, Boolean> etatTypesInfrastructure,ArrayList<Gouverneur> gouverneurs) {
         this.villes = villes;
         this.avantPostes = avantPostes;
