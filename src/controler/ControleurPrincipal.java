@@ -1,6 +1,7 @@
 package controler;
 
 
+//import com.sun.org.apache.bcel.internal.generic.POP;
 import modele.*;
 import vue.*;
 
@@ -31,6 +32,8 @@ public class ControleurPrincipal {
         System.out.println("Initialisation du controleur");
         this.navigateur = NavigateurDesVues.getInstance();
         this.planete = new Planete();
+        this.planete.initialiserEtatTypeBatiment();
+        this.planete.initialiserEtatRessource();
         this.planete.ajouterAvantPoste(new AvantPoste("Mogadiscio", new Coordonnee(10,10,10), new ArrayList<Mine>()));
         this.planete.initialiserVilles();
         this.planete.initialiserDonnees();
@@ -65,7 +68,8 @@ public class ControleurPrincipal {
 
     public void notifierNaviguerMenuStatistiques()
     {
-        this.vueMenuStatistiques.initialiserMenuStatistiques();
+        this.vueMenuStatistiques.initialiserMenuStatistiques(this.planete.getDonnee(TypeDonnee.PRESSION).getValeurActuelle(), this.planete.getDonnee(TypeDonnee.OXYGENE).getValeurActuelle(), this.planete.getDonnee(TypeDonnee.EAU).getValeurActuelle(),
+        this.planete.getDonnee(TypeDonnee.TEMPERATURE).getValeurActuelle(), this.planete.getDonnee(TypeDonnee.POPULATION).getValeurActuelle(), this.planete.getDonnee(TypeDonnee.FINANCES).getValeurActuelle());
         this.navigateur.naviguerVersMenuStatistiques();
     }
 

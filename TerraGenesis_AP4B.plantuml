@@ -180,7 +180,7 @@ title __TERRAGENESIS_AP4B's Class Diagram__\n
   modele.AvantPoste o-- modele.Coordonnee : coordonnee
   modele.Batiment -up-|> modele.Infrastructure
   modele.Donnee o-- modele.TypeDonnee : typeDonnee
-  modele.Infrastructure o-- modele.TypeInfrastructure : typeInfrastructure
+  modele.Infrastructure o-- modele.TypeBatiment : typeInfrastructure
   modele.Mine -up-|> modele.Infrastructure
   modele.Mine o-- modele.Coordonnee : coordonnee
   modele.Mine o-- modele.Ressource : ressource

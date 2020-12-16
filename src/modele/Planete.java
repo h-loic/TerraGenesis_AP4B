@@ -10,15 +10,16 @@ public class Planete {
     private ArrayList<Ville> villes;
     private ArrayList<AvantPoste> avantPostes;
     private ArrayList<Donnee> donnees;
-    private HashMap<TypeInfrastructure, Boolean> etatTypesInfrastructure;
+    private HashMap<TypeBatiment, Boolean> etatTypesBatiment;
+    private HashMap<Ressource, Boolean> etatRessources;
     private ArrayList<Gouverneur> gouverneurs;
 
 
-    public Planete(ArrayList<Ville> villes, ArrayList<AvantPoste> avantPostes, ArrayList<Donnee> donnees, HashMap<TypeInfrastructure, Boolean> etatTypesInfrastructure,ArrayList<Gouverneur> gouverneurs) {
+    public Planete(ArrayList<Ville> villes, ArrayList<AvantPoste> avantPostes, ArrayList<Donnee> donnees, HashMap<TypeBatiment, Boolean> etatTypesInfrastructure, ArrayList<Gouverneur> gouverneurs) {
         this.villes = villes;
         this.avantPostes = avantPostes;
         this.donnees = donnees;
-        this.etatTypesInfrastructure = etatTypesInfrastructure;
+        this.etatTypesBatiment = etatTypesInfrastructure;
         this.gouverneurs = gouverneurs;
     }
 
@@ -26,7 +27,8 @@ public class Planete {
         this.villes = new ArrayList<Ville>();
         this.avantPostes = new ArrayList<AvantPoste>();
         this.donnees = new ArrayList<Donnee>();
-        this.etatTypesInfrastructure = new HashMap<TypeInfrastructure, Boolean>();
+        this.etatTypesBatiment = new HashMap<TypeBatiment, Boolean>();
+        this.etatRessources = new HashMap<Ressource, Boolean>();
         this.gouverneurs = new ArrayList<Gouverneur>();
     }
 
@@ -57,8 +59,8 @@ public class Planete {
         this.avantPostes.add(avantPoste);
     }
 
-    public HashMap<TypeInfrastructure, Boolean> getEtatTypesInfrastructure() {
-        return etatTypesInfrastructure;
+    public HashMap<TypeBatiment, Boolean> getEtatTypesInfrastructure() {
+        return etatTypesBatiment;
     }
 
     public AvantPoste getAvantPoste(int id){
@@ -121,6 +123,18 @@ public class Planete {
 
     public void initialiserVilles() {
         ajouterVille(new Ville("Niederschaeffolsheim", new Coordonnee(100,100,100)));
+    }
+
+    public void initialiserEtatTypeBatiment() {
+        for (TypeBatiment typeBatiment : TypeBatiment.values()) {
+            etatTypesBatiment.put(typeBatiment, (typeBatiment.getParent() == null));
+        }
+    }
+
+    public void initialiserEtatRessource() {
+        for (Ressource ressource : Ressource.values()) {
+            etatRessources.put(ressource, (ressource.getParent() == null));
+        }
     }
 
     public Donnee getDonnee(TypeDonnee typeDonnee) {
