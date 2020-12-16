@@ -28,6 +28,7 @@ public class VueMenuStatistiques extends Scene {
 
 
     private Label labelFinancesVal;
+    private Label labelPopVal;
 
     private Button boutonRetour;
 
@@ -42,6 +43,9 @@ public class VueMenuStatistiques extends Scene {
         this.labelPopulation = new Label("Population : ");
         this.labelFinances = new Label("Finances : ");
 
+        this.labelFinancesVal = new Label("n/a");
+        this.labelPopVal = new Label("n/a");
+
         this.sliderEau = new Slider();
         this.sliderOxygene = new Slider();
         this.sliderPression = new Slider();
@@ -50,26 +54,32 @@ public class VueMenuStatistiques extends Scene {
         this.boutonRetour = new Button("Retour");
     }
 
-    public void initialiserMenuStatistiques() {
+    public void initialiserMenuStatistiques(double pression, double oxygene, double eau, double temperature, double population, double finances) {
         this.grillePrincipale.getChildren().clear();
 
-        this.sliderPression.setMin(10000);
-        this.sliderPression.setMax(190000);
-        this.sliderPression.setValue(10000);
-        this.sliderPression.setValueChanging(false);
+        this.sliderPression.setMin(10);
+        this.sliderPression.setMax(190);
+        this.sliderPression.setValue(pression);
+        this.sliderPression.setShowTickLabels(true);
 
-        this.sliderOxygene.setMin(100000);
-        this.sliderOxygene.setMax(320000);
-        this.sliderOxygene.setValue(100000);
+        this.sliderOxygene.setMin(100);
+        this.sliderOxygene.setMax(320);
+        this.sliderOxygene.setValue(oxygene);
         this.sliderOxygene.setDisable(true);
+        this.sliderOxygene.setShowTickLabels(true);
 
-        this.sliderEau.setMin(150000);
-        this.sliderEau.setMax(1050000);
-        this.sliderEau.setValue(150000);
+        this.sliderEau.setMin(150);
+        this.sliderEau.setMax(1050);
+        this.sliderEau.setValue(eau);
+        this.sliderEau.setShowTickLabels(true);
 
-        this.sliderTemperature.setMin(200000);
-        this.sliderTemperature.setMax(374000);
-        this.sliderTemperature.setValue(200000);
+        this.sliderTemperature.setMin(200);
+        this.sliderTemperature.setMax(374);
+        this.sliderTemperature.setValue(temperature);
+        this.sliderTemperature.setShowTickLabels(true);
+
+        this.labelPopVal.setText(String.valueOf(population));
+        this.labelFinancesVal.setText(String.valueOf(finances));
 
         this.boutonRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -87,7 +97,11 @@ public class VueMenuStatistiques extends Scene {
         this.grillePrincipale.add(this.sliderOxygene, 1, 2);
         this.grillePrincipale.add(this.labelPression, 0, 3);
         this.grillePrincipale.add(this.sliderPression, 1, 3);
-        this.grillePrincipale.add(this.boutonRetour, 0, 4);
+        this.grillePrincipale.add(this.labelPopulation, 0, 4);
+        this.grillePrincipale.add(this.labelPopVal, 1, 4);
+        this.grillePrincipale.add(this.labelFinances, 0, 5);
+        this.grillePrincipale.add(this.labelFinancesVal, 1, 5);
+        this.grillePrincipale.add(this.boutonRetour, 0, 6);
     }
 
     public void setControleur(controler.ControleurPrincipal controleur) {
