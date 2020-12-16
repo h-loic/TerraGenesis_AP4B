@@ -1,7 +1,7 @@
 package controler;
 
 
-import com.sun.org.apache.bcel.internal.generic.POP;
+//import com.sun.org.apache.bcel.internal.generic.POP;
 import modele.*;
 import vue.*;
 
@@ -31,6 +31,8 @@ public class ControleurPrincipal {
         System.out.println("Initialisation du controleur");
         this.navigateur = NavigateurDesVues.getInstance();
         this.planete = new Planete();
+        this.planete.initialiserEtatTypeBatiment();
+        this.planete.initialiserEtatRessource();
         this.planete.ajouterAvantPoste(new AvantPoste("Mogadiscio", new Coordonnee(10,10,10), new ArrayList<Mine>()));
         this.planete.initialiserVilles();
         this.planete.initialiserDonnees();

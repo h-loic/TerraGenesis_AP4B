@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-public class Mine extends Infrastructure {
+public class Mine {
 
     public static final int PRIX_BASE_MINE = 25000;
     public static final int PRIX_BASE_AMELIORATION   = 1500;
