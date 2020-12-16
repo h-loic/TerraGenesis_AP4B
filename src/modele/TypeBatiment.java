@@ -47,7 +47,7 @@ public enum TypeBatiment {
         put(TypeDonnee.EAU, -5.0);
     }}, PUITS_DE_FORAGE);
 
-    private String nom;
+    private String nom ;
     private String description;
     private int niveauMax;
     private double coutRecherche;
