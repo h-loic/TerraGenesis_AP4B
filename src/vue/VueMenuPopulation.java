@@ -67,7 +67,7 @@ public class VueMenuPopulation extends Scene {
             btnAfficher.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    controleur.notifierNaviguerAfficherAvPoste((int)((Button)event.getSource()).getUserData());
+                    controleur.notifierNaviguerAfficherVille((int)((Button)event.getSource()).getUserData());
                 }
             });
             lignesVilles++;

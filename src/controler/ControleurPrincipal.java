@@ -22,6 +22,7 @@ public class ControleurPrincipal {
     private VueGouverneur vueGouverneur = null;
     private VueAjouterAvantPoste vueAjouterAvantPoste = null;
     private VueAjouterMine vueAjouterMine = null;
+    private VueVille vueVille = null;
     private VueAjouterVille vueAjouterVille = null;
 
     private Planete planete;
@@ -54,6 +55,7 @@ public class ControleurPrincipal {
         this.vueGouverneur = navigateur.getVueGouverneur();
         this.vueAjouterAvantPoste = navigateur.getVueAjouterAvantPoste();
         this.vueAjouterMine = navigateur.getVueAjouterMine();
+        this.vueVille = navigateur.getVueVille();
         this.vueAjouterVille = navigateur.getVueAjouterVille();
         this.vueMenuPrincipal.initialiserMenuPrincipal();
         this.navigateur.naviguerVersVueMenuPrincipal();
@@ -136,10 +138,23 @@ public class ControleurPrincipal {
         notifierNaviguerMenuPopulation();
     }
 
+    private static int idVilleCourante = 0;
+    public void notifierNaviguerAfficherVille(int id)  {
+        this.vueVille.initialiserVueVille(planete.getVille(id));
+        idVilleCourante = id;
+        this.navigateur.naviguerVersVueVille();
+    }
+
+    public void notifierDetruireVille(int idVille) {
+        planete.detruireVille(idVille);
+        notifierNaviguerMenuPopulation();
+    }
+
     public void notifierNaviguerAjouterVille() throws Exception{
         if (!planete.peutPayer((planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE)){
             throw new Exception("Fonds insuffisants : " + (planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE + " requis, disponibles : "+planete.getFinances());
         }
+        System.out.println("test");
         this.vueAjouterVille.initialiserVueAjouterVille(planete.getVilles());
         this.navigateur.naviguerVersVueAjouterVille();
     }

@@ -151,4 +151,8 @@ public class Planete {
     public void trierGouverneurParDebloque() {
         Collections.sort(gouverneurs, Gouverneur.ComparatorDebloque);
     }
+
+    public void detruireVille(int idVille) {
+        this.villes.remove(getVille(idVille));
+    }
 }

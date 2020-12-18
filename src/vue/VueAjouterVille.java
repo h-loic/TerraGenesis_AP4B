@@ -66,10 +66,11 @@ public class VueAjouterVille extends Scene {
         this.labelX = new Label("X : ");
         this.labelY = new Label("Y : ");
         this.labelZ = new Label("Z : ");
-        this.labelErreurs = new Label("");
         this.labelXville = new Label();
         this.labelYville = new Label();
         this.labelZville = new Label();
+        this.labelErreurs = new Label("");
+
 
         this.grillePrincipale = (GridPane) this.getRoot();
         this.grilleForm = new GridPane();
@@ -111,6 +112,12 @@ public class VueAjouterVille extends Scene {
                 dessinePoint(event.getX(), event.getY());
             }
         });
+
+        labelXville.setText("");
+        labelYville.setText("");
+        labelZville.setText("");
+        textFieldNomVille.setText("");
+        labelErreurs.setText("");
 
 
         grilleForm.add(this.labelNom,0,0);

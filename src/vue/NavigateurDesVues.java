@@ -18,7 +18,9 @@ public class NavigateurDesVues extends Application{
     private VueGouverneur vueGouverneur = null;
     private VueAjouterAvantPoste vueAjouterAvantPoste = null;
     private VueAjouterMine vueAjouterMine= null;
+    private VueVille vueVille = null;
     private VueAjouterVille vueAjouterVille = null;
+
 
 
     private controler.ControleurPrincipal controleur = null;
@@ -39,6 +41,7 @@ public class NavigateurDesVues extends Application{
         this.vueGouverneur = new VueGouverneur();
         this.vueAjouterAvantPoste = new VueAjouterAvantPoste();
         this.vueAjouterMine = new VueAjouterMine();
+        this.vueVille = new VueVille();
         this.vueAjouterVille = new VueAjouterVille();
     }
 
@@ -67,6 +70,7 @@ public class NavigateurDesVues extends Application{
         this.vueGouverneur.setControleur(controleur);
         this.vueAjouterAvantPoste.setControleur(controleur);
         this.vueAjouterMine.setControleur(controleur);
+        this.vueVille.setControleur(controleur);
         this.vueAjouterVille.setControleur(controleur);
     }
 
@@ -126,6 +130,11 @@ public class NavigateurDesVues extends Application{
         stage.show();
     }
 
+    public void naviguerVersVueVille() {
+        stage.setScene(this.vueVille);
+        stage.show();
+    }
+
     public void naviguerVersVueAjouterVille() {
         stage.setScene(this.vueAjouterVille);
         stage.show();
@@ -173,6 +182,10 @@ public class NavigateurDesVues extends Application{
 
     public VueAjouterMine getVueAjouterMine() {
         return this.vueAjouterMine;
+    }
+
+    public VueVille getVueVille() {
+        return this.vueVille;
     }
 
     public VueAjouterVille getVueAjouterVille() {return this.vueAjouterVille;}
