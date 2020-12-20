@@ -83,12 +83,7 @@ public class VueAjouterAvantPoste extends Scene {
     }
 
     private void dessinePoint(double x, double y){
-        Random random = new Random();
-        double z = -1 + (50 - (-1)) * random.nextDouble();
         gcCanva.fillOval(x, y, 10,10);
-        labelXAvPoste.setText(Double.toString(x));
-        labelYAvPoste.setText(Double.toString(y));
-        labelZAvPoste.setText(Double.toString(z));
     }
 
     public void initialiserVueAjouterAvantPoste(ArrayList<AvantPoste> avantPostes) {
@@ -107,7 +102,7 @@ public class VueAjouterAvantPoste extends Scene {
             public void handle(MouseEvent event) {
                 System.out.println(event.getX()+" "+event.getY()+" "+event.getZ());
                 initCanvas(avantPostes);
-                dessinePoint(event.getX(), event.getY());
+                dessineAvPoste(event.getX(), event.getY(), avantPostes);
             }
         });
 
@@ -148,6 +143,31 @@ public class VueAjouterAvantPoste extends Scene {
         grillePrincipale.add(this.grilleForm, 0, 0);
         grillePrincipale.add(this.canvasCoords, 0, 1);
         grillePrincipale.add(this.grilleBoutons, 0, 2);
+    }
+
+    private void dessineAvPoste(double x, double y, ArrayList<AvantPoste> avantPostes){
+        Random random = new Random();
+        double z = -1 + (50 - (-1)) * random.nextDouble();
+        labelXAvPoste.setText("");
+        labelYAvPoste.setText("");
+        labelZAvPoste.setText("");
+        labelErreurs.setText("");
+        System.out.println(x+" "+y);
+        for (AvantPoste avantPoste : avantPostes){
+            if (Math.abs((avantPoste.getCoordonnee().getX()-x))<=30 && Math.abs((avantPoste.getCoordonnee().getY()-y))<=30){
+                System.out.println("trop proches");
+                labelXAvPoste.setText("");
+                labelYAvPoste.setText("");
+                labelZAvPoste.setText("");
+                labelErreurs.setText("Position trop proche d'un autre avant-poste");
+                return;
+            }
+        }
+
+        gcCanva.fillOval(x, y, 10,10);
+        labelXAvPoste.setText(Double.toString(x));
+        labelYAvPoste.setText(Double.toString(y));
+        labelZAvPoste.setText(Double.toString(z));
     }
 
     private void validerDonnees() {

@@ -98,8 +98,28 @@ public class VueAjouterMine extends Scene {
     }
 
     private void dessinePoint(double x, double y){
+        gcCanva.fillOval(x, y, 10,10);
+    }
+
+    private void dessineMine(double x, double y, ArrayList<Mine> mines){
         Random random = new Random();
         double z = -1 + (50 - (-1)) * random.nextDouble();
+        labelXmine.setText("");
+        labelYmine.setText("");
+        labelZmine.setText("");
+        labelErreurs.setText("");
+        System.out.println(x+" "+y);
+        for (Mine mine : mines){
+            if (Math.abs((mine.getCoordonnee().getX()-x))<=30 && Math.abs((mine.getCoordonnee().getY()-y))<=30){
+                System.out.println("trop proches");
+                labelXmine.setText("");
+                labelYmine.setText("");
+                labelZmine.setText("");
+                labelErreurs.setText("Position trop proche d'une autre mine");
+                return;
+            }
+        }
+
         gcCanva.fillOval(x, y, 10,10);
         labelXmine.setText(Double.toString(x));
         labelYmine.setText(Double.toString(y));
@@ -119,7 +139,7 @@ public class VueAjouterMine extends Scene {
             public void handle(MouseEvent event) {
                 System.out.println(event.getX()+" "+event.getY()+" "+event.getZ());
                 initCanvas(mines);
-                dessinePoint(event.getX(), event.getY());
+                dessineMine(event.getX(), event.getY(), mines);
             }
         });
 

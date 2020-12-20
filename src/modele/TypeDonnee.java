@@ -6,7 +6,7 @@ public enum TypeDonnee {
     OXYGENE("blabla", "ppm",0),
     EAU("blabla", "cm",0),
     POPULATION("blabla", "",0),
-    FINANCES("Fonds disponibles", "c", 100000);
+    FINANCES("Fonds disponibles", "c", 10000000);
 
     private String description;
     private String unite;
