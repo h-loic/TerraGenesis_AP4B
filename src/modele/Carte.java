@@ -13,6 +13,7 @@ public class Carte {
     private ArrayList<Coordonnee> coordsMines;
     private ArrayList<Coordonnee> coordsAvPostes;
     private ArrayList<Coordonnee> coordsVilles;
+    private static final int DISTANCE_MINI = 30; // distance minimum entre deux avant-postes ou villes
 
     public Carte(ArrayList<Coordonnee> coordsMines, ArrayList<Coordonnee> coordsAvPostes, ArrayList<Coordonnee> coordsVilles) {
         this.coordsMines = coordsMines;
@@ -80,13 +81,13 @@ public class Carte {
     public boolean verifierCoordonneesAvPoste(double x, double y) {
         this.dessiner();
         for (Coordonnee coords : coordsAvPostes){
-            if (Math.abs((coords.getX()-x))<=30 && Math.abs((coords.getY()-y))<=30){
+            if (Math.abs((coords.getX()-x))<=DISTANCE_MINI && Math.abs((coords.getY()-y))<=DISTANCE_MINI){
                 System.out.println("trop proche avant-poste");
                 return false;
             }
         }
         for (Coordonnee coords : coordsVilles){
-            if (Math.abs((coords.getX()-x))<=30 && Math.abs((coords.getY()-y))<=30){
+            if (Math.abs((coords.getX()-x))<=DISTANCE_MINI && Math.abs((coords.getY()-y))<=DISTANCE_MINI){
                 System.out.println("trop proche ville");
                 return false;
             }
@@ -101,13 +102,13 @@ public class Carte {
     public boolean verifierCoordonneesVille(double x, double y) {
         this.dessiner();
         for (Coordonnee coords : coordsAvPostes){
-            if (Math.abs((coords.getX()-x))<=30 && Math.abs((coords.getY()-y))<=30){
+            if (Math.abs((coords.getX()-x))<=DISTANCE_MINI && Math.abs((coords.getY()-y))<=DISTANCE_MINI){
                 System.out.println("trop proche avant-poste");
                 return false;
             }
         }
         for (Coordonnee coords : coordsVilles){
-            if (Math.abs((coords.getX()-x))<=30 && Math.abs((coords.getY()-y))<=30){
+            if (Math.abs((coords.getX()-x))<=DISTANCE_MINI && Math.abs((coords.getY()-y))<=DISTANCE_MINI){
                 System.out.println("trop proche ville");
                 return false;
             }

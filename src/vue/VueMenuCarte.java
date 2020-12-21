@@ -9,28 +9,28 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 
-public class VueMenuSatellites extends Scene {
+public class VueMenuCarte extends Scene {
 
     protected GridPane grillePrincipale;
     private controler.ControleurPrincipal controleur = null;
-    private Label labelSatellites;
+    private Label labelCarte;
     private Button boutonRetour;
     private Canvas canvas;
 
-    public VueMenuSatellites() {
+    public VueMenuCarte() {
         super(new GridPane(), 400,400);
         grillePrincipale = (GridPane) this.getRoot();
-        this.labelSatellites = new Label("Satellites");
+        this.labelCarte = new Label("Carte");
         this.boutonRetour = new Button("retour");
         canvas = new Canvas(500,250);
     }
 
-    public void initialiserMenuSatellites(Canvas canvasCarte) {
+    public void initialiserMenuCarte(Canvas canvasCarte) {
         this.grillePrincipale.getChildren().clear();
         this.canvas = canvasCarte;
-        this.grillePrincipale.add(this.labelSatellites, 0, 0);
-        this.grillePrincipale.add(this.boutonRetour, 1, 0);
+        this.grillePrincipale.add(this.labelCarte, 0, 0);
         this.grillePrincipale.add(this.canvas, 0, 1);
+        this.grillePrincipale.add(this.boutonRetour, 0, 2);
 
         this.boutonRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override

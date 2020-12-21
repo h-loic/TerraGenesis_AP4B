@@ -6,7 +6,6 @@ import modele.*;
 import vue.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ControleurPrincipal {
 
@@ -16,7 +15,7 @@ public class ControleurPrincipal {
     private VueMenuRecherche vueMenuRecherche = null;
     private VueMenuCulture vueMenuCulture = null;
     private VueMenuPopulation vueMenuPopulation = null;
-    private VueMenuSatellites vueMenuSatellites = null;
+    private VueMenuCarte vueMenuCarte = null;
     private VueMenuGouverneurs vueMenuGouverneurs = null;
     private VueAvantPoste vueAvantPoste = null;
     private VueGouverneur vueGouverneur = null;
@@ -51,7 +50,7 @@ public class ControleurPrincipal {
         this.vueMenuCulture = navigateur.getVueMenuCulture();
         this.vueMenuPopulation = navigateur.getVueMenuPopulation();;
         this.vueMenuGouverneurs = navigateur.getVueMenuGouverneurs();
-        this.vueMenuSatellites = navigateur.getVueMenuSatellites();
+        this.vueMenuCarte = navigateur.getVueMenuCarte();
         this.vueAvantPoste = navigateur.getVueAvantPoste();
         this.vueGouverneur = navigateur.getVueGouverneur();
         this.vueAjouterAvantPoste = navigateur.getVueAjouterAvantPoste();
@@ -100,10 +99,10 @@ public class ControleurPrincipal {
         this.navigateur.naviguerVersMenuCulture();
     }
 
-    public void notifierNaviguerMenuSatellites()
+    public void notifierNaviguerMenuCarte()
     {
-        this.vueMenuSatellites.initialiserMenuSatellites(planete.getCanvasCarte());
-        this.navigateur.naviguerVersMenuSatellites();
+        this.vueMenuCarte.initialiserMenuCarte(planete.getCanvasCarte());
+        this.navigateur.naviguerVersMenuCarte();
     }
 
     public void notifierNaviguerMenuGouverneurs()

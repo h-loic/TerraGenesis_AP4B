@@ -1,6 +1,5 @@
 package vue;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class NavigateurDesVues extends Application{
@@ -12,7 +11,7 @@ public class NavigateurDesVues extends Application{
     private VueMenuRecherche vueMenuRecherche = null;
     private VueMenuCulture vueMenuCulture = null;
     private VueMenuPopulation vueMenuPopulation = null;
-    private VueMenuSatellites vueMenuSatellites  = null;
+    private VueMenuCarte vueMenuCarte  = null;
     private VueMenuGouverneurs vueMenuGouverneurs = null;
     private VueAvantPoste vueAvantPoste = null;
     private VueGouverneur vueGouverneur = null;
@@ -35,7 +34,7 @@ public class NavigateurDesVues extends Application{
         this.vueMenuRecherche = new VueMenuRecherche();
         this.vueMenuCulture = new VueMenuCulture();
         this.vueMenuPopulation = new VueMenuPopulation();
-        this.vueMenuSatellites = new VueMenuSatellites();
+        this.vueMenuCarte = new VueMenuCarte();
         this.vueMenuGouverneurs = new VueMenuGouverneurs();
         this.vueAvantPoste = new VueAvantPoste();
         this.vueGouverneur = new VueGouverneur();
@@ -64,7 +63,7 @@ public class NavigateurDesVues extends Application{
         this.vueMenuCulture.setControleur(controleur);
         this.vueMenuPopulation.setControleur(controleur);
         this.vueMenuRecherche.setControleur(controleur);
-        this.vueMenuSatellites.setControleur(controleur);
+        this.vueMenuCarte.setControleur(controleur);
         this.vueMenuGouverneurs.setControleur(controleur);
         this.vueAvantPoste.setControleur(controleur);
         this.vueGouverneur.setControleur(controleur);
@@ -100,8 +99,8 @@ public class NavigateurDesVues extends Application{
         stage.show();
     }
 
-    public void naviguerVersMenuSatellites(){
-        stage.setScene(this.vueMenuSatellites);
+    public void naviguerVersMenuCarte(){
+        stage.setScene(this.vueMenuCarte);
         stage.show();
     }
 
@@ -168,8 +167,8 @@ public class NavigateurDesVues extends Application{
         return vueMenuPopulation;
     }
 
-    public VueMenuSatellites getVueMenuSatellites() {
-        return vueMenuSatellites;
+    public VueMenuCarte getVueMenuCarte() {
+        return vueMenuCarte;
     }
 
     public VueMenuGouverneurs getVueMenuGouverneurs() {

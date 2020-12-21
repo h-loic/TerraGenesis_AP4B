@@ -214,7 +214,7 @@ title __VUE's Class Diagram__\n
   
 
   namespace vue {
-    class vue.VueMenuSatellites {
+    class vue.VueMenuCarte {
         # grilleAvions : GridPane
         - boutonRetour : Button
         - labelSatellites : Label
@@ -258,7 +258,7 @@ title __VUE's Class Diagram__\n
   vue.NavigateurDesVues o-- vue.VueMenuPopulation : vueMenuPopulation
   vue.NavigateurDesVues o-- vue.VueMenuPrincipal : vueMenuPrincipal
   vue.NavigateurDesVues o-- vue.VueMenuRecherche : vueMenuRecherche
-  vue.NavigateurDesVues o-- vue.VueMenuSatellites : vueMenuSatellites
+  vue.NavigateurDesVues o-- vue.VueMenuCarte : vueMenuSatellites
   vue.NavigateurDesVues o-- vue.VueMenuStatistiques : vueMenuStatistiques
   vue.VueAjouterAvantPoste -up-|> javafx.scene.Scene
   vue.VueAjouterAvantPoste o-- controler.ControleurPrincipal : controleur
@@ -279,8 +279,8 @@ title __VUE's Class Diagram__\n
   vue.VueMenuPrincipal o-- controler.ControleurPrincipal : controleur
   vue.VueMenuRecherche -up-|> javafx.scene.Scene
   vue.VueMenuRecherche o-- controler.ControleurPrincipal : controleur
-  vue.VueMenuSatellites -up-|> javafx.scene.Scene
-  vue.VueMenuSatellites o-- controler.ControleurPrincipal : controleur
+  vue.VueMenuCarte -up-|> javafx.scene.Scene
+  vue.VueMenuCarte o-- controler.ControleurPrincipal : controleur
   vue.VueMenuStatistiques -up-|> javafx.scene.Scene
   vue.VueMenuStatistiques o-- controler.ControleurPrincipal : controleur
 

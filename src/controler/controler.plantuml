@@ -44,7 +44,7 @@ title __CONTROLER's Class Diagram__\n
   controler.ControleurPrincipal o-- vue.VueMenuPopulation : vueMenuPopulation
   controler.ControleurPrincipal o-- vue.VueMenuPrincipal : vueMenuPrincipal
   controler.ControleurPrincipal o-- vue.VueMenuRecherche : vueMenuRecherche
-  controler.ControleurPrincipal o-- vue.VueMenuSatellites : vueMenuSatellites
+  controler.ControleurPrincipal o-- vue.VueMenuCarte : vueMenuSatellites
   controler.ControleurPrincipal o-- vue.VueMenuStatistiques : vueMenuStatistiques
 
 
