@@ -124,7 +124,7 @@ public class ControleurPrincipal {
         if (!planete.peutPayer((planete.getAvantPostes().size()+1)*AvantPoste.PRIX_BASE_AVPOSTE)){
             throw new Exception("Fonds insuffisants : " + (planete.getAvantPostes().size()+1)*AvantPoste.PRIX_BASE_AVPOSTE + " requis, disponibles : "+planete.getFinances());
         }
-        this.vueAjouterAvantPoste.initialiserVueAjouterAvantPoste(planete.getAvantPostes());
+        this.vueAjouterAvantPoste.initialiserVueAjouterAvantPoste(planete.getCanvasCarte());
         this.navigateur.naviguerVersAjouterAvantPoste();
     }
 
@@ -236,4 +236,7 @@ public class ControleurPrincipal {
     }
 
 
+    public boolean verifierCoordonneesAvantPoste(double x, double y){
+        return planete.getCarte().verifierCoordonneesAvPoste(x, y);
+    }
 }

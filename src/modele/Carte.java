@@ -76,4 +76,25 @@ public class Carte {
         this.coordsVilles.remove(coords);
         this.dessiner();
     }
+
+    public boolean verifierCoordonneesAvPoste(double x, double y) {
+        this.dessiner();
+        for (Coordonnee coords : coordsAvPostes){
+            if (Math.abs((coords.getX()-x))<=30 && Math.abs((coords.getY()-y))<=30){
+                System.out.println("trop proche avant-poste");
+                return false;
+            }
+        }
+        for (Coordonnee coords : coordsVilles){
+            if (Math.abs((coords.getX()-x))<=30 && Math.abs((coords.getY()-y))<=30){
+                System.out.println("trop proche ville");
+                return false;
+            }
+        }
+
+        graphicsContextCarte.setFill(Color.BLUE);
+        graphicsContextCarte.fillRect(x, y, 10,10);
+
+        return true;
+    }
 }
