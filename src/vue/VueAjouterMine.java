@@ -18,6 +18,8 @@ import modele.Mine;
 import modele.Coordonnee;
 import modele.Ressource;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -36,6 +38,7 @@ public class VueAjouterMine extends Scene {
     private Label labelX;
     private Label labelY;
     private Label labelZ;
+    private Label labelRendement;
     private Label labelRessource;
     private Label labelErreurs;
 
@@ -45,6 +48,7 @@ public class VueAjouterMine extends Scene {
     private Label labelXmine;
     private Label labelYmine;
     private Label labelZmine;
+    private Label labelRendementMine;
 
     private Button btnRetourMenuAvantPoste;
     private Button btnAjouterMine;
@@ -65,6 +69,7 @@ public class VueAjouterMine extends Scene {
         this.labelX = new Label("X : ");
         this.labelY = new Label("Y : ");
         this.labelZ = new Label("Z : ");
+        this.labelRendement = new Label("Rendement (kg/min) : ");
         this.labelRessource = new Label("Resource : ");
         this.labelErreurs = new Label("");
 
@@ -103,10 +108,16 @@ public class VueAjouterMine extends Scene {
 
     private void dessineMine(double x, double y, ArrayList<Mine> mines){
         Random random = new Random();
-        double z = -1 + (50 - (-1)) * random.nextDouble();
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMinimumFractionDigits(2);
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        System.out.println(formatter.format(4.0));
+        double z = ( -1 + (50 - (-1)) * random.nextDouble());
+        double rendement = (100 + (450 - 100) * random.nextDouble());
         labelXmine.setText("");
         labelYmine.setText("");
         labelZmine.setText("");
+        labelRendementMine.setText("");
         labelErreurs.setText("");
         System.out.println(x+" "+y);
         for (Mine mine : mines){
@@ -115,6 +126,7 @@ public class VueAjouterMine extends Scene {
                 labelXmine.setText("");
                 labelYmine.setText("");
                 labelZmine.setText("");
+                labelRendementMine.setText("");
                 labelErreurs.setText("Position trop proche d'une autre mine");
                 return;
             }
@@ -124,6 +136,7 @@ public class VueAjouterMine extends Scene {
         labelXmine.setText(Double.toString(x));
         labelYmine.setText(Double.toString(y));
         labelZmine.setText(Double.toString(z));
+        labelRendementMine.setText(Double.toString(rendement));
     }
 
     public void initialiserVueAjouterMine(int idAvantPoste, ArrayList<Mine> mines) {
@@ -146,6 +159,7 @@ public class VueAjouterMine extends Scene {
         this.labelXmine = new Label();
         this.labelYmine = new Label();
         this.labelZmine = new Label();
+        this.labelRendementMine = new Label();
 
 
         this.comboBoxRessources.setValue(Ressource.CARBONE.getSymbole());
@@ -159,10 +173,13 @@ public class VueAjouterMine extends Scene {
         grilleForm.add(this.labelZ,0,3);
         grilleForm.add(this.labelZmine,1,3);
 
-        grilleForm.add(this.labelRessource, 0, 4);
-        grilleForm.add(this.comboBoxRessources, 1, 4);
+        grilleForm.add(this.labelRendement,0,4);
+        grilleForm.add(this.labelRendementMine,1,4);
 
-        grilleForm.add(this.labelErreurs, 0, 5);
+        grilleForm.add(this.labelRessource, 0, 5);
+        grilleForm.add(this.comboBoxRessources, 1, 5);
+
+        grilleForm.add(this.labelErreurs, 0, 6);
 
         btnRetourMenuAvantPoste.setOnAction(new EventHandler<ActionEvent>() {
             @Override
