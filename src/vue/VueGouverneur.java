@@ -38,7 +38,7 @@ public class VueGouverneur extends Scene{
             @Override
             public void handle(ActionEvent event) {
                 controleur.notifierAmeliorerGouverneur(gouverneur);
-                controleur.notifierNaviguerAffichergouverneur(gouverneur);
+                controleur.notifierNaviguerAfficherGouverneur(gouverneur);
             }
         });
         btnAffecter = new Button("affecter");

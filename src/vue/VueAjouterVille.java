@@ -144,7 +144,7 @@ public class VueAjouterVille extends Scene {
         labelZville.setText("");
         labelErreurs.setText("");
         System.out.println(x+" "+y);
-        if (this.controleur.verifierCoordonneesVille(x, y)){
+        if (this.controleur.verifierCoordonnees(x, y)){
             labelXville.setText(Double.toString(x));
             labelYville.setText(Double.toString(y));
             labelZville.setText(Double.toString(z));

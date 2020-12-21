@@ -24,7 +24,7 @@ public class Carte {
         this.dessiner();
     }
 
-    private void dessiner() {
+    public void dessiner() {
         graphicsContextCarte.clearRect(0, 0, canvasCarte.getWidth(), canvasCarte.getHeight());
         graphicsContextCarte.setFill(Color.ORANGERED);
         graphicsContextCarte.fillRect(0, 0, canvasCarte.getWidth(), canvasCarte.getHeight());
@@ -78,7 +78,7 @@ public class Carte {
         this.dessiner();
     }
 
-    public boolean verifierCoordonneesAvPoste(double x, double y) {
+    public boolean verifierCoordonnees(double x, double y) {
         this.dessiner();
         for (Coordonnee coords : coordsAvPostes){
             if (Math.abs((coords.getX()-x))<=DISTANCE_MINI && Math.abs((coords.getY()-y))<=DISTANCE_MINI){
@@ -93,30 +93,10 @@ public class Carte {
             }
         }
 
-        graphicsContextCarte.setFill(Color.BLUE);
-        graphicsContextCarte.fillRect(x, y, 10,10);
+        graphicsContextCarte.setFill(Color.CYAN);
+        graphicsContextCarte.fillOval(x, y, 10,10);
 
         return true;
     }
 
-    public boolean verifierCoordonneesVille(double x, double y) {
-        this.dessiner();
-        for (Coordonnee coords : coordsAvPostes){
-            if (Math.abs((coords.getX()-x))<=DISTANCE_MINI && Math.abs((coords.getY()-y))<=DISTANCE_MINI){
-                System.out.println("trop proche avant-poste");
-                return false;
-            }
-        }
-        for (Coordonnee coords : coordsVilles){
-            if (Math.abs((coords.getX()-x))<=DISTANCE_MINI && Math.abs((coords.getY()-y))<=DISTANCE_MINI){
-                System.out.println("trop proche ville");
-                return false;
-            }
-        }
-
-        graphicsContextCarte.setFill(Color.GREEN);
-        graphicsContextCarte.fillRect(x, y, 10,10);
-
-        return true;
-    }
 }

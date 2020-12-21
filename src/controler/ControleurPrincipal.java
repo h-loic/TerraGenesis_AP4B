@@ -101,6 +101,7 @@ public class ControleurPrincipal {
 
     public void notifierNaviguerMenuCarte()
     {
+        this.planete.getCarte().dessiner();
         this.vueMenuCarte.initialiserMenuCarte(planete.getCanvasCarte());
         this.navigateur.naviguerVersMenuCarte();
     }
@@ -165,7 +166,7 @@ public class ControleurPrincipal {
         this.notifierNaviguerMenuPopulation();
     }
 
-    public void notifierNaviguerAffichergouverneur(Gouverneur gouverneur) {
+    public void notifierNaviguerAfficherGouverneur(Gouverneur gouverneur) {
         this.vueGouverneur.initialiserVueGouverneur(gouverneur);
         this.navigateur.naviguerVersGouverneur();
     }
@@ -235,11 +236,8 @@ public class ControleurPrincipal {
     }
 
 
-    public boolean verifierCoordonneesAvantPoste(double x, double y){
-        return planete.getCarte().verifierCoordonneesAvPoste(x, y);
+    public boolean verifierCoordonnees(double x, double y){
+        return planete.getCarte().verifierCoordonnees(x, y);
     }
 
-    public boolean verifierCoordonneesVille(double x, double y){
-        return planete.getCarte().verifierCoordonneesVille(x, y);
-    }
 }

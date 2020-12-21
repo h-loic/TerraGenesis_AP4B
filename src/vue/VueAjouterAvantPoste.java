@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import modele.AvantPoste;
 import modele.Coordonnee;
 import modele.Mine;
@@ -136,7 +135,7 @@ public class VueAjouterAvantPoste extends Scene {
         labelZAvPoste.setText("");
         labelErreurs.setText("");
         System.out.println(x+" "+y);
-        if (this.controleur.verifierCoordonneesAvantPoste(x, y)){
+        if (this.controleur.verifierCoordonnees(x, y)){
             labelXAvPoste.setText(Double.toString(x));
             labelYAvPoste.setText(Double.toString(y));
             labelZAvPoste.setText(Double.toString(z));

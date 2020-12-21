@@ -47,7 +47,7 @@ public class VueMenuGouverneurs extends Scene {
                 btnAfficher.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        controleur.notifierNaviguerAffichergouverneur(gouverneur);
+                        controleur.notifierNaviguerAfficherGouverneur(gouverneur);
                     }
                 });
                 this.grilleGouverneur.add(btnAfficher, 4, lignesGouverneur);
