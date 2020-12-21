@@ -39,6 +39,7 @@ public class ControleurPrincipal {
         this.planete.initialiserVilles();
         this.planete.initialiserDonnees();
         this.planete.initialiserGouverneur();
+        this.planete.initialiserCarte();
 ;    }
 
     public void activerVues(NavigateurDesVues navigateur)
@@ -101,7 +102,7 @@ public class ControleurPrincipal {
 
     public void notifierNaviguerMenuSatellites()
     {
-        this.vueMenuSatellites.initialiserMenuSatellites();
+        this.vueMenuSatellites.initialiserMenuSatellites(planete.getCanvasCarte());
         this.navigateur.naviguerVersMenuSatellites();
     }
 
@@ -175,7 +176,7 @@ public class ControleurPrincipal {
         this.planete.payer(this.planete.getAvantPoste(idAvantPoste).getPrixNouvMine());
         mine = this.vueAjouterMine.getMine();
         mine.setNom("Mine n° "+Integer.toString(this.planete.getAvantPoste(idAvantPoste).getMines().size()+1));
-        this.planete.getAvantPoste(idAvantPoste).ajouterMine(mine);
+        this.planete.ajouterMine(idAvantPoste, mine);
         this.notifierNaviguerAfficherAvPoste(idAvantPoste);
     }
 
@@ -202,7 +203,7 @@ public class ControleurPrincipal {
     }
 
     public void notifierDetruireMine(int id) {
-        this.planete.getAvantPoste(idAvantPosteCourant).detruireMine(id);
+        this.planete.detruireMine(idAvantPosteCourant, id);
         this.notifierNaviguerAfficherAvPoste(idAvantPosteCourant);
     }
 
