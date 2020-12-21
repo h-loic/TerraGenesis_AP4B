@@ -156,7 +156,7 @@ public class ControleurPrincipal {
             throw new Exception("Fonds insuffisants : " + (planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE + " requis, disponibles : "+planete.getFinances());
         }
         System.out.println("test");
-        this.vueAjouterVille.initialiserVueAjouterVille(planete.getVilles());
+        this.vueAjouterVille.initialiserVueAjouterVille(planete.getCanvasCarte());
         this.navigateur.naviguerVersVueAjouterVille();
     }
 
@@ -238,5 +238,9 @@ public class ControleurPrincipal {
 
     public boolean verifierCoordonneesAvantPoste(double x, double y){
         return planete.getCarte().verifierCoordonneesAvPoste(x, y);
+    }
+
+    public boolean verifierCoordonneesVille(double x, double y){
+        return planete.getCarte().verifierCoordonneesVille(x, y);
     }
 }

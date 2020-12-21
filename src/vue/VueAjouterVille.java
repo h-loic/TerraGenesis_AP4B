@@ -37,7 +37,7 @@ public class VueAjouterVille extends Scene {
 
     private TextField textFieldNomVille;
 
-    private final Canvas canvasCoords;
+    private Canvas canvasCoords;
     private GraphicsContext gcCanva;
 
     private Label labelXville;
@@ -77,39 +77,18 @@ public class VueAjouterVille extends Scene {
         this.grilleBoutons = new GridPane();
     }
 
-    private void initCanvas(ArrayList<Ville> villes){
-        gcCanva.clearRect(0, 0, canvasCoords.getWidth(), canvasCoords.getHeight());
-        gcCanva.setFill(Color.ORANGERED);
-        gcCanva.fillRect(0, 0, canvasCoords.getWidth(), canvasCoords.getHeight());
-        gcCanva.setFill(Color.GRAY);
-        for (Ville ville : villes){
-            dessinePoint(ville.getCoordonnee().getX(), ville.getCoordonnee().getY());
-        }
-        gcCanva.setFill(Color.BLUE);
-    }
 
-    private void dessinePoint(double x, double y){
-        Random random = new Random();
-        double z = -1 + (50 - (-1)) * random.nextDouble();
-        gcCanva.fillOval(x, y, 10,10);
-        labelXville.setText(Double.toString(x));
-        labelYville.setText(Double.toString(y));
-        labelZville.setText(Double.toString(z));
-    }
 
-    public void initialiserVueAjouterVille(ArrayList<Ville> villes) {
+    public void initialiserVueAjouterVille(Canvas carte) {
         this.grillePrincipale.getChildren().clear();
         this.grilleForm.getChildren().clear();
         this.grilleBoutons.getChildren().clear();
-
-        this.gcCanva = this.canvasCoords.getGraphicsContext2D();
-        this.initCanvas(villes);
+        this.canvasCoords = carte;
         this.canvasCoords.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println(event.getX()+" "+event.getY()+" "+event.getZ());
-                initCanvas(villes);
-                dessinePoint(event.getX(), event.getY());
+                dessineAvPoste(event.getX(), event.getY());
             }
         });
 
@@ -155,6 +134,23 @@ public class VueAjouterVille extends Scene {
         grillePrincipale.add(this.grilleForm, 0, 0);
         grillePrincipale.add(this.canvasCoords, 0, 1);
         grillePrincipale.add(this.grilleBoutons, 0, 2);
+    }
+
+    private void dessineAvPoste(double x, double y){
+        Random random = new Random();
+        double z = -1 + (50 - (-1)) * random.nextDouble();
+        labelXville.setText("");
+        labelYville.setText("");
+        labelZville.setText("");
+        labelErreurs.setText("");
+        System.out.println(x+" "+y);
+        if (this.controleur.verifierCoordonneesVille(x, y)){
+            labelXville.setText(Double.toString(x));
+            labelYville.setText(Double.toString(y));
+            labelZville.setText(Double.toString(z));
+        }else{
+            labelErreurs.setText("Position trop proche d'un avant-poste ou d'une ville");
+        }
     }
 
     private void validerDonnees() {
