@@ -198,6 +198,9 @@ public class ControleurPrincipal {
         }else if (!this.planete.peutPayer(mine.getPrixAmelioration())){
             Exception exception = new Exception("Amélioration impossible : fonds insuffisants");
             throw exception;
+        }else if (!mine.isFonctionnelle()){
+            Exception exception = new Exception("Amélioration impossible : La mine est épuisée");
+            throw exception;
         }
         this.planete.payer(mine.getPrixAmelioration());
         mine.ameliorerMine();

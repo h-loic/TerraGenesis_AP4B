@@ -30,7 +30,7 @@ public class VueAvantPoste extends Scene {
     private Button btnAjouterMine;
 
     public VueAvantPoste() {
-        super(new GridPane(), 400,400);
+        super(new GridPane(), 800,400);
         this.grillePrincipale = (GridPane) this.getRoot();
         this.grilleMines = new GridPane();
         this.grilleAvantPoste = new GridPane();
@@ -70,7 +70,7 @@ public class VueAvantPoste extends Scene {
             grilleMine.add(btnAmeliorer, 1, 1);
             grilleMine.add(btnDetruire, 2, 1);
 
-            if (mine.getNiveau()>=5){
+            if (mine.getNiveau()>=5 || !mine.isFonctionnelle()){
                 btnAmeliorer.setDisable(true);
             }
 

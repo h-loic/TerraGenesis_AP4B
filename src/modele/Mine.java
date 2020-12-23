@@ -18,6 +18,7 @@ public class Mine {
     private int niveau;
     private String nom;
     private int id;
+    private boolean isFonctionnelle; // quand la mine dépasse sa date d epuisement, elle n est plus fonctionnelle
 
     public Mine(Ressource ressource, double rendement, Coordonnee coordonnee) {
         Random random = new Random();
@@ -26,6 +27,7 @@ public class Mine {
         this.ressource = ressource;
         this.coordonnee = coordonnee;
         this.dateEpuissement = new Date();
+        this.isFonctionnelle = true;
 
         Date currentDate = new Date(); // recuperation de la date courante
         
@@ -45,17 +47,18 @@ public class Mine {
     }
 
     public void ameliorerMine(){
-        niveau++;
-        rendement*=1.5;
-        this.benefice = (this.rendement /*/ 60*/)*this.ressource.getValeur();
+        if(this.isFonctionnelle){
+            niveau++;
+            rendement *= 1.5;
+            this.benefice = (this.rendement /*/ 60*/) * this.ressource.getValeur();
 
-        //la date d'epuisement est avancée de deux heures
-        Calendar c = Calendar.getInstance();
-        c.setTime(dateEpuissement);
-        c.add(Calendar.DATE, 2);
-        c.add(Calendar.HOUR, -2);
-        dateEpuissement = c.getTime();
-        System.out.println(dateEpuissement);
+            //la date d'epuisement est avancée de deux heures
+            Calendar c = Calendar.getInstance();
+            c.setTime(dateEpuissement);
+            c.add(Calendar.HOUR, -48);
+            dateEpuissement = c.getTime();
+            System.out.println(dateEpuissement);
+        }
     }
 
     public int  getPrixAmelioration(){
@@ -71,7 +74,18 @@ public class Mine {
     }
 
     public double getBenefice() {
+        if (!isFonctionnelle){
+            return 0;
+        }
         return benefice;
+    }
+
+    public boolean isFonctionnelle() {
+        return isFonctionnelle;
+    }
+
+    public void setFonctionnelle(boolean fonctionnelle) {
+        isFonctionnelle = fonctionnelle;
     }
 
     public Date getDateEpuissement() {
