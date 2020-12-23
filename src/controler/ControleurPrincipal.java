@@ -6,7 +6,6 @@ import modele.*;
 import vue.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ControleurPrincipal {
 
@@ -16,7 +15,7 @@ public class ControleurPrincipal {
     private VueMenuRecherche vueMenuRecherche = null;
     private VueMenuCulture vueMenuCulture = null;
     private VueMenuPopulation vueMenuPopulation = null;
-    private VueMenuSatellites vueMenuSatellites = null;
+    private VueMenuCarte vueMenuCarte = null;
     private VueMenuGouverneurs vueMenuGouverneurs = null;
     private VueAvantPoste vueAvantPoste = null;
     private VueGouverneur vueGouverneur = null;
@@ -39,6 +38,9 @@ public class ControleurPrincipal {
         this.planete.initialiserVilles();
         this.planete.initialiserDonnees();
         this.planete.initialiserGouverneur();
+        this.planete.initialiserCarte();
+        ControleurTemps controleurTemps = new ControleurTemps(planete);
+        controleurTemps.start();
 ;    }
 
     public void activerVues(NavigateurDesVues navigateur)
@@ -50,7 +52,7 @@ public class ControleurPrincipal {
         this.vueMenuCulture = navigateur.getVueMenuCulture();
         this.vueMenuPopulation = navigateur.getVueMenuPopulation();;
         this.vueMenuGouverneurs = navigateur.getVueMenuGouverneurs();
-        this.vueMenuSatellites = navigateur.getVueMenuSatellites();
+        this.vueMenuCarte = navigateur.getVueMenuCarte();
         this.vueAvantPoste = navigateur.getVueAvantPoste();
         this.vueGouverneur = navigateur.getVueGouverneur();
         this.vueAjouterAvantPoste = navigateur.getVueAjouterAvantPoste();
@@ -99,10 +101,11 @@ public class ControleurPrincipal {
         this.navigateur.naviguerVersMenuCulture();
     }
 
-    public void notifierNaviguerMenuSatellites()
+    public void notifierNaviguerMenuCarte()
     {
-        this.vueMenuSatellites.initialiserMenuSatellites();
-        this.navigateur.naviguerVersMenuSatellites();
+        this.planete.getCarte().dessiner();
+        this.vueMenuCarte.initialiserMenuCarte(planete.getCanvasCarte());
+        this.navigateur.naviguerVersMenuCarte();
     }
 
     public void notifierNaviguerMenuGouverneurs()
@@ -123,7 +126,7 @@ public class ControleurPrincipal {
         if (!planete.peutPayer((planete.getAvantPostes().size()+1)*AvantPoste.PRIX_BASE_AVPOSTE)){
             throw new Exception("Fonds insuffisants : " + (planete.getAvantPostes().size()+1)*AvantPoste.PRIX_BASE_AVPOSTE + " requis, disponibles : "+planete.getFinances());
         }
-        this.vueAjouterAvantPoste.initialiserVueAjouterAvantPoste(planete.getAvantPostes());
+        this.vueAjouterAvantPoste.initialiserVueAjouterAvantPoste(planete.getCanvasCarte());
         this.navigateur.naviguerVersAjouterAvantPoste();
     }
 
@@ -155,7 +158,7 @@ public class ControleurPrincipal {
             throw new Exception("Fonds insuffisants : " + (planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE + " requis, disponibles : "+planete.getFinances());
         }
         System.out.println("test");
-        this.vueAjouterVille.initialiserVueAjouterVille(planete.getVilles());
+        this.vueAjouterVille.initialiserVueAjouterVille(planete.getCanvasCarte());
         this.navigateur.naviguerVersVueAjouterVille();
     }
 
@@ -165,7 +168,7 @@ public class ControleurPrincipal {
         this.notifierNaviguerMenuPopulation();
     }
 
-    public void notifierNaviguerAffichergouverneur(Gouverneur gouverneur) {
+    public void notifierNaviguerAfficherGouverneur(Gouverneur gouverneur) {
         this.vueGouverneur.initialiserVueGouverneur(gouverneur);
         this.navigateur.naviguerVersGouverneur();
     }
@@ -175,7 +178,7 @@ public class ControleurPrincipal {
         this.planete.payer(this.planete.getAvantPoste(idAvantPoste).getPrixNouvMine());
         mine = this.vueAjouterMine.getMine();
         mine.setNom("Mine n° "+Integer.toString(this.planete.getAvantPoste(idAvantPoste).getMines().size()+1));
-        this.planete.getAvantPoste(idAvantPoste).ajouterMine(mine);
+        this.planete.ajouterMine(idAvantPoste, mine);
         this.notifierNaviguerAfficherAvPoste(idAvantPoste);
     }
 
@@ -202,7 +205,7 @@ public class ControleurPrincipal {
     }
 
     public void notifierDetruireMine(int id) {
-        this.planete.getAvantPoste(idAvantPosteCourant).detruireMine(id);
+        this.planete.detruireMine(idAvantPosteCourant, id);
         this.notifierNaviguerAfficherAvPoste(idAvantPosteCourant);
     }
 
@@ -234,5 +237,9 @@ public class ControleurPrincipal {
         }
     }
 
+
+    public boolean verifierCoordonnees(double x, double y){
+        return planete.getCarte().verifierCoordonnees(x, y);
+    }
 
 }

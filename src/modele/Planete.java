@@ -1,5 +1,7 @@
 package modele;
 
+import javafx.scene.canvas.Canvas;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -13,6 +15,7 @@ public class Planete {
     private HashMap<TypeBatiment, Boolean> etatTypesBatiment;
     private HashMap<Ressource, Boolean> etatRessources;
     private ArrayList<Gouverneur> gouverneurs;
+    private Carte cartePlanete;
 
 
     public Planete(ArrayList<Ville> villes, ArrayList<AvantPoste> avantPostes, ArrayList<Donnee> donnees, HashMap<TypeBatiment, Boolean> etatTypesInfrastructure, ArrayList<Gouverneur> gouverneurs) {
@@ -30,9 +33,11 @@ public class Planete {
         this.etatTypesBatiment = new HashMap<TypeBatiment, Boolean>();
         this.etatRessources = new HashMap<Ressource, Boolean>();
         this.gouverneurs = new ArrayList<Gouverneur>();
+        this.cartePlanete = new Carte(new ArrayList<Coordonnee>(),new ArrayList<Coordonnee>(),new ArrayList<Coordonnee>());
     }
 
     public void ajouterVille(Ville ville) {
+        this.cartePlanete.ajouterVilleCarte(ville.getCoordonnee());
         this.villes.add(ville);
     }
 
@@ -73,11 +78,18 @@ public class Planete {
     }
 
     public void DetruireAvantPoste(int idAvantPoste) {
-        this.avantPostes.remove(getAvantPoste(idAvantPoste));
+        //destruction et effacement de la carte de toutes les mines de l'avant poste
+        AvantPoste avantPoste = getAvantPoste(idAvantPoste);
+        for(Mine mine : avantPoste.getMines()){
+            this.detruireMine(avantPoste.getId(), mine.getId());
+        }
+        this.cartePlanete.effacerAvPosteCarte(avantPoste.getCoordonnee());
+        this.avantPostes.remove(avantPoste);
     }
 
     public void AjouterAvantPoste(AvantPoste avantPoste) {
         this.avantPostes.add(avantPoste);
+        this.cartePlanete.ajouterAvPosteCarte(avantPoste.getCoordonnee());
     }
 
     private void ajouterGouverneur(Gouverneur gouverneur) {
@@ -94,6 +106,25 @@ public class Planete {
         this.ajouterGouverneur(new Gouverneur(false, 0, "Alembert", false,
                 new HashMap<Donnee, Double>() {{ put(getDonnee(OXYGENE), 10.0); }})
         );
+    }
+
+    public void initialiserCarte(){
+        ArrayList<Coordonnee> coordsMine = new ArrayList<Coordonnee>();
+        ArrayList<Coordonnee> coordsVille = new ArrayList<Coordonnee>();
+        ArrayList<Coordonnee> coordsAvPoste = new ArrayList<Coordonnee>();
+
+        for (Ville  ville : villes){
+            coordsVille.add(ville.getCoordonnee());
+        }
+
+        for (AvantPoste avantPoste : avantPostes){
+            coordsAvPoste.add(avantPoste.getCoordonnee());
+            for (Mine mine : avantPoste.getMines()){
+                coordsMine.add(mine.getCoordonnee());
+            }
+        }
+
+        this.cartePlanete = new Carte(coordsMine, coordsAvPoste, coordsVille);
     }
 
     public ArrayList<Gouverneur> recupererListeGouverneur() {
@@ -153,6 +184,24 @@ public class Planete {
     }
 
     public void detruireVille(int idVille) {
+        this.cartePlanete.effacerVilleCarte(getVille(idVille).getCoordonnee());
         this.villes.remove(getVille(idVille));
+    }
+
+    public Canvas getCanvasCarte() {
+        return this.cartePlanete.getCanvas();
+    }
+
+
+    public Carte getCarte(){
+        return this.cartePlanete;
+    }
+
+    public void ajouterMine(int idAvantPoste, Mine mine) {
+        getAvantPoste(idAvantPoste).ajouterMine(mine);
+    }
+
+    public void detruireMine(int idAvantPoste, int idMine) {
+        getAvantPoste(idAvantPoste).detruireMine(idMine);
     }
 }

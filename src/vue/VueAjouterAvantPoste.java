@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import modele.AvantPoste;
 import modele.Coordonnee;
 import modele.Mine;
@@ -27,7 +26,7 @@ public class VueAjouterAvantPoste extends Scene {
     protected GridPane grilleForm;
     protected GridPane grilleBoutons;
 
-    private final Canvas canvasCoords;
+    private Canvas canvasCoords;
     private GraphicsContext gcCanva;
 
     private Label labelNom;
@@ -70,23 +69,7 @@ public class VueAjouterAvantPoste extends Scene {
         this.grilleBoutons = new GridPane();
     }
 
-    private void initCanvas(ArrayList<AvantPoste> mines){
-        gcCanva.clearRect(0, 0, canvasCoords.getWidth(), canvasCoords.getHeight());
-        gcCanva.setFill(Color.ORANGERED);
-        gcCanva.fillRect(0, 0, canvasCoords.getWidth(), canvasCoords.getHeight());
-        gcCanva.setFill(Color.GRAY);
-        //dessin des mines de l'avant poste
-        for (AvantPoste avPoste : mines){
-            dessinePoint(avPoste.getCoordonnee().getX(), avPoste.getCoordonnee().getY());
-        }
-        gcCanva.setFill(Color.BLUE);
-    }
-
-    private void dessinePoint(double x, double y){
-        gcCanva.fillOval(x, y, 10,10);
-    }
-
-    public void initialiserVueAjouterAvantPoste(ArrayList<AvantPoste> avantPostes) {
+    public void initialiserVueAjouterAvantPoste(Canvas carte) {
         this.grillePrincipale.getChildren().clear();
         this.grilleForm.getChildren().clear();
         this.grilleBoutons.getChildren().clear();
@@ -96,13 +79,12 @@ public class VueAjouterAvantPoste extends Scene {
         this.labelYAvPoste = new Label();
         this.labelZAvPoste = new Label();
 
-        this.initCanvas(avantPostes);
+        this.canvasCoords = carte;
         this.canvasCoords.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println(event.getX()+" "+event.getY()+" "+event.getZ());
-                initCanvas(avantPostes);
-                dessineAvPoste(event.getX(), event.getY(), avantPostes);
+                dessineAvPoste(event.getX(), event.getY());
             }
         });
 
@@ -145,7 +127,7 @@ public class VueAjouterAvantPoste extends Scene {
         grillePrincipale.add(this.grilleBoutons, 0, 2);
     }
 
-    private void dessineAvPoste(double x, double y, ArrayList<AvantPoste> avantPostes){
+    private void dessineAvPoste(double x, double y){
         Random random = new Random();
         double z = -1 + (50 - (-1)) * random.nextDouble();
         labelXAvPoste.setText("");
@@ -153,21 +135,13 @@ public class VueAjouterAvantPoste extends Scene {
         labelZAvPoste.setText("");
         labelErreurs.setText("");
         System.out.println(x+" "+y);
-        for (AvantPoste avantPoste : avantPostes){
-            if (Math.abs((avantPoste.getCoordonnee().getX()-x))<=30 && Math.abs((avantPoste.getCoordonnee().getY()-y))<=30){
-                System.out.println("trop proches");
-                labelXAvPoste.setText("");
-                labelYAvPoste.setText("");
-                labelZAvPoste.setText("");
-                labelErreurs.setText("Position trop proche d'un autre avant-poste");
-                return;
-            }
+        if (this.controleur.verifierCoordonnees(x, y)){
+            labelXAvPoste.setText(Double.toString(x));
+            labelYAvPoste.setText(Double.toString(y));
+            labelZAvPoste.setText(Double.toString(z));
+        }else{
+            labelErreurs.setText("Position trop proche d'un avant-poste ou d'une ville");
         }
-
-        gcCanva.fillOval(x, y, 10,10);
-        labelXAvPoste.setText(Double.toString(x));
-        labelYAvPoste.setText(Double.toString(y));
-        labelZAvPoste.setText(Double.toString(z));
     }
 
     private void validerDonnees() {
