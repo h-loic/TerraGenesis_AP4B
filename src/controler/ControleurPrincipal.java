@@ -2,6 +2,7 @@ package controler;
 
 
 //import com.sun.org.apache.bcel.internal.generic.POP;
+import javafx.application.Platform;
 import modele.*;
 import vue.*;
 
@@ -221,6 +222,10 @@ public class ControleurPrincipal {
         } else {
             System.out.println("pas assez d'argent frr");
         }
+    }
+
+    public void majDonneesVues(){
+        vueMenuStatistiques.majStatistiques(this.planete.getFinances());
     }
 
     public void notifierTrierParNomListeGouverneur() {

@@ -31,7 +31,8 @@ public class VueMenuStatistiques extends Scene {
     private Label labelFinancesVal;
     private Label labelPopVal;
 
-    private Button boutonRetour;
+    private Button btnRetour;
+    private Button btnActualiser;
 
     public VueMenuStatistiques() {
         super(new GridPane(), 400,400);
@@ -52,7 +53,12 @@ public class VueMenuStatistiques extends Scene {
         this.sliderPression = new Slider();
         this.sliderTemperature = new Slider();
 
-        this.boutonRetour = new Button("Retour");
+        this.btnRetour = new Button("Retour");
+       this.btnActualiser = new Button("Actualiser");
+    }
+
+    public void majStatistiques(double finances) {
+        this.labelFinancesVal.setText(Double.toString(finances));
     }
 
     public void initialiserMenuStatistiques(double pression, double oxygene, double eau, double temperature, double population, double finances) {
@@ -105,13 +111,19 @@ public class VueMenuStatistiques extends Scene {
         this.labelPopVal.setText(String.valueOf(population));
         this.labelFinancesVal.setText(String.valueOf(finances));
 
-        this.boutonRetour.setOnAction(new EventHandler<ActionEvent>() {
+        this.btnRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 controleur.notifierNaviguerMenuPrincipal();
             }
         });
 
+        btnActualiser.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controleur.majDonneesVues();
+            }
+        });
 
         this.grillePrincipale.add(this.labelTemperature, 0, 0);
         this.grillePrincipale.add(this.sliderTemperature, 1, 0);
@@ -125,7 +137,8 @@ public class VueMenuStatistiques extends Scene {
         this.grillePrincipale.add(this.labelPopVal, 1, 4);
         this.grillePrincipale.add(this.labelFinances, 0, 5);
         this.grillePrincipale.add(this.labelFinancesVal, 1, 5);
-        this.grillePrincipale.add(this.boutonRetour, 0, 6);
+        this.grillePrincipale.add(this.btnRetour, 0, 6);
+        this.grillePrincipale.add(this.btnActualiser, 1, 6);
     }
 
     public void setControleur(controler.ControleurPrincipal controleur) {

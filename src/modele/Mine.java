@@ -55,7 +55,7 @@ public class Mine {
             //la date d'epuisement est avancée de deux heures
             Calendar c = Calendar.getInstance();
             c.setTime(dateEpuissement);
-            c.add(Calendar.HOUR, -48);
+            c.add(Calendar.HOUR, -2);
             dateEpuissement = c.getTime();
             System.out.println(dateEpuissement);
         }
