@@ -39,6 +39,8 @@ public class ControleurPrincipal {
         this.planete.initialiserDonnees();
         this.planete.initialiserGouverneur();
         this.planete.initialiserCarte();
+        ControleurTemps controleurTemps = new ControleurTemps(planete);
+        controleurTemps.start();
 ;    }
 
     public void activerVues(NavigateurDesVues navigateur)
