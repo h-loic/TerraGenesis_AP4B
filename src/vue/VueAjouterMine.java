@@ -58,6 +58,7 @@ public class VueAjouterMine extends Scene {
     private double xMine;
     private double yMine;
     private double zMine;
+    private double rendementMine;
     private Ressource ressourceMine;
 
     public VueAjouterMine() {
@@ -211,6 +212,7 @@ public class VueAjouterMine extends Scene {
             xMine = Double.parseDouble(labelXmine.getText());
             yMine = Double.parseDouble(labelYmine.getText());
             zMine = Double.parseDouble(labelZmine.getText());
+            rendementMine = Double.parseDouble(labelRendementMine.getText());
         }catch (Exception e){
             System.out.println(e.getMessage());
             messageErreurs+=" Veuillez entrer des coordonnées valides";
@@ -255,7 +257,7 @@ public class VueAjouterMine extends Scene {
 
     public Mine getMine()
     {
-        Mine mine = new Mine(ressourceMine, 265, new Coordonnee(xMine, yMine, zMine));
+        Mine mine = new Mine(ressourceMine, rendementMine, new Coordonnee(xMine, yMine, zMine));
         System.out.println(comboBoxRessources.getValue());
         return mine;
     }
