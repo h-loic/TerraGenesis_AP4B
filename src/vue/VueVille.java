@@ -28,6 +28,7 @@ public class VueVille extends Scene {
     private Label labelPlace;
     private Label labelMessages;
     private int idVille;
+
     private Button btnRetour;
     private Button btnDetruire;
     private Button btnAjouterBatiment;
@@ -55,25 +56,27 @@ public class VueVille extends Scene {
 
         //affichage des listes et de leurs données
         for(Batiment batiment : ville.getBatiments()){
-            Label labelNomBatiment = new Label(batiment.getTypeBatiment().getNom()+" : niv." + batiment.getNiveau());
+            Label labelNomBatiment = new Label(batiment.getTypeBatiment().getNom()+" : niv." + batiment.getNiveau() + " état." + (batiment.estDesactive() ? "Désactivé" : "Activé"));
             Label labelEffet = new Label("effets :");
             TypeDonnee typeDonnee;
             double valeur;
             for (Map.Entry effet : batiment.getEffets().entrySet()) {
                 typeDonnee = (TypeDonnee) effet.getKey();
                 valeur = (double) effet.getValue();
-                labelEffet.setText(labelEffet.getText() + " " + typeDonnee.name() + ": " + valeur);
+                labelEffet.setText(labelEffet.getText() + " | " + typeDonnee.name() + ": " + valeur);
             }
 
             Button btnAmeliorer = new Button("Améliorer");
             btnAmeliorer.setUserData(batiment.getId());
-            Button btnDetruire = new Button("Detruire");
+            Button btnActiverDesactiver = new Button(batiment.estDesactive() ? "Activer" : "Désactiver");
+            Button btnDetruireBatiment = new Button("Detruire");
 
             GridPane grilleBatiment = new GridPane();
             grilleBatiment.add(labelNomBatiment, 0, 0);
             grilleBatiment.add(labelEffet, 0, 1);
             grilleBatiment.add(btnAmeliorer, 0, 2);
-            grilleBatiment.add(btnDetruire, 1, 2);
+            grilleBatiment.add(btnActiverDesactiver, 1, 2);
+            grilleBatiment.add(btnDetruireBatiment, 2, 2);
 
             if (batiment.getNiveau() >= batiment.getTypeBatiment().getNiveauMax()){
                 btnAmeliorer.setDisable(true);
@@ -83,7 +86,6 @@ public class VueVille extends Scene {
                 @Override
                 public void handle(ActionEvent event) {
                     //controleur.notifierNaviguerAfficherAvPoste((int)((Button)event.getSource()).getUserData());
-                    System.out.println("Amélioration Batiment");
                     try {
                         controleur.notifierAmeliorerBatiment((int)btnAmeliorer.getUserData(), ville.getId());
                         labelMessages.setVisible(false);
@@ -96,10 +98,16 @@ public class VueVille extends Scene {
                 }
             });
 
-            btnDetruire.setOnAction(new EventHandler<ActionEvent>() {
+            btnActiverDesactiver.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    System.out.println("Destruction Batiment");
+                    controleur.notifierActiverDesactiverBatiment(batiment.getId());
+                }
+            });
+
+            btnDetruireBatiment.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
                     controleur.notifierDetruireBatiment(batiment.getId());
                 }
             });
@@ -113,7 +121,7 @@ public class VueVille extends Scene {
         this.labelCoordonnees = new Label("("+ ville.getCoordonnee().getX()+", "+ville.getCoordonnee().getY()+", "+ville.getCoordonnee().getZ()+")");
         this.labelPopulation = new Label("pop. " + ville.getPopulation());
         this.labelHabitation = new Label("hab. " + ville.getHabitation());
-        this.labelPlace = new Label("Nombre de places batiment restantes :" + (ville.getNombrePlaceBatiment() - ville.getBatiments().size()) );
+        this.labelPlace = new Label("Nombre de places batiments restantes : " + (ville.getNombrePlaceBatiment() - ville.getBatiments().size()) );
 
         btnRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -146,6 +154,10 @@ public class VueVille extends Scene {
             }
         });
 
+        if (!ville.peutConstruire()){
+            btnAjouterBatiment.setDisable(true);
+        }
+
         scrollPaneBatiments.setContent(grilleBatiments);
         scrollPaneBatiments.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPaneBatiments.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
@@ -159,7 +171,8 @@ public class VueVille extends Scene {
         grillePrincipale.add(grilleVille, 0, 0);
         grillePrincipale.add(scrollPaneBatiments, 0, 1);
         grillePrincipale.add(btnAjouterBatiment, 0, 2);
-        grillePrincipale.add(labelMessages, 0, 3);
+        grillePrincipale.add(labelPlace, 0, 3);
+        grillePrincipale.add(labelMessages, 0, 4);
         this.labelMessages.setVisible(false);
     }
 

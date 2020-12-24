@@ -3,7 +3,7 @@ package modele;
 import java.util.HashMap;
 
 public enum TypeBatiment {
-    USINE_DE_REFROIDISSEMENT("usine de refroidissement", "description", 5,100000.0,50000, new HashMap<TypeDonnee, Double>(){{
+    USINE_DE_REFROIDISSEMENT("usine de refroidissement", "description", 5,100000.0,200000., new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.TEMPERATURE, -4.0);
     }},new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.TEMPERATURE, -2.0);

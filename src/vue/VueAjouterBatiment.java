@@ -12,6 +12,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.MediaException;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import modele.Batiment;
 import modele.TypeBatiment;
 import modele.TypeDonnee;
@@ -32,7 +35,9 @@ public class VueAjouterBatiment extends Scene {
 
     private Label labelTypeBatiment;
     private Label labelErreurs;
+    private Label labelPrix;
     private Label labelEffet;
+    private TextFlow textFlowEffet;
 
 
     private Button btnRetourMenuVille;
@@ -48,7 +53,9 @@ public class VueAjouterBatiment extends Scene {
         this.btnRetourMenuVille = new Button("Annuler");
         this.btnAjouterBatiment = new Button("Ajouter");
         this.labelTypeBatiment = new Label("Type de batiment : ");
-        this.labelEffet = new Label("");
+        this.labelPrix = new Label("Prix :");
+        this.labelEffet = new Label("Effets :");
+        this.textFlowEffet = new TextFlow();
         this.labelErreurs = new Label("");
 
 
@@ -63,6 +70,8 @@ public class VueAjouterBatiment extends Scene {
         this.grilleForm.getChildren().clear();
         this.grilleBoutons.getChildren().clear();
 
+        labelErreurs.setText("");
+
         ObservableList<TypeBatiment> options = FXCollections.observableArrayList();
         for (TypeBatiment typeBatiment : typeBatimentDebloque) {
             options.add(typeBatiment);
@@ -71,20 +80,25 @@ public class VueAjouterBatiment extends Scene {
 
         this.comboBoxTypeBatiment.valueProperty().addListener((obs, oldVal, newVal) -> {
             TypeBatiment typeBatimentSelectionne = (TypeBatiment) newVal;
-            labelEffet.setText("Effets :");
+            labelPrix.setText("Prix : " + typeBatimentSelectionne.getCoutConstructionParDefaut());
+            textFlowEffet.getChildren().clear();
             for (Map.Entry effet : typeBatimentSelectionne.getEffetsParDefaut().entrySet()){
-                labelEffet.setText(labelEffet.getText()+ "\n" + effet.getKey() + ": " + effet.getValue());
+                Text text =  new Text("    |> " + effet.getKey() + ": " + effet.getValue() + "\n");
+                if ((double) effet.getValue() < 0) text.setFill(Color.BLUE);
+                else text.setFill(Color.RED);
+                textFlowEffet.getChildren().add(text);
             }
 
         });
 
         this.comboBoxTypeBatiment.setValue(typeBatimentDebloque.get(0));
 
-        grilleForm.add(this.labelTypeBatiment,1,0);
-        grilleForm.add(this.comboBoxTypeBatiment, 1, 1);
-        grilleForm.add(this.labelEffet,1,2);
-
-        grilleForm.add(this.labelErreurs, 0, 1);
+        grilleForm.add(this.labelTypeBatiment,0,0);
+        grilleForm.add(this.comboBoxTypeBatiment, 0, 1);
+        grilleForm.add(this.labelPrix, 0,2);
+        grilleForm.add(this.labelEffet,0,3);
+        grilleForm.add(this.textFlowEffet,0,4);
+        grilleForm.add(this.labelErreurs, 0, 5);
 
         btnRetourMenuVille.setOnAction(new EventHandler<ActionEvent>() {
             @Override

@@ -40,7 +40,7 @@ public class Batiment {
         return niveau;
     }
 
-    public boolean isEstDesactive() {
+    public boolean estDesactive() {
         return estDesactive;
     }
 
@@ -50,6 +50,10 @@ public class Batiment {
 
     public Date getDateFinConstruction() {
         return dateFinConstruction;
+    }
+
+    public void activerDesactiver() {
+        this.estDesactive = !this.estDesactive;
     }
 
     public void ameliorer() {

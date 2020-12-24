@@ -229,4 +229,8 @@ public class Planete {
     public void detruireBatiment(int idVille, int idBatiment) {
         getVille(idVille).detruireBatiment(idBatiment);
     }
+
+    public void activerDesactiverBatiment(int idVille, int idBatiment) {
+        getVille(idVille).getBatiment(idBatiment).activerDesactiver();
+    }
 }

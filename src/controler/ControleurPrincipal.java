@@ -208,10 +208,17 @@ public class ControleurPrincipal {
         this.notifierNaviguerAfficherVille(idVilleCourante);
     }
 
+    public void notifierActiverDesactiverBatiment(int id) {
+        this.planete.activerDesactiverBatiment(idVilleCourante, id);
+        this.notifierNaviguerAfficherVille(idVilleCourante);
+    }
+
     public void notifierNaviguerAfficherGouverneur(Gouverneur gouverneur) {
         this.vueGouverneur.initialiserVueGouverneur(gouverneur);
         this.navigateur.naviguerVersGouverneur();
     }
+
+
 
     public void notifierAjouterMine(int idAvantPoste) {
         Mine mine;
