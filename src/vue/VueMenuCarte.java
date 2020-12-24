@@ -18,7 +18,7 @@ public class VueMenuCarte extends Scene {
     private Canvas canvas;
 
     public VueMenuCarte() {
-        super(new GridPane(), 400,400);
+        super(new GridPane(), 500,400);
         grillePrincipale = (GridPane) this.getRoot();
         this.labelCarte = new Label("Carte");
         this.boutonRetour = new Button("retour");

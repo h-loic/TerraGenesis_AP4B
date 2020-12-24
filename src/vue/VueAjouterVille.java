@@ -53,7 +53,7 @@ public class VueAjouterVille extends Scene {
     private double zVille;
 
     public VueAjouterVille() {
-        super(new GridPane(), 400,400);
+        super(new GridPane(), 500,400);
 
         this.btnRetourMenuPopulation = new Button("Annuler");
         this.btnAjouterVille = new Button("Ajouter");

@@ -50,7 +50,7 @@ public class VueAjouterAvantPoste extends Scene {
     private double zAvanPoste;
 
     public VueAjouterAvantPoste() {
-        super(new GridPane(), 400,400);
+        super(new GridPane(), 500,400);
 
         this.btnRetourMenuAvantPoste = new Button("Annuler");
         this.btnAjouterAvPoste = new Button("Ajouter");

@@ -23,8 +23,7 @@ import java.util.Random;
  * </p>
  *
  *
- * @author dworkin
- * @version 3.0
+ * @author Zapolatero - lpascuzzi
  */
 
 public class Mine {
