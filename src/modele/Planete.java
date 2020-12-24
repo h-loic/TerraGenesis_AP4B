@@ -17,6 +17,7 @@ public class Planete {
     private HashMap<Ressource, Boolean> etatRessources;
     private ArrayList<Gouverneur> gouverneurs;
     private Carte cartePlanete;
+    Recherche recherche;
 
 
     public Planete(ArrayList<Ville> villes, ArrayList<AvantPoste> avantPostes, ArrayList<Donnee> donnees, HashMap<TypeBatiment, Boolean> etatTypesInfrastructure, ArrayList<Gouverneur> gouverneurs) {
@@ -25,6 +26,7 @@ public class Planete {
         this.donnees = donnees;
         this.etatTypesBatiment = etatTypesInfrastructure;
         this.gouverneurs = gouverneurs;
+        this.recherche = new Recherche();
     }
 
     public Planete(){
@@ -35,6 +37,7 @@ public class Planete {
         this.etatRessources = new HashMap<Ressource, Boolean>();
         this.gouverneurs = new ArrayList<Gouverneur>();
         this.cartePlanete = new Carte(new ArrayList<Coordonnee>(),new ArrayList<Coordonnee>(),new ArrayList<Coordonnee>());
+        this.recherche = new Recherche();
     }
 
     public void ajouterVille(Ville ville) {
@@ -217,6 +220,10 @@ public class Planete {
         this.villes.remove(getVille(idVille));
     }
 
+    public void debloquerTypeBatiment(TypeBatiment typeBatiment){
+        etatTypesBatiment.replace(typeBatiment, true);
+    }
+
     public Canvas getCanvasCarte() {
         return this.cartePlanete.getCanvas();
     }
@@ -240,5 +247,9 @@ public class Planete {
 
     public void activerDesactiverBatiment(int idVille, int idBatiment) {
         getVille(idVille).getBatiment(idBatiment).activerDesactiver();
+    }
+
+    public Recherche getRecherche(){
+        return recherche;
     }
 }

@@ -1,11 +1,9 @@
 package controler;
 
-import modele.AvantPoste;
-import modele.Mine;
-import modele.Planete;
-import modele.TypeDonnee;
+import modele.*;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class ControleurTemps extends Thread{
     private Planete planete;
@@ -18,10 +16,27 @@ public class ControleurTemps extends Thread{
     public void run(){
         while (true){
             majAvantPostes();
+            majRecherche();
             try {
                 sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            }
+        }
+    }
+
+    public void majRecherche(){
+        Recherche recherche = planete.getRecherche();
+        if (recherche.isRechercheEnCours()){
+            Date dateCourante = new Date();
+            if (dateCourante.after(recherche.getDateFinRecherche())){
+                planete.debloquerTypeBatiment(recherche.getTypeBatimentRecherche());
+                recherche.finDeRecherche();
+                System.out.println("débloqué");
+            }else{
+                long diffInMillies = Math.abs(recherche.getDateFinRecherche().getTime() - dateCourante.getTime());
+                long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+                System.out.println("diff : "+diff+" : "+diffInMillies);
             }
         }
     }

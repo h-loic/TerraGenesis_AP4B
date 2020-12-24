@@ -2,7 +2,6 @@ package controler;
 
 
 //import com.sun.org.apache.bcel.internal.generic.POP;
-import javafx.application.Platform;
 import modele.*;
 import vue.*;
 
@@ -292,14 +291,18 @@ public class ControleurPrincipal {
     }
 
     public void rechercherTypeBatiment(TypeBatiment typeBatiment) throws Exception{
-        boolean rechercheEnCours = false;
+        boolean rechercheEnCours = planete.getRecherche().isRechercheEnCours();
 
         if (rechercheEnCours){
+            System.out.println("déjà recherche");
             throw new Exception("Recherche impossible : recherche déjà en cours");
         }else if (!planete.peutPayer((int)typeBatiment.getCoutRecherche())){
+            System.out.println("trop pauvre");
             throw new Exception("Recherche impossible : fonds insuffisants");
         }else {
             planete.payer((int) typeBatiment.getCoutRecherche());
+            planete.getRecherche().rechercher(typeBatiment);
+            System.out.println("recherche");
         }
     }
 
