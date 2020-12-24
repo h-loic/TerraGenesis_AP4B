@@ -45,6 +45,7 @@ public class VueMenuPrincipal extends Scene {
                 controleur.notifierNaviguerMenuStatistiques();
             }
         });
+        this.actionNaviguerStatistiques.setMinWidth(85);
 
         this.actionNaviguerRecherche.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -52,6 +53,7 @@ public class VueMenuPrincipal extends Scene {
                 controleur.notifierNaviguerMenuRecherche();
             }
         });
+        this.actionNaviguerRecherche.setMinWidth(85);
 
         this.actionNaviguerPopulation.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -59,6 +61,7 @@ public class VueMenuPrincipal extends Scene {
                 controleur.notifierNaviguerMenuPopulation();
             }
         });
+        this.actionNaviguerPopulation.setMinWidth(85);
 
         this.actionNaviguerPointsCulture.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -66,6 +69,7 @@ public class VueMenuPrincipal extends Scene {
                 controleur.notifierNaviguerMenuCulture();
             }
         });
+        this.actionNaviguerPointsCulture.setMinWidth(85);
 
         this.actionNaviguerCarte.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -73,13 +77,16 @@ public class VueMenuPrincipal extends Scene {
                 controleur.notifierNaviguerMenuCarte();
             }
         });
+        this.actionNaviguerCarte.setMinWidth(85);
 
         this.actionNaviguerGouverneurs.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 controleur.notifierNaviguerMenuGouverneurs();
+                System.out.println(actionNaviguerGouverneurs.getWidth());
             }
         });
+        this.actionNaviguerGouverneurs.setMinWidth(85);
     }
 
     public void setControleur(controler.ControleurPrincipal controleur) {
