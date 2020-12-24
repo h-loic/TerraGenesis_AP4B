@@ -26,12 +26,17 @@ public class VueVille extends Scene {
     private Label labelPopulation;
     private Label labelHabitation;
     private Label labelPlace;
+    private Label labelGouverneur;
+    private Label labelEffetsGouverneur;
     private Label labelMessages;
     private int idVille;
 
     private Button btnRetour;
     private Button btnDetruire;
     private Button btnAjouterBatiment;
+    private Button btnNaviguerGouverneurs;
+    private Button btnNaviguerGouverneurAssigne;
+    private Button btnRevoquerGouverneur;
 
     public VueVille() {
         super(new GridPane(), 400,400);
@@ -42,6 +47,9 @@ public class VueVille extends Scene {
         btnRetour = new Button("Retour");
         btnDetruire = new Button("Détruire");
         btnAjouterBatiment = new Button("+ Batiment");
+        btnNaviguerGouverneurs = new Button("Afficher liste gouverneurs");
+        btnNaviguerGouverneurAssigne = new Button("Afficher");
+        btnRevoquerGouverneur= new Button("Révoquer");
         labelMessages = new Label("");
     }
 
@@ -122,6 +130,36 @@ public class VueVille extends Scene {
         this.labelPopulation = new Label("pop. " + ville.getPopulation());
         this.labelHabitation = new Label("hab. " + ville.getHabitation());
         this.labelPlace = new Label("Nombre de places batiments restantes : " + (ville.getNombrePlaceBatiment() - ville.getBatiments().size()) );
+        this.labelGouverneur = new Label("Gouveneur de la ville : " + (ville.getGouverneur() != null  ? ville.getGouverneur().getNom() : "aucun" ));
+        this.labelEffetsGouverneur = new Label("");
+        if (ville.getGouverneur() != null) {
+            labelEffetsGouverneur.setText("Effets du gouverneur :");
+            for (Donnee donnee : ville.getGouverneur().getEffets().keySet()) {
+                labelEffetsGouverneur.setText(labelEffetsGouverneur.getText() + "\n |> " +donnee.getTypeDonnee().name() + " : " + ville.getGouverneur().getEffets().get(donnee));
+            }
+            btnNaviguerGouverneurAssigne.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    controleur.notifierNaviguerAfficherGouverneur(ville.getGouverneur());
+                }
+            });
+            btnRevoquerGouverneur.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    controleur.notifierRevoquerGouverneur(ville.getId());
+                }
+            });
+        } else {
+            btnNaviguerGouverneurAssigne.setDisable(true);
+            btnRevoquerGouverneur.setDisable(true);
+        }
+
+        btnNaviguerGouverneurs.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controleur.notifierNaviguerMenuGouverneurs();
+            }
+        });
 
         btnRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -172,7 +210,12 @@ public class VueVille extends Scene {
         grillePrincipale.add(scrollPaneBatiments, 0, 1);
         grillePrincipale.add(btnAjouterBatiment, 0, 2);
         grillePrincipale.add(labelPlace, 0, 3);
-        grillePrincipale.add(labelMessages, 0, 4);
+        grillePrincipale.add(labelGouverneur, 0, 4);
+        grillePrincipale.add(btnNaviguerGouverneurs, 0, 5);
+        grillePrincipale.add(btnNaviguerGouverneurAssigne, 1, 5);
+        grillePrincipale.add(btnRevoquerGouverneur, 2, 5);
+        grillePrincipale.add(labelEffetsGouverneur, 0, 6);
+        grillePrincipale.add(labelMessages, 0, 7);
         this.labelMessages.setVisible(false);
     }
 
