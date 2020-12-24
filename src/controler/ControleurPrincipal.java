@@ -157,7 +157,7 @@ public class ControleurPrincipal {
     }
 
     public void notifierNaviguerAjouterVille() throws Exception{
-        if (!planete.peutPayer((planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE)){
+        if (!planete.peutPayer((int) ((planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE))){
             throw new Exception("Fonds insuffisants : " + (planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE + " requis, disponibles : "+planete.getFinances());
         }
         this.vueAjouterVille.initialiserVueAjouterVille(planete.getCanvasCarte());
@@ -165,7 +165,7 @@ public class ControleurPrincipal {
     }
 
     public void notifierAjouterVille() {
-        this.planete.payer((planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE);
+        this.planete.payer((int) ((planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE));
         this.planete.ajouterVille(this.vueAjouterVille.getVille());
         this.notifierNaviguerMenuPopulation();
     }

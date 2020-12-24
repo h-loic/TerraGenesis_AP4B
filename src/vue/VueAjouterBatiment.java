@@ -35,6 +35,7 @@ public class VueAjouterBatiment extends Scene {
 
     private Label labelTypeBatiment;
     private Label labelErreurs;
+    private Label labelDescription;
     private Label labelPrix;
     private Label labelEffet;
     private TextFlow textFlowEffet;
@@ -54,6 +55,7 @@ public class VueAjouterBatiment extends Scene {
         this.btnAjouterBatiment = new Button("Ajouter");
         this.labelTypeBatiment = new Label("Type de batiment : ");
         this.labelPrix = new Label("Prix :");
+        this.labelDescription = new Label("Description :");
         this.labelEffet = new Label("Effets :");
         this.textFlowEffet = new TextFlow();
         this.labelErreurs = new Label("");
@@ -80,6 +82,7 @@ public class VueAjouterBatiment extends Scene {
 
         this.comboBoxTypeBatiment.valueProperty().addListener((obs, oldVal, newVal) -> {
             TypeBatiment typeBatimentSelectionne = (TypeBatiment) newVal;
+            labelDescription.setText("Description : " +  typeBatimentSelectionne.getDescription());
             labelPrix.setText("Prix : " + typeBatimentSelectionne.getCoutConstructionParDefaut());
             textFlowEffet.getChildren().clear();
             for (Map.Entry effet : typeBatimentSelectionne.getEffetsParDefaut().entrySet()){
@@ -95,10 +98,11 @@ public class VueAjouterBatiment extends Scene {
 
         grilleForm.add(this.labelTypeBatiment,0,0);
         grilleForm.add(this.comboBoxTypeBatiment, 0, 1);
-        grilleForm.add(this.labelPrix, 0,2);
-        grilleForm.add(this.labelEffet,0,3);
-        grilleForm.add(this.textFlowEffet,0,4);
-        grilleForm.add(this.labelErreurs, 0, 5);
+        grilleForm.add(this.labelDescription,0,2);
+        grilleForm.add(this.labelPrix, 0,3);
+        grilleForm.add(this.labelEffet,0,4);
+        grilleForm.add(this.textFlowEffet,0,5);
+        grilleForm.add(this.labelErreurs, 0, 6);
 
         btnRetourMenuVille.setOnAction(new EventHandler<ActionEvent>() {
             @Override
