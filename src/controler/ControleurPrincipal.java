@@ -88,7 +88,7 @@ public class ControleurPrincipal {
 
     public void notifierNaviguerMenuRecherche()
     {
-        this.vueMenuRecherche.initialiserMenuRecherche();
+        this.vueMenuRecherche.initialiserMenuRecherche(planete.getTypeBatimentNonDebloque());
         this.navigateur.naviguerVersMenuRecherche();
     }
 
@@ -289,6 +289,10 @@ public class ControleurPrincipal {
             planete.payer(gouverneur.getPrixBaseGouverneur());
             gouverneur.setEstDebloque();
         }
+    }
+
+    public void rechercherTypeBatiment(){
+        
     }
 
 

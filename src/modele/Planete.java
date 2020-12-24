@@ -183,6 +183,14 @@ public class Planete {
         return  typeBatimentDebloque;
     }
 
+    public ArrayList<TypeBatiment> getTypeBatimentNonDebloque() {
+        ArrayList<TypeBatiment> typeBatimentNonDebloque = new ArrayList<>();
+        for (TypeBatiment typeBatiment : TypeBatiment.values()) {
+            if (!typeBatimentEstDebloque(typeBatiment)) typeBatimentNonDebloque.add(typeBatiment);
+        }
+        return  typeBatimentNonDebloque;
+    }
+
     public void initialiserEtatRessource() {
         for (Ressource ressource : Ressource.values()) {
             etatRessources.put(ressource, (ressource.getParent() == null));
