@@ -291,8 +291,16 @@ public class ControleurPrincipal {
         }
     }
 
-    public void rechercherTypeBatiment(){
-        
+    public void rechercherTypeBatiment(TypeBatiment typeBatiment) throws Exception{
+        boolean rechercheEnCours = false;
+
+        if (rechercheEnCours){
+            throw new Exception("Recherche impossible : recherche déjà en cours");
+        }else if (!planete.peutPayer((int)typeBatiment.getCoutRecherche())){
+            throw new Exception("Recherche impossible : fonds insuffisants");
+        }else {
+            planete.payer((int) typeBatiment.getCoutRecherche());
+        }
     }
 
 

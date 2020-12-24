@@ -62,6 +62,17 @@ public class VueMenuRecherche extends Scene {
 
             Button btnRechercher = new Button("Rechercher");
 
+            btnRechercher.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    try{
+                        controleur.rechercherTypeBatiment(typeBatiment);
+                    }catch(Exception e){
+                        System.out.println(e.getMessage());
+                    }
+                }
+            });
+
             grilleBouton.add(btnRechercher, 0, 0);
 
             grilleBatiments.add(grillDescription, 0, rowindex);
