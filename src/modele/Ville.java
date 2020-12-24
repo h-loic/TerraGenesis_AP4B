@@ -89,4 +89,24 @@ public class Ville {
     public void setHabitation(int habitation) {
         this.habitation = habitation;
     }
+
+    public boolean peutConstruire() {
+        return this.getNombrePlaceBatiment() > this.batiments.size();
+    }
+
+    public void ajouterBatiment(Batiment batiment) {
+        if (!peutConstruire()) return;
+        this.batiments.add(batiment);
+    }
+
+    public Batiment getBatiment(int idBatiment) {
+        for (Batiment batiment : batiments) {
+            if (batiment.getId() == idBatiment) return batiment;
+        }
+        return null;
+    }
+
+    public void detruireBatiment(int idBatiment) {
+        this.batiments.remove(getBatiment(idBatiment));
+    }
 }

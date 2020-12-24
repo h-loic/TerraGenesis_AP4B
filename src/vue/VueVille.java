@@ -10,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import modele.*;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class VueVille extends Scene {
@@ -24,6 +25,7 @@ public class VueVille extends Scene {
     private Label labelCoordonnees;
     private Label labelPopulation;
     private Label labelHabitation;
+    private Label labelPlace;
     private Label labelMessages;
     private int idVille;
     private Button btnRetour;
@@ -52,26 +54,28 @@ public class VueVille extends Scene {
         int ligneBatiment=0;
 
         //affichage des listes et de leurs données
-        /*for(Batiment batiment : ville.getBatiments()){
-            Label labelNomBatiment = new Label(batiment.getNom()+" : ");
-            Label labelBenefice = new Label(", benefice/min : "+Double.toString(batiment.getBenefice()));
-            Label labelRendement = new Label("kg/min "+Double.toString(batiment.getRendement()));
-            Label labelRessource = new Label(", ressource : " + batiment.getRessource().getSymbole());
+        for(Batiment batiment : ville.getBatiments()){
+            Label labelNomBatiment = new Label(batiment.getTypeBatiment().getNom()+" : niv." + batiment.getNiveau());
+            Label labelEffet = new Label("effets :");
+            TypeDonnee typeDonnee;
+            double valeur;
+            for (Map.Entry effet : batiment.getEffets().entrySet()) {
+                typeDonnee = (TypeDonnee) effet.getKey();
+                valeur = (double) effet.getValue();
+                labelEffet.setText(labelEffet.getText() + " " + typeDonnee.name() + ": " + valeur);
+            }
 
             Button btnAmeliorer = new Button("Améliorer");
             btnAmeliorer.setUserData(batiment.getId());
             Button btnDetruire = new Button("Detruire");
-            //btnAfficher.setUserData(batiment.getId());
 
             GridPane grilleBatiment = new GridPane();
             grilleBatiment.add(labelNomBatiment, 0, 0);
-            grilleBatiment.add(labelRendement, 1, 0);
-            grilleBatiment.add(labelBenefice, 2, 0);
-            grilleBatiment.add(labelRessource, 3, 0);
-            grilleBatiment.add(btnAmeliorer, 1, 1);
-            grilleBatiment.add(btnDetruire, 2, 1);
+            grilleBatiment.add(labelEffet, 0, 1);
+            grilleBatiment.add(btnAmeliorer, 0, 2);
+            grilleBatiment.add(btnDetruire, 1, 2);
 
-            if (batiment.getNiveau()>=5){
+            if (batiment.getNiveau() >= batiment.getTypeBatiment().getNiveauMax()){
                 btnAmeliorer.setDisable(true);
             }
 
@@ -104,11 +108,12 @@ public class VueVille extends Scene {
             ligneBatiment++;
 
         }
-*/
+
         this.labelNom = new Label(ville.getNom());
         this.labelCoordonnees = new Label("("+ ville.getCoordonnee().getX()+", "+ville.getCoordonnee().getY()+", "+ville.getCoordonnee().getZ()+")");
         this.labelPopulation = new Label("pop. " + ville.getPopulation());
         this.labelHabitation = new Label("hab. " + ville.getHabitation());
+        this.labelPlace = new Label("Nombre de places batiment restantes :" + (ville.getNombrePlaceBatiment() - ville.getBatiments().size()) );
 
         btnRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -124,7 +129,7 @@ public class VueVille extends Scene {
                 controleur.notifierDetruireVille(idVille);
             }
         });
-/*
+
         btnAjouterBatiment.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -140,7 +145,7 @@ public class VueVille extends Scene {
                 }
             }
         });
-*/
+
         scrollPaneBatiments.setContent(grilleBatiments);
         scrollPaneBatiments.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPaneBatiments.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);

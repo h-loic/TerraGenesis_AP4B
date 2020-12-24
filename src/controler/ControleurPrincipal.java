@@ -24,6 +24,7 @@ public class ControleurPrincipal {
     private VueAjouterMine vueAjouterMine = null;
     private VueVille vueVille = null;
     private VueAjouterVille vueAjouterVille = null;
+    private VueAjouterBatiment vueAjouterBatiment = null;
 
     private Planete planete;
 
@@ -60,6 +61,7 @@ public class ControleurPrincipal {
         this.vueAjouterMine = navigateur.getVueAjouterMine();
         this.vueVille = navigateur.getVueVille();
         this.vueAjouterVille = navigateur.getVueAjouterVille();
+        this.vueAjouterBatiment = navigateur.getVueAjouterBatiment() ;
         this.vueMenuPrincipal.initialiserMenuPrincipal();
         this.navigateur.naviguerVersVueMenuPrincipal();
     }
@@ -158,7 +160,6 @@ public class ControleurPrincipal {
         if (!planete.peutPayer((planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE)){
             throw new Exception("Fonds insuffisants : " + (planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE + " requis, disponibles : "+planete.getFinances());
         }
-        System.out.println("test");
         this.vueAjouterVille.initialiserVueAjouterVille(planete.getCanvasCarte());
         this.navigateur.naviguerVersVueAjouterVille();
     }
@@ -167,6 +168,44 @@ public class ControleurPrincipal {
         this.planete.payer((planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE);
         this.planete.ajouterVille(this.vueAjouterVille.getVille());
         this.notifierNaviguerMenuPopulation();
+    }
+
+    public void notifierNaviguerAjouterBatiment(int idVille) throws Exception{
+        if (!planete.peutConstruire(planete.getVille(idVille))){
+            throw new Exception("Plus de places disponible pour construire");
+        }
+        this.vueAjouterBatiment.initialiserVueAjouterBatiment(idVille, planete.getTypeBatimentDebloque());
+        this.navigateur.naviguerVersVueAjouterBatiement();
+    }
+
+    public void notifierAjouterBatiment(int idVille) throws Exception {
+        Batiment batiment;
+        batiment = this.vueAjouterBatiment.getBatiment();
+        if (!planete.peutPayer((int) batiment.getTypeBatiment().getCoutConstructionParDefaut())){
+            throw new Exception("Fonds insuffisants : " + (batiment.getTypeBatiment().getCoutConstructionParDefaut()) + " requis, disponibles : "+planete.getFinances());
+        }
+        planete.payer((int) batiment.getTypeBatiment().getCoutConstructionParDefaut());
+        this.planete.ajouterBatiment(idVille, batiment);
+        this.notifierNaviguerAfficherVille(idVille);
+
+    }
+
+    public void notifierAmeliorerBatiment(int idBatiment, int idVille) throws Exception{
+        Batiment batiment = planete.getVille(idVille).getBatiment(idBatiment);
+        if (batiment.getNiveau() >= batiment.getTypeBatiment().getNiveauMax()){
+            Exception exception = new Exception("Amélioration impossible : le batiment est au niveau maximal");
+            throw exception;
+        }else if (!this.planete.peutPayer((int) batiment.getPrixAmelioration())){
+            throw new Exception("Fonds insuffisants : " + (batiment.getPrixAmelioration()) + " requis, disponibles : "+planete.getFinances());
+        }
+        this.planete.payer((int) batiment.getPrixAmelioration());
+        batiment.ameliorer();
+        this.notifierNaviguerAfficherVille(idVille);
+    }
+
+    public void notifierDetruireBatiment(int id) {
+        this.planete.detruireBatiment(idVilleCourante, id);
+        this.notifierNaviguerAfficherVille(idVilleCourante);
     }
 
     public void notifierNaviguerAfficherGouverneur(Gouverneur gouverneur) {

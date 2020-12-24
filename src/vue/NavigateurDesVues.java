@@ -19,6 +19,7 @@ public class NavigateurDesVues extends Application{
     private VueAjouterMine vueAjouterMine= null;
     private VueVille vueVille = null;
     private VueAjouterVille vueAjouterVille = null;
+    private VueAjouterBatiment vueAjouterBatiment = null;
 
 
 
@@ -42,6 +43,7 @@ public class NavigateurDesVues extends Application{
         this.vueAjouterMine = new VueAjouterMine();
         this.vueVille = new VueVille();
         this.vueAjouterVille = new VueAjouterVille();
+        this.vueAjouterBatiment = new VueAjouterBatiment();
     }
 
     static public NavigateurDesVues getInstance()
@@ -71,6 +73,7 @@ public class NavigateurDesVues extends Application{
         this.vueAjouterMine.setControleur(controleur);
         this.vueVille.setControleur(controleur);
         this.vueAjouterVille.setControleur(controleur);
+        this.vueAjouterBatiment.setControleur(controleur);
     }
 
     public void naviguerVersVueMenuPrincipal()
@@ -139,6 +142,11 @@ public class NavigateurDesVues extends Application{
         stage.show();
     }
 
+    public void naviguerVersVueAjouterBatiement() {
+        stage.setScene(this.vueAjouterBatiment);
+        stage.show();
+    }
+
     public VueAvantPoste getVueAvantPoste() {
         return vueAvantPoste;
     }
@@ -188,4 +196,6 @@ public class NavigateurDesVues extends Application{
     }
 
     public VueAjouterVille getVueAjouterVille() {return this.vueAjouterVille;}
+
+    public VueAjouterBatiment getVueAjouterBatiment() {return this.vueAjouterBatiment;}
 }

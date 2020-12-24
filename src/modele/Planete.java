@@ -5,6 +5,7 @@ import javafx.scene.canvas.Canvas;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import static modele.TypeDonnee.*;
 
@@ -137,6 +138,10 @@ public class Planete {
         return getDonnee(FINANCES).getValeurActuelle() >= Double.parseDouble(Integer.toString(montant));
     }
 
+    public boolean peutConstruire(Ville ville) {
+        return ville.peutConstruire();
+    }
+
     public void payer(int montant){
         getDonnee(FINANCES).setCroissance(-(Double.parseDouble(Integer.toString(montant))));
         getDonnee(FINANCES).majValeur();
@@ -156,10 +161,26 @@ public class Planete {
         ajouterVille(new Ville("Niederschaeffolsheim", new Coordonnee(100,100,100)));
     }
 
+    public void ajouterBatiment(int idVille, Batiment batiment) {
+        getVille(idVille).ajouterBatiment(batiment);
+    }
+
     public void initialiserEtatTypeBatiment() {
         for (TypeBatiment typeBatiment : TypeBatiment.values()) {
             etatTypesBatiment.put(typeBatiment, (typeBatiment.getParent() == null));
         }
+    }
+
+    public boolean typeBatimentEstDebloque(TypeBatiment typeBatiment) {
+        return etatTypesBatiment.get(typeBatiment);
+    }
+
+    public ArrayList<TypeBatiment> getTypeBatimentDebloque() {
+        ArrayList<TypeBatiment> typeBatimentDebloque = new ArrayList<>();
+        for (TypeBatiment typeBatiment : TypeBatiment.values()) {
+            if (typeBatimentEstDebloque(typeBatiment)) typeBatimentDebloque.add(typeBatiment);
+        }
+        return  typeBatimentDebloque;
     }
 
     public void initialiserEtatRessource() {
@@ -203,5 +224,9 @@ public class Planete {
 
     public void detruireMine(int idAvantPoste, int idMine) {
         getAvantPoste(idAvantPoste).detruireMine(idMine);
+    }
+
+    public void detruireBatiment(int idVille, int idBatiment) {
+        getVille(idVille).detruireBatiment(idBatiment);
     }
 }

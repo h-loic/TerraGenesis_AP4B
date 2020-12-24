@@ -25,7 +25,7 @@ public enum TypeBatiment {
         put(TypeDonnee.EAU, -100.0);
     }}, PLATEFORME_AEROSTAT),
 
-    POLE_DE_RECHAUFFEMENT("pole de rechauffement", "description", 5,100000.0, 50000,new HashMap<TypeDonnee, Double>(){{
+    POLE_DE_RECHAUFFEMENT("pole de réchauffement", "description", 5,100000.0, 50000,new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.TEMPERATURE, 4.0);
     }},new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.TEMPERATURE, 2.0);
@@ -39,7 +39,7 @@ public enum TypeBatiment {
         put(TypeDonnee.PRESSION, 2.0);
     }}, POLE_DE_RECHAUFFEMENT),
 
-    MIROIR_ORBITAL("pole de rechauffement", "description", 5,100000.0, 50000, new HashMap<TypeDonnee, Double>(){{
+    MIROIR_ORBITAL("miroir orbital", "description", 5,100000.0, 50000, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.TEMPERATURE, 120.0);
         put(TypeDonnee.EAU, -10.0);
     }},new HashMap<TypeDonnee, Double>(){{
@@ -97,5 +97,10 @@ public enum TypeBatiment {
 
     public TypeBatiment getParent() {
         return parent;
+    }
+
+    @Override
+    public String toString() {
+        return this.nom;
     }
 }
