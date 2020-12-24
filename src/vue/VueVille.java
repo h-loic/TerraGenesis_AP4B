@@ -60,6 +60,8 @@ public class VueVille extends Scene {
         this.grilleBatiments.getChildren().clear();
         this.grillePrincipale.getChildren().clear();
 
+        this.btnAjouterBatiment.setDisable(false);
+
         int ligneBatiment=0;
 
         //affichage des listes et de leurs données
