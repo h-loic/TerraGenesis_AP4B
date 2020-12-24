@@ -204,6 +204,10 @@ public class Planete {
         return null;
     }
 
+    public void revoquerGouverneur(int idVille) {
+        this.getVille(idVille).revoquerGouverneur();
+    }
+
     public void trierGouverneurParNom() {
         Collections.sort(gouverneurs, Gouverneur.ComparatorNom);
     }

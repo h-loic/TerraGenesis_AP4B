@@ -83,7 +83,7 @@ public class VueAjouterBatiment extends Scene {
         this.comboBoxTypeBatiment.valueProperty().addListener((obs, oldVal, newVal) -> {
             TypeBatiment typeBatimentSelectionne = (TypeBatiment) newVal;
             labelDescription.setText("Description : " +  typeBatimentSelectionne.getDescription());
-            labelPrix.setText("Prix : " + typeBatimentSelectionne.getCoutConstructionParDefaut());
+            labelPrix.setText("Prix : " + typeBatimentSelectionne.getCoutConstructionParDefaut() + "" + TypeDonnee.FINANCES.getUnite());
             textFlowEffet.getChildren().clear();
             for (Map.Entry effet : typeBatimentSelectionne.getEffetsParDefaut().entrySet()){
                 Text text =  new Text("    |> " + effet.getKey() + ": " + effet.getValue() + "\n");
