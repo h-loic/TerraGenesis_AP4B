@@ -11,7 +11,7 @@ public class Ville {
     private static final AtomicInteger sequence = new AtomicInteger();
 
     public static final double PRIX_BASE_VILLE = 500000;
-    public static final int PALIER_NB_BATIMENT = 200;
+    public static final double PALIER_POPULATION_NB_BATIMENT = 200.;
 
     private int id;
     private String nom;
@@ -131,9 +131,15 @@ public class Ville {
     }
 
     private void majNbPlace() {
-        nombrePlaceBatiment = 3 + Math.floorDiv((int)population.getValeurActuelle(), PALIER_NB_BATIMENT);
+        nombrePlaceBatiment = 3 + Math.floorDiv((int)population.getValeurActuelle(), (int) PALIER_POPULATION_NB_BATIMENT);
         if (nombrePlaceBatiment < batiments.size()) nombrePlaceBatiment = batiments.size();
 
+    }
+    public int getNbPlaceRestante() {
+        return this.nombrePlaceBatiment - batiments.size();
+    }
+    public double getProchainPallierBatiment() {
+        return (this.nombrePlaceBatiment - 2) * PALIER_POPULATION_NB_BATIMENT;
     }
 
     public void detruireBatiment(int idBatiment) {

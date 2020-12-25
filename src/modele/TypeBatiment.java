@@ -123,7 +123,7 @@ public enum TypeBatiment {
     }}, RESEAU_AQUIFERE,false),
 
     //POPULATION
-    UNITE_HABITATION("unité d'habitation", "description", 5,0., 500000, new HashMap<TypeDonnee, Double>(){{
+    UNITE_HABITATION("unité d'habitation", "description", 6,0., 500000, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.HABITATION, 66.);
     }}, null,true),
 

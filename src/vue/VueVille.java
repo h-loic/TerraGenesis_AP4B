@@ -28,6 +28,7 @@ public class VueVille extends Scene {
     private Label labelPlace;
     private Label labelGouverneur;
     private Label labelEffetsGouverneur;
+    private Label labelProchainePlace;
     private Label labelMessages;
     private int idVille;
 
@@ -131,7 +132,8 @@ public class VueVille extends Scene {
         this.labelCoordonnees = new Label("("+ ville.getCoordonnee().getX()+", "+ville.getCoordonnee().getY()+", "+ville.getCoordonnee().getZ()+")");
         this.labelPopulation = new Label("pop. " + ville.getPopulation().getValeurActuelle());
         this.labelHabitation = new Label("hab. " + ville.getHabitation().getValeurActuelle());
-        this.labelPlace = new Label("Nombre de places batiments restantes : " + (ville.getNombrePlaceBatiment() - ville.getBatiments().size()) );
+        this.labelPlace = new Label("Nombre de places batiments restantes : " + ville.getNbPlaceRestante() );
+        this.labelProchainePlace = new Label(ville.getNbPlaceRestante() != 0 ? "" : "Nouvelle place à pop. " + ville.getProchainPallierBatiment() );
         this.labelGouverneur = new Label("Gouveneur de la ville : " + (ville.getGouverneur() != null  ? ville.getGouverneur().getNom() : "aucun" ));
         this.labelEffetsGouverneur = new Label("");
         if (ville.getGouverneur() != null) {
@@ -212,12 +214,13 @@ public class VueVille extends Scene {
         grillePrincipale.add(scrollPaneBatiments, 0, 1);
         grillePrincipale.add(btnAjouterBatiment, 0, 2);
         grillePrincipale.add(labelPlace, 0, 3);
-        grillePrincipale.add(labelGouverneur, 0, 4);
-        grillePrincipale.add(btnNaviguerGouverneurs, 0, 5);
-        grillePrincipale.add(btnNaviguerGouverneurAssigne, 1, 5);
-        grillePrincipale.add(btnRevoquerGouverneur, 2, 5);
-        grillePrincipale.add(labelEffetsGouverneur, 0, 6);
-        grillePrincipale.add(labelMessages, 0, 7);
+        grillePrincipale.add(labelProchainePlace, 0, 4);
+        grillePrincipale.add(labelGouverneur, 0, 5);
+        grillePrincipale.add(btnNaviguerGouverneurs, 0, 6);
+        grillePrincipale.add(btnNaviguerGouverneurAssigne, 1, 6);
+        grillePrincipale.add(btnRevoquerGouverneur, 2, 6);
+        grillePrincipale.add(labelEffetsGouverneur, 0, 7);
+        grillePrincipale.add(labelMessages, 0, 8);
         this.labelMessages.setVisible(false);
     }
 
