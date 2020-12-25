@@ -129,8 +129,8 @@ public class VueVille extends Scene {
 
         this.labelNom = new Label(ville.getNom());
         this.labelCoordonnees = new Label("("+ ville.getCoordonnee().getX()+", "+ville.getCoordonnee().getY()+", "+ville.getCoordonnee().getZ()+")");
-        this.labelPopulation = new Label("pop. " + ville.getPopulation());
-        this.labelHabitation = new Label("hab. " + ville.getHabitation());
+        this.labelPopulation = new Label("pop. " + ville.getPopulation().getValeurActuelle());
+        this.labelHabitation = new Label("hab. " + ville.getHabitation().getValeurActuelle());
         this.labelPlace = new Label("Nombre de places batiments restantes : " + (ville.getNombrePlaceBatiment() - ville.getBatiments().size()) );
         this.labelGouverneur = new Label("Gouveneur de la ville : " + (ville.getGouverneur() != null  ? ville.getGouverneur().getNom() : "aucun" ));
         this.labelEffetsGouverneur = new Label("");

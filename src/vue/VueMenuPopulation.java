@@ -59,7 +59,7 @@ public class VueMenuPopulation extends Scene {
         /* VILLES */
         for (Ville ville : listeVilles){
             Label labelNom = new Label(ville.getNom());
-            Label labelPopulation = new Label(" pop. "+ville.getPopulation());
+            Label labelPopulation = new Label(" pop. "+ville.getPopulation().getValeurActuelle());
 
             Button btnAfficher = new Button("afficher");
             btnAfficher.setUserData(ville.getId());

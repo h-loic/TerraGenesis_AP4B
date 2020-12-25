@@ -1,5 +1,7 @@
 package modele;
 
+import javafx.scene.media.MediaException;
+
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -7,25 +9,29 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Ville {
 
     private static final AtomicInteger sequence = new AtomicInteger();
+
     public static final double PRIX_BASE_VILLE = 500000;
+    public static final int PALIER_NB_BATIMENT = 200;
+
     private int id;
     private String nom;
     private ArrayList<Batiment> batiments;
     private Coordonnee coordonnee;
     private int nombrePlaceBatiment;
     private Gouverneur gouverneur;
-    private int population;
-    private int habitation;
+    private Donnee population;
+    private Donnee habitation;
 
     public Ville(String nom, Coordonnee coordonnee) {
         this.id = genererId();
         this.nom = nom;
         this.coordonnee = coordonnee;
         this.batiments = new ArrayList<>();
-        this.nombrePlaceBatiment = 1;
+        this.batiments.add(new Batiment(TypeBatiment.UNITE_HABITATION));
+        this.nombrePlaceBatiment = 3;
         this.gouverneur = null;
-        this.population = 0;
-        this.habitation = 0;
+        this.population = new Donnee(TypeDonnee.POPULATION);
+        this.habitation = new Donnee(TypeDonnee.HABITATION);
     }
 
     private int genererId() {
@@ -66,11 +72,11 @@ public class Ville {
         return gouverneur;
     }
 
-    public int getPopulation() {
+    public Donnee getPopulation() {
         return population;
     }
 
-    public int getHabitation() {
+    public Donnee getHabitation() {
         return habitation;
     }
 
@@ -82,11 +88,11 @@ public class Ville {
         this.nombrePlaceBatiment = nombrePlaceBatiment;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(Donnee population) {
         this.population = population;
     }
 
-    public void setHabitation(int habitation) {
+    public void setHabitation(Donnee habitation) {
         this.habitation = habitation;
     }
 
@@ -104,6 +110,30 @@ public class Ville {
             if (batiment.getId() == idBatiment) return batiment;
         }
         return null;
+    }
+
+    public void majVille() {
+        double sommeHab = 0.;
+        double sommePop = this.population.getValeurActuelle() + 1.;
+        for (Batiment batiment : batiments) {
+            if (batiment.getEffets().containsKey(TypeDonnee.HABITATION) && !batiment.estDesactive()) sommeHab += batiment.getEffets().get(TypeDonnee.HABITATION);
+            if (batiment.getEffets().containsKey(TypeDonnee.POPULATION) && !batiment.estDesactive() ) {
+                sommeHab += batiment.getEffets().get(TypeDonnee.POPULATION);
+                sommePop += batiment.getEffets().get(TypeDonnee.POPULATION);
+            }
+        }
+        if(sommePop > sommeHab) {
+            sommePop = sommeHab;
+        }
+        this.population.setValeurActuelle(sommePop);
+        this.habitation.setValeurActuelle(sommeHab);
+        majNbPlace();
+    }
+
+    private void majNbPlace() {
+        nombrePlaceBatiment = 3 + Math.floorDiv((int)population.getValeurActuelle(), PALIER_NB_BATIMENT);
+        if (nombrePlaceBatiment < batiments.size()) nombrePlaceBatiment = batiments.size();
+
     }
 
     public void detruireBatiment(int idBatiment) {

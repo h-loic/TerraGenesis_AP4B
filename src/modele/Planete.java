@@ -141,6 +141,7 @@ public class Planete {
         return getDonnee(FINANCES).getValeurActuelle() >= Double.parseDouble(Integer.toString(montant));
     }
 
+
     public boolean peutConstruire(Ville ville) {
         return ville.peutConstruire();
     }
@@ -166,6 +167,7 @@ public class Planete {
 
     public void ajouterBatiment(int idVille, Batiment batiment) {
         getVille(idVille).ajouterBatiment(batiment);
+        getVille(idVille).majVille();
     }
 
     public void initialiserEtatTypeBatiment() {
@@ -247,10 +249,12 @@ public class Planete {
 
     public void detruireBatiment(int idVille, int idBatiment) {
         getVille(idVille).detruireBatiment(idBatiment);
+        getVille(idVille).majVille();
     }
 
     public void activerDesactiverBatiment(int idVille, int idBatiment) {
         getVille(idVille).getBatiment(idBatiment).activerDesactiver();
+        getVille(idVille).majVille();
     }
 
     public Recherche getRecherche(){

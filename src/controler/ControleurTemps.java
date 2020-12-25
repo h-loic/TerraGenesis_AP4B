@@ -18,6 +18,7 @@ public class ControleurTemps extends Thread{
     public void run(){
         while (true){
             majAvantPostes();
+            majVilles();
             majRecherche();
             try {
                 sleep(1000);
@@ -58,5 +59,11 @@ public class ControleurTemps extends Thread{
         planete.getDonnee(TypeDonnee.FINANCES).setCroissance(benefices);
         planete.getDonnee(TypeDonnee.FINANCES).majValeur();
         System.out.println(benefices);
+    }
+
+    private void majVilles() {
+        for (Ville ville : this.planete.getVilles()) {
+            ville.majVille();
+        }
     }
 }
