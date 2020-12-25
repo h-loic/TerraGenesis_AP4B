@@ -25,6 +25,7 @@ public class VueMenuRecherche extends Scene {
 
     private controler.ControleurPrincipal controleur = null;
     private Label labelRecherche;
+    private Label labelErreur;
     private Button boutonRetour;
 
     public VueMenuRecherche() {
@@ -32,6 +33,7 @@ public class VueMenuRecherche extends Scene {
         grillePrincipale = (GridPane) this.getRoot();
         grilleBatiments = new GridPane();
         this.labelRecherche = new Label("Recherche");
+        this.labelErreur = new Label("");
         this.boutonRetour = new Button("retour");
         this.scrollPaneBatiments = new ScrollPane();
     }
@@ -40,6 +42,8 @@ public class VueMenuRecherche extends Scene {
         this.grillePrincipale.getChildren().clear();
         this.grilleBatiments.getChildren().clear();
         this.scrollPaneBatiments.setMinWidth(400);
+
+        labelErreur.setVisible(false);
 
         int rowindex = 1;
 
@@ -65,10 +69,13 @@ public class VueMenuRecherche extends Scene {
             btnRechercher.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    labelErreur.setVisible(false);
                     try{
                         controleur.rechercherTypeBatiment(typeBatiment);
                     }catch(Exception e){
                         System.out.println(e.getMessage());
+                        labelErreur.setText(e.getMessage());
+                        labelErreur.setVisible(true);
                     }
                 }
             });
@@ -90,8 +97,9 @@ public class VueMenuRecherche extends Scene {
 
         this.scrollPaneBatiments.setContent(grilleBatiments);
         this.grillePrincipale.add(this.labelRecherche, 0, 0);
-        this.grillePrincipale.add(this.boutonRetour, 0, 2);
         this.grillePrincipale.add(this.scrollPaneBatiments, 0, 1);
+        this.grillePrincipale.add(this.labelErreur, 0, 2);
+        this.grillePrincipale.add(this.boutonRetour, 0, 3);
     }
 
     public void setControleur(controler.ControleurPrincipal controleur) {
