@@ -20,7 +20,7 @@ public class Batiment {
         this.typeBatiment = typeBatiment;
         this.niveau = 1;
         this.estDesactive = false;
-        this.effets = typeBatiment.getEffetsParDefaut();
+        this.effets = new HashMap<TypeDonnee, Double> (typeBatiment.getEffetsParDefaut());
 
     }
 
@@ -59,11 +59,13 @@ public class Batiment {
     public void ameliorer() {
         this.niveau++;
         TypeDonnee typeDonnee;
-        double valeur;
+        double effetParDefaut;
+        double resultat;
         for (Map.Entry<TypeDonnee, Double> effet : effets.entrySet()) {
             typeDonnee = effet.getKey();
-            valeur = effet.getValue() + (this.typeBatiment.getEffetsParDefaut().get(typeDonnee) / 2.);
-            effet.setValue(valeur);
+            effetParDefaut = this.typeBatiment.getEffetsParDefaut().get(typeDonnee);
+            resultat = effet.getValue() + (effetParDefaut / 2.);
+            effet.setValue(resultat);
         }
     }
 

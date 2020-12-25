@@ -124,20 +124,20 @@ public enum TypeBatiment {
 
     //POPULATION
     UNITE_HABITATION("unité d'habitation", "description", 5,0., 500000, new HashMap<TypeDonnee, Double>(){{
-        put(TypeDonnee.HABITATION, 95.);
+        put(TypeDonnee.HABITATION, 66.);
     }}, null,true),
 
     COMPLEXE_HABITATION("complexe d'habitation", "description", 5,2000000., 500000, new HashMap<TypeDonnee, Double>(){{
-        put(TypeDonnee.HABITATION, 2500.);
+        put(TypeDonnee.HABITATION, 2400.);
         put(TypeDonnee.OXYGENE, 10.);
     }}, UNITE_HABITATION,false),
 
     DOME_HABITATION("dôme d'habitation", "description", 5,4000000., 500000, new HashMap<TypeDonnee, Double>(){{
-        put(TypeDonnee.HABITATION, 47000.);
+        put(TypeDonnee.HABITATION, 42000.);
     }}, COMPLEXE_HABITATION,false),
 
     CRECHE("crèche pour enfant", "description", 5,1000000., 500000, new HashMap<TypeDonnee, Double>(){{
-        put(TypeDonnee.POPULATION, 11.);
+        put(TypeDonnee.POPULATION, 10.);
     }}, null,false),
 
     RESEAU_TRANSPORT("réseau de transport", "description", 5,2000000., 500000, new HashMap<TypeDonnee, Double>(){{
@@ -145,7 +145,7 @@ public enum TypeBatiment {
     }}, CRECHE,false),
 
     PORT_SPATIAL("dôme d'habitation", "description", 5,4000000., 500000, new HashMap<TypeDonnee, Double>(){{
-        put(TypeDonnee.POPULATION, 132.);
+        put(TypeDonnee.POPULATION, 140.);
         put(TypeDonnee.PRESSION, 10.);
     }}, RESEAU_TRANSPORT,false);
 
