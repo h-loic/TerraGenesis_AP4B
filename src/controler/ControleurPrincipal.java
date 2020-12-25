@@ -25,6 +25,8 @@ public class ControleurPrincipal {
     private VueAjouterVille vueAjouterVille = null;
     private VueAjouterBatiment vueAjouterBatiment = null;
 
+    private ControleurTemps controleurTemps;
+
     private Planete planete;
 
 
@@ -40,8 +42,8 @@ public class ControleurPrincipal {
         this.planete.initialiserDonnees();
         this.planete.initialiserGouverneur();
         this.planete.initialiserCarte();
-        ControleurTemps controleurTemps = new ControleurTemps(planete);
-        controleurTemps.start();
+        this.controleurTemps = new ControleurTemps(planete, this);
+        this.controleurTemps.start();
 ;    }
 
     public void activerVues(NavigateurDesVues navigateur)
@@ -87,7 +89,7 @@ public class ControleurPrincipal {
 
     public void notifierNaviguerMenuRecherche()
     {
-        this.vueMenuRecherche.initialiserMenuRecherche(planete.getTypeBatimentNonDebloque());
+        this.vueMenuRecherche.initialiserMenuRecherche(planete.getTypeBatimentNonDebloque(), planete.getRecherche().isRechercheEnCours(), planete.getRecherche().getTypeBatimentRecherche());
         this.navigateur.naviguerVersMenuRecherche();
     }
 
@@ -274,6 +276,10 @@ public class ControleurPrincipal {
         }
     }
 
+    public void notifierActualiserMenuRecherche(){
+        vueMenuRecherche.initialiserMenuRecherche(planete.getTypeBatimentNonDebloque(), planete.getRecherche().isRechercheEnCours(), planete.getRecherche().getTypeBatimentRecherche());
+    }
+
     public void majDonneesVues(){
         vueMenuStatistiques.majStatistiques(this.planete.getFinances());
     }
@@ -307,6 +313,9 @@ public class ControleurPrincipal {
         }else {
             planete.payer((int) typeBatiment.getCoutRecherche());
             planete.getRecherche().rechercher(typeBatiment);
+
+            this.vueMenuRecherche.initialiserMenuRecherche(planete.getTypeBatimentNonDebloque(), planete.getRecherche().isRechercheEnCours(), planete.getRecherche().getTypeBatimentRecherche());
+            navigateur.naviguerVersMenuRecherche();
             System.out.println("recherche");
         }
     }

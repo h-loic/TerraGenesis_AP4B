@@ -30,8 +30,6 @@ public class Recherche {
 
     public void finDeRecherche(){
         this.typeBatimentRecherche = null;
-
-        dateFinRecherche = new Date();
         dateFinRecherche = null;
         rechercheEnCours = false;
     }

@@ -18,29 +18,39 @@ import java.util.Map;
 
 public class VueMenuRecherche extends Scene {
 
-    protected GridPane grillePrincipale;
-    protected GridPane grilleBatiments;
+    private GridPane grilleBoutons;
+    private GridPane grillePrincipale;
+    private GridPane grilleBatiments;
+    private GridPane grilleRechercheEnCours;
 
     private ScrollPane scrollPaneBatiments;
 
     private controler.ControleurPrincipal controleur = null;
     private Label labelRecherche;
     private Label labelErreur;
-    private Button boutonRetour;
+    private Label labelRechercheEnCours;
+    private Button btnRetour;
+    private Button btnActualiser;
 
     public VueMenuRecherche() {
         super(new GridPane(), 400,400);
-        grillePrincipale = (GridPane) this.getRoot();
-        grilleBatiments = new GridPane();
+        this.grillePrincipale = (GridPane) this.getRoot();
+        this.grilleBatiments = new GridPane();
+        this.grilleRechercheEnCours = new GridPane();
+        this.grilleBoutons = new GridPane();
         this.labelRecherche = new Label("Recherche");
+        this.labelRechercheEnCours = new Label("");
         this.labelErreur = new Label("");
-        this.boutonRetour = new Button("retour");
+        this.btnRetour = new Button("retour");
         this.scrollPaneBatiments = new ScrollPane();
+        this.btnActualiser = new Button("Actualiser");
     }
 
-    public void initialiserMenuRecherche(ArrayList<TypeBatiment> typeBatimentsNonDebloques) {
+    public void initialiserMenuRecherche(ArrayList<TypeBatiment> typeBatimentsNonDebloques, boolean rechercheEnCours, TypeBatiment batimentRecherche) {
         this.grillePrincipale.getChildren().clear();
         this.grilleBatiments.getChildren().clear();
+        this.grilleRechercheEnCours.getChildren().clear();
+        this.grilleBoutons.getChildren().clear();
         this.scrollPaneBatiments.setMinWidth(400);
 
         labelErreur.setVisible(false);
@@ -48,8 +58,10 @@ public class VueMenuRecherche extends Scene {
         int rowindex = 1;
 
         for (TypeBatiment typeBatiment : typeBatimentsNonDebloques){
+
+            if (typeBatiment == batimentRecherche) continue;//saute cette itération pour ne pas afficher le type de batiment actuellement recherché dans la lsite des batiments recherchés
+
             GridPane grillDescription = new GridPane();
-            GridPane grilleBouton = new GridPane();
             Label labelBatiment = new Label(typeBatiment.getNom() + ", prix : "+typeBatiment.getCoutRecherche());
 
             TextFlow textFlowEffet = new TextFlow();
@@ -66,6 +78,10 @@ public class VueMenuRecherche extends Scene {
 
             Button btnRechercher = new Button("Rechercher");
 
+            if (rechercheEnCours){
+                btnRechercher.setDisable(true);
+            }
+
             btnRechercher.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -80,18 +96,32 @@ public class VueMenuRecherche extends Scene {
                 }
             });
 
-            grilleBouton.add(btnRechercher, 0, 0);
-
             grilleBatiments.add(grillDescription, 0, rowindex);
-            grilleBatiments.add(grilleBouton, 1, rowindex);
+            grilleBatiments.add(btnRechercher, 1, rowindex);
 
             rowindex++;
         }
 
-        this.boutonRetour.setOnAction(new EventHandler<ActionEvent>() {
+
+        this.btnRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 controleur.notifierNaviguerMenuPrincipal();
+            }
+        });
+
+        if (rechercheEnCours) {
+            this.labelErreur.setText("Recherche en cours, impossible de faire une nouvelle recherche");
+            this.labelErreur.setVisible(true);
+            this.labelRechercheEnCours.setText("Recherche en cours  : "+batimentRecherche.getNom());
+            this.grilleRechercheEnCours.add(labelRechercheEnCours, 0, 0);
+            this.grillePrincipale.add(this.grilleRechercheEnCours, 0, 3);
+        }
+
+        this.btnActualiser.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controleur.notifierActualiserMenuRecherche();
             }
         });
 
@@ -99,7 +129,9 @@ public class VueMenuRecherche extends Scene {
         this.grillePrincipale.add(this.labelRecherche, 0, 0);
         this.grillePrincipale.add(this.scrollPaneBatiments, 0, 1);
         this.grillePrincipale.add(this.labelErreur, 0, 2);
-        this.grillePrincipale.add(this.boutonRetour, 0, 3);
+        this.grilleBoutons.add(this.btnRetour, 0, 0);
+        this.grilleBoutons.add(this.btnActualiser, 1, 0);
+        this.grillePrincipale.add(this.grilleBoutons, 0, 4);
     }
 
     public void setControleur(controler.ControleurPrincipal controleur) {

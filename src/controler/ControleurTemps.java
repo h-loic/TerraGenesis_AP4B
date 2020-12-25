@@ -7,10 +7,12 @@ import java.util.concurrent.TimeUnit;
 
 public class ControleurTemps extends Thread{
     private Planete planete;
+    private ControleurPrincipal controleurPrincipal;
 
-    public ControleurTemps(Planete planete){
+    public ControleurTemps(Planete planete, ControleurPrincipal controleurPrincipal){
         super("temps");
         this.planete = planete;
+        this.controleurPrincipal = controleurPrincipal;
     }
 
     public void run(){
