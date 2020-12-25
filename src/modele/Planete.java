@@ -170,7 +170,7 @@ public class Planete {
 
     public void initialiserEtatTypeBatiment() {
         for (TypeBatiment typeBatiment : TypeBatiment.values()) {
-            etatTypesBatiment.put(typeBatiment, (typeBatiment.getParent() == null));
+            etatTypesBatiment.put(typeBatiment, typeBatiment.estDebloqueParDefaut());
         }
     }
 
@@ -196,7 +196,7 @@ public class Planete {
 
     public void initialiserEtatRessource() {
         for (Ressource ressource : Ressource.values()) {
-            etatRessources.put(ressource, (ressource.getParent() == null));
+            etatRessources.put(ressource, ressource.getParent() == null);
         }
     }
 

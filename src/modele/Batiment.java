@@ -60,10 +60,10 @@ public class Batiment {
         this.niveau++;
         TypeDonnee typeDonnee;
         double valeur;
-        for (Map.Entry variation : this.typeBatiment.getVariations().entrySet()) {
-            typeDonnee = (TypeDonnee) variation.getKey();
-            valeur = (double) variation.getValue();
-            effets.put(typeDonnee, effets.getOrDefault(typeDonnee, 0.0) + valeur);
+        for (Map.Entry<TypeDonnee, Double> effet : effets.entrySet()) {
+            typeDonnee = effet.getKey();
+            valeur = effet.getValue() + (this.typeBatiment.getEffetsParDefaut().get(typeDonnee) / 2.);
+            effet.setValue(valeur);
         }
     }
 
