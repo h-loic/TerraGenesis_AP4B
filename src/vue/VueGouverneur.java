@@ -42,21 +42,27 @@ public class VueGouverneur extends Scene{
                 controleur.notifierNaviguerAfficherGouverneur(gouverneur);
             }
         });
-        btnAffecter = new Button("affecter");
-        btnAffecter.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                controleur.notifierNaviguerAffecterGouverneur(gouverneur);
-            }
-        });
-
-
         labelNom = new Label(gouverneur.getNom());
         labelNiveau = new Label(Integer.toString(gouverneur.getNiveau()));
         if (!gouverneur.estAffecter()){
             labelAffecter = new Label("non affecter");
+            btnAffecter = new Button("affecter");
+            btnAffecter.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    controleur.notifierNaviguerAffecterGouverneur(gouverneur);
+                }
+            });
         }else{
-            labelAffecter = new Label(gouverneur.getVilleAffecter());
+            System.out.println(gouverneur.getVilleAffecter());
+            labelAffecter = new Label(gouverneur.getVilleAffecter().getNom());
+            btnAffecter = new Button("révoquer");
+            btnAffecter.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    controleur.notifierRevoquerGouverneurDepuisGouverneur(gouverneur.getVilleAffecter().getId(),gouverneur);
+                }
+            });
         }
         grillePrincipale.add(labelNom,1,0);
         grillePrincipale.add(new Label("niveau : "),0,1);

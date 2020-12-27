@@ -12,7 +12,7 @@ public class Gouverneur {
     private int niveau;
     private String nom;
     private boolean estAffecter;
-    private String villeAffecter;
+    private Ville villeAffecter;
     private HashMap<Donnee, Double> effets;
 
     public Gouverneur(boolean estDebloque, int niveau, String nom, boolean estAffecter, HashMap<Donnee,Double> effets) {
@@ -63,11 +63,11 @@ public class Gouverneur {
         this.estAffecter = estAffecter;
     }
 
-    public String getVilleAffecter() {
+    public Ville getVilleAffecter() {
         return villeAffecter;
     }
 
-    public void setVilleAffecter(String villeAffecter) {
+    public void setVilleAffecter(Ville villeAffecter) {
         this.villeAffecter = villeAffecter;
     }
 

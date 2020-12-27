@@ -215,6 +215,7 @@ public class Planete {
 
     public void affecterGouverneur(Gouverneur gouverneur, int idVille){
         this.getVille(idVille).affecterGouverneur(gouverneur);
+        gouverneur.setVilleAffecter(this.getVille(idVille));
     }
 
     public void trierGouverneurParNom() {
