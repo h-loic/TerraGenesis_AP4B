@@ -15,6 +15,7 @@ public class NavigateurDesVues extends Application{
     private VueMenuGouverneurs vueMenuGouverneurs = null;
     private VueAvantPoste vueAvantPoste = null;
     private VueGouverneur vueGouverneur = null;
+    private VueAffecterGouverneur vueAffecterGouverneur = null;
     private VueAjouterAvantPoste vueAjouterAvantPoste = null;
     private VueAjouterMine vueAjouterMine= null;
     private VueVille vueVille = null;
@@ -39,6 +40,7 @@ public class NavigateurDesVues extends Application{
         this.vueMenuGouverneurs = new VueMenuGouverneurs();
         this.vueAvantPoste = new VueAvantPoste();
         this.vueGouverneur = new VueGouverneur();
+        this.vueAffecterGouverneur = new VueAffecterGouverneur();
         this.vueAjouterAvantPoste = new VueAjouterAvantPoste();
         this.vueAjouterMine = new VueAjouterMine();
         this.vueVille = new VueVille();
@@ -69,6 +71,7 @@ public class NavigateurDesVues extends Application{
         this.vueMenuGouverneurs.setControleur(controleur);
         this.vueAvantPoste.setControleur(controleur);
         this.vueGouverneur.setControleur(controleur);
+        this.vueAffecterGouverneur.setControleur(controleur);
         this.vueAjouterAvantPoste.setControleur(controleur);
         this.vueAjouterMine.setControleur(controleur);
         this.vueVille.setControleur(controleur);
@@ -122,6 +125,11 @@ public class NavigateurDesVues extends Application{
         stage.show();
     }
 
+    public void naviguerVersAffecterGouverneur(){
+        stage.setScene(this.vueAffecterGouverneur);
+        stage.show();
+    }
+
     public void naviguerVersAjouterAvantPoste(){
         stage.setScene(this.vueAjouterAvantPoste);
         stage.show();
@@ -154,6 +162,8 @@ public class NavigateurDesVues extends Application{
     public VueGouverneur getVueGouverneur() {
         return vueGouverneur;
     }
+
+    public VueAffecterGouverneur getVueAffecterGouverneur(){ return vueAffecterGouverneur;}
 
     public VueAjouterAvantPoste getVueAjouterAvantPoste() {
         return vueAjouterAvantPoste;

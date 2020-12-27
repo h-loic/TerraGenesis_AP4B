@@ -15,6 +15,7 @@ public class VueGouverneur extends Scene{
     private controler.ControleurPrincipal controleur = null;
     private Label labelNom;
     private Label labelNiveau;
+    private Label labelAffecter;
     private Button btnAmeliorer;
     private Button btnRetour;
     private Button btnAffecter;
@@ -42,13 +43,28 @@ public class VueGouverneur extends Scene{
             }
         });
         btnAffecter = new Button("affecter");
+        btnAffecter.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controleur.notifierNaviguerAffecterGouverneur(gouverneur);
+            }
+        });
+
+
         labelNom = new Label(gouverneur.getNom());
         labelNiveau = new Label(Integer.toString(gouverneur.getNiveau()));
+        if (!gouverneur.estAffecter()){
+            labelAffecter = new Label("non affecter");
+        }else{
+            labelAffecter = new Label(gouverneur.getVilleAffecter());
+        }
         grillePrincipale.add(labelNom,1,0);
         grillePrincipale.add(new Label("niveau : "),0,1);
         grillePrincipale.add(labelNiveau,1,1);
-        grillePrincipale.add(new Label("effets : "),0,2);
-        int compteurLigne = 2;
+        grillePrincipale.add(new Label("affecter : "),0,2);
+        grillePrincipale.add(labelAffecter,1,2);
+        grillePrincipale.add(new Label("effets : "),0,3);
+        int compteurLigne = 3;
         for (Donnee donnee : gouverneur.getEffets().keySet()) {
             compteurLigne++;
             grillePrincipale.add(new Label(donnee.getTypeDonnee().name()),1,compteurLigne);

@@ -19,6 +19,7 @@ public class ControleurPrincipal {
     private VueMenuGouverneurs vueMenuGouverneurs = null;
     private VueAvantPoste vueAvantPoste = null;
     private VueGouverneur vueGouverneur = null;
+    private VueAffecterGouverneur vueAffecterGouverneur = null;
     private VueAjouterAvantPoste vueAjouterAvantPoste = null;
     private VueAjouterMine vueAjouterMine = null;
     private VueVille vueVille = null;
@@ -58,6 +59,7 @@ public class ControleurPrincipal {
         this.vueMenuCarte = navigateur.getVueMenuCarte();
         this.vueAvantPoste = navigateur.getVueAvantPoste();
         this.vueGouverneur = navigateur.getVueGouverneur();
+        this.vueAffecterGouverneur = navigateur.getVueAffecterGouverneur();
         this.vueAjouterAvantPoste = navigateur.getVueAjouterAvantPoste();
         this.vueAjouterMine = navigateur.getVueAjouterMine();
         this.vueVille = navigateur.getVueVille();
@@ -219,7 +221,10 @@ public class ControleurPrincipal {
         this.navigateur.naviguerVersGouverneur();
     }
 
-
+    public void notifierNaviguerAffecterGouverneur(Gouverneur gouverneur) {
+        this.vueAffecterGouverneur.initialiserVueAffecterGouverneur(gouverneur);
+        this.navigateur.naviguerVersAffecterGouverneur();
+    }
 
     public void notifierAjouterMine(int idAvantPoste) {
         Mine mine;
@@ -324,5 +329,4 @@ public class ControleurPrincipal {
     public boolean verifierCoordonnees(double x, double y){
         return planete.getCarte().verifierCoordonnees(x, y);
     }
-
 }
