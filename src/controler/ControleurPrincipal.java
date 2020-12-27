@@ -266,6 +266,9 @@ public class ControleurPrincipal {
     }
 
     public void notifierAffecterGouverneur(Gouverneur gouverneur, int idVille) {
+        if (this.planete.getVille(idVille).getGouverneur() != null){
+            this.planete.getVille(idVille).revoquerGouverneur();
+        }
         this.planete.affecterGouverneur(gouverneur,idVille);
         this.notifierNaviguerAfficherGouverneur(gouverneur);
     }
