@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import modele.Donnee;
 import modele.Gouverneur;
+import modele.Planete;
+import modele.Ville;
 
 public class VueAffecterGouverneur extends Scene{
 
@@ -21,7 +23,7 @@ public class VueAffecterGouverneur extends Scene{
         btnRetour = new Button("Retour");
     }
 
-    public void initialiserVueAffecterGouverneur(Gouverneur gouverneur) {
+    public void initialiserVueAffecterGouverneur(Gouverneur gouverneur, Planete planete) {
         grillePrincipale.getChildren().clear();
         btnRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -31,7 +33,18 @@ public class VueAffecterGouverneur extends Scene{
         });
         Label labelTitre = new Label("choisissez la ville dans laquelle affecter " + gouverneur.getNom());
         grillePrincipale.add(labelTitre,1,0);
-        grillePrincipale.add(btnRetour,1,1);
+        int compteurLigne = 1;
+        for (Ville ville : planete.getVilles()) {
+            compteurLigne++;
+            grillePrincipale.add(new Button(ville.getNom()),1,compteurLigne);
+            if (ville.getGouverneur() == null){
+                grillePrincipale.add(new Label("pas de gouverneur"),2,compteurLigne);
+            }else{
+                grillePrincipale.add(new Label(ville.getGouverneur().toString()),2,compteurLigne);
+            }
+        }
+        compteurLigne++;
+        grillePrincipale.add(btnRetour,1,compteurLigne);
     }
 
     public void setControleur(controler.ControleurPrincipal controleur) {

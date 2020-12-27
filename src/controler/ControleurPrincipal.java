@@ -222,7 +222,7 @@ public class ControleurPrincipal {
     }
 
     public void notifierNaviguerAffecterGouverneur(Gouverneur gouverneur) {
-        this.vueAffecterGouverneur.initialiserVueAffecterGouverneur(gouverneur);
+        this.vueAffecterGouverneur.initialiserVueAffecterGouverneur(gouverneur,this.planete);
         this.navigateur.naviguerVersAffecterGouverneur();
     }
 
