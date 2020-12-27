@@ -146,6 +146,11 @@ public class Planete {
         return ville.peutConstruire();
     }
 
+    public boolean peutRechercher(TypeBatiment typeBatiment) {
+        if (typeBatiment.getParent() == null) return true;
+        return etatTypesBatiment.get(typeBatiment.getParent());
+    }
+
     public void payer(int montant){
         getDonnee(FINANCES).setCroissance(-(Double.parseDouble(Integer.toString(montant))));
         getDonnee(FINANCES).majValeur();

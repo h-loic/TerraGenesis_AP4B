@@ -328,6 +328,8 @@ public class ControleurPrincipal {
         }else if (!planete.peutPayer((int)typeBatiment.getCoutRecherche())){
             System.out.println("trop pauvre");
             throw new Exception("Recherche impossible : fonds insuffisants");
+        }else if(! planete.peutRechercher(typeBatiment)) {
+            throw new Exception("Recherche impossible : il faut d'abord rechercher la dépendence (" + typeBatiment.getParent() + ")");
         }else {
             planete.payer((int) typeBatiment.getCoutRecherche());
             planete.getRecherche().rechercher(typeBatiment);
