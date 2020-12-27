@@ -265,6 +265,11 @@ public class ControleurPrincipal {
         this.notifierNaviguerAfficherAvPoste(idAvantPosteCourant);
     }
 
+    public void notifierAffecterGouverneur(Gouverneur gouverneur, int idVille) {
+        this.planete.affecterGouverneur(gouverneur,idVille);
+        this.notifierNaviguerAffecterGouverneur(gouverneur);
+    }
+
     public void notifierRevoquerGouverneur(int idVille){
         this.planete.revoquerGouverneur(idVille);
         this.notifierNaviguerAfficherVille(idVille);

@@ -213,6 +213,10 @@ public class Planete {
         this.getVille(idVille).revoquerGouverneur();
     }
 
+    public void affecterGouverneur(Gouverneur gouverneur, int idVille){
+        this.getVille(idVille).affecterGouverneur(gouverneur);
+    }
+
     public void trierGouverneurParNom() {
         Collections.sort(gouverneurs, Gouverneur.ComparatorNom);
     }

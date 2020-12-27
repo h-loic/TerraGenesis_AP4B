@@ -36,12 +36,19 @@ public class VueAffecterGouverneur extends Scene{
         int compteurLigne = 1;
         for (Ville ville : planete.getVilles()) {
             compteurLigne++;
-            grillePrincipale.add(new Button(ville.getNom()),1,compteurLigne);
+            Button btnSelectionnerVille = new Button(ville.getNom());
+            grillePrincipale.add(btnSelectionnerVille,1,compteurLigne);
             if (ville.getGouverneur() == null){
                 grillePrincipale.add(new Label("pas de gouverneur"),2,compteurLigne);
             }else{
-                grillePrincipale.add(new Label(ville.getGouverneur().toString()),2,compteurLigne);
+                grillePrincipale.add(new Label(ville.getGouverneur().getNom()),2,compteurLigne);
             }
+            btnSelectionnerVille.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    controleur.notifierAffecterGouverneur(gouverneur,ville.getId());
+                }
+            });
         }
         compteurLigne++;
         grillePrincipale.add(btnRetour,1,compteurLigne);

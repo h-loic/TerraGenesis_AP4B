@@ -52,6 +52,11 @@ public class Ville {
         this.gouverneur = null;
     }
 
+    public void affecterGouverneur(Gouverneur gouverneur) {
+        this.gouverneur = gouverneur;
+        this.gouverneur.setEstAffecter(true);
+    }
+
     public String getNom() {
         return nom;
     }
