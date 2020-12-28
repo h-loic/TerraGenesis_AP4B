@@ -16,6 +16,8 @@ import java.util.Date;
  *
  *
  * @author Zapolatero - lpascuzzi
+ * @author Loic Hug
+ * @author Antoine Richard
  */
 
 public class Recherche {
