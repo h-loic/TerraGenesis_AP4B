@@ -160,7 +160,7 @@ public class ControleurPrincipal {
     }
 
     public void notifierNaviguerAjouterVille() throws Exception{
-        if (!planete.peutPayer((int) ((planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE))){
+        if (!planete.peutPayer((planete.getVilles().size()+1) * Ville.PRIX_BASE_VILLE)){
             throw new Exception("Fonds insuffisants : " + (planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE + " requis, disponibles : "+planete.getFinances());
         }
         this.vueAjouterVille.initialiserVueAjouterVille(planete.getCanvasCarte());
@@ -168,7 +168,7 @@ public class ControleurPrincipal {
     }
 
     public void notifierAjouterVille() {
-        this.planete.payer((int) ((planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE));
+        this.planete.payer(((planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE));
         this.planete.ajouterVille(this.vueAjouterVille.getVille());
         this.notifierNaviguerMenuPopulation();
     }
@@ -184,10 +184,10 @@ public class ControleurPrincipal {
     public void notifierAjouterBatiment(int idVille) throws Exception {
         Batiment batiment;
         batiment = this.vueAjouterBatiment.getBatiment();
-        if (!planete.peutPayer((int) batiment.getTypeBatiment().getCoutConstructionParDefaut())){
+        if (!planete.peutPayer(batiment.getTypeBatiment().getCoutConstructionParDefaut())){
             throw new Exception("Fonds insuffisants : " + (batiment.getTypeBatiment().getCoutConstructionParDefaut()) + " requis, disponibles : "+planete.getFinances());
         }
-        planete.payer((int) batiment.getTypeBatiment().getCoutConstructionParDefaut());
+        planete.payer(batiment.getTypeBatiment().getCoutConstructionParDefaut());
         this.planete.construireBatiment(idVille, batiment);
         this.notifierNaviguerAfficherVille(idVille);
 
@@ -198,10 +198,10 @@ public class ControleurPrincipal {
         if (!batiment.peutAmeliorer()){
             Exception exception = new Exception("Amélioration impossible : le batiment est au niveau maximal");
             throw exception;
-        }else if (!this.planete.peutPayer((int) batiment.getPrixAmelioration())){
+        }else if (!this.planete.peutPayer(batiment.getPrixAmelioration())){
             throw new Exception("Fonds insuffisants : " + (batiment.getPrixAmelioration()) + " requis, disponibles : "+planete.getFinances());
         }
-        this.planete.payer((int) batiment.getPrixAmelioration());
+        this.planete.payer(batiment.getPrixAmelioration());
         batiment.demarrerAmelioration();
         this.notifierNaviguerAfficherVille(idVille);
     }
@@ -325,13 +325,13 @@ public class ControleurPrincipal {
         if (rechercheEnCours){
             System.out.println("déjà recherche");
             throw new Exception("Recherche impossible : recherche déjà en cours");
-        }else if (!planete.peutPayer((int)typeBatiment.getCoutRecherche())){
+        }else if (!planete.peutPayer(typeBatiment.getCoutRecherche())){
             System.out.println("trop pauvre");
             throw new Exception("Recherche impossible : fonds insuffisants");
         }else if(! planete.peutRechercher(typeBatiment)) {
             throw new Exception("Recherche impossible : il faut d'abord rechercher la dépendence (" + typeBatiment.getParent() + ")");
         }else {
-            planete.payer((int) typeBatiment.getCoutRecherche());
+            planete.payer( typeBatiment.getCoutRecherche());
             planete.getRecherche().rechercher(typeBatiment);
 
             this.vueMenuRecherche.initialiserMenuRecherche(planete.getTypeBatimentNonDebloque(), planete.getRecherche().isRechercheEnCours(), planete.getRecherche().getTypeBatimentRecherche());

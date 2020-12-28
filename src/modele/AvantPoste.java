@@ -57,7 +57,7 @@ public class AvantPoste {
      * Le prix de base d'un AvantPoste (sert à calculer le prix d'un nouvel AvantPoste en fonction du nombre
      * d'AvantPostes déjà construits sur la planète)
      */
-    public static final int PRIX_BASE_AVPOSTE = 1000000;
+    public static final double PRIX_BASE_AVPOSTE = 1000000.;
 
     /**
      * Constructeur Mine.

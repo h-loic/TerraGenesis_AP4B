@@ -152,8 +152,8 @@ public class VueVille extends Scene {
         this.labelCoordonnees = new Label("("+ ville.getCoordonnee().getX()+", "+ville.getCoordonnee().getY()+", "+ville.getCoordonnee().getZ()+")");
         this.labelPopulation = new Label("pop. " + ville.getPopulation().getValeurActuelle());
         this.labelHabitation = new Label("hab. " + ville.getHabitation().getValeurActuelle());
-        this.labelPlace = new Label("Nombre de places batiments restantes : " + ville.getNbPlaceRestante() );
-        this.labelProchainePlace = new Label(ville.getNbPlaceRestante() != 0 ? "" : "Nouvelle place à pop. " + ville.getProchainPallierBatiment() );
+        this.labelPlace = new Label("Nombre de places batiments restantes : " + ville.getNombrePlaceRestante() );
+        this.labelProchainePlace = new Label(ville.getNombrePlaceRestante() != 0 ? "" : "Nouvelle place à pop. " + ville.getProchainPallierBatiment() );
         this.labelGouverneur = new Label("Gouveneur de la ville : " + (ville.getGouverneur() != null  ? ville.getGouverneur().getNom() : "aucun" ));
         this.labelEffetsGouverneur = new Label("");
         btnNaviguerGouverneurAssigne.setDisable(false);
