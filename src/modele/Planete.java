@@ -135,10 +135,10 @@ public class Planete {
         return this.gouverneurs;
     }
 
-    public boolean peutPayer(int montant){
-        System.out.println(getDonnee(FINANCES).getValeurActuelle() >= Double.parseDouble(Integer.toString(montant)));
-        System.out.println(getDonnee(FINANCES).getValeurActuelle() - Double.parseDouble(Integer.toString(montant)));
-        return getDonnee(FINANCES).getValeurActuelle() >= Double.parseDouble(Integer.toString(montant));
+    public boolean peutPayer(double montant){
+        System.out.println(getDonnee(FINANCES).getValeurActuelle() >= montant);
+        System.out.println(getDonnee(FINANCES).getValeurActuelle() - montant);
+        return getDonnee(FINANCES).getValeurActuelle() >= montant;
     }
 
 
@@ -151,8 +151,8 @@ public class Planete {
         return etatTypesBatiment.get(typeBatiment.getParent());
     }
 
-    public void payer(int montant){
-        getDonnee(FINANCES).setCroissance(-(Double.parseDouble(Integer.toString(montant))));
+    public void payer(double montant){
+        getDonnee(FINANCES).setCroissance(-montant);
         getDonnee(FINANCES).majValeur();
     }
 

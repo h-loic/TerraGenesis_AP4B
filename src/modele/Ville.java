@@ -155,9 +155,7 @@ public class Ville {
         if (nombrePlaceBatiment < batiments.size()) nombrePlaceBatiment = batiments.size();
 
     }
-    public int getNbPlaceRestante() {
-        return this.nombrePlaceBatiment - batiments.size();
-    }
+
     public double getProchainPallierBatiment() {
         return (this.nombrePlaceBatiment - 2) * PALIER_POPULATION_NB_BATIMENT;
     }
@@ -168,5 +166,9 @@ public class Ville {
 
     public HashMap<Batiment, Date> getBatimentsEnConstruction() {
         return this.batimentsEnConstruction;
+    }
+
+    public int getNombrePlaceRestante() {
+        return this.nombrePlaceBatiment - (batiments.size() + batimentsEnConstruction.size());
     }
 }
