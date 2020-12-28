@@ -1,5 +1,6 @@
 package vue;
 
+import controler.ControleurPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,23 +16,118 @@ import modele.TypeBatiment;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * <b>
+ *     Vue Permettant de rechercher et débloquer des types de batiments
+ * </p>
+ *
+ * @see modele.Planete
+ * @see modele.TypeBatiment
+ * @see modele.Recherche
+ * @author Zapolatero - lpascuzzi
+ * */
 
 public class VueMenuRecherche extends Scene {
 
+    /**
+     * La grille sur laquelle sont ajoutés les différents boutons de la vue
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     * */
     private GridPane grilleBoutons;
+
+    /**
+     * La grille sur laquelle sont ajoutés les différents éléments de la vue
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     * */
     private GridPane grillePrincipale;
+
+    /**
+     * La grille sur laquelle sont affichés les types de batiments à afficher
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     * */
     private GridPane grilleBatiments;
+
+    /**
+     * La grille sur laquelle sont ajoutés les informations concernant la recherche en cours, s'il y'en a une
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     * */
     private GridPane grilleRechercheEnCours;
 
+    /**
+     * Scrollpane dans laquelle sera ajouté la grille des batiments à rechercher
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     * @see VueMenuRecherche#grilleBatiments
+     * */
     private ScrollPane scrollPaneBatiments;
 
     private controler.ControleurPrincipal controleur = null;
+
+    /**
+     * Titre de la page Recherche
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     * */
     private Label labelRecherche;
+
+    /**
+     * Label affichant les messages d'erreurs
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     * */
     private Label labelErreur;
+
+    /**
+     * Label affichant le nom de type batiment actuellement recherché
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     * */
     private Label labelRechercheEnCours;
+
+    /**
+     * Bouton permettant de retourner au menu principal
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     * */
     private Button btnRetour;
+
+    /**
+     * Bouton permettant d'actualiser les données affichées
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     * */
     private Button btnActualiser;
 
+    /**
+     *  Constructeur de VueMenuRecherche
+     *  Créé différents labels, sliders et boutons de la vue
+     *
+     * @see VueMenuRecherche#grillePrincipale
+     * @see VueMenuRecherche#grilleBatiments
+     * @see VueMenuRecherche#grilleRechercheEnCours
+     * @see VueMenuRecherche#grilleBoutons
+     * @see VueMenuRecherche#labelRecherche
+     * @see VueMenuRecherche#labelRechercheEnCours
+     * @see VueMenuRecherche#labelErreur
+     * @see VueMenuRecherche#btnRetour
+     * @see VueMenuRecherche#scrollPaneBatiments
+     * @see VueMenuRecherche#btnActualiser
+     *
+     */
     public VueMenuRecherche() {
         super(new GridPane(), 400,400);
         this.grillePrincipale = (GridPane) this.getRoot();
@@ -46,6 +142,25 @@ public class VueMenuRecherche extends Scene {
         this.btnActualiser = new Button("Actualiser");
     }
 
+    /**
+     *  Initialise la vue
+     *      Affichage des différents types de batiments à rechercher et de la recherche en cours
+     * @param typeBatimentsNonDebloques liste contenant les types de batiments qui ne sont pas encore débloqués
+     * @param rechercheEnCours booléen indiquant si une recherche est en cours
+     * @param batimentRecherche type de batiment actuellement recherché si une recherche est en cours
+     *
+     * @see TypeBatiment
+     * @see VueMenuRecherche#grillePrincipale
+     * @see VueMenuRecherche#grilleBatiments
+     * @see VueMenuRecherche#grilleRechercheEnCours
+     * @see VueMenuRecherche#grilleBoutons
+     * @see VueMenuRecherche#labelRecherche
+     * @see VueMenuRecherche#labelRechercheEnCours
+     * @see VueMenuRecherche#labelErreur
+     * @see VueMenuRecherche#btnRetour
+     * @see VueMenuRecherche#scrollPaneBatiments
+     * @see VueMenuRecherche#btnActualiser
+     */
     public void initialiserMenuRecherche(ArrayList<TypeBatiment> typeBatimentsNonDebloques, boolean rechercheEnCours, TypeBatiment batimentRecherche) {
         this.grillePrincipale.getChildren().clear();
         this.grilleBatiments.getChildren().clear();
@@ -57,6 +172,7 @@ public class VueMenuRecherche extends Scene {
 
         int rowindex = 1;
 
+        //affichage des types de batiments pas encore débloqué
         for (TypeBatiment typeBatiment : typeBatimentsNonDebloques){
 
             if (typeBatiment == batimentRecherche) continue;//saute cette itération pour ne pas afficher le type de batiment actuellement recherché dans la lsite des batiments recherchés
@@ -67,6 +183,7 @@ public class VueMenuRecherche extends Scene {
 
             TextFlow textFlowEffet = new TextFlow();
 
+            //affichage des effets du type de batiment
             for (Map.Entry effet : typeBatiment.getEffetsParDefaut().entrySet()){
                 Text text =  new Text("    |> " + effet.getKey() + ": " + effet.getValue() + "\n");
                 if ((double) effet.getValue() < 0) text.setFill(Color.BLUE);
@@ -79,6 +196,7 @@ public class VueMenuRecherche extends Scene {
 
             Button btnRechercher = new Button("Rechercher");
 
+            //desactive le bouton de recherche si une recherche est deja en cours
             if (rechercheEnCours || typeBatimentsNonDebloques.contains(typeBatiment.getParent())){
                 btnRechercher.setDisable(true);
             }
@@ -90,6 +208,7 @@ public class VueMenuRecherche extends Scene {
                     try{
                         controleur.rechercherTypeBatiment(typeBatiment);
                     }catch(Exception e){
+                        //gestion des erreurs si la recherche est impossible
                         System.out.println(e.getMessage());
                         labelErreur.setText(e.getMessage());
                         labelErreur.setVisible(true);
@@ -111,6 +230,7 @@ public class VueMenuRecherche extends Scene {
             }
         });
 
+        //affichage des données de la recherche en cours s'il y en a une
         if (rechercheEnCours) {
             this.labelErreur.setText("Recherche en cours, impossible de faire une nouvelle recherche");
             this.labelErreur.setVisible(true);
@@ -135,6 +255,14 @@ public class VueMenuRecherche extends Scene {
         this.grillePrincipale.add(this.grilleBoutons, 0, 4);
     }
 
+    /**
+     *  Permet d'affecter un controleur à la vue
+     *
+     * @param controleur
+     *
+     * @see ControleurPrincipal
+     * @see VueMenuRecherche#controleur
+     */
     public void setControleur(controler.ControleurPrincipal controleur) {
         this.controleur = controleur;
     }
