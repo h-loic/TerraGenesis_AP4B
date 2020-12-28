@@ -6,7 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import modele.AvantPoste;
 import modele.Ville;
 
@@ -15,6 +17,9 @@ import java.util.ArrayList;
 
 public class VueMenuPopulation extends Scene {
 
+    public static final String STYLE_SCROLLPANE = "-fx-background-color:transparent;";
+    public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
+    public static final String STYLE_ERREUR = "-fx-text-fill: red; -fx-font-size: 13; -fx-font-weight: bold";
     protected GridPane grillePrincipale;
     protected GridPane grilleVilles;
     protected GridPane grilleAvPostes;
@@ -30,9 +35,10 @@ public class VueMenuPopulation extends Scene {
     private Button btnRetour;
     private Button btnAjouterVille;
     private Button btnAjouterAvPoste;
+    public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80px";
 
     public VueMenuPopulation() {
-        super(new GridPane(), 400,400);
+        super(new GridPane(), 500,400);
         this.grillePrincipale = (GridPane) this.getRoot();
 
         this.grilleAvPostes = new GridPane();
@@ -41,8 +47,11 @@ public class VueMenuPopulation extends Scene {
         this.scrollPaneVilles = new ScrollPane();
 
         this.labelVilles = new Label("Villes");
+        this.labelVilles.setStyle(STYLE_TITRE);
         this.labelAvPostes = new Label("Avant-postes");
+        this.labelAvPostes.setStyle(STYLE_TITRE);
         this.labelMessages = new Label("");
+        this.labelMessages.setStyle(STYLE_ERREUR);
 
         this.btnRetour = new Button("retour");
         this.btnAjouterVille = new Button("+ Ville");
@@ -58,7 +67,7 @@ public class VueMenuPopulation extends Scene {
 
         /* VILLES */
         for (Ville ville : listeVilles){
-            Label labelNom = new Label(ville.getNom());
+            Label labelNom = new Label(ville.getNom()+" : ");
             Label labelPopulation = new Label(" pop. "+ville.getPopulation().getValeurActuelle());
 
             Button btnAfficher = new Button("afficher");
@@ -70,11 +79,15 @@ public class VueMenuPopulation extends Scene {
                     controleur.notifierNaviguerAfficherVille((int)((Button)event.getSource()).getUserData());
                 }
             });
-            lignesVilles++;
 
-            this.grilleVilles.add(labelNom, 0, lignesVilles);
-            this.grilleVilles.add(labelPopulation, 1, lignesVilles);
-            this.grilleVilles.add(btnAfficher, 3, lignesVilles);
+            btnAfficher.setStyle(STYLE_BOUTONS);
+
+            lignesVilles++;
+            HBox ligne = new HBox();
+            ligne.setSpacing(25);
+            ligne.getChildren().addAll(labelNom, labelPopulation, btnAfficher);
+
+            this.grilleVilles.add(ligne, 0, lignesVilles);
         }
         btnAjouterVille.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -91,6 +104,8 @@ public class VueMenuPopulation extends Scene {
             }
         });
         this.scrollPaneVilles.setContent(this.grilleVilles);
+        this.scrollPaneVilles.setMinWidth(500);
+        this.scrollPaneVilles.setStyle(STYLE_SCROLLPANE);
         this.scrollPaneVilles.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         this.scrollPaneVilles.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 
@@ -115,11 +130,15 @@ public class VueMenuPopulation extends Scene {
                 }
             });
             lignesAvPostes++;
+            btnAfficher.setStyle(STYLE_BOUTONS);
 
-            this.grilleAvPostes.add(labelNom, 0, lignesAvPostes);
-            this.grilleAvPostes.add(labelBenefices, 1, lignesAvPostes);
-            this.grilleAvPostes.add(labelNbMines, 2, lignesAvPostes);
-            this.grilleAvPostes.add(btnAfficher, 3, lignesAvPostes);
+            HBox ligne = new HBox();
+            ligne.setSpacing(25);
+            ligne.getChildren().addAll(labelNom, labelNbMines, btnAfficher);
+
+            this.grilleAvPostes.add(ligne, 0, lignesAvPostes);
+
+
         }
         btnAjouterAvPoste.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -146,11 +165,15 @@ public class VueMenuPopulation extends Scene {
         this.scrollPaneAvPostes.setContent(this.grilleAvPostes);
         this.scrollPaneAvPostes.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         this.scrollPaneAvPostes.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        this.scrollPaneAvPostes.setStyle(STYLE_SCROLLPANE);
+
+        this.btnAjouterAvPoste.setStyle(STYLE_BOUTONS);
+        this.btnAjouterVille.setStyle(STYLE_BOUTONS);
+        this.btnRetour.setStyle(STYLE_BOUTONS);
 
         this.grillePrincipale.add(this.labelAvPostes, 0, 3);
         this.grillePrincipale.add(this.scrollPaneAvPostes, 0, 4);
         this.grillePrincipale.add(this.btnAjouterAvPoste, 0, 5);
-
 
         this.grillePrincipale.add(this.labelMessages, 0, 6);
         this.grillePrincipale.add(this.btnRetour, 0, 7);
