@@ -62,7 +62,7 @@ public class VueMenuRecherche extends Scene {
             if (typeBatiment == batimentRecherche) continue;//saute cette itération pour ne pas afficher le type de batiment actuellement recherché dans la lsite des batiments recherchés
 
             GridPane grillDescription = new GridPane();
-            Label labelBatiment = new Label(typeBatiment.getNom() + ", prix : "+typeBatiment.getCoutRecherche()
+            Label labelBatiment = new Label(typeBatiment.getNom() + ", prix : "+typeBatiment.getCoutRecherche() + ", durée : " + typeBatiment.getTempsRecherche() + " min."
                     + (typeBatiment.getParent() != null ? ("\nnécessite : " + typeBatiment.getParent() + " (" + (typeBatimentsNonDebloques.contains(typeBatiment.getParent()) ? "pas débloqué)" : "débloqué)")) : ""));
 
             TextFlow textFlowEffet = new TextFlow();

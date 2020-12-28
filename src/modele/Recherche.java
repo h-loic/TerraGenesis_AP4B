@@ -22,7 +22,7 @@ public class Recherche {
 
             Calendar c = Calendar.getInstance();
             c.setTime(dateFinRecherche);
-            c.add(Calendar.MINUTE, +1);
+            c.add(Calendar.MINUTE, +typeBatimentARechercher.getTempsRecherche());
             dateFinRecherche = c.getTime();
             rechercheEnCours = true;
         }
