@@ -3,6 +3,7 @@ package controler;
 import modele.*;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class ControleurTemps extends Thread{
@@ -61,8 +62,15 @@ public class ControleurTemps extends Thread{
     }
 
     private void majVilles() {
+        Date dateCourante = new Date();
         for (Ville ville : this.planete.getVilles()) {
             ville.majVille();
+            for (Map.Entry<Batiment, Date> batimentEnConstruction : ville.getBatimentsEnConstruction().entrySet()) {
+                if (dateCourante.after(batimentEnConstruction.getValue())) ville.finirConstructionBatiment(batimentEnConstruction.getKey());
+            }
+            for (Batiment batiment : ville.getBatiments()) {
+                if (batiment.estEnCoursAmelioration() && dateCourante.after(batiment.getDateFinAmelioration())) batiment.finirAmelioration();
+            }
         }
     }
 }

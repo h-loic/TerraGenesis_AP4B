@@ -3,7 +3,9 @@ package modele;
 import javafx.scene.media.MediaException;
 
 import java.util.ArrayList;
-import java.util.UUID;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Ville {
@@ -16,6 +18,7 @@ public class Ville {
     private int id;
     private String nom;
     private ArrayList<Batiment> batiments;
+    private HashMap<Batiment, Date> batimentsEnConstruction;
     private Coordonnee coordonnee;
     private int nombrePlaceBatiment;
     private Gouverneur gouverneur;
@@ -28,6 +31,7 @@ public class Ville {
         this.coordonnee = coordonnee;
         this.batiments = new ArrayList<>();
         this.batiments.add(new Batiment(TypeBatiment.UNITE_HABITATION));
+        this.batimentsEnConstruction = new HashMap<>();
         this.nombrePlaceBatiment = 3;
         this.gouverneur = null;
         this.population = new Donnee(TypeDonnee.POPULATION);
@@ -102,11 +106,22 @@ public class Ville {
     }
 
     public boolean peutConstruire() {
-        return this.getNombrePlaceBatiment() > this.batiments.size();
+        return this.getNombrePlaceBatiment() > (this.batiments.size() + this.batimentsEnConstruction.size());
     }
 
-    public void ajouterBatiment(Batiment batiment) {
+    public void demarrerConstructionBatiment(Batiment batiment) {
         if (!peutConstruire()) return;
+        Date dateFinConstruction = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(dateFinConstruction);
+        c.add(Calendar.MINUTE, +batiment.getTypeBatiment().getTempsConstructionParDefaut());
+        dateFinConstruction = c.getTime();
+        this.batimentsEnConstruction.put(batiment, dateFinConstruction);
+    }
+
+    public void finirConstructionBatiment(Batiment batiment) {
+        if (!peutConstruire()) return;
+        this.batimentsEnConstruction.remove(batiment);
         this.batiments.add(batiment);
     }
 
@@ -149,5 +164,9 @@ public class Ville {
 
     public void detruireBatiment(int idBatiment) {
         this.batiments.remove(getBatiment(idBatiment));
+    }
+
+    public HashMap<Batiment, Date> getBatimentsEnConstruction() {
+        return this.batimentsEnConstruction;
     }
 }

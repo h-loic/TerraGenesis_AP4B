@@ -188,21 +188,21 @@ public class ControleurPrincipal {
             throw new Exception("Fonds insuffisants : " + (batiment.getTypeBatiment().getCoutConstructionParDefaut()) + " requis, disponibles : "+planete.getFinances());
         }
         planete.payer((int) batiment.getTypeBatiment().getCoutConstructionParDefaut());
-        this.planete.ajouterBatiment(idVille, batiment);
+        this.planete.construireBatiment(idVille, batiment);
         this.notifierNaviguerAfficherVille(idVille);
 
     }
 
     public void notifierAmeliorerBatiment(int idBatiment, int idVille) throws Exception{
         Batiment batiment = planete.getVille(idVille).getBatiment(idBatiment);
-        if (batiment.getNiveau() >= batiment.getTypeBatiment().getNiveauMax()){
+        if (!batiment.peutAmeliorer()){
             Exception exception = new Exception("Amélioration impossible : le batiment est au niveau maximal");
             throw exception;
         }else if (!this.planete.peutPayer((int) batiment.getPrixAmelioration())){
             throw new Exception("Fonds insuffisants : " + (batiment.getPrixAmelioration()) + " requis, disponibles : "+planete.getFinances());
         }
         this.planete.payer((int) batiment.getPrixAmelioration());
-        batiment.ameliorer();
+        batiment.demarrerAmelioration();
         this.notifierNaviguerAfficherVille(idVille);
     }
 

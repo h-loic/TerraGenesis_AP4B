@@ -170,8 +170,8 @@ public class Planete {
         ajouterVille(new Ville("Niederschaeffolsheim", new Coordonnee(100,100,100)));
     }
 
-    public void ajouterBatiment(int idVille, Batiment batiment) {
-        getVille(idVille).ajouterBatiment(batiment);
+    public void construireBatiment(int idVille, Batiment batiment) {
+        getVille(idVille).demarrerConstructionBatiment(batiment);
         getVille(idVille).majVille();
     }
 

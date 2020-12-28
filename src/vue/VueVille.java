@@ -7,8 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import modele.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,9 +67,22 @@ public class VueVille extends Scene {
 
         int ligneBatiment=0;
 
+        //affichage des batiments en construction
+        for (Map.Entry<Batiment, Date> batimentsEnConstruction : ville.getBatimentsEnConstruction().entrySet()) {
+            Label labelNomBatiment = new Label(batimentsEnConstruction.getKey().getTypeBatiment().getNom()+" : en construction\ndurée des travaux : "
+                    + batimentsEnConstruction.getKey().getTypeBatiment().getTempsConstructionParDefaut() + " min.\n");
+            GridPane grilleBatiment = new GridPane();
+            grilleBatiment.add(labelNomBatiment, 0, 0);
+            grilleBatiment.add(new Text(""), 0, 1);
+            grilleBatiments.add(grilleBatiment, 0, ligneBatiment);
+
+            ligneBatiment++;
+        }
+
         //affichage des listes et de leurs données
         for(Batiment batiment : ville.getBatiments()){
-            Label labelNomBatiment = new Label(batiment.getTypeBatiment().getNom()+" : niv." + batiment.getNiveau() + " état." + (batiment.estDesactive() ? "Désactivé" : "Activé"));
+            Label labelNomBatiment = new Label(batiment.getTypeBatiment().getNom()+" : niv." + batiment.getNiveau() + (batiment.estEnCoursAmelioration() ? "+" : "")
+                    + " état." + (batiment.estDesactive() ? "Désactivé" : "Activé"));
             Label labelEffet = new Label("effets :");
             TypeDonnee typeDonnee;
             double valeur;
@@ -88,9 +103,14 @@ public class VueVille extends Scene {
             grilleBatiment.add(btnAmeliorer, 0, 2);
             grilleBatiment.add(btnActiverDesactiver, 1, 2);
             grilleBatiment.add(btnDetruireBatiment, 2, 2);
+            grilleBatiment.add(new Text(""), 0, 3);
 
-            if (batiment.getNiveau() >= batiment.getTypeBatiment().getNiveauMax()){
+            if (!batiment.peutAmeliorer()){
                 btnAmeliorer.setDisable(true);
+            }
+            if (batiment.estEnCoursAmelioration()) {
+                btnAmeliorer.setDisable(true);
+                btnAmeliorer.setText("Amélioration en cours");
             }
 
             btnAmeliorer.setOnAction(new EventHandler<ActionEvent>() {
