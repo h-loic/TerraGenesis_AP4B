@@ -114,10 +114,11 @@ public class VueMenuStatistiques extends Scene {
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
      */
+    private Button btnActualiser;
 
     /**
      *  Constructeur de VueMenuStatistiques
-     *  Créé différents labels, sliders et boutons de la vue
+     *  Créé les différents labels, sliders et boutons de la vue
      *
      * @see VueMenuStatistiques#grillePrincipale
      * @see VueMenuStatistiques#labelTemperature
@@ -131,8 +132,6 @@ public class VueMenuStatistiques extends Scene {
      * @see VueMenuStatistiques#btnRetour
      * @see VueMenuStatistiques#btnActualiser
      */
-    private Button btnActualiser;
-
     public VueMenuStatistiques() {
         super(new GridPane(), 400,400);
 
