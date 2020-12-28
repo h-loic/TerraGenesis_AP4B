@@ -24,7 +24,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author Antoine RICHARD - Antoine68
  */
-
 public class Batiment {
 
     private static final AtomicInteger sequence = new AtomicInteger();

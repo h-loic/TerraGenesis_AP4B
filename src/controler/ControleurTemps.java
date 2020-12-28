@@ -64,7 +64,7 @@ public class ControleurTemps extends Thread{
     private void majVilles() {
         Date dateCourante = new Date();
         for (Ville ville : this.planete.getVilles()) {
-            ville.majVille();
+            ville.majDonnees();
             for (Map.Entry<Batiment, Date> batimentEnConstruction : ville.getBatimentsEnConstruction().entrySet()) {
                 if (dateCourante.after(batimentEnConstruction.getValue())) ville.finirConstructionBatiment(batimentEnConstruction.getKey());
             }
