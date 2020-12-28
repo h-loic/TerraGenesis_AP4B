@@ -29,9 +29,7 @@ import modele.Ressource;
  *
  *
  * @author Zapolatero - lpascuzzi
- * @author Loic Hug
- * @author Antoine Richard
- */
+ * */
 
 public class VueMenuPrincipal extends Scene {
 

@@ -24,8 +24,6 @@ import java.util.Random;
  *
  *
  * @author Zapolatero - lpascuzzi
- * @author Loic Hug
- * @author Antoine Richard
  */
 
 public class Mine {
