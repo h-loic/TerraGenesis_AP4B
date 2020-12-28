@@ -104,7 +104,28 @@ public class Ville {
      */
     private Donnee habitation;
 
-
+    /**
+     * Constructeur Ville.
+     * <p>
+     * A la construction d'un objet Ville, le nom et les coordonnées sont initialisés avec les valeurs passées en
+     * paramètres. On ajoute un premier batiment dans la liste et on défini à 3 le nombre de place de batiment dans
+     * la ville.
+     * </p>
+     *
+     * @param nom le nom de la Ville.
+     * @param coordonnee les coordonnées de la Ville.
+     *
+     * @see Ville#id
+     * @see Ville#nom
+     * @see Ville#coordonnee
+     * @see Ville#batiments
+     * @see Ville#batimentsEnConstruction
+     * @see Ville#nombrePlaceBatiment
+     * @see Ville#gouverneur
+     * @see Ville#population
+     * @see Ville#habitation
+     *
+     */
     public Ville(String nom, Coordonnee coordonnee) {
         this.id = genererId();
         this.nom = nom;
