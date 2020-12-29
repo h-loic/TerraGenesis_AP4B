@@ -115,7 +115,7 @@ public class Batiment {
         this.estDesactive = false;
         this.estEnCoursAmelioration = false;
         this.dateFinAmelioration = null;
-        this.effets = new HashMap<TypeDonnee, Double> (typeBatiment.getEffetsParDefaut());
+        this.effets = typeBatiment.getEffetsParDefaut();
     }
 
     /**

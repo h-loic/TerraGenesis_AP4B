@@ -1,7 +1,5 @@
 package modele;
 
-import javafx.scene.media.MediaException;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
