@@ -101,13 +101,22 @@ public class Planete {
 
     public void initialiserGouverneur() {
         this.ajouterGouverneur(new Gouverneur(false, 0, "Michou", false,
-                new HashMap<Donnee, Double>(){{ put(getDonnee(TEMPERATURE), 10.0); }})
+                new HashMap<Donnee, Double>(){{ put(getDonnee(TEMPERATURE), 30.0);put(getDonnee(FINANCES), 10.0); }})
         );
         this.ajouterGouverneur(new Gouverneur(false, 0, "Sriky", false,
-                new HashMap<Donnee, Double>(){{ put(getDonnee(PRESSION), 10.0); }})
+                new HashMap<Donnee, Double>(){{ put(getDonnee(PRESSION), 30.0);put(getDonnee(OXYGENE), 10.0); }})
         );
         this.ajouterGouverneur(new Gouverneur(false, 0, "Alembert", false,
-                new HashMap<Donnee, Double>() {{ put(getDonnee(OXYGENE), 10.0); }})
+                new HashMap<Donnee, Double>() {{ put(getDonnee(OXYGENE), 20.0); }})
+        );
+        this.ajouterGouverneur(new Gouverneur(false, 0, "Leon", false,
+                new HashMap<Donnee, Double>() {{ put(getDonnee(EAU), 20.0);put(getDonnee(OXYGENE), 20.0); }})
+        );
+        this.ajouterGouverneur(new Gouverneur(false, 0, "Zora", false,
+                new HashMap<Donnee, Double>() {{ put(getDonnee(FINANCES), 20.0); }})
+        );
+        this.ajouterGouverneur(new Gouverneur(false, 0, "Tomoya", false,
+                new HashMap<Donnee, Double>() {{ put(getDonnee(FINANCES), 10.0); put(getDonnee(EAU),10.0); }})
         );
     }
 

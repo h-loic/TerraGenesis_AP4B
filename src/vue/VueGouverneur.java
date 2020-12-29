@@ -77,8 +77,8 @@ public class VueGouverneur extends Scene{
             grillePrincipale.add(new Label(Double.toString(gouverneur.getEffets().get(donnee))),2,compteurLigne);
         }
         grillePrincipale.add(btnAmeliorer,2,1);
-        grillePrincipale.add(btnAffecter,1,5);
-        grillePrincipale.add(btnRetour,1,6);
+        grillePrincipale.add(btnAffecter,1,compteurLigne+1);
+        grillePrincipale.add(btnRetour,1,compteurLigne+2);
     }
     public void setControleur(controler.ControleurPrincipal controleur) {
         this.controleur = controleur;
