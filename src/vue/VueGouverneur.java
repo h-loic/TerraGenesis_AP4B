@@ -80,7 +80,6 @@ public class VueGouverneur extends Scene{
         grillePrincipale.add(btnAffecter,1,5);
         grillePrincipale.add(btnRetour,1,6);
     }
-
     public void setControleur(controler.ControleurPrincipal controleur) {
         this.controleur = controleur;
     }

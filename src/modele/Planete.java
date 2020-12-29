@@ -220,6 +220,13 @@ public class Planete {
     public void affecterGouverneur(Gouverneur gouverneur, int idVille){
         this.getVille(idVille).affecterGouverneur(gouverneur);
         gouverneur.setVilleAffecter(this.getVille(idVille));
+        for (Donnee effet : gouverneur.getEffets().keySet()){
+            for (Donnee donnee : this.donnees){
+                if (donnee == effet){
+                    donnee.setCroissance(donnee.getCroissance() + gouverneur.getEffets().get(effet));
+                }
+            }
+        }
     }
 
     public void trierGouverneurParNom() {
