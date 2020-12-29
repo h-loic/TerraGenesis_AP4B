@@ -1,6 +1,8 @@
 package vue;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class NavigateurDesVues extends Application{
 
@@ -59,8 +61,12 @@ public class NavigateurDesVues extends Application{
 
         this.stage.setScene(null);
         this.stage.show();
-
         this.controleur = controler.ControleurPrincipal.getInstance();
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                controleur.notifierFermerApplication();
+            }
+        });
         this.controleur.activerVues(this);
         this.vueMenuPrincipal.setControleur(controleur);
         this.vueMenuStatistiques.setControleur(controleur);
@@ -77,6 +83,10 @@ public class NavigateurDesVues extends Application{
         this.vueVille.setControleur(controleur);
         this.vueAjouterVille.setControleur(controleur);
         this.vueAjouterBatiment.setControleur(controleur);
+    }
+
+    public void fermerFenetre() {
+        stage.close();
     }
 
     public void naviguerVersVueMenuPrincipal()

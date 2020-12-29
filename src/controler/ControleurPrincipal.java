@@ -76,6 +76,11 @@ public class ControleurPrincipal {
         return instance;
     }
 
+    public void notifierFermerApplication() {
+        this.navigateur.fermerFenetre();
+        this.controleurTemps.arreter();
+    }
+
     public void notifierNaviguerMenuStatistiques()
     {
         this.vueMenuStatistiques.initialiserMenuStatistiques(this.planete.getDonnee(TypeDonnee.PRESSION).getValeurActuelle(), this.planete.getDonnee(TypeDonnee.OXYGENE).getValeurActuelle(), this.planete.getDonnee(TypeDonnee.EAU).getValeurActuelle(),

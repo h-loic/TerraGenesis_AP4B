@@ -5,8 +5,10 @@ import modele.*;
 import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ControleurTemps extends Thread{
+    private AtomicBoolean estEnMarche = new AtomicBoolean();
     private Planete planete;
     private ControleurPrincipal controleurPrincipal;
 
@@ -17,16 +19,22 @@ public class ControleurTemps extends Thread{
     }
 
     public void run(){
-        while (true){
+        this.estEnMarche.set(true);
+        while (estEnMarche.get()){
             majAvantPostes();
             majVilles();
             majRecherche();
             try {
                 sleep(1000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                arreter();
             }
         }
+    }
+
+    public void arreter() {
+        this.estEnMarche.set(false);
+        interrupt();
     }
 
     public void majRecherche(){
