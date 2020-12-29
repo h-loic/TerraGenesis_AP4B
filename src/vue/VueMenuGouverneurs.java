@@ -24,7 +24,7 @@ public class VueMenuGouverneurs extends Scene {
     public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
 
     /**
-     *  Constante définissant le style des boutons pour trier de la vue
+     *  Constante définissant le style des boutons pour trier la vue
      *
      * @see VueMenuGouverneurs#VueMenuGouverneurs()
      * @see VueMenuGouverneurs#initialiserMenuGouverneurs(ArrayList)
@@ -60,7 +60,7 @@ public class VueMenuGouverneurs extends Scene {
         this.boutonRetour.setStyle(STYLE_BOUTONS);
         this.boutonTrierParNom = new Button("Trier par nom");
         this.boutonTrierParNom.setStyle(STYLE_BOUTONS_TRIER);
-        this.boutonTrierParDebloque = new Button("Trier par debloquer");
+        this.boutonTrierParDebloque = new Button("Trier par debloqué");
         this.boutonTrierParDebloque.setStyle(STYLE_BOUTONS_TRIER);
     }
 

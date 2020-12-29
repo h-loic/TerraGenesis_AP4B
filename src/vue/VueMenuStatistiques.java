@@ -234,7 +234,8 @@ public class VueMenuStatistiques extends Scene {
         this.sliderTemperature.setShowTickLabels(true);
 
         //affichage de la population
-        this.labelPopVal.setText(String.valueOf(population));
+        this.labelPopVal.setText(Double.toString(population));
+        System.out.println("POPULATION : "+population);
 
         //affichage des finances
         this.labelFinancesVal.setText(String.valueOf(finances));
