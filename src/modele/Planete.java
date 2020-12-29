@@ -214,6 +214,14 @@ public class Planete {
     }
 
     public void revoquerGouverneur(int idVille) {
+        Gouverneur gouverneurRevoquer = this.getVille(idVille).getGouverneur();
+        for (Donnee effet : gouverneurRevoquer.getEffets().keySet()){
+            for (Donnee donnee : this.donnees){
+                if (donnee == effet){
+                    donnee.setCroissance(donnee.getCroissance() - gouverneurRevoquer.getEffets().get(effet));
+                }
+            }
+        }
         this.getVille(idVille).revoquerGouverneur();
     }
 
