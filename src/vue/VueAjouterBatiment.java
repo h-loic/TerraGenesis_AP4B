@@ -25,6 +25,8 @@ import java.util.Map;
 
 public class VueAjouterBatiment extends Scene {
 
+    public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 50px";
+
     private controler.ControleurPrincipal controleur = null;
 
     protected GridPane grillePrincipale;
@@ -52,13 +54,30 @@ public class VueAjouterBatiment extends Scene {
         super(new GridPane(), 400,400);
 
         this.btnRetourMenuVille = new Button("Annuler");
+        this.btnRetourMenuVille.setStyle(STYLE_BOUTONS);
         this.btnAjouterBatiment = new Button("Ajouter");
+        this.btnAjouterBatiment.setStyle(STYLE_BOUTONS);
         this.labelTypeBatiment = new Label("Type de batiment : ");
         this.labelPrix = new Label("Prix :");
         this.labelDescription = new Label("Description :");
         this.labelEffet = new Label("Effets :");
         this.textFlowEffet = new TextFlow();
         this.labelErreurs = new Label("");
+        this.comboBoxTypeBatiment = new ComboBox();
+        this.comboBoxTypeBatiment.valueProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal == null) return;
+            TypeBatiment typeBatimentSelectionne = (TypeBatiment) newVal;
+            labelDescription.setText("Description : " +  typeBatimentSelectionne.getDescription());
+            labelPrix.setText("Prix : " + typeBatimentSelectionne.getCoutConstructionParDefaut() + "" + TypeDonnee.FINANCES.getUnite());
+            textFlowEffet.getChildren().clear();
+            for (Map.Entry effet : typeBatimentSelectionne.getEffetsParDefaut().entrySet()){
+                Text text =  new Text("    |> " + effet.getKey() + ": " + effet.getValue() + "\n");
+                if ((double) effet.getValue() < 0) text.setFill(Color.BLUE);
+                else text.setFill(Color.RED);
+                textFlowEffet.getChildren().add(text);
+            }
+
+        });
 
 
         this.grillePrincipale = (GridPane) this.getRoot();
@@ -78,23 +97,11 @@ public class VueAjouterBatiment extends Scene {
         for (TypeBatiment typeBatiment : typeBatimentDebloque) {
             options.add(typeBatiment);
         }
-        this.comboBoxTypeBatiment = new ComboBox(options);
 
-        this.comboBoxTypeBatiment.valueProperty().addListener((obs, oldVal, newVal) -> {
-            TypeBatiment typeBatimentSelectionne = (TypeBatiment) newVal;
-            labelDescription.setText("Description : " +  typeBatimentSelectionne.getDescription());
-            labelPrix.setText("Prix : " + typeBatimentSelectionne.getCoutConstructionParDefaut() + "" + TypeDonnee.FINANCES.getUnite());
-            textFlowEffet.getChildren().clear();
-            for (Map.Entry effet : typeBatimentSelectionne.getEffetsParDefaut().entrySet()){
-                Text text =  new Text("    |> " + effet.getKey() + ": " + effet.getValue() + "\n");
-                if ((double) effet.getValue() < 0) text.setFill(Color.BLUE);
-                else text.setFill(Color.RED);
-                textFlowEffet.getChildren().add(text);
-            }
 
-        });
+        this.comboBoxTypeBatiment.setItems(options);
 
-        this.comboBoxTypeBatiment.setValue(typeBatimentDebloque.get(0));
+        this.comboBoxTypeBatiment.setValue(options.get(0));
 
         grilleForm.add(this.labelTypeBatiment,0,0);
         grilleForm.add(this.comboBoxTypeBatiment, 0, 1);

@@ -17,6 +17,10 @@ import java.util.Map;
 
 public class VueVille extends Scene {
 
+    public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 50px";
+
+    public static final String STYLE_SCROLLPANE = "-fx-background-color:transparent; -fx-border-width: 2px; -fx-border-color: black;";
+
     private GridPane grillePrincipale;
     private GridPane grilleVille;
     private GridPane grilleBatiments;
@@ -47,12 +51,20 @@ public class VueVille extends Scene {
         this.grilleBatiments = new GridPane();
         this.grilleVille = new GridPane();
         this.scrollPaneBatiments = new ScrollPane();
+        scrollPaneBatiments.setMinWidth(400);
+        scrollPaneBatiments.setStyle(STYLE_SCROLLPANE);
         btnRetour = new Button("Retour");
+        btnRetour.setStyle(STYLE_BOUTONS);
         btnDetruire = new Button("Détruire");
+        btnDetruire.setStyle(STYLE_BOUTONS);
         btnAjouterBatiment = new Button("+ Batiment");
+        btnAjouterBatiment.setStyle(STYLE_BOUTONS);
         btnNaviguerGouverneurs = new Button("Afficher liste gouverneurs");
+        btnNaviguerGouverneurs.setStyle(STYLE_BOUTONS);
         btnNaviguerGouverneurAssigne = new Button("Afficher");
+        btnNaviguerGouverneurAssigne.setStyle(STYLE_BOUTONS);
         btnRevoquerGouverneur= new Button("Révoquer");
+        btnRevoquerGouverneur.setStyle(STYLE_BOUTONS);
         labelMessages = new Label("");
     }
 
@@ -93,9 +105,12 @@ public class VueVille extends Scene {
             }
 
             Button btnAmeliorer = new Button("Améliorer");
+            btnAmeliorer.setStyle(STYLE_BOUTONS);
             btnAmeliorer.setUserData(batiment.getId());
             Button btnActiverDesactiver = new Button(batiment.estDesactive() ? "Activer" : "Désactiver");
+            btnActiverDesactiver.setStyle(STYLE_BOUTONS);
             Button btnDetruireBatiment = new Button("Detruire");
+            btnDetruireBatiment.setStyle(STYLE_BOUTONS);
 
             GridPane grilleBatiment = new GridPane();
             grilleBatiment.add(labelNomBatiment, 0, 0);
@@ -116,7 +131,6 @@ public class VueVille extends Scene {
             btnAmeliorer.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    //controleur.notifierNaviguerAfficherAvPoste((int)((Button)event.getSource()).getUserData());
                     try {
                         controleur.notifierAmeliorerBatiment((int)btnAmeliorer.getUserData(), ville.getId());
                         labelMessages.setVisible(false);
@@ -226,6 +240,11 @@ public class VueVille extends Scene {
         scrollPaneBatiments.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPaneBatiments.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 
+        GridPane grilleBtnGouverneur = new GridPane();
+        grilleBtnGouverneur.add(btnNaviguerGouverneurs, 0, 0);
+        grilleBtnGouverneur.add(btnNaviguerGouverneurAssigne, 1, 0);
+        grilleBtnGouverneur.add(btnRevoquerGouverneur, 2, 0);
+
         grilleVille.add(labelNom,0,0);
         grilleVille.add(labelCoordonnees,1,0);
         grilleVille.add(labelPopulation,0,1);
@@ -238,9 +257,7 @@ public class VueVille extends Scene {
         grillePrincipale.add(labelPlace, 0, 3);
         grillePrincipale.add(labelProchainePlace, 0, 4);
         grillePrincipale.add(labelGouverneur, 0, 5);
-        grillePrincipale.add(btnNaviguerGouverneurs, 0, 6);
-        grillePrincipale.add(btnNaviguerGouverneurAssigne, 1, 6);
-        grillePrincipale.add(btnRevoquerGouverneur, 2, 6);
+        grillePrincipale.add(grilleBtnGouverneur, 0, 6);
         grillePrincipale.add(labelEffetsGouverneur, 0, 7);
         grillePrincipale.add(labelMessages, 0, 8);
         this.labelMessages.setVisible(false);
