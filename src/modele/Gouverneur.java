@@ -3,13 +3,51 @@ package modele;
 import java.util.Comparator;
 import java.util.HashMap;
 
+/**
+ * <b>Gouverneur est la classe représentant les différents Gouverneur de la planète</b>
+ * <p>
+ * Un gouverneur est caractérisé par les informations suivantes :
+ * <ul>
+ * <li>Un etat pour savoir s'il est débloqué</li>
+ * <li>Un niveau</li>
+ * <li>Un nom</li>
+ * <li>Un etat pour savoir s'il est affecter</li>
+ * <li>Une ville a laquelle il est affecter</li>
+ * <li>Une liste associative de Donnee (clé) avec la valeur de l'effet (valeur)</li>
+ * </ul>
+ * </p>
+ *
+ *
+ * @author Loïc HUG - h-loic
+ */
+
 public class Gouverneur {
 
     private static final int PRIX_BASE_GOUVERNEUR = 25000;
     private static final int PRIX_BASE_AMELIORATION   = 1500;
 
+    /**
+     * estDebloque permet de savoir si le gouverneur est debloqué
+     *
+     * @see Gouverneur#Gouverneur(boolean, int, String, boolean, HashMap)
+     * @see Gouverneur#estDebloque()
+     */
     private boolean estDebloque;
+
+    /**
+     * Le niveau du gouverneur
+     *
+     * @see Gouverneur#Gouverneur(boolean, int, String, boolean, HashMap)
+     * @see Gouverneur#getNiveau()
+     */
     private int niveau;
+
+    /**
+     * Le nom du gouverneur
+     *
+     * @see Gouverneur#Gouverneur(boolean, int, String, boolean, HashMap)
+     * @see Gouverneur#getNom()
+     */
     private String nom;
     private boolean estAffecter;
     private Ville villeAffecter;
