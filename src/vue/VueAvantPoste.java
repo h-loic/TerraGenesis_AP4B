@@ -304,7 +304,6 @@ public class VueAvantPoste extends Scene {
         this.labelMessages.setVisible(false);
     }
 
-
     /**
      *  Permet d'affecter un controleur à la vue
      *
