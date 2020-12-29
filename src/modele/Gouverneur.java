@@ -49,10 +49,53 @@ public class Gouverneur {
      * @see Gouverneur#getNom()
      */
     private String nom;
+
+    /**
+     * estAffecter permet de savoir si le gouverneur est affecter
+     *
+     * @see Gouverneur#Gouverneur(boolean, int, String, boolean, HashMap)
+     * @see Gouverneur#estAffecter()
+     */
     private boolean estAffecter;
+
+    /**
+     * La ville affecter par le gouverneur
+     *
+     * @see Gouverneur#getVilleAffecter()
+     * @see Gouverneur#setVilleAffecter(Ville)
+     */
     private Ville villeAffecter;
+
+    /**
+     * La liste des effets du gouverneur
+     *
+     * @see Gouverneur#Gouverneur(boolean, int, String, boolean, HashMap)
+     * @see Gouverneur#getEffets()
+     */
     private HashMap<Donnee, Double> effets;
 
+
+    /**
+     * Constructeur Gouverneur.
+     * <p>
+     * A la construction d'un objet Gouverneur, le nom et le niveau l'etat debloque et affecter ainsi que sa liste d'effets
+     * sont initialisés avec les valeurs passées en
+     * paramètres.
+     * </p>
+     *
+     * @param estDebloque etat debloque du gouverneur
+     * @param niveau le niveau du gouverneur
+     * @param nom le nom du gouverneur
+     * @param estAffecter etat de l'affectation du gouverneur
+     * @param effets la liste des effets du gouverneur
+     *
+     * @see Gouverneur#estAffecter
+     * @see Gouverneur#estDebloque
+     * @see Gouverneur#effets
+     * @see Gouverneur#niveau
+     * @see Gouverneur#nom
+     *
+     */
     public Gouverneur(boolean estDebloque, int niveau, String nom, boolean estAffecter, HashMap<Donnee,Double> effets) {
         this.estDebloque = estDebloque;
         this.niveau = niveau;
@@ -61,64 +104,117 @@ public class Gouverneur {
         this.effets = effets;
     }
 
+    /**
+     * Accesseur de l'etat debloqué du gouverneur
+     *
+     * @return  l'etat debloaué du gouverneur
+     */
     public boolean estDebloque(){
         return  this.estDebloque;
     }
 
+    /**
+     * Accesseur du niveau du gouverneur
+     *
+     * @return  le niveau du gouverneur
+     */
     public int getNiveau() {
         return niveau;
     }
 
+    /**
+     * Accesseur du nom du gouverneur
+     *
+     * @return  le nom du gouverneur
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     * Accesseur de l'etat d'affectation du gouverneur
+     *
+     * @return  l'etat d'affectation du gouverneur
+     */
     public boolean estAffecter() {
         return estAffecter;
     }
 
+    /**
+     * Accesseur de la liste l'effets du gouverneur
+     *
+     * @return  la liste d'effets du gouverneur
+     */
     public HashMap<Donnee, Double> getEffets() {
         return effets;
     }
 
-    public Double getEffetsValeur(int index) {
-        return effets.get(index);
-    }
-
+    /**
+     * attribut l'etat true a l'attribut estDebloque
+     */
     public void setEstDebloque() {
         this.estDebloque = true;
     }
 
+    /**
+     * Accesseur du prix de base du gouverneur
+     *
+     * @return  le prix de base du gouverneur
+     */
     public int getPrixBaseGouverneur() {
         return PRIX_BASE_GOUVERNEUR;
     }
 
+    /**
+     * Retourne le prix de l'amelioration du gouverneur en fonction de son niveau actuel
+     *
+     * @return  le prix de l'amelioration du gouverneur
+     */
     public int getPrixAmelioration() {
         return PRIX_BASE_AMELIORATION * this.niveau;
     }
 
+    /**
+     * Attribut un état a l'attribut estAffecter
+     *
+     * @param  estAffecter l'état que l'on souhaite affecter
+     */
     public void setEstAffecter(boolean estAffecter) {
         this.estAffecter = estAffecter;
     }
 
+    /**
+     * Accesseur de la ville affecter par le gouverneur
+     *
+     * @return  la ville affecter par le gouverneur
+     */
     public Ville getVilleAffecter() {
         return villeAffecter;
     }
 
+    /**
+     * Attribut une ville au gouverneur
+     *
+     * @param  villeAffecter la ville que l'on souhaite affecter au gouverneur
+     */
     public void setVilleAffecter(Ville villeAffecter) {
         this.villeAffecter = villeAffecter;
     }
 
+    /**
+     * Améliore le gouverneur en imcrémentant de 1 son niveau
+     * et en multipliant ses effets par 1.5
+     */
     public void ameliorer(){
         this.niveau = this.niveau + 1;
-        for (Donnee donnee : effets.keySet()) {
-            System.out.println(effets.get(donnee));
-        }
         for (Donnee donnee : effets.keySet()) {
             this.effets.put(donnee, this.effets.get(donnee)*1.5);
         }
     }
 
+    /**
+     * Compare le gouverneur d'après son nom
+     */
     public static Comparator<Gouverneur> ComparatorNom = new Comparator<Gouverneur>() {
         @Override
         public int compare(Gouverneur gouv1, Gouverneur gouv2) {
@@ -126,6 +222,9 @@ public class Gouverneur {
         }
     };
 
+    /**
+     * Compare le gouverneur d'après son etat estDebloque
+     */
     public static Comparator<Gouverneur> ComparatorDebloque = new Comparator<Gouverneur>() {
         @Override
         public int compare(Gouverneur gouv1, Gouverneur gouv2) {
