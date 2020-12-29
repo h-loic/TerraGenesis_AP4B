@@ -3,11 +3,10 @@ package modele;
 import java.util.HashMap;
 
 /**
- * <b>TypeBatiment est l'énumération représentant les différentes type de batiment constructible dans le jeu</b>
+ * <b>TypeBatiment est l'énumération représentant les différents types de batiments constructibles dans le jeu</b>
  * <p>
  * Un type de batiment est caractérisé par les informations suivantes :
  * <ul>
- * <li>Un identifiant unique attribué définitivement.</li>
  * <li>Un nom</li>
  * <li>Une description</li>
  * <li>Un niveau maximum</li>
@@ -272,53 +271,53 @@ public enum TypeBatiment {
     private String nom ;
 
     /**
-     * La description du type de batiment
+     * La description du type de batiment.
      */
     private String description;
 
     /**
-     * Le niveau maximum que pourra atteindre un batiment de ce type
+     * Le niveau maximum que pourra atteindre un batiment de ce type.
      */
     private int niveauMax;
 
     /**
-     * Le cout de recherche du type de batiment
+     * Le cout de recherche du type de batiment.
      */
     private double coutRecherche;
 
     /**
-     * Le temps de recherche du type de batiment
+     * Le temps de recherche du type de batiment.
      */
     private int tempsRecherche;
 
     /**
-     * Le cout de construction par défaut d'un batiment de ce type
+     * Le cout de construction par défaut d'un batiment de ce type.
      */
     private double coutConstructionParDefaut;
 
     /**
-     * Le temps de construction par défaut d'un batiment de ce type
+     * Le temps de construction par défaut d'un batiment de ce type.
      */
     private int tempsConstructionParDefaut;
 
     /**
-     * Les effets sur les données par défaut d'un batiment de ce type
+     * Les effets sur les données par défaut d'un batiment de ce type.
      */
     private HashMap<TypeDonnee, Double> effetsParDefaut;
 
     /**
-     * Le type parent. Permet de gérer les dépendances de recherches
+     * Le type parent. Permet de gérer les dépendances de recherches.
      */
     private TypeBatiment parent;
 
     /**
-     * Indique si le type est débloqué au début de la partie
+     * Indique si le type est débloqué au début de la partie.
      */
     private boolean estDebloqueParDefaut;
 
     /**
      *
-     * Constructeur TypeBatiment.
+     * Constructeur TypeBatiment. Initialise les attributs avec les valeurs passées en paramètres.
      *
      * @param nom le nom du type de batiment
      * @param description la description
