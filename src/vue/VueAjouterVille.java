@@ -23,6 +23,8 @@ import java.util.Random;
 
 public class VueAjouterVille extends Scene {
 
+    public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 50px";
+
     private controler.ControleurPrincipal controleur = null;
 
     protected GridPane grillePrincipale;
@@ -57,6 +59,7 @@ public class VueAjouterVille extends Scene {
 
         this.btnRetourMenuPopulation = new Button("Annuler");
         this.btnAjouterVille = new Button("Ajouter");
+        btnAjouterVille.setStyle(STYLE_BOUTONS);
 
         this.canvasCoords = new Canvas(250,250);
         this.gcCanva = this.canvasCoords.getGraphicsContext2D();
