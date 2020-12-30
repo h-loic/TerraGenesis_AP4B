@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -13,13 +14,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import modele.AvantPoste;
 import modele.Mine;
 import modele.Coordonnee;
 import modele.Ressource;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -33,6 +34,38 @@ import java.util.Random;
  * */
 
 public class VueAjouterMine extends Scene {
+
+    /**
+     *  Constante définissant le style permettant de mettre du texte en valeur en le mettant en gras
+     *
+     * @see VueAjouterMine#VueAjouterMine()
+     * @see VueAjouterMine#positionnerMine(double, double, ArrayList)
+     */
+    public static final String STYLE_GRAS = "-fx-font-size: 13; -fx-font-weight: bold;";
+
+    /**
+     *  Constante définissant le style des titres de la vue
+     *
+     * @see VueAjouterMine#VueAjouterMine()
+     * @see VueAjouterMine#positionnerMine(double, double, ArrayList)
+     */
+    public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
+
+    /**
+     *  Constante définissant le style du label des erreurs de la vue
+     *
+     * @see VueAjouterMine#VueAjouterMine()
+     * @see VueAjouterMine#positionnerMine(double, double, ArrayList)
+     */
+    public static final String STYLE_ERREUR = "-fx-text-fill: red; -fx-font-size: 13; -fx-font-weight: bold";
+
+    /**
+     *  Constante définissant le style des boutons de la vue
+     *
+     * @see VueAjouterMine#VueAjouterMine()
+     * @see VueAjouterMine#positionnerMine(double, double, ArrayList)
+     */
+    public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80px";
 
     /**
      * constante indiquant la distance minimale entre deux mines
@@ -58,7 +91,7 @@ public class VueAjouterMine extends Scene {
      */
     protected GridPane grillePrincipale;
     protected GridPane grilleForm;
-    protected GridPane grilleBoutons;
+    protected HBox hboxBoutons;
 
     /**
      * id de l'avant-poste auquel on ajoute la mine
@@ -213,7 +246,7 @@ public class VueAjouterMine extends Scene {
      *
      */
     public VueAjouterMine() {
-        super(new GridPane(), 400,400);
+        super(new GridPane(), 550,450);
 
         this.btnRetourMenuAvantPoste = new Button("Annuler");
         this.btnAjouterMine = new Button("Ajouter");
@@ -240,7 +273,7 @@ public class VueAjouterMine extends Scene {
 
         this.grillePrincipale = (GridPane) this.getRoot();
         this.grilleForm = new GridPane();
-        this.grilleBoutons = new GridPane();
+        this.hboxBoutons = new HBox();
     }
 
     /**
@@ -339,7 +372,14 @@ public class VueAjouterMine extends Scene {
         this.idAvantPoste = idAvantPoste;
         this.grillePrincipale.getChildren().clear();
         this.grilleForm.getChildren().clear();
-        this.grilleBoutons.getChildren().clear();
+        this.hboxBoutons.getChildren().clear();
+
+        this.labelX.setStyle(STYLE_GRAS);
+        this.labelY.setStyle(STYLE_GRAS);
+        this.labelZ.setStyle(STYLE_GRAS);
+        this.labelRendement.setStyle(STYLE_GRAS);
+        this.labelRessource.setStyle(STYLE_GRAS);
+        this.labelErreurs.setStyle(STYLE_ERREUR);
 
         this.gcCanva = this.canvasCoords.getGraphicsContext2D();
         this.initCanvas(mines);
@@ -357,10 +397,12 @@ public class VueAjouterMine extends Scene {
         this.labelXmine = new Label();
         this.labelYmine = new Label();
         this.labelZmine = new Label();
+
         this.labelRendementMine = new Label();
 
         //met Carbone comme valeur par défaut dans la liste déroulante
         this.comboBoxRessources.setValue(Ressource.CARBONE.getSymbole());
+        this.comboBoxRessources.setStyle(STYLE_BOUTONS);
 
         grilleForm.add(this.labelX,0,1);
         grilleForm.add(this.labelXmine,1,1);
@@ -392,13 +434,15 @@ public class VueAjouterMine extends Scene {
                 validerDonnees();
             }
         });
-
-        grilleBoutons.add(this.btnAjouterMine, 0, 0);
-        grilleBoutons.add(this.btnRetourMenuAvantPoste, 1, 0);
+        this.btnAjouterMine.setStyle(STYLE_BOUTONS);
+        this.btnRetourMenuAvantPoste.setStyle(STYLE_BOUTONS);
+        hboxBoutons.getChildren().addAll(this.btnAjouterMine, this.btnRetourMenuAvantPoste);
+        hboxBoutons.setSpacing(15);
+        hboxBoutons.setPadding(new Insets(10));
 
         grillePrincipale.add(this.grilleForm, 0, 0);
         grillePrincipale.add(this.canvasCoords, 0, 1);
-        grillePrincipale.add(this.grilleBoutons, 0, 2);
+        grillePrincipale.add(this.hboxBoutons, 0, 2);
     }
 
     /**
