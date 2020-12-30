@@ -80,7 +80,7 @@ public class Planete {
         return null;
     }
 
-    public void DetruireAvantPoste(int idAvantPoste) {
+    public void detruireAvantPoste(int idAvantPoste) {
         //destruction et effacement de la carte de toutes les mines de l'avant poste
         AvantPoste avantPoste = getAvantPoste(idAvantPoste);
         for(Mine mine : avantPoste.getMines()){
