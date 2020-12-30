@@ -11,10 +11,17 @@ import javafx.scene.text.Text;
 import modele.*;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * <p>
+ *     Vue permettant d'afficher une ville.
+ * </p>
+ *
+ * @see modele.Ville
+ *
+ * @author Antoine RICHARD - Antoine68
+ * */
 public class VueVille extends Scene {
 
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 50px";
@@ -26,25 +33,95 @@ public class VueVille extends Scene {
     private GridPane grilleBatiments;
     private ScrollPane scrollPaneBatiments;
 
+    /**
+     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues.
+     */
     private controler.ControleurPrincipal controleur = null;
+
+    /**
+     * Label affichant le nom de la ville.
+     */
     private Label labelNom;
+
+    /**
+     * Label affichant les coordonnées de la ville.
+     */
     private Label labelCoordonnees;
+
+    /**
+     * Label affichant la population de la ville.
+     */
     private Label labelPopulation;
+
+    /**
+     * Label affichant le nombre d'habitation de la ville.
+     */
     private Label labelHabitation;
+
+    /**
+     * Label affichant le nombre de place de batiments dans la ville.
+     */
     private Label labelPlace;
+
+    /**
+     * Label affichant le nom du gouveneur assigné à la ville.
+     */
     private Label labelGouverneur;
+
+    /**
+     * Label affichant les effets du gouveneur assigné à la ville.
+     */
     private Label labelEffetsGouverneur;
+
+    /**
+     * Label s'affichant quand il n'y à plus de place de batiment. Il affiche le pallier de population à atteindre
+     * pour avoir une nouvelle place.
+     */
     private Label labelProchainePlace;
+
+    /**
+     * Label affichant les messages d'informations.
+     */
     private Label labelMessages;
+
+    /**
+     * Id de la ville.
+     */
     private int idVille;
 
+    /**
+     * Bouton de retour vers le menu population
+     */
     private Button btnRetour;
+
+    /**
+     * Bouton pour détruire la ville.
+     */
     private Button btnDetruire;
+
+    /**
+     * Bouton d'ajout de batiments dans la ville.
+     */
     private Button btnAjouterBatiment;
+
+    /**
+     * Bouton de navigation vers la liste des gouverneurs.
+     */
     private Button btnNaviguerGouverneurs;
+
+    /**
+     * Bouton de navigation vers le gouverneur assigné à la ville.
+     */
     private Button btnNaviguerGouverneurAssigne;
+
+    /**
+     * Bouton permettant de révoquer le gouverneur assigné.
+     */
     private Button btnRevoquerGouverneur;
 
+    /**
+     * Constructeur VueVille. Créer les différents éléments de la vue.
+     */
     public VueVille() {
         super(new GridPane(), 400,400);
         this.grillePrincipale = (GridPane) this.getRoot();
@@ -68,6 +145,10 @@ public class VueVille extends Scene {
         labelMessages = new Label("");
     }
 
+    /**
+     * Initialise la vue.
+     * @param ville la ville à afficher
+     */
     public void initialiserVueVille(Ville ville) {
         idVille = ville.getId();
 
@@ -263,6 +344,10 @@ public class VueVille extends Scene {
         this.labelMessages.setVisible(false);
     }
 
+    /**
+     * Affecter le controleur à la vue.
+     * @param controleur le controleur affecté
+     */
     public void setControleur(controler.ControleurPrincipal controleur) {
         this.controleur = controleur;
     }
