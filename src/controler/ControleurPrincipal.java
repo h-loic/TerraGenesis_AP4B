@@ -720,9 +720,10 @@ public class ControleurPrincipal {
      *     </ul>
      * </p>
      *
-     * @param idAvantPoste id de l'avantPoste auquel on veut ajouter une mine
+     * @param idAvantPoste id de l'avantPoste contenant la mine que l'on veut améliorer
+     * @param idMine id de la mine à améliorer
      *
-     * @see VueAjouterMine
+     * @see VueAvantPoste
      * @see ControleurPrincipal#planete
      * @see Mine#ameliorerMine()
      */
@@ -743,11 +744,41 @@ public class ControleurPrincipal {
         this.notifierNaviguerAfficherAvPoste(idAvantPoste);
     }
 
+    /**
+     * <p>
+     *     Détruit une mine
+     *     <ul>
+     *         <li>Détruit la mine dont l'id est donné en paramètre</li>
+     *         <li>Recharge la VueAvantPoste</li>
+     *     </ul>
+     * </p>
+     *
+     * @param id id de la mine à détruire
+     *
+     * @see VueAvantPoste
+     * @see ControleurPrincipal#planete
+     */
     public void notifierDetruireMine(int id) {
         this.planete.detruireMine(idAvantPosteCourant, id);
         this.notifierNaviguerAfficherAvPoste(idAvantPosteCourant);
     }
 
+
+    /**
+     * <p>
+     *     affecte un gouverneur à une ville
+     *     <ul>
+     *         <li>révoque le grouverneur de la ville si elle en a déjà un</li>
+     *         <li>affecte le gouvrneur à la ville</li>
+     *         <li>affiche la page du gouverneur</li>
+     * </p>
+     *
+     * @param idVille id de la mine à laquelle affecter le gouverneur
+     * @param gouverneur gouverneur que l'on vuet affecter
+     *
+     * @see VueAffecterGouverneur
+     * @see Gouverneur
+     */
     public void notifierAffecterGouverneur(Gouverneur gouverneur, int idVille) {
         if (this.planete.getVille(idVille).getGouverneur() != null){
             this.planete.getVille(idVille).revoquerGouverneur();
@@ -756,16 +787,54 @@ public class ControleurPrincipal {
         this.notifierNaviguerAfficherGouverneur(gouverneur);
     }
 
+    /**
+     * <p>
+     *     Revoque le Gouverneur de la ville donnée en paramètre
+     * </p>
+     *
+     * @param idVille id de la ville dont on veut revoquer le gouverneur
+     *
+     * @see VueAffecterGouverneur
+     * @see Gouverneur
+     */
     public void notifierRevoquerGouverneur(int idVille){
         this.planete.revoquerGouverneur(idVille);
         this.notifierNaviguerAfficherVille(idVille);
     }
 
+
+    /**
+     * <p>
+        révoque le gouveneur de la ville dont l'id est donné en paramètre et affiche la Vue du gouverneur donné en paramètre
+     * </p>
+     *
+     * @param idVille id de la mine à laquelle affecter le gouverneur
+     * @param gouverneur gouverneur que l'on vuet affecter
+     *
+     * @see VueAffecterGouverneur
+     * @see Gouverneur
+     */
     public void notifierRevoquerGouverneurDepuisGouverneur(int idVille,Gouverneur gouverneur) {
         this.planete.revoquerGouverneur(idVille);
         this.notifierNaviguerAfficherGouverneur(gouverneur);
     }
 
+    /**
+     * <p>
+     *     Améliore un Gouverneur
+     *     <ul>
+     *         <li>Vérifie si il est améliorable</li>
+     *         <li>fait payer l'amélioration à la planète</li>
+     *         <li>améliore le gouverneur</li>
+     *     </ul>
+     * </p>
+     *
+     * @param gouverneur gouvenreur que l'on souhaite améliorer
+     *
+     * @see VueGouverneur
+     * @see ControleurPrincipal#planete
+     * @see Gouverneur#ameliorer()
+     */
     public void notifierAmeliorerGouverneur(Gouverneur gouverneur) {
         if (gouverneur.getNiveau() < 5 && this.planete.peutPayer(gouverneur.getPrixAmelioration())){
             for (Donnee effet : gouverneur.getEffets().keySet()){
@@ -787,26 +856,65 @@ public class ControleurPrincipal {
         } else if (gouverneur.getNiveau() >= 5){
             System.out.println("IMPOSSIBLE > 5");
         } else {
-            System.out.println("pas assez d'argent frr");
+            System.out.println("pas assez d'argent");
         }
     }
 
+    /**
+     * <p>
+     *     Actualise la page VueMenuRecherche en l'initialisant avec les dernières données de Recherche
+     * </p>
+     *
+     * @see VueMenuRecherche
+     * @see ControleurPrincipal#planete
+     * @see Recherche
+     */
     public void notifierActualiserMenuRecherche(){
         vueMenuRecherche.initialiserMenuRecherche(planete.getTypeBatimentNonDebloque(), planete.getRecherche().isRechercheEnCours(), planete.getRecherche().getTypeBatimentRecherche());
     }
 
+    /**
+     * <p>
+     *     met à jour les données de certaines vues en les réinitialisant
+     * </p>
+     *
+     */
     public void majDonneesVues(){
         vueMenuStatistiques.majStatistiques(this.planete.getFinances());
     }
 
+    /**
+     * <p>
+     *     Trie la collection des gouverneurs de la planete par nom
+     * </p>
+     *
+     * @see Planete#trierGouverneurParNom()
+     *
+     */
     public void notifierTrierParNomListeGouverneur() {
         this.planete.trierGouverneurParNom();
     }
 
+    /**
+     * <p>
+     *     Trie la collection des gouverneurs de la planete par leur état (débloqué ou non)
+     * </p>
+     *
+     * @see Planete#trierGouverneurParDebloque()
+     *
+     */
     public void notifierTrierParDebloqueListeGouverneur() {
         this.planete.trierGouverneurParDebloque();
     }
 
+    /**
+     * <p>
+     *     Débloque un gourverneur
+     * </p>
+     *
+     * @see Gouverneur#setEstDebloque()
+     *
+     */
     public void notifierDebloquerGouverneur(Gouverneur gouverneur) {
         if (!planete.peutPayer(gouverneur.getPrixBaseGouverneur())){
             System.out.println("pas assez d'argent");
@@ -816,6 +924,34 @@ public class ControleurPrincipal {
         }
     }
 
+
+    /**
+     * <p>
+     *     Lance la recherche d'un type de batiment
+     *     <ul>
+     *         <li>
+     *             vérifie si la recherche est possible
+     *         </li>
+     *         <li>
+     *             fait payer la recherche à la planète
+     *         </li>
+     *         <li>
+     *             lance la recherche
+     *         </li>
+     *         <li>
+     *             actualise la VueMenuRecherche
+     *         </li>
+     *         <li>
+     *             lance une exception si la recherche est impossible
+     *         </li>
+     *     </ul>
+     * </p>
+     *
+     * @param typeBatiment TypeBatiment à recherche
+     *
+     * @see Recherche
+     *
+     */
     public void rechercherTypeBatiment(TypeBatiment typeBatiment) throws Exception{
         boolean rechercheEnCours = planete.getRecherche().isRechercheEnCours();
 
@@ -838,6 +974,17 @@ public class ControleurPrincipal {
     }
 
 
+    /**
+     * <p>
+     *     vérifie les coordonnées en paramètre, pour savoir si elles sont trop proches d'une avant-poste ou d'une ville
+     * </p>
+     *
+     * @param x longitude à vérifier
+     * @param y latitude à vérifier
+     *
+     * @see Carte#verifierCoordonnees(double, double)
+     *
+     */
     public boolean verifierCoordonnees(double x, double y){
         return planete.getCarte().verifierCoordonnees(x, y);
     }
