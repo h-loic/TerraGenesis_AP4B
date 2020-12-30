@@ -39,7 +39,7 @@ public class VueAjouterMine extends Scene {
      *  Constante définissant le style permettant de mettre du texte en valeur en le mettant en gras
      *
      * @see VueAjouterMine#VueAjouterMine()
-     * @see VueAjouterMine#positionnerMine(double, double, ArrayList)
+     * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
      */
     public static final String STYLE_GRAS = "-fx-font-size: 13; -fx-font-weight: bold;";
 
@@ -47,7 +47,7 @@ public class VueAjouterMine extends Scene {
      *  Constante définissant le style des titres de la vue
      *
      * @see VueAjouterMine#VueAjouterMine()
-     * @see VueAjouterMine#positionnerMine(double, double, ArrayList)
+     * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
      */
     public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
 
@@ -55,7 +55,7 @@ public class VueAjouterMine extends Scene {
      *  Constante définissant le style du label des erreurs de la vue
      *
      * @see VueAjouterMine#VueAjouterMine()
-     * @see VueAjouterMine#positionnerMine(double, double, ArrayList)
+     * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
      */
     public static final String STYLE_ERREUR = "-fx-text-fill: red; -fx-font-size: 13; -fx-font-weight: bold";
 
@@ -63,7 +63,7 @@ public class VueAjouterMine extends Scene {
      *  Constante définissant le style des boutons de la vue
      *
      * @see VueAjouterMine#VueAjouterMine()
-     * @see VueAjouterMine#positionnerMine(double, double, ArrayList)
+     * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
      */
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80px";
 
@@ -71,7 +71,7 @@ public class VueAjouterMine extends Scene {
      * constante indiquant la distance minimale entre deux mines
      *
      * @see VueAjouterMine#VueAjouterMine()
-     * @see VueAjouterMine#positionnerMine(double, double, ArrayList)
+     * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
      */
     public static final int DISTANCE_MINI = 30;
 

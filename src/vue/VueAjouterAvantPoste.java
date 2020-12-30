@@ -3,14 +3,15 @@ package vue;
 import controler.ControleurPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import modele.AvantPoste;
 import modele.Coordonnee;
 import modele.Mine;
@@ -31,6 +32,38 @@ import java.util.Random;
 public class VueAjouterAvantPoste extends Scene {
 
     /**
+     *  Constante définissant le style permettant de mettre du texte en valeur en le mettant en gras
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
+    public static final String STYLE_GRAS = "-fx-font-size: 13; -fx-font-weight: bold;";
+
+    /**
+     *  Constante définissant le style des titres de la vue
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
+    public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
+
+    /**
+     *  Constante définissant le style du label des erreurs de la vue
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
+    public static final String STYLE_ERREUR = "-fx-text-fill: red; -fx-font-size: 13; -fx-font-weight: bold";
+
+    /**
+     *  Constante définissant le style des boutons de la vue
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
+    public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80px";
+
+    /**
      * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues
      *
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
@@ -46,7 +79,7 @@ public class VueAjouterAvantPoste extends Scene {
      */
     protected GridPane grillePrincipale;
     protected GridPane grilleForm;
-    protected GridPane grilleBoutons;
+    protected HBox hBoxBoutons;
 
     /**
      * Canvas affichant la Carte de la planète, sur laquelle l'avant-poste sera positionné
@@ -192,7 +225,7 @@ public class VueAjouterAvantPoste extends Scene {
      * @see VueAjouterAvantPoste#labelErreurs
      * @see VueAjouterAvantPoste#grillePrincipale
      * @see VueAjouterAvantPoste#grilleForm
-     * @see VueAjouterAvantPoste#grilleBoutons
+     * @see VueAjouterAvantPoste#hBoxBoutons
      *
      */
     public VueAjouterAvantPoste() {
@@ -211,7 +244,7 @@ public class VueAjouterAvantPoste extends Scene {
 
         this.grillePrincipale = (GridPane) this.getRoot();
         this.grilleForm = new GridPane();
-        this.grilleBoutons = new GridPane();
+        this.hBoxBoutons = new HBox();
     }
 
     /**
@@ -230,13 +263,19 @@ public class VueAjouterAvantPoste extends Scene {
      * @see VueAjouterAvantPoste#labelErreurs
      * @see VueAjouterAvantPoste#grillePrincipale
      * @see VueAjouterAvantPoste#grilleForm
-     * @see VueAjouterAvantPoste#grilleBoutons
+     * @see VueAjouterAvantPoste#hBoxBoutons
      *
      */
     public void initialiserVueAjouterAvantPoste(Canvas carte) {
         this.grillePrincipale.getChildren().clear();
         this.grilleForm.getChildren().clear();
-        this.grilleBoutons.getChildren().clear();
+        this.hBoxBoutons.getChildren().clear();
+
+        this.labelNom.setStyle(STYLE_GRAS);
+        this.labelX.setStyle(STYLE_GRAS);
+        this.labelY.setStyle(STYLE_GRAS);
+        this.labelZ.setStyle(STYLE_GRAS);
+        this.labelErreurs.setStyle(STYLE_ERREUR);
 
         this.textFieldNomAvantPoste = new TextField();
         this.labelXAvPoste = new Label();
@@ -289,12 +328,16 @@ public class VueAjouterAvantPoste extends Scene {
             }
         });
 
-        grilleBoutons.add(this.btnAjouterAvPoste, 0, 0);
-        grilleBoutons.add(this.btnRetourMenuAvantPoste, 1, 0);
+        this.btnAjouterAvPoste.setStyle(STYLE_BOUTONS);
+        this.btnRetourMenuAvantPoste.setStyle(STYLE_BOUTONS);
+
+        hBoxBoutons.getChildren().addAll(this.btnAjouterAvPoste, this.btnRetourMenuAvantPoste);
+        hBoxBoutons.setPadding(new Insets(7,0,3,0));
+        hBoxBoutons.setSpacing(15);
 
         grillePrincipale.add(this.grilleForm, 0, 0);
         grillePrincipale.add(this.canvasCoords, 0, 1);
-        grillePrincipale.add(this.grilleBoutons, 0, 2);
+        grillePrincipale.add(this.hBoxBoutons, 0, 2);
     }
 
     /**
