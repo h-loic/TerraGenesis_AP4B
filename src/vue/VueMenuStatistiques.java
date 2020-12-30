@@ -23,36 +23,12 @@ import javafx.scene.layout.GridPane;
 public class VueMenuStatistiques extends Scene {
 
     /**
-     *  Constante définissant le style des scrollpanes de la vue
-     *
-     * @see VueMenuStatistiques#VueMenuStatistiques()
-     * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
-     */
-    public static final String STYLE_SCROLLPANE = "-fx-background-color:transparent;";
-
-    /**
-     *  Constante définissant le style permettant de mettre du texte en valeur en le mettant en gras
-     *
-     * @see VueMenuStatistiques#VueMenuStatistiques()
-     * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
-     */
-    public static final String STYLE_GRAS = "-fx-font-size: 13; -fx-font-weight: bold;";
-
-    /**
      *  Constante définissant le style des titres de la vue
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
      */
     public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
-
-    /**
-     *  Constante définissant le style du label des erreurs de la vue
-     *
-     * @see VueMenuStatistiques#VueMenuStatistiques()
-     * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
-     */
-    public static final String STYLE_ERREUR = "-fx-text-fill: red; -fx-font-size: 13; -fx-font-weight: bold";
 
     /**
      *  Constante définissant le style des boutons de la vue

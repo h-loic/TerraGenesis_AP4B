@@ -3,13 +3,16 @@ package vue;
 import controler.ControleurPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import modele.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -32,6 +35,45 @@ import java.util.HashMap;
  * */
 
 public class VueAvantPoste extends Scene {
+    /**
+     *  Constante définissant le style des scrollpanes de la vue
+     *
+     * @see VueAvantPoste#VueAvantPoste()
+     * @see VueAvantPoste#initialiserVueAvantPoste(AvantPoste)
+     */
+    public static final String STYLE_SCROLLPANE = "-fx-background-color:transparent;";
+
+    /**
+     *  Constante définissant le style permettant de mettre du texte en valeur en le mettant en gras
+     *
+     * @see VueAvantPoste#VueAvantPoste()
+     * @see VueAvantPoste#initialiserVueAvantPoste(AvantPoste)
+     */
+    public static final String STYLE_GRAS = "-fx-font-size: 13; -fx-font-weight: bold;";
+
+    /**
+     *  Constante définissant le style des titres de la vue
+     *
+     * @see VueAvantPoste#VueAvantPoste()
+     * @see VueAvantPoste#initialiserVueAvantPoste(AvantPoste)
+     */
+    public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
+
+    /**
+     *  Constante définissant le style du label des erreurs de la vue
+     *
+     * @see VueAvantPoste#VueAvantPoste()
+     * @see VueAvantPoste#initialiserVueAvantPoste(AvantPoste)
+     */
+    public static final String STYLE_ERREUR = "-fx-text-fill: red; -fx-font-size: 13; -fx-font-weight: bold";
+
+    /**
+     *  Constante définissant le style des boutons de la vue
+     *
+     * @see VueAvantPoste#VueAvantPoste()
+     * @see VueAvantPoste#initialiserVueAvantPoste(AvantPoste)
+     */
+    public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80px";
 
     /**
      * La grille sur laquelle sont ajoutés les différents éléments de la vue
@@ -154,7 +196,7 @@ public class VueAvantPoste extends Scene {
      * @see VueAvantPoste#labelMessages
      */
     public VueAvantPoste() {
-        super(new GridPane(), 800,400);
+        super(new GridPane(), 600,400);
         this.grillePrincipale = (GridPane) this.getRoot();
         this.grilleMines = new GridPane();
         this.grilleAvantPoste = new GridPane();
@@ -190,6 +232,8 @@ public class VueAvantPoste extends Scene {
         this.grilleMines.getChildren().clear();
         this.grillePrincipale.getChildren().clear();
 
+        labelMessages.setStyle(STYLE_ERREUR);
+
         int ligneMine=0;
 
         //affichage des mines et de leurs données
@@ -204,12 +248,14 @@ public class VueAvantPoste extends Scene {
             Button btnDetruire = new Button("Detruire");
 
             GridPane grilleMine = new GridPane();
-            grilleMine.add(labelNomMine, 0, 0);
-            grilleMine.add(labelRendement, 1, 0);
-            grilleMine.add(labelBenefice, 2, 0);
-            grilleMine.add(labelRessource, 3, 0);
-            grilleMine.add(btnAmeliorer, 1, 1);
-            grilleMine.add(btnDetruire, 2, 1);
+            HBox infoMines = new HBox();
+            infoMines.getChildren().addAll(labelNomMine, labelRendement, labelBenefice, labelRessource);
+            grilleMine.add(infoMines, 0, 0);
+            HBox hBoxboutons = new HBox();
+            hBoxboutons.setSpacing(15);
+            hBoxboutons.getChildren().addAll(btnAmeliorer, btnDetruire);
+            grilleMine.add(hBoxboutons, 0, 1);
+            grilleMine.setPadding(new Insets(7,0,3,0));
 
             if (mine.getNiveau()>=5 || !mine.isFonctionnelle()){
                 //si la mine a déjà atteint le niveau maximum (5) le bouton pour l'améliorer est désactivé
@@ -232,6 +278,7 @@ public class VueAvantPoste extends Scene {
                     }
                 }
             });
+            btnAmeliorer.setStyle(STYLE_BOUTONS);
 
             btnDetruire.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -241,6 +288,7 @@ public class VueAvantPoste extends Scene {
                     controleur.notifierDetruireMine(mine.getId());
                 }
             });
+            btnDetruire.setStyle(STYLE_BOUTONS);
 
             grilleMines.add(grilleMine, 0, ligneMine);
             ligneMine++;
@@ -248,25 +296,30 @@ public class VueAvantPoste extends Scene {
         }
 
         this.labelNom = new Label(avantPoste.getNom());
+        this.labelNom.setStyle(STYLE_TITRE);
         this.labelCoordonnees = new Label("("+Double.toString(avantPoste.getCoordonnee().getX())+", "+Double.toString(avantPoste.getCoordonnee().getY())+", "+Double.toString(avantPoste.getCoordonnee().getZ())+")");
+        this.labelCoordonnees.setStyle(STYLE_GRAS);
         this.labelBenefices = new Label(", €/min : " + Double.toString(avantPoste.getBeneficesMines()));
+        this.labelBenefices.setStyle(STYLE_GRAS);
 
-        btnRetour.setOnAction(new EventHandler<ActionEvent>() {
+        this.btnRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 controleur.notifierNaviguerMenuPopulation();
             }
         });
+        this.btnRetour.setStyle(STYLE_BOUTONS);
 
-        btnDetruire.setOnAction(new EventHandler<ActionEvent>() {
+        this.btnDetruire.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 //appel de la fonction du controleur permettant de détruire l'avant-poste
                 controleur.notifierDetruireAvantPoste(idAvantPoste);
             }
         });
+        this.btnDetruire.setStyle(STYLE_BOUTONS);
 
-        btnAjouterMine.setOnAction(new EventHandler<ActionEvent>() {
+        this.btnAjouterMine.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Ajouter mine");
@@ -285,21 +338,24 @@ public class VueAvantPoste extends Scene {
                 }
             }
         });
+        this.btnAjouterMine.setStyle(STYLE_BOUTONS);
 
         //ajoute la liste des mines à la scrollpane
-        scrollPaneMines.setContent(grilleMines);
-        scrollPaneMines.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-        scrollPaneMines.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        this.scrollPaneMines.setContent(grilleMines);
+        this.scrollPaneMines.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        this.scrollPaneMines.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        this.scrollPaneMines.setStyle(STYLE_SCROLLPANE);
+        this.scrollPaneMines.setMinWidth(600);
 
-        grilleAvantPoste.add(labelNom,0,0);
-        grilleAvantPoste.add(labelCoordonnees,1,0);
-        grilleAvantPoste.add(labelBenefices,2,0);
-        grilleAvantPoste.add(btnRetour,0,1);
-        grilleAvantPoste.add(btnDetruire,1,1);
-        grillePrincipale.add(grilleAvantPoste, 0, 0);
-        grillePrincipale.add(scrollPaneMines, 0, 1);
-        grillePrincipale.add(btnAjouterMine, 0, 2);
-        grillePrincipale.add(labelMessages, 0, 3);
+        this.grilleAvantPoste.add(this.labelNom,0,0);
+        this.grilleAvantPoste.add(this.labelCoordonnees,1,0);
+        this.grilleAvantPoste.add(this.labelBenefices,2,0);
+        this.grilleAvantPoste.add(this.btnRetour,0,1);
+        this.grilleAvantPoste.add(this.btnDetruire,1,1);
+        this.grillePrincipale.add(this.grilleAvantPoste, 0, 0);
+        this.grillePrincipale.add(this.scrollPaneMines, 0, 1);
+        this.grillePrincipale.add(this.btnAjouterMine, 0, 2);
+        this. grillePrincipale.add(this.labelMessages, 0, 3);
         //cache le label des messages d'erreur
         this.labelMessages.setVisible(false);
     }
