@@ -21,7 +21,7 @@ import java.util.Map;
 
 /**
  * <p>
- *     Vue Permettant d'ajouter un batiment à une ville
+ *     Vue permettant d'ajouter un batiment à une ville
  * </p>
  *
  * @see modele.Batiment
@@ -232,7 +232,7 @@ public class VueAjouterBatiment extends Scene {
 
     /**
      * Créer un batiment avec les données entrées par l'utilisateur et le retourne.
-     * @return le batiment créer
+     * @return le batiment créé
      */
     public Batiment getBatiment()
     {

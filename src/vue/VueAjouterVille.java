@@ -1,63 +1,145 @@
 package vue;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import modele.Coordonnee;
-import modele.Ressource;
 import modele.Ville;
 
-import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * <p>
+ *     Vue permettant d'ajouter une ville à la planète.
+ * </p>
+ *
+ * @see modele.Ville
+ *
+ * @author Antoine RICHARD - Antoine68
+ * */
 public class VueAjouterVille extends Scene {
 
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 50px";
 
+    /**
+     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues.
+     */
     private controler.ControleurPrincipal controleur = null;
 
+    /**
+     * La grille sur laquelle sont ajoutés les différents éléments de la vue.
+     */
     protected GridPane grillePrincipale;
+
+    /**
+     * La grille sur laquelle sont ajoutés les différents éléments du formulaire.
+     */
     protected GridPane grilleForm;
+
+    /**
+     * La grille sur laquelle sont ajoutés les différents boutons.
+     */
     protected GridPane grilleBoutons;
 
+    /**
+     * Label affichant "Nom:".
+     */
     private Label labelNom;
+
+    /**
+     * Label affichant "X:".
+     */
     private Label labelX;
+
+    /**
+     * Label affichant "Y:".
+     */
     private Label labelY;
+
+    /**
+     * Label affichant "Z:".
+     */
     private Label labelZ;
+
+    /**
+     * Label affichant les erreurs dans le formulaire.
+     */
     private Label labelErreurs;
 
+    /**
+     * Permet à l'utilisateur d'entrée le nom de la ville
+     */
     private TextField textFieldNomVille;
 
+    /**
+     * Canvas affichant la Carte de la planète, sur laquelle la ville sera positionnée
+     */
     private Canvas canvasCoords;
     private GraphicsContext gcCanva;
 
+    /**
+     * Label affichant la longitude du point sélectionné par l'utilisateur
+     */
     private Label labelXville;
+
+    /**
+     * Label affichant la latitude du point sélectionné par l'utilisateur
+     */
     private Label labelYville;
+
+    /**
+     * Label affichant l'altitude du point sélectionné par l'utilisateur
+     */
     private Label labelZville;
 
+    /**
+     * Bouton de retour vers le menu population.
+     */
     private Button btnRetourMenuPopulation;
+
+    /**
+     * Bouton permettant de valider le formulaire.
+     */
     private Button btnAjouterVille;
 
+    /**
+     * Contiendra le nom de la ville.
+     */
     private String nomVille;
+
+    /**
+     * Contiendra la longitude de la ville.
+     */
     private double xVille;
+
+    /**
+     * Contiendra la latitude de la ville.
+     */
     private double yVille;
+
+    /**
+     * Contiendra l'altitude de la ville.
+     */
     private double zVille;
 
+    /**
+     *
+     * Constructeur VueAjouterVille. Créer les différents éléments de la vue.
+     *
+     */
     public VueAjouterVille() {
         super(new GridPane(), 500,400);
 
         this.btnRetourMenuPopulation = new Button("Annuler");
+        btnRetourMenuPopulation.setStyle(STYLE_BOUTONS);
         this.btnAjouterVille = new Button("Ajouter");
         btnAjouterVille.setStyle(STYLE_BOUTONS);
 
@@ -81,7 +163,10 @@ public class VueAjouterVille extends Scene {
     }
 
 
-
+    /**
+     * Initialise la vue.
+     * @param carte la carte qui sera affichée
+     */
     public void initialiserVueAjouterVille(Canvas carte) {
         this.grillePrincipale.getChildren().clear();
         this.grilleForm.getChildren().clear();
@@ -90,7 +175,6 @@ public class VueAjouterVille extends Scene {
         this.canvasCoords.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println(event.getX()+" "+event.getY()+" "+event.getZ());
                 dessineAvPoste(event.getX(), event.getY());
             }
         });
@@ -141,12 +225,12 @@ public class VueAjouterVille extends Scene {
 
     private void dessineAvPoste(double x, double y){
         Random random = new Random();
+        // l'altitude est générée aléatoirement
         double z = -1 + (50 - (-1)) * random.nextDouble();
         labelXville.setText("");
         labelYville.setText("");
         labelZville.setText("");
         labelErreurs.setText("");
-        System.out.println(x+" "+y);
         if (this.controleur.verifierCoordonnees(x, y)){
             labelXville.setText(Double.toString(x));
             labelYville.setText(Double.toString(y));
@@ -156,9 +240,14 @@ public class VueAjouterVille extends Scene {
         }
     }
 
+    /**
+     * Valider les données du formulaire rentrées par l'utilisateur.
+     * Puis notifier le controleur de créer la ville.
+     */
     private void validerDonnees() {
         boolean erreur = false;
         String messageErreurs = "";
+        //verifie si un nom à été saissie.
         if (textFieldNomVille.getText().isEmpty()){
             erreur = true;
             messageErreurs+="Veuillez entrer un nom";
@@ -174,6 +263,7 @@ public class VueAjouterVille extends Scene {
             labelErreurs.setText(messageErreurs);
         }
         try {
+            //verifie si les coordonées ont été sélectionnées.
             xVille = Double.parseDouble(labelXville.getText());
             yVille = Double.parseDouble(labelYville.getText());
             zVille = Double.parseDouble(labelZville.getText());
@@ -183,19 +273,26 @@ public class VueAjouterVille extends Scene {
             labelErreurs.setText(messageErreurs);
             erreur = true;
         }
-
         if (!erreur){
-            System.out.println("c'est bon");
             this.controleur.notifierAjouterVille();
         }
     }
 
+
+    /**
+     * Créer une ville avec les données entrées par l'utilisateur et le retourne.
+     * @return la ville crée
+     */
     public Ville getVille()
     {
         Ville ville = new Ville(nomVille,  new Coordonnee(xVille, yVille, zVille));
         return ville;
     }
 
+    /**
+     * Affecter le controleur à la vue.
+     * @param controleur le controleur affecté
+     */
     public void setControleur(controler.ControleurPrincipal controleur) {
         this.controleur = controleur;
     }
