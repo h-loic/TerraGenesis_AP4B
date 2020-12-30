@@ -28,9 +28,24 @@ public class VueVille extends Scene {
 
     public static final String STYLE_SCROLLPANE = "-fx-background-color:transparent; -fx-border-width: 2px; -fx-border-color: black;";
 
+    /**
+     * La grille sur laquelle sont ajoutés les différents éléments de la vue.
+     */
     private GridPane grillePrincipale;
+
+    /**
+     * La grille sur laquelle sont ajoutés les différents éléments de la ville.
+     */
     private GridPane grilleVille;
+
+    /**
+     * La grille sur laquelle sont ajoutés les différent batiments.
+     */
     private GridPane grilleBatiments;
+
+    /**
+     * Affiche la liste des batiments de la ville
+     */
     private ScrollPane scrollPaneBatiments;
 
     /**
