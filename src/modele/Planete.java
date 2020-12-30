@@ -293,4 +293,18 @@ public class Planete {
     public Recherche getRecherche(){
         return recherche;
     }
+
+    /**
+     * Met à jour la population de la planète
+     *
+     * @see Planete#donnees
+     * @see Ville#getPopulation()
+     */
+    public void majPopulation() {
+        double population = 0;
+        for(Ville ville : this.villes){
+            population+=ville.getPopulation().getValeurActuelle();
+        }
+        this.getDonnee(POPULATION).setValeurActuelle(population);
+    }
 }

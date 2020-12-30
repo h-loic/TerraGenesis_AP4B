@@ -196,5 +196,6 @@ public class ControleurTemps extends Thread{
                 if (batiment.estEnCoursAmelioration() && dateCourante.after(batiment.getDateFinAmelioration())) batiment.finirAmelioration();
             }
         }
+        this.planete.majPopulation();
     }
 }
