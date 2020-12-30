@@ -3,15 +3,17 @@ package vue;
 import controler.ControleurPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import modele.Carte;
-import modele.Coordonnee;
-import modele.Mine;
-import modele.Ressource;
+import javafx.scene.layout.HBox;
+import modele.*;
+
+import java.util.ArrayList;
 
 /**
  * <b>Affiche la carte affichant les positions des avant-postes et des villes</b>
@@ -30,12 +32,52 @@ import modele.Ressource;
 public class VueMenuCarte extends Scene {
 
     /**
+     *  Constante définissant le style des boutons de la vue
+     *
+     * @see VueMenuPrincipal#VueMenuPrincipal()
+     * @see VueMenuPrincipal#initialiserMenuPrincipal()
+     */
+    public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold;-fx-min-width: 120px";
+
+    /**
+     *  Constante définissant le style des titres de la vue
+     *
+     * @see VueMenuPrincipal#VueMenuPrincipal()
+     * @see VueMenuPrincipal#initialiserMenuPrincipal()
+     */
+    public static final String STYLE_TITRE = " -fx-font-size: 20; -fx-font-weight: bold; -fx-padding: 15px; -fx-text-fill : white;";
+
+    /**
+     *  Constante définissant le style du fond de la vue
+     *
+     * @see VueMenuPrincipal#VueMenuPrincipal()
+     * @see VueMenuPrincipal#initialiserMenuPrincipal()
+     */
+    public static final String STYLE_FOND = "-fx-background-color: #7680AD;";
+
+    /**
      * La grille sur laquelle sont ajoutés les différents éléments de la vue
      *
      * @see VueMenuCarte#VueMenuCarte()
      * @see VueMenuCarte#initialiserMenuCarte(Canvas)
      * */
     protected GridPane grillePrincipale;
+
+    /**
+     * HBox servant à centrer le titre de la page dans la grille
+     *
+     * @see VueMenuCarte#VueMenuCarte()
+     * @see VueMenuCarte#initialiserMenuCarte(Canvas)
+     * */
+    protected HBox hBoxTitre;
+
+    /**
+     * HBox contenant le bouton de retour
+     *
+     * @see VueMenuCarte#VueMenuCarte()
+     * @see VueMenuCarte#initialiserMenuCarte(Canvas)
+     * */
+    protected HBox hBoxRetour;
 
     /**
      * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues
@@ -84,6 +126,8 @@ public class VueMenuCarte extends Scene {
         this.labelCarte = new Label("Carte");
         this.boutonRetour = new Button("retour");
         this.canvas = new Canvas(500,250);
+        this.hBoxRetour = new HBox();
+        this.hBoxTitre = new HBox();
     }
 
     /**
@@ -100,10 +144,22 @@ public class VueMenuCarte extends Scene {
      */
     public void initialiserMenuCarte(Canvas canvasCarte) {
         this.grillePrincipale.getChildren().clear();
+        this.hBoxTitre.getChildren().clear();
+        this.hBoxRetour.getChildren().clear();
         this.canvas = canvasCarte;
-        this.grillePrincipale.add(this.labelCarte, 0, 0);
+
+        this.labelCarte.setStyle(STYLE_TITRE);
+
+        this.hBoxTitre.getChildren().add(this.labelCarte);
+        this.hBoxTitre.setAlignment(Pos.CENTER);
+
+        this.hBoxRetour.getChildren().add(this.boutonRetour);
+        this.hBoxRetour.setAlignment(Pos.CENTER_LEFT);
+        this.hBoxRetour.setPadding(new Insets(15,0,0,0));
+
+        this.grillePrincipale.add(this.hBoxTitre, 0, 0);
         this.grillePrincipale.add(this.canvas, 0, 1);
-        this.grillePrincipale.add(this.boutonRetour, 0, 2);
+        this.grillePrincipale.add(this.hBoxRetour, 0, 2);
 
         this.boutonRetour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -111,6 +167,9 @@ public class VueMenuCarte extends Scene {
                 controleur.notifierNaviguerMenuPrincipal();
             }
         });
+        this.boutonRetour.setStyle(STYLE_BOUTONS);
+
+        this.grillePrincipale.setStyle(STYLE_FOND);
     }
 
     /**
