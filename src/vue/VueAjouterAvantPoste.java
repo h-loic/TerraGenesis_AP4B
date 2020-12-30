@@ -1,5 +1,6 @@
 package vue;
 
+import controler.ControleurPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -18,37 +19,182 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
+/**
+ * <b>
+ *     Vue Permettant d'ajouter un avant-poste à la planète
+ * </p>
+ *
+ * @see modele.AvantPoste
+ * @author Zapolatero - Louis Pascuzzi
+ * */
+
 public class VueAjouterAvantPoste extends Scene {
 
+    /**
+     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private controler.ControleurPrincipal controleur = null;
 
+    /**
+     * La grille sur laquelle sont ajoutés les différents éléments de la vue
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     protected GridPane grillePrincipale;
     protected GridPane grilleForm;
     protected GridPane grilleBoutons;
 
+    /**
+     * Canvas affichant la Carte de la planète, sur laquelle l'avant-poste sera positionné
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private Canvas canvasCoords;
-    private GraphicsContext gcCanva;
 
+    /**
+     * Label titre affichant le titre "nom"
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private Label labelNom;
+
+    /**
+     * Label titre affichant le titre "X"
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private Label labelX;
+
+    /**
+     * Label titre affichant le titre "Y"
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private Label labelY;
+
+    /**
+     * Label titre affichant le titre "Z"
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private Label labelZ;
+
+    /**
+     * Label affichant les messages d'erreurs
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private Label labelErreurs;
 
+    /**
+     * TextField permettant d'entrer le nom de l'avant-poste
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private TextField textFieldNomAvantPoste;
 
+    /**
+     * Affiche la longitude de l'avant-poste
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private Label labelXAvPoste;
+
+    /**
+     * Affiche la latitude de l'avant-poste
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private Label labelYAvPoste;
+
+    /**
+     * Affiche la l'altitude de l'avant-poste
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private Label labelZAvPoste;
 
+
+    /**
+     * Bouton permettant de retourner au MenuAvantPoste
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     * @see VueAvantPoste
+     */
     private Button btnRetourMenuAvantPoste;
+
+    /**
+     * Bouton permettant d'ajouter le nouvel avant-poste
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private Button btnAjouterAvPoste;
 
+    /**
+     * Nom de l'avant-poste, entré par le joueur
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private String nomAvanPoste;
+
+    /**
+     * Longitude de l'avant-poste
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private double xAvanPoste;
+
+    /**
+     * latitutde de l'avant-poste
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private double yAvanPoste;
+
+    /**
+     * l'altitude de l'avant-poste
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
+     */
     private double zAvanPoste;
 
+    /**
+     *  Constructeur de VueAjouterAvantPoste
+     *  Créé les différents labels, layouts et boutons de la vue
+     *
+     * @see VueAjouterAvantPoste#btnRetourMenuAvantPoste
+     * @see VueAjouterAvantPoste#btnAjouterAvPoste
+     * @see VueAjouterAvantPoste#canvasCoords
+     * @see VueAjouterAvantPoste#labelNom
+     * @see VueAjouterAvantPoste#labelX
+     * @see VueAjouterAvantPoste#labelY
+     * @see VueAjouterAvantPoste#labelZ
+     * @see VueAjouterAvantPoste#labelErreurs
+     * @see VueAjouterAvantPoste#grillePrincipale
+     * @see VueAjouterAvantPoste#grilleForm
+     * @see VueAjouterAvantPoste#grilleBoutons
+     *
+     */
     public VueAjouterAvantPoste() {
         super(new GridPane(), 500,400);
 
@@ -56,7 +202,6 @@ public class VueAjouterAvantPoste extends Scene {
         this.btnAjouterAvPoste = new Button("Ajouter");
 
         this.canvasCoords = new Canvas(250,250);
-        this.gcCanva = this.canvasCoords.getGraphicsContext2D();
 
         this.labelNom = new Label("Nom : ");
         this.labelX = new Label("X : ");
@@ -69,6 +214,25 @@ public class VueAjouterAvantPoste extends Scene {
         this.grilleBoutons = new GridPane();
     }
 
+    /**
+     *  Initialise les différents labels, boutons et layouts de la vue,
+     *  remplace le Canvas de la vue par le Canvas de la Carte, pour pouvoir y positionner l'avant-poste en cliquant dessus
+     *
+     * @param carte Canvas de la Carte de la planète, permet de positionner l'avant-poste
+     *
+     * @see VueAjouterAvantPoste#btnRetourMenuAvantPoste
+     * @see VueAjouterAvantPoste#btnAjouterAvPoste
+     * @see VueAjouterAvantPoste#canvasCoords
+     * @see VueAjouterAvantPoste#labelNom
+     * @see VueAjouterAvantPoste#labelX
+     * @see VueAjouterAvantPoste#labelY
+     * @see VueAjouterAvantPoste#labelZ
+     * @see VueAjouterAvantPoste#labelErreurs
+     * @see VueAjouterAvantPoste#grillePrincipale
+     * @see VueAjouterAvantPoste#grilleForm
+     * @see VueAjouterAvantPoste#grilleBoutons
+     *
+     */
     public void initialiserVueAjouterAvantPoste(Canvas carte) {
         this.grillePrincipale.getChildren().clear();
         this.grilleForm.getChildren().clear();
@@ -80,6 +244,10 @@ public class VueAjouterAvantPoste extends Scene {
         this.labelZAvPoste = new Label();
 
         this.canvasCoords = carte;
+        /*
+            Cet EventHandler permet de dessiner la position du nouvel avant-poste sur la carte (si les coordonnées sont valides),
+            pour que le joueur puisse visualiser la position du futur avant-poste
+        */
         this.canvasCoords.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -105,6 +273,7 @@ public class VueAjouterAvantPoste extends Scene {
         grilleForm.add(this.labelZAvPoste,1,3);
         grilleForm.add(this.labelErreurs, 0, 4);
 
+        //retour à l'avant-poste
         btnRetourMenuAvantPoste.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -112,6 +281,7 @@ public class VueAjouterAvantPoste extends Scene {
             }
         });
 
+        //vérifie les données et ajoute l'avant-poste si il n'y a pas d'erreurs
         btnAjouterAvPoste.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -127,8 +297,18 @@ public class VueAjouterAvantPoste extends Scene {
         grillePrincipale.add(this.grilleBoutons, 0, 2);
     }
 
+    /**
+     *  Vérifier les coordonnées de la position choisie par le joueur,
+     *  si les coordonnées sont valides, les coordonnées seront affichés sur des labels,
+     *  et un point sera dessiné à ces coordonnées
+     *
+     * @param x longitude de la position choisie par le joueur
+     * @param y latitude de la position choisie par le joueur
+     *
+     */
     private void dessineAvPoste(double x, double y){
         Random random = new Random();
+        //génère une altitude aléatoire entre -1 et 50
         double z = -1 + (50 - (-1)) * random.nextDouble();
         labelXAvPoste.setText("");
         labelYAvPoste.setText("");
@@ -144,9 +324,18 @@ public class VueAjouterAvantPoste extends Scene {
         }
     }
 
+    /**
+     *  Vérifie que les données entrées sont valides
+     *  puis appelle la fonction du controleur permettant d'ajouter un avant-poste si il n'y a aucune erreur
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     * @see ControleurPrincipal#notifierAjouterAvantPoste() (int)
+     *
+     */
     private void validerDonnees() {
         boolean erreur = false;
         String messageErreurs = "";
+        //vérification du nom
         if (textFieldNomAvantPoste.getText().isEmpty()){
             erreur = true;
             messageErreurs+="Veuillez entrer un nom";
@@ -162,6 +351,7 @@ public class VueAjouterAvantPoste extends Scene {
             labelErreurs.setText(messageErreurs);
         }
 
+        //vérification des coordonnées
         try {
             xAvanPoste = Double.parseDouble(labelXAvPoste.getText());
             yAvanPoste = Double.parseDouble(labelYAvPoste.getText());
@@ -174,17 +364,33 @@ public class VueAjouterAvantPoste extends Scene {
         }
 
         if (!erreur){
-            System.out.println("c'est bon");
+            System.out.println("Ajout avant-poste");
             this.controleur.notifierAjouterAvantPoste();
         }
     }
 
+    /**
+     *  Créé un avant-poste avec les données entrées et le retourne
+     *
+     * @returnun avant-poste créé avec les données entrées les données entrées par le joueur
+     *
+     * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
+     *
+     */
     public AvantPoste getAvantPoste()
     {
         AvantPoste avantPoste = new AvantPoste(nomAvanPoste, new Coordonnee(xAvanPoste, yAvanPoste, zAvanPoste), new ArrayList<Mine>());
         return avantPoste;
     }
 
+    /**
+     *  Permet d'affecter un controleur à la vue
+     *
+     * @param controleur
+     *
+     * @see ControleurPrincipal
+     * @see VueAjouterAvantPoste#controleur
+     */
     public void setControleur(controler.ControleurPrincipal controleur) {
         this.controleur = controleur;
     }

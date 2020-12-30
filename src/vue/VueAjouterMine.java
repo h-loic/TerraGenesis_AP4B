@@ -34,7 +34,14 @@ import java.util.Random;
 
 public class VueAjouterMine extends Scene {
 
+    /**
+     * constante indiquant la distance minimale entre deux mines
+     *
+     * @see VueAjouterMine#VueAjouterMine()
+     * @see VueAjouterMine#positionnerMine(double, double, ArrayList)
+     */
     public static final int DISTANCE_MINI = 30;
+
     /**
      * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues
      *
@@ -396,9 +403,10 @@ public class VueAjouterMine extends Scene {
 
     /**
      *  Vérifie que les données entrées sont valides
+     *  puis appelle la fonction du controleur permettant d'ajouter une mine si il n'y a aucune erreur
      *
      * @see VueAjouterMine#VueAjouterMine()
-     * @see VueAjouterMine#canvasCoords
+     * @see ControleurPrincipal#notifierAjouterMine(int)
      *
      */
     private void validerDonnees() {
@@ -406,11 +414,13 @@ public class VueAjouterMine extends Scene {
         String messageErreurs = "";
 
         try {
+            //conversion et stockage des données écrites sur les labels
             xMine = Double.parseDouble(labelXmine.getText());
             yMine = Double.parseDouble(labelYmine.getText());
             zMine = Double.parseDouble(labelZmine.getText());
             rendementMine = Double.parseDouble(labelRendementMine.getText());
         }catch (Exception e){
+            //exception si la conversion n'a pas fonctionné
             System.out.println(e.getMessage());
             messageErreurs+=" Veuillez entrer des coordonnées valides";
             labelErreurs.setText(messageErreurs);
@@ -418,6 +428,7 @@ public class VueAjouterMine extends Scene {
         }
 
         try{
+            //récupération de la ressource
             String ressource = (String)comboBoxRessources.getValue();
             switch (ressource){
                 case "C":
@@ -445,9 +456,8 @@ public class VueAjouterMine extends Scene {
             labelErreurs.setText(messageErreurs);
             erreur = true;
         }
-
+        //si il n'y a pas d'erreurs, ajout de la mine
         if (!erreur){
-            System.out.println("c'est bon");
             this.controleur.notifierAjouterMine(idAvantPoste);
         }
     }
