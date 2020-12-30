@@ -3,11 +3,13 @@ package vue;
 import controler.ControleurPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -30,12 +32,52 @@ import java.util.Map;
 public class VueMenuRecherche extends Scene {
 
     /**
-     * La grille sur laquelle sont ajoutés les différents boutons de la vue
+     *  Constante définissant le style des scrollpanes de la vue
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     */
+    public static final String STYLE_SCROLLPANE = "-fx-background-color:transparent;";
+
+    /**
+     *  Constante définissant le style permettant de mettre du texte en valeur en le mettant en gras
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     */
+    public static final String STYLE_GRAS = "-fx-font-size: 13; -fx-font-weight: bold;";
+
+    /**
+     *  Constante définissant le style des titres de la vue
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     */
+    public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
+
+    /**
+     *  Constante définissant le style du label des erreurs de la vue
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     */
+    public static final String STYLE_ERREUR = "-fx-text-fill: red; -fx-font-size: 13; -fx-font-weight: bold";
+
+    /**
+     *  Constante définissant le style des boutons de la vue
+     *
+     * @see VueMenuRecherche#VueMenuRecherche()
+     * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
+     */
+    public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80px";
+
+    /**
+     * Layout sur lequel seront affichés les boutons Actualiser et Retour
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
      * */
-    private GridPane grilleBoutons;
+    private HBox hBoxBoutons;
 
     /**
      * La grille sur laquelle sont ajoutés les différents éléments de la vue
@@ -119,7 +161,7 @@ public class VueMenuRecherche extends Scene {
      * @see VueMenuRecherche#grillePrincipale
      * @see VueMenuRecherche#grilleBatiments
      * @see VueMenuRecherche#grilleRechercheEnCours
-     * @see VueMenuRecherche#grilleBoutons
+     * @see VueMenuRecherche#hBoxBoutons
      * @see VueMenuRecherche#labelRecherche
      * @see VueMenuRecherche#labelRechercheEnCours
      * @see VueMenuRecherche#labelErreur
@@ -129,15 +171,15 @@ public class VueMenuRecherche extends Scene {
      *
      */
     public VueMenuRecherche() {
-        super(new GridPane(), 400,400);
+        super(new GridPane(), 500,400);
         this.grillePrincipale = (GridPane) this.getRoot();
         this.grilleBatiments = new GridPane();
         this.grilleRechercheEnCours = new GridPane();
-        this.grilleBoutons = new GridPane();
+        this.hBoxBoutons = new HBox();
         this.labelRecherche = new Label("Recherche");
         this.labelRechercheEnCours = new Label("");
         this.labelErreur = new Label("");
-        this.btnRetour = new Button("retour");
+        this.btnRetour = new Button("Retour");
         this.scrollPaneBatiments = new ScrollPane();
         this.btnActualiser = new Button("Actualiser");
     }
@@ -153,7 +195,7 @@ public class VueMenuRecherche extends Scene {
      * @see VueMenuRecherche#grillePrincipale
      * @see VueMenuRecherche#grilleBatiments
      * @see VueMenuRecherche#grilleRechercheEnCours
-     * @see VueMenuRecherche#grilleBoutons
+     * @see VueMenuRecherche#hBoxBoutons
      * @see VueMenuRecherche#labelRecherche
      * @see VueMenuRecherche#labelRechercheEnCours
      * @see VueMenuRecherche#labelErreur
@@ -165,10 +207,15 @@ public class VueMenuRecherche extends Scene {
         this.grillePrincipale.getChildren().clear();
         this.grilleBatiments.getChildren().clear();
         this.grilleRechercheEnCours.getChildren().clear();
-        this.grilleBoutons.getChildren().clear();
-        this.scrollPaneBatiments.setMinWidth(400);
+        this.hBoxBoutons.getChildren().clear();
+        this.scrollPaneBatiments.setMinWidth(500);
 
-        labelErreur.setVisible(false);
+        this.labelErreur.setVisible(false);
+        this.labelErreur.setStyle(STYLE_ERREUR);
+
+        this.labelRecherche.setStyle(STYLE_TITRE);
+
+        this.labelRechercheEnCours.setStyle(STYLE_GRAS);
 
         int rowindex = 1;
 
@@ -180,7 +227,7 @@ public class VueMenuRecherche extends Scene {
             GridPane grillDescription = new GridPane();
             Label labelBatiment = new Label(typeBatiment.getNom() + ", prix : "+typeBatiment.getCoutRecherche() + ", durée : " + typeBatiment.getTempsRecherche() + " min."
                     + (typeBatiment.getParent() != null ? ("\nnécessite : " + typeBatiment.getParent() + " (" + (typeBatimentsNonDebloques.contains(typeBatiment.getParent()) ? "pas débloqué)" : "débloqué)")) : ""));
-
+            labelBatiment.setStyle(STYLE_GRAS);
             TextFlow textFlowEffet = new TextFlow();
 
             //affichage des effets du type de batiment
@@ -195,6 +242,7 @@ public class VueMenuRecherche extends Scene {
             grillDescription.add(textFlowEffet, 0, 1);
 
             Button btnRechercher = new Button("Rechercher");
+            btnRechercher.setStyle(STYLE_BOUTONS);
 
             //desactive le bouton de recherche si une recherche est deja en cours
             if (rechercheEnCours || typeBatimentsNonDebloques.contains(typeBatiment.getParent())){
@@ -229,6 +277,7 @@ public class VueMenuRecherche extends Scene {
                 controleur.notifierNaviguerMenuPrincipal();
             }
         });
+        this.btnRetour.setStyle(STYLE_BOUTONS);
 
         //affichage des données de la recherche en cours s'il y en a une
         if (rechercheEnCours) {
@@ -245,14 +294,20 @@ public class VueMenuRecherche extends Scene {
                 controleur.notifierActualiserMenuRecherche();
             }
         });
+        this.btnActualiser.setStyle(STYLE_BOUTONS);
+
+        scrollPaneBatiments.setStyle(STYLE_SCROLLPANE);
+
+        this.hBoxBoutons.getChildren().addAll(this.btnRetour, this.btnActualiser);
+        this.hBoxBoutons.setSpacing(15);
+        this.hBoxBoutons.setPadding(new Insets(15,15,15,15));
 
         this.scrollPaneBatiments.setContent(grilleBatiments);
+
         this.grillePrincipale.add(this.labelRecherche, 0, 0);
         this.grillePrincipale.add(this.scrollPaneBatiments, 0, 1);
         this.grillePrincipale.add(this.labelErreur, 0, 2);
-        this.grilleBoutons.add(this.btnRetour, 0, 0);
-        this.grilleBoutons.add(this.btnActualiser, 1, 0);
-        this.grillePrincipale.add(this.grilleBoutons, 0, 4);
+        this.grillePrincipale.add(this.hBoxBoutons, 0, 4);
     }
 
     /**
