@@ -194,7 +194,7 @@ public class AvantPoste {
      * @see AvantPoste#mines
      * @see Mine#getId()
      * @param idMine id de la mine à chercher et retourner
-     * @return Mine dont l'identifiant est donné en paramètres. Si aucune mine n'a cette id, retourne null
+     * @return Mine dont l'identifiant est donné en paramètres. Si aucune mine n'a cette id, retourne null.
      */
     public Mine getMine(int idMine) {
         for (Mine mine : this.mines){
