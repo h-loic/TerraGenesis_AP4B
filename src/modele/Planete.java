@@ -286,6 +286,16 @@ public class Planete {
     }
 
     public void detruireVille(int idVille) {
+        Ville ville = getVille(idVille);
+        for (Batiment batiment : ville.getBatiments()){
+            for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
+                for (Donnee donnee : this.donnees){
+                    if (donnee.getTypeDonnee() == typeDonnee){
+                        donnee.setCroissance(donnee.getCroissance() - batiment.getEffets().get(typeDonnee));
+                    }
+                }
+            }
+        }
         this.cartePlanete.effacerVilleCarte(getVille(idVille).getCoordonnee());
         this.villes.remove(getVille(idVille));
     }
