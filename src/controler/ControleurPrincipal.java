@@ -8,17 +8,17 @@ import vue.*;
 import java.util.ArrayList;
 
 /**
- * <b>Le ControleurPrincipal est un module qui traite les actions de l'utilisateur, modifie les données du modèle et de la vue </b>
+ * <b>Le ControleurPrincipal est un module qui traite les actions de l'utilisateur, modifie les donnees du modele et de la vue </b>
  * <p>
  *     <ul>
  *         <li>
- *             Il intéragit avec le navigateur des vues pour permettre au joueur de naviguer entre les vues
+ *             Il interagit avec le navigateur des vues pour permettre au joueur de naviguer entre les vues
  *         </li>
  *         <li>
- *             Il possède une instance de chaque vue pour pouvoir les manipuler
+ *             Il possede une instance de chaque vue pour pouvoir les manipuler
  *         </li>
  *         <li>
- *             il possède une instance de la classe Planete (qui centralise les autres modèles) pour pouvoir les manipuler
+ *             il possede une instance de la classe Planete (qui centralise les autres modeles) pour pouvoir les manipuler
  *         </li>
  *     </ul>
  * </p>
@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class ControleurPrincipal {
 
     /**
-     * Navigateur des vues permettant de naviguer entre les différentes vues
+     * Navigateur des vues permettant de naviguer entre les differentes vues
      *
      * @see ControleurPrincipal#ControleurPrincipal()
      * @see NavigateurDesVues
@@ -162,9 +162,9 @@ public class ControleurPrincipal {
      * <p>
      *     Constructeur de ControleurPrincipal
      *     <ul>
-     *         <li>récupère l'instance du navigateur des vues</li>
-     *         <li>créé une planète et initialise ses données</li>
-     *         <li>Créé et lance le ControleurTemps</li>
+     *         <li>recupere l'instance du navigateur des vues</li>
+     *         <li>cree une planete et initialise ses donnees</li>
+     *         <li>Cree et lance le ControleurTemps</li>
      *     </ul>
      * </p>
      *
@@ -193,9 +193,9 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Récupère les instances de chaque vue auprès du navigateur des vues
+     *     Recupere les instances de chaque vue aupres du navigateur des vues
      *     <ul>
-     *         <li>récupère les instances des vues</li>
+     *         <li>recupere les instances des vues</li>
      *         <li>initialise le menu principal</li>
      *         <li>navigue vers le menu principal</li>
      *     </ul>
@@ -357,7 +357,7 @@ public class ControleurPrincipal {
     }
 
     /**
-     * Identifiant de l'avantPoste actuellement manipulé par le controleur,
+     * Identifiant de l'avantPoste actuellement manipule par le controleur,
      * change lorsque l'on affiche la page d'un avantPoste
      *
      * @see AvantPoste
@@ -401,10 +401,10 @@ public class ControleurPrincipal {
      * <p>
      *     Ajoute un AvantPoste :
      *     <li>
-     *         fait payer l'avant poste à la planète
+     *         fait payer l'avant poste à la planete
      *     </li>
      *     <li>
-     *         récupére un AvantPoste créé à partir des données entrées dans la VueAjouterAvantPoste et l'ajoute à la planète
+     *         recupere un AvantPoste cree à partir des donnees entrees dans la VueAjouterAvantPoste et l'ajoute à la planete
      *     </li>
      *     <li>
      *         Navigue vers la VueMenuPopulation
@@ -423,10 +423,10 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Détruit l'avantPoste dont l'id est donné en paramètre et navigue vers la VueMenuPopulation
+     *     Detruit l'avantPoste dont l'id est donne en parametre et navigue vers la VueMenuPopulation
      * </p>
      *
-     * @param idAvantPoste id de l'avantPoste à détruire
+     * @param idAvantPoste id de l'avantPoste à detruire
      *
      * @see Planete#detruireAvantPoste
      * @see ControleurPrincipal#planete
@@ -438,7 +438,7 @@ public class ControleurPrincipal {
     }
 
     /**
-     * Identifiant de la ville actuellement manipulée par le controleur,
+     * Identifiant de la ville actuellement manipulee par le controleur,
      * change lorsque l'on affiche la page d'une ville
      *
      * @see Ville
@@ -463,10 +463,10 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Détruit la ville dont l'id est donné en paramètre et navigue vers la VueMenuPopulation
+     *     Detruit la ville dont l'id est donne en parametre et navigue vers la VueMenuPopulation
      * </p>
      *
-     * @param idVille id de la ville à détruire
+     * @param idVille id de la ville à detruire
      *
      * @see Planete#detruireVille(int)
      * @see ControleurPrincipal#planete
@@ -486,7 +486,7 @@ public class ControleurPrincipal {
      * @see NavigateurDesVues#getVueAjouterVille()
      */
     public void notifierNaviguerAjouterVille() throws Exception{
-        //prix d'une nouvelle ville : nombre de villes de la planète * prix de base d'une ville
+        //prix d'une nouvelle ville : nombre de villes de la planete * prix de base d'une ville
         if (!planete.peutPayer((planete.getVilles().size()+1) * Ville.PRIX_BASE_VILLE)){
             throw new Exception("Fonds insuffisants : " + (planete.getVilles().size()+1)*Ville.PRIX_BASE_VILLE + " requis, disponibles : "+planete.getFinances());
         }
@@ -498,10 +498,10 @@ public class ControleurPrincipal {
      * <p>
      *     Ajoute une Ville :
      *     <li>
-     *         fait payer la ville à la planète
+     *         fait payer la ville à la planete
      *     </li>
      *     <li>
-     *         récupére une Ville créée à partir des données entrées dans la VueAjouterVille et l'ajoute à la planète
+     *         recupere une Ville creee à partir des donnees entrees dans la VueAjouterVille et l'ajoute à la planete
      *     </li>
      *     <li>
      *         Navigue vers la VueMenuPopulation
@@ -538,7 +538,7 @@ public class ControleurPrincipal {
      * <p>
      *     Ajoute une Ville :
      *     <li>
-     *         fait payer le batiment à la planète
+     *         fait payer le batiment à la planete
      *     </li>
      *     <li>
      *         construit le batiment
@@ -566,12 +566,12 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Améliore une batiment :
+     *     Ameliore une batiment :
      *     <li>
-     *         vérifie si le batiment est améliorable
+     *         verifie si le batiment est ameliorable
      *     </li>
      *     <li>
-     *         fait payer l'amélioration et améliore le batiment
+     *         fait payer l'amelioration et ameliore le batiment
      *     </li>
      *     <li>
      *         Recharge la VueVille
@@ -585,7 +585,7 @@ public class ControleurPrincipal {
     public void notifierAmeliorerBatiment(int idBatiment, int idVille) throws Exception{
         Batiment batiment = planete.getVille(idVille).getBatiment(idBatiment);
         if (!batiment.peutAmeliorer()){
-            Exception exception = new Exception("Amélioration impossible : le batiment est au niveau maximal");
+            Exception exception = new Exception("Amelioration impossible : le batiment est au niveau maximal");
             throw exception;
         }else if (!this.planete.peutPayer(batiment.getPrixAmelioration())){
             throw new Exception("Fonds insuffisants : " + (batiment.getPrixAmelioration()) + " requis, disponibles : "+planete.getFinances());
@@ -597,10 +597,10 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Détruit le Batiment de la ville courante dont l'id est donné en paramètre et actualise la vueVille
+     *     Detruit le Batiment de la ville courante dont l'id est donne en parametre et actualise la vueVille
      * </p>
      *
-     * @param id du batiment à détruire
+     * @param id du batiment à detruire
      *
      * @see Planete#detruireBatiment(int, int)
      * @see ControleurPrincipal#planete
@@ -613,10 +613,10 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Active/désactive le batiment dont l'id est donné en paramètre
+     *     Active/desactive le batiment dont l'id est donne en parametre
      * </p>
      *
-     * @param id du batiment à détruire
+     * @param id du batiment à detruire
      *
      * @see Planete#detruireBatiment(int, int)
      * @see ControleurPrincipal#planete
@@ -632,7 +632,7 @@ public class ControleurPrincipal {
      *     Initialise et affiche la VueGouverneur
      * </p>
      *
-     * @param gouverneur gouverneur dont on veut afficher les améliorations
+     * @param gouverneur gouverneur dont on veut afficher les ameliorations
      *
      * @see Planete
      * @see ControleurPrincipal#planete
@@ -661,12 +661,12 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Ajoute une mine à l'avant-poste dont l'id est donné en paramètre :
+     *     Ajoute une mine à l'avant-poste dont l'id est donne en parametre :
      *     <li>
-     *         fait payer la mine à la planète
+     *         fait payer la mine à la planete
      *     </li>
      *     <li>
-     *         recupère une mine construite avec les informations entrées dans la page AjouterMine,
+     *         recupere une mine construite avec les informations entrees dans la page AjouterMine,
      *         lui affecte un nom et construit la mine.
      *     </li>
      *     <li>
@@ -711,17 +711,17 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Améliore une mine
+     *     Ameliore une mine
      *     <ul>
-     *         <li>lance une exception si la mine ne peut pas être améliorée (pas assez d'argent, niveau maximal ou non fonctionnelle)</li>
-     *         <li>fait payer l'amélioration à la mine</li>
-     *         <li>améliore la mine</li>
+     *         <li>lance une exception si la mine ne peut pas être amelioree (pas assez d'argent, niveau maximal ou non fonctionnelle)</li>
+     *         <li>fait payer l'amelioration à la mine</li>
+     *         <li>ameliore la mine</li>
      *         <li>recharge la page VueAvantPoste</li>
      *     </ul>
      * </p>
      *
-     * @param idAvantPoste id de l'avantPoste contenant la mine que l'on veut améliorer
-     * @param idMine id de la mine à améliorer
+     * @param idAvantPoste id de l'avantPoste contenant la mine que l'on veut ameliorer
+     * @param idMine id de la mine à ameliorer
      *
      * @see VueAvantPoste
      * @see ControleurPrincipal#planete
@@ -730,13 +730,13 @@ public class ControleurPrincipal {
     public void notifierAmeliorerMine(int idMine, int idAvantPoste) throws Exception{
         Mine mine = planete.getAvantPoste(idAvantPoste).getMine(idMine);
         if (mine.getNiveau()>= 5){
-            Exception exception = new Exception("Amélioration impossible : la mine est au niveau maximal");
+            Exception exception = new Exception("Amelioration impossible : la mine est au niveau maximal");
             throw exception;
         }else if (!this.planete.peutPayer(mine.getPrixAmelioration())){
-            Exception exception = new Exception("Amélioration impossible : fonds insuffisants");
+            Exception exception = new Exception("Amelioration impossible : fonds insuffisants");
             throw exception;
         }else if (!mine.isFonctionnelle()){
-            Exception exception = new Exception("Amélioration impossible : La mine est épuisée");
+            Exception exception = new Exception("Amelioration impossible : La mine est epuisee");
             throw exception;
         }
         this.planete.payer(mine.getPrixAmelioration());
@@ -746,14 +746,14 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Détruit une mine
+     *     Detruit une mine
      *     <ul>
-     *         <li>Détruit la mine dont l'id est donné en paramètre</li>
+     *         <li>Detruit la mine dont l'id est donne en parametre</li>
      *         <li>Recharge la VueAvantPoste</li>
      *     </ul>
      * </p>
      *
-     * @param id id de la mine à détruire
+     * @param id id de la mine à detruire
      *
      * @see VueAvantPoste
      * @see ControleurPrincipal#planete
@@ -768,7 +768,7 @@ public class ControleurPrincipal {
      * <p>
      *     affecte un gouverneur à une ville
      *     <ul>
-     *         <li>révoque le grouverneur de la ville si elle en a déjà un</li>
+     *         <li>revoque le grouverneur de la ville si elle en a dejà un</li>
      *         <li>affecte le gouvrneur à la ville</li>
      *         <li>affiche la page du gouverneur</li>
      * </p>
@@ -789,7 +789,7 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Revoque le Gouverneur de la ville donnée en paramètre
+     *     Revoque le Gouverneur de la ville donnee en parametre
      * </p>
      *
      * @param idVille id de la ville dont on veut revoquer le gouverneur
@@ -805,7 +805,7 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-        révoque le gouveneur de la ville dont l'id est donné en paramètre et affiche la Vue du gouverneur donné en paramètre
+        revoque le gouveneur de la ville dont l'id est donne en parametre et affiche la Vue du gouverneur donne en parametre
      * </p>
      *
      * @param idVille id de la mine à laquelle affecter le gouverneur
@@ -821,15 +821,15 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Améliore un Gouverneur
+     *     Ameliore un Gouverneur
      *     <ul>
-     *         <li>Vérifie si il est améliorable</li>
-     *         <li>fait payer l'amélioration à la planète</li>
-     *         <li>améliore le gouverneur</li>
+     *         <li>Verifie si il est ameliorable</li>
+     *         <li>fait payer l'amelioration à la planete</li>
+     *         <li>ameliore le gouverneur</li>
      *     </ul>
      * </p>
      *
-     * @param gouverneur gouvenreur que l'on souhaite améliorer
+     * @param gouverneur gouvenreur que l'on souhaite ameliorer
      *
      * @see VueGouverneur
      * @see ControleurPrincipal#planete
@@ -862,7 +862,7 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Actualise la page VueMenuRecherche en l'initialisant avec les dernières données de Recherche
+     *     Actualise la page VueMenuRecherche en l'initialisant avec les dernieres donnees de Recherche
      * </p>
      *
      * @see VueMenuRecherche
@@ -875,7 +875,7 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     met à jour les données de certaines vues en les réinitialisant
+     *     met à jour les donnees de certaines vues en les reinitialisant
      * </p>
      *
      */
@@ -899,7 +899,7 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Trie la collection des gouverneurs de la planete par leur état (débloqué ou non)
+     *     Trie la collection des gouverneurs de la planete par leur etat (debloque ou non)
      * </p>
      *
      * @see Planete#trierGouverneurParDebloque()
@@ -911,7 +911,7 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Débloque un gourverneur
+     *     Debloque un gourverneur
      * </p>
      *
      * @see Gouverneur#setEstDebloque()
@@ -932,10 +932,10 @@ public class ControleurPrincipal {
      *     Lance la recherche d'un type de batiment
      *     <ul>
      *         <li>
-     *             vérifie si la recherche est possible
+     *             verifie si la recherche est possible
      *         </li>
      *         <li>
-     *             fait payer la recherche à la planète
+     *             fait payer la recherche à la planete
      *         </li>
      *         <li>
      *             lance la recherche
@@ -958,13 +958,13 @@ public class ControleurPrincipal {
         boolean rechercheEnCours = planete.getRecherche().isRechercheEnCours();
 
         if (rechercheEnCours){
-            System.out.println("déjà recherche");
-            throw new Exception("Recherche impossible : recherche déjà en cours");
+            System.out.println("dejà recherche");
+            throw new Exception("Recherche impossible : recherche dejà en cours");
         }else if (!planete.peutPayer(typeBatiment.getCoutRecherche())){
             System.out.println("trop pauvre");
             throw new Exception("Recherche impossible : fonds insuffisants");
         }else if(! planete.peutRechercher(typeBatiment)) {
-            throw new Exception("Recherche impossible : il faut d'abord rechercher la dépendence (" + typeBatiment.getParent() + ")");
+            throw new Exception("Recherche impossible : il faut d'abord rechercher la dependence (" + typeBatiment.getParent() + ")");
         }else {
             planete.payer( typeBatiment.getCoutRecherche());
             planete.getRecherche().rechercher(typeBatiment);
@@ -978,11 +978,11 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     vérifie les coordonnées en paramètre, pour savoir si elles sont trop proches d'une avant-poste ou d'une ville
+     *     verifie les coordonnees en parametre, pour savoir si elles sont trop proches d'une avant-poste ou d'une ville
      * </p>
      *
-     * @param x longitude à vérifier
-     * @param y latitude à vérifier
+     * @param x longitude à verifier
+     * @param y latitude à verifier
      *
      * @see Carte#verifierCoordonnees(double, double)
      *

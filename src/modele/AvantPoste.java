@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * <b>AvantPoste est la classe représentant les différents avant-postes de la planète</b>
+ * <b>AvantPoste est la classe representant les differents avant-postes de la planete</b>
  * <p>
- * Un AvantPoste est caractérisé par les informations suivantes :
+ * Un AvantPoste est caracterise par les informations suivantes :
  * <ul>
- * <li>Un identifiant unique attribué définitivement.</li>
+ * <li>Un identifiant unique attribue definitivement.</li>
  * <li>Un nom</li>
- * <li>Des coordonnées</li>
+ * <li>Des coordonnees</li>
  * <li>Une liste de mines</li>
  * </ul>
  * </p>
@@ -38,7 +38,7 @@ public class AvantPoste {
     private String nom;
 
     /**
-     * Les coordonnées de la position de l'AvantPoste.
+     * Les coordonnees de la position de l'AvantPoste.
      *
      * @see AvantPoste#AvantPoste(String, Coordonnee, ArrayList)
      * @see AvantPoste#getCoordonnee()
@@ -55,15 +55,15 @@ public class AvantPoste {
 
     /**
      * Le prix de base d'un AvantPoste (sert à calculer le prix d'un nouvel AvantPoste en fonction du nombre
-     * d'AvantPostes déjà construits sur la planète)
+     * d'AvantPostes dejà construits sur la planete)
      */
     public static final double PRIX_BASE_AVPOSTE = 1000000.;
 
     /**
      * Constructeur Mine.
      * <p>
-     * A la construction d'un objet AvantPoste, on lui assigne un identifiant aléatoire,
-     * ainsi qu'un nom, des coordonnées et une liste de mines données en paramètres
+     * A la construction d'un objet AvantPoste, on lui assigne un identifiant aleatoire,
+     * ainsi qu'un nom, des coordonnees et une liste de mines donnees en parametres
      * </p>
      *
      * @param nom
@@ -96,11 +96,11 @@ public class AvantPoste {
     }
 
     /**
-     * Renvoi la somme des bénéfices (€/min) de chaque mine de l'AvantPoste
+     * Renvoi la somme des benefices (€/min) de chaque mine de l'AvantPoste
      *
      * @see AvantPoste#mines
      * @see Mine#getBenefice()
-     * @return somme des bénéfices de chaque mine de l'AvantPoste
+     * @return somme des benefices de chaque mine de l'AvantPoste
      */
     public double getBeneficesMines(){
         double benefices = 0;
@@ -130,17 +130,17 @@ public class AvantPoste {
     }
 
     /**
-     * retourne les coordonnées de l'AvantPoste
+     * retourne les coordonnees de l'AvantPoste
      *
      * @see AvantPoste#coordonnee
-     * @return coordonnées de l'AvantPoste
+     * @return coordonnees de l'AvantPoste
      */
     public Coordonnee getCoordonnee() {
         return coordonnee;
     }
 
     /**
-     * change les coordonnées de l'AvantPoste
+     * change les coordonnees de l'AvantPoste
      *
      * @see AvantPoste#coordonnee
      */
@@ -189,12 +189,12 @@ public class AvantPoste {
 
 
     /**
-     * Retourne une mine de l'AvantPoste en fonction de l'ID donné en paramètre
+     * Retourne une mine de l'AvantPoste en fonction de l'ID donne en parametre
      *
      * @see AvantPoste#mines
      * @see Mine#getId()
      * @param idMine id de la mine à chercher et retourner
-     * @return Mine dont l'identifiant est donné en paramètres. Si aucune mine n'a cette id, retourne null.
+     * @return Mine dont l'identifiant est donne en parametres. Si aucune mine n'a cette id, retourne null.
      */
     public Mine getMine(int idMine) {
         for (Mine mine : this.mines){

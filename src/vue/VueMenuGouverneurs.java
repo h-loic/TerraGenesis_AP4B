@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class VueMenuGouverneurs extends Scene {
 
     /**
-     *  Constante définissant le style des titres de la vue
+     *  Constante definissant le style des titres de la vue
      *
      * @see VueMenuGouverneurs#VueMenuGouverneurs() 
      * @see VueMenuGouverneurs#initialiserMenuGouverneurs(ArrayList) 
@@ -24,7 +24,7 @@ public class VueMenuGouverneurs extends Scene {
     public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
 
     /**
-     *  Constante définissant le style des boutons pour trier la vue
+     *  Constante definissant le style des boutons pour trier la vue
      *
      * @see VueMenuGouverneurs#VueMenuGouverneurs()
      * @see VueMenuGouverneurs#initialiserMenuGouverneurs(ArrayList)
@@ -33,7 +33,7 @@ public class VueMenuGouverneurs extends Scene {
             "-fx-border-insets: 5px;-fx-background-insets: 5px;";
 
     /**
-     *  Constante définissant le style des boutons de la vue
+     *  Constante definissant le style des boutons de la vue
      *
      * @see VueMenuGouverneurs#VueMenuGouverneurs()
      * @see VueMenuGouverneurs#initialiserMenuGouverneurs(ArrayList)
@@ -60,7 +60,7 @@ public class VueMenuGouverneurs extends Scene {
         this.boutonRetour.setStyle(STYLE_BOUTONS);
         this.boutonTrierParNom = new Button("Trier par nom");
         this.boutonTrierParNom.setStyle(STYLE_BOUTONS_TRIER);
-        this.boutonTrierParDebloque = new Button("Trier par debloqué");
+        this.boutonTrierParDebloque = new Button("Trier par debloque");
         this.boutonTrierParDebloque.setStyle(STYLE_BOUTONS_TRIER);
     }
 

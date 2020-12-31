@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * <b>Affiche la carte affichant les positions des avant-postes et des villes</b>
  * <p>
- * Cette vue est caractérisée par :
+ * Cette vue est caracterisee par :
  * <ul>
  * <li>Une instance de la classe Carte</li>
  * </ul>
@@ -32,7 +32,7 @@ import java.util.ArrayList;
 public class VueMenuCarte extends Scene {
 
     /**
-     *  Constante définissant le style des boutons de la vue
+     *  Constante definissant le style des boutons de la vue
      *
      * @see VueMenuPrincipal#VueMenuPrincipal()
      * @see VueMenuPrincipal#initialiserMenuPrincipal()
@@ -40,7 +40,7 @@ public class VueMenuCarte extends Scene {
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold;-fx-min-width: 120px";
 
     /**
-     *  Constante définissant le style des titres de la vue
+     *  Constante definissant le style des titres de la vue
      *
      * @see VueMenuPrincipal#VueMenuPrincipal()
      * @see VueMenuPrincipal#initialiserMenuPrincipal()
@@ -48,7 +48,7 @@ public class VueMenuCarte extends Scene {
     public static final String STYLE_TITRE = " -fx-font-size: 20; -fx-font-weight: bold; -fx-padding: 15px; -fx-text-fill : white;";
 
     /**
-     *  Constante définissant le style du fond de la vue
+     *  Constante definissant le style du fond de la vue
      *
      * @see VueMenuPrincipal#VueMenuPrincipal()
      * @see VueMenuPrincipal#initialiserMenuPrincipal()
@@ -56,7 +56,7 @@ public class VueMenuCarte extends Scene {
     public static final String STYLE_FOND = "-fx-background-color: #7680AD;";
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments de la vue
+     * La grille sur laquelle sont ajoutes les differents elements de la vue
      *
      * @see VueMenuCarte#VueMenuCarte()
      * @see VueMenuCarte#initialiserMenuCarte(Canvas)
@@ -80,7 +80,7 @@ public class VueMenuCarte extends Scene {
     protected HBox hBoxRetour;
 
     /**
-     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues
+     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueMenuCarte#setControleur(ControleurPrincipal)
      * @see controler.ControleurPrincipal
@@ -104,7 +104,7 @@ public class VueMenuCarte extends Scene {
     private Button boutonRetour;
 
     /**
-     * Canvas d'une instance du modele Carte sur lequel et déssinnée la carte de la planète
+     * Canvas d'une instance du modele Carte sur lequel et dessinnee la carte de la planete
      *
      * @see VueMenuCarte#setControleur(ControleurPrincipal)
      * @see controler.ControleurPrincipal
@@ -113,7 +113,7 @@ public class VueMenuCarte extends Scene {
 
     /**
      *  Constructeur de VueMenuCarte
-     *  Créé les différents label et boutons de la vue
+     *  Cree les differents label et boutons de la vue
      *
      * @see VueMenuCarte#grillePrincipale
      * @see VueMenuCarte#labelCarte

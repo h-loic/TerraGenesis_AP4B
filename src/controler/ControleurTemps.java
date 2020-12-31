@@ -10,18 +10,18 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * <b>Le ControleurTemps est un controleur et un Thread qui gère l'avancée du temps et donc l'évolution des données de la planète, de ses avant-postes, mines et villes </b>
+ * <b>Le ControleurTemps est un controleur et un Thread qui gere l'avancee du temps et donc l'evolution des donnees de la planete, de ses avant-postes, mines et villes </b>
  * <p>
- *     Ce controleur est caractérisé par
+ *     Ce controleur est caracterise par
  *     <ul>
  *         <li>
- *             Un booléen indiquant s'il est en marche
+ *             Un booleen indiquant s'il est en marche
  *         </li>
  *         <li>
- *             Une planète dont il faut mettre à jour les données
+ *             Une planete dont il faut mettre à jour les donnees
  *         </li>
  *         <li>
- *             Un accès au ControleurPrincipal
+ *             Un acces au ControleurPrincipal
  *         </li>
  *     </ul>
  * </p>
@@ -33,7 +33,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ControleurTemps extends Thread{
 
     /**
-     * Booléen indiquant si le controleur est en marche
+     * Booleen indiquant si le controleur est en marche
      *
      * @see ControleurTemps#ControleurTemps(Planete, ControleurPrincipal)
      * @see ControleurTemps#arreter()
@@ -41,7 +41,7 @@ public class ControleurTemps extends Thread{
     private AtomicBoolean estEnMarche = new AtomicBoolean();
 
     /**
-     * Planete dont il faut gérer l'évolution du temps
+     * Planete dont il faut gerer l'evolution du temps
      *
      * @see ControleurTemps#ControleurTemps(Planete, ControleurPrincipal)
      * @see Planete
@@ -59,8 +59,8 @@ public class ControleurTemps extends Thread{
     /**
      * Constructeur de ControleurTemps
      *
-     * @param planete planete que le controleur temps doit gérer
-     * @param controleurPrincipal instance du ControleurPrincipal, permettant d'intéragir avec celui ci
+     * @param planete planete que le controleur temps doit gerer
+     * @param controleurPrincipal instance du ControleurPrincipal, permettant d'interagir avec celui ci
      *
      * @see Planete
      * @see ControleurPrincipal
@@ -72,7 +72,7 @@ public class ControleurTemps extends Thread{
     }
 
     /**
-     * méthode permettant de lancer le ControleurTemps
+     * methode permettant de lancer le ControleurTemps
      *
      * @see Thread
      *
@@ -95,7 +95,7 @@ public class ControleurTemps extends Thread{
     }
 
     /**
-     * Méthode arrêtant le Thread et mettant le booléen estEnMarche à false
+     * Methode arrêtant le Thread et mettant le booleen estEnMarche à false
      *
      * @see ControleurTemps#estEnMarche
      *
@@ -107,8 +107,8 @@ public class ControleurTemps extends Thread{
 
     /**
      * <p>
-     *     Met à jour la recherche : si une recherche est en cours et que le temps de recherche est écoulé,
-     *     cette fonction débloque le type de batiment recherché et met fin à la recherche
+     *     Met à jour la recherche : si une recherche est en cours et que le temps de recherche est ecoule,
+     *     cette fonction debloque le type de batiment recherche et met fin à la recherche
      * </p>
      *
      * @see Recherche
@@ -124,7 +124,7 @@ public class ControleurTemps extends Thread{
             if (dateCourante.after(recherche.getDateFinRecherche())){
                 this.planete.debloquerTypeBatiment(recherche.getTypeBatimentRecherche());
                 recherche.finDeRecherche();
-                System.out.println("débloqué");
+                System.out.println("debloque");
             }else{
                 long diffInMillies = Math.abs(recherche.getDateFinRecherche().getTime() - dateCourante.getTime());
                 long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
@@ -135,13 +135,13 @@ public class ControleurTemps extends Thread{
 
     /**
      * <p>
-     *     met à jour les données concernant les avant-postes et leurs mines:
+     *     met à jour les donnees concernant les avant-postes et leurs mines:
      *     <ul>
      *         <li>
-     *              récupère la somme des bénéfices générés par toutes les mines de l'avant-poste par seconde
+     *              recupere la somme des benefices generes par toutes les mines de l'avant-poste par seconde
      *         </li>
      *         <li>
-     *             met les Mines ayant atteint leur date d'épuisment à l'arrêt
+     *             met les Mines ayant atteint leur date d'epuisment à l'arrêt
      *         </li>
      *     </ul>
      * </p>
@@ -169,13 +169,13 @@ public class ControleurTemps extends Thread{
 
     /**
      * <p>
-     *     met à jour les données concernant les villes:
+     *     met à jour les donnees concernant les villes:
      *     <ul>
      *         <li>
      *              fini la construction des batiments quand leur date de fin de construction est atteinte
      *         </li>
      *         <li>
-     *             améliore les batiments quand ils ont atteint leur date de fin d'amélioration
+     *             ameliore les batiments quand ils ont atteint leur date de fin d'amelioration
      *         </li>
      *     </ul>
      * </p>

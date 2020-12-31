@@ -5,11 +5,11 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /**
- * <b>La classe NavigateurDesVues est le point d’entrée de l’application, elle hérite de la classe Application de la bibliothèque JavaFX </b>
+ * <b>La classe NavigateurDesVues est le point d’entree de l’application, elle herite de la classe Application de la bibliotheque JavaFX </b>
  * <p>
- *     C’est elle qui va initialiser les différentes vues de l’application, et leur affecter un contrôleur.
- *     Elle va également permettre au contrôleur d'accéder aux différentes vues  grâce à des accesseurs.
- *     Elle permet de naviguer facilement entre les différentes vues en changeant la scène du stage
+ *     C’est elle qui va initialiser les differentes vues de l’application, et leur affecter un contrôleur.
+ *     Elle va egalement permettre au contrôleur d'acceder aux differentes vues  grâce à des accesseurs.
+ *     Elle permet de naviguer facilement entre les differentes vues en changeant la scene du stage
  * </p>
  *
  * @see Stage
@@ -39,7 +39,7 @@ public class NavigateurDesVues extends Application{
 
     /**
      * <p>
-     *     Menu montrant les données de la planète
+     *     Menu montrant les donnees de la planete
      * </p>
      *
      * @see VueMenuStatistiques
@@ -57,7 +57,7 @@ public class NavigateurDesVues extends Application{
 
     /**
      * <p>
-     *     Menu permettant de gérer la culture de l'application
+     *     Menu permettant de gerer la culture de l'application
      * </p>
      *
      * @see VueMenuCulture
@@ -66,7 +66,7 @@ public class NavigateurDesVues extends Application{
 
     /**
      * <p>
-     *     Vue permettant de gérer la population de la planète : villes et avant-postes
+     *     Vue permettant de gerer la population de la planete : villes et avant-postes
      * </p>
      *
      * @see VueMenuPopulation
@@ -75,7 +75,7 @@ public class NavigateurDesVues extends Application{
 
     /**
      * <p>
-     *     Vue permettant de visualiser la carte de la planète
+     *     Vue permettant de visualiser la carte de la planete
      * </p>
      *
      * @see VueMenuCarte
@@ -84,7 +84,7 @@ public class NavigateurDesVues extends Application{
 
     /**
      * <p>
-     *     Vue permettant de gérer les gouverneurs de la planète
+     *     Vue permettant de gerer les gouverneurs de la planete
      * </p>
      *
      * @see VueMenuGouverneurs
@@ -93,7 +93,7 @@ public class NavigateurDesVues extends Application{
 
     /**
      * <p>
-     *     vue permettant de gérer un avant-poste
+     *     vue permettant de gerer un avant-poste
      * </p>
      *
      * @see VueAvantPoste
@@ -102,7 +102,7 @@ public class NavigateurDesVues extends Application{
 
     /**
      * <p>
-     *     Vue permettant de gérer un gouverneur
+     *     Vue permettant de gerer un gouverneur
      * </p>
      *
      * @see VueGouverneur
@@ -182,7 +182,7 @@ public class NavigateurDesVues extends Application{
 
     /**
      *<p>
-     *     Constructeur de NavigateurDesVues : contruit les différentes vues de l'apllication
+     *     Constructeur de NavigateurDesVues : contruit les differentes vues de l'apllication
      *</p>
      *
      * @see NavigateurDesVues#vueMenuPrincipal
@@ -239,7 +239,7 @@ public class NavigateurDesVues extends Application{
 
     /**
      *<p>
-     *     Méthode start permettant de démarrer l'application : intialise le stage de l'application et affecte le controleur aux différentes vues
+     *     Methode start permettant de demarrer l'application : intialise le stage de l'application et affecte le controleur aux differentes vues
      *</p>
      *
      * @param stage stage de l'application

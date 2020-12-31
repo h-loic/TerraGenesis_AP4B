@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 /**
  * <b>
- *     Vue listant les différentes villes et avant-postes de la planete et permettant d'en ajouter
+ *     Vue listant les differentes villes et avant-postes de la planete et permettant d'en ajouter
  * </p>
  *
  * @see modele.Planete
@@ -32,7 +32,7 @@ import java.util.ArrayList;
 public class VueMenuPopulation extends Scene {
 
     /**
-     *  Constante définissant le style des scrollpanes de la vue
+     *  Constante definissant le style des scrollpanes de la vue
      *
      * @see VueMenuPopulation#VueMenuPopulation()
      * @see VueMenuPopulation#initialiserMenuPopulation(ArrayList, ArrayList) ()
@@ -40,7 +40,7 @@ public class VueMenuPopulation extends Scene {
     public static final String STYLE_SCROLLPANE = "-fx-background-color:transparent;";
 
     /**
-     *  Constante définissant le style des titres de la vue
+     *  Constante definissant le style des titres de la vue
      *
      * @see VueMenuPopulation#VueMenuPopulation()
      * @see VueMenuPopulation#initialiserMenuPopulation(ArrayList, ArrayList) ()
@@ -48,7 +48,7 @@ public class VueMenuPopulation extends Scene {
     public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
 
     /**
-     *  Constante définissant le style du label des erreurs de la vue
+     *  Constante definissant le style du label des erreurs de la vue
      *
      * @see VueMenuPopulation#VueMenuPopulation()
      * @see VueMenuPopulation#initialiserMenuPopulation(ArrayList, ArrayList) ()
@@ -56,7 +56,7 @@ public class VueMenuPopulation extends Scene {
     public static final String STYLE_ERREUR = "-fx-text-fill: red; -fx-font-size: 13; -fx-font-weight: bold";
 
     /**
-     *  Constante définissant le style des boutons de la vue
+     *  Constante definissant le style des boutons de la vue
      *
      * @see VueMenuPopulation#VueMenuPopulation()
      * @see VueMenuPopulation#initialiserMenuPopulation(ArrayList, ArrayList) ()
@@ -66,7 +66,7 @@ public class VueMenuPopulation extends Scene {
 
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments de la vue
+     * La grille sur laquelle sont ajoutes les differents elements de la vue
      *
      * @see VueMenuPopulation#VueMenuPopulation()
      * @see VueMenuPopulation#initialiserMenuPopulation(ArrayList, ArrayList) ()
@@ -74,7 +74,7 @@ public class VueMenuPopulation extends Scene {
     protected GridPane grillePrincipale;
 
     /**
-     * La grille sur laquelle sont listées les villes de la planète
+     * La grille sur laquelle sont listees les villes de la planete
      *
      * @see VueMenuPopulation#VueMenuPopulation()
      * @see VueMenuPopulation#initialiserMenuPopulation(ArrayList, ArrayList) ()
@@ -82,7 +82,7 @@ public class VueMenuPopulation extends Scene {
     protected GridPane grilleVilles;
 
     /**
-     * La grille sur laquelle sont listées les avant-postes de la planète
+     * La grille sur laquelle sont listees les avant-postes de la planete
      *
      * @see VueMenuPopulation#VueMenuPopulation()
      * @see VueMenuPopulation#initialiserMenuPopulation(ArrayList, ArrayList) ()
@@ -90,7 +90,7 @@ public class VueMenuPopulation extends Scene {
     protected GridPane grilleAvPostes;
 
     /**
-     * Scrollpane dans laquelle sera affiché la gridPane des avant-postes
+     * Scrollpane dans laquelle sera affiche la gridPane des avant-postes
      *
      * @see VueMenuPopulation#VueMenuPopulation()
      * @see VueMenuPopulation#initialiserMenuPopulation(ArrayList, ArrayList) ()
@@ -99,7 +99,7 @@ public class VueMenuPopulation extends Scene {
     private ScrollPane scrollPaneAvPostes;
 
     /**
-     * Scrollpane dans laquelle sera affiché la gridPane des villes
+     * Scrollpane dans laquelle sera affiche la gridPane des villes
      *
      * @see VueMenuPopulation#VueMenuPopulation()
      * @see VueMenuPopulation#initialiserMenuPopulation(ArrayList, ArrayList) ()
@@ -108,7 +108,7 @@ public class VueMenuPopulation extends Scene {
     private ScrollPane scrollPaneVilles;
 
     /**
-     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues
+     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueMenuPopulation#setControleur(ControleurPrincipal)
      * @see controler.ControleurPrincipal
@@ -202,11 +202,11 @@ public class VueMenuPopulation extends Scene {
     /**
      *  Initialise la Vue:
      *      ajout d'action listeners,
-     *      ajout des éléments aux différents layouts de la vue
+     *      ajout des elements aux differents layouts de la vue
      *      affichage des avantPostes et des Villes
      *
-     * @param listeAvantPostes liste des AvantPostes de la planète
-     * @param listeVilles liste des villes de la planète
+     * @param listeAvantPostes liste des AvantPostes de la planete
+     * @param listeVilles liste des villes de la planete
      *
      * @see VueMenuPopulation#grillePrincipale
      * @see VueMenuPopulation#grilleAvPostes
@@ -228,7 +228,7 @@ public class VueMenuPopulation extends Scene {
         this.grilleAvPostes.getChildren().clear();
 
         /* VILLES */
-        //Liste les villes de la planète
+        //Liste les villes de la planete
         for (Ville ville : listeVilles){
             Label labelNom = new Label(ville.getNom()+" : ");
             Label labelPopulation = new Label(" pop. "+ville.getPopulation().getValeurActuelle());

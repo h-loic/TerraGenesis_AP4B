@@ -36,7 +36,7 @@ import java.util.Random;
 public class VueAjouterMine extends Scene {
 
     /**
-     *  Constante définissant le style permettant de mettre du texte en valeur en le mettant en gras
+     *  Constante definissant le style permettant de mettre du texte en valeur en le mettant en gras
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -44,7 +44,7 @@ public class VueAjouterMine extends Scene {
     public static final String STYLE_GRAS = "-fx-font-size: 13; -fx-font-weight: bold;";
 
     /**
-     *  Constante définissant le style des titres de la vue
+     *  Constante definissant le style des titres de la vue
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -52,7 +52,7 @@ public class VueAjouterMine extends Scene {
     public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
 
     /**
-     *  Constante définissant le style du label des erreurs de la vue
+     *  Constante definissant le style du label des erreurs de la vue
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -60,7 +60,7 @@ public class VueAjouterMine extends Scene {
     public static final String STYLE_ERREUR = "-fx-text-fill: red; -fx-font-size: 13; -fx-font-weight: bold";
 
     /**
-     *  Constante définissant le style des boutons de la vue
+     *  Constante definissant le style des boutons de la vue
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -76,7 +76,7 @@ public class VueAjouterMine extends Scene {
     public static final int DISTANCE_MINI = 30;
 
     /**
-     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues
+     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -84,7 +84,7 @@ public class VueAjouterMine extends Scene {
     private controler.ControleurPrincipal controleur = null;
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments de la vue
+     * La grille sur laquelle sont ajoutes les differents elements de la vue
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -107,7 +107,7 @@ public class VueAjouterMine extends Scene {
     private Label labelRessource;
 
     /**
-     * Label sur lequel sont affichés les messages d'erreur
+     * Label sur lequel sont affiches les messages d'erreur
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -116,7 +116,7 @@ public class VueAjouterMine extends Scene {
 
 
     /**
-     * Canvas sur lequel sont affichées les mines déjà construites dans l'avant-poste
+     * Canvas sur lequel sont affichees les mines dejà construites dans l'avant-poste
      * et permettant au joueur de positionner la nouvelle mine
      *
      * @see VueAjouterMine#VueAjouterMine()
@@ -133,7 +133,7 @@ public class VueAjouterMine extends Scene {
     private GraphicsContext gcCanva;
 
     /**
-     * Label sur lequel est affichée la longitude choisie de la mine
+     * Label sur lequel est affichee la longitude choisie de la mine
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -141,7 +141,7 @@ public class VueAjouterMine extends Scene {
     private Label labelXmine;
 
     /**
-     * Label sur lequel est affichée la latitude choisie de la mine
+     * Label sur lequel est affichee la latitude choisie de la mine
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -149,7 +149,7 @@ public class VueAjouterMine extends Scene {
     private Label labelYmine;
 
     /**
-     * Label sur lequel est affichée la l'altitude choisie de la mine
+     * Label sur lequel est affichee la l'altitude choisie de la mine
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -157,7 +157,7 @@ public class VueAjouterMine extends Scene {
     private Label labelZmine;
 
     /**
-     * Label sur lequel est affichée le rendement la mine
+     * Label sur lequel est affichee le rendement la mine
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -183,7 +183,7 @@ public class VueAjouterMine extends Scene {
     private Button btnAjouterMine;
 
     /**
-     * Liste déroulante permettant de choisir la ressource puisée par la mine
+     * Liste deroulante permettant de choisir la ressource puisee par la mine
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -223,7 +223,7 @@ public class VueAjouterMine extends Scene {
     private double rendementMine;
 
     /**
-     * ressource puisée par la mine
+     * ressource puisee par la mine
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -233,7 +233,7 @@ public class VueAjouterMine extends Scene {
 
     /**
      *  Constructeur de VueAjouterMine
-     *  Créé les différents labels, layouts et boutons de la vue
+     *  Cree les differents labels, layouts et boutons de la vue
      *
      * @see VueAjouterMine#grillePrincipale
      * @see VueAjouterMine#btnRetourMenuAvantPoste
@@ -260,7 +260,7 @@ public class VueAjouterMine extends Scene {
 
         this.canvasCoords = new Canvas(250,250);
 
-        //création des options de la liste des ressources
+        //creation des options de la liste des ressources
         ObservableList<String> options =
                 FXCollections.observableArrayList(
                         Ressource.CARBONE.getSymbole(),
@@ -277,7 +277,7 @@ public class VueAjouterMine extends Scene {
     }
 
     /**
-     *  Initialise le canvas sur lequel sont affichées les coordonnées des mines de l'avant-poste auquel
+     *  Initialise le canvas sur lequel sont affichees les coordonnees des mines de l'avant-poste auquel
      *  on souhaite ajouter une mine
      *
      * @param mines liste des mines à afficher
@@ -286,7 +286,7 @@ public class VueAjouterMine extends Scene {
      * @see VueAjouterMine#canvasCoords
      */
     private void initCanvas(ArrayList<Mine> mines){
-        //efface ce qui est déjà dessiné sur le canvas
+        //efface ce qui est dejà dessine sur le canvas
         gcCanva.clearRect(0, 0, canvasCoords.getWidth(), canvasCoords.getHeight());
         gcCanva.setFill(Color.ORANGERED);
         //redessine le fond orange
@@ -311,9 +311,9 @@ public class VueAjouterMine extends Scene {
     }
 
     /**
-     *  Sert à positionner la mine sur le canvans : vérifie si elle n'est pas trop proche d'une autre mine,
-     *  génére une altitude et un rendement aléatoires,
-     *  affiche les coordonnées et le rendement de la mine sur des labels
+     *  Sert à positionner la mine sur le canvans : verifie si elle n'est pas trop proche d'une autre mine,
+     *  genere une altitude et un rendement aleatoires,
+     *  affiche les coordonnees et le rendement de la mine sur des labels
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#canvasCoords
@@ -321,9 +321,9 @@ public class VueAjouterMine extends Scene {
      */
     private void positionnerMine(double x, double y, ArrayList<Mine> mines){
         Random random = new Random();
-        //altitude aléatoire
+        //altitude aleatoire
         double z = ( -1 + (50 - (-1)) * random.nextDouble());
-        //rendement aléatoire
+        //rendement aleatoire
         double rendement = (100 + (450 - 100) * random.nextDouble());
         labelXmine.setText("");
         labelYmine.setText("");
@@ -332,7 +332,7 @@ public class VueAjouterMine extends Scene {
         labelErreurs.setText("");
         System.out.println(x+" "+y);
         for (Mine mine : mines){
-            //vérifie si la mine n'est pas trop proche d'une autre
+            //verifie si la mine n'est pas trop proche d'une autre
             if (Math.abs((mine.getCoordonnee().getX()-x))<= DISTANCE_MINI && Math.abs((mine.getCoordonnee().getY()-y))<=DISTANCE_MINI){
                 System.out.println("trop proches");
                 labelXmine.setText("");
@@ -354,9 +354,9 @@ public class VueAjouterMine extends Scene {
     }
 
     /**
-     *  Initialise les différents labels, boutons et layouts de la vue
+     *  Initialise les differents labels, boutons et layouts de la vue
      * @param idAvantPoste id de l'avant-poste auquel on souhaite ajouter une mine
-     * @param mines mines déjà ajoutées dans l'avant-poste
+     * @param mines mines dejà ajoutees dans l'avant-poste
      *
      * @see VueAjouterMine#grillePrincipale
      * @see VueAjouterMine#btnRetourMenuAvantPoste
@@ -389,7 +389,7 @@ public class VueAjouterMine extends Scene {
             public void handle(MouseEvent event) {
                 System.out.println(event.getX()+" "+event.getY()+" "+event.getZ());
                 initCanvas(mines);
-                //event.getX/Y() coordonnées du click sur le canvas
+                //event.getX/Y() coordonnees du click sur le canvas
                 positionnerMine(event.getX(), event.getY(), mines);
             }
         });
@@ -400,7 +400,7 @@ public class VueAjouterMine extends Scene {
 
         this.labelRendementMine = new Label();
 
-        //met Carbone comme valeur par défaut dans la liste déroulante
+        //met Carbone comme valeur par defaut dans la liste deroulante
         this.comboBoxRessources.setValue(Ressource.CARBONE.getSymbole());
         this.comboBoxRessources.setStyle(STYLE_BOUTONS);
 
@@ -446,7 +446,7 @@ public class VueAjouterMine extends Scene {
     }
 
     /**
-     *  Vérifie que les données entrées sont valides
+     *  Verifie que les donnees entrees sont valides
      *  puis appelle la fonction du controleur permettant d'ajouter une mine si il n'y a aucune erreur
      *
      * @see VueAjouterMine#VueAjouterMine()
@@ -458,21 +458,21 @@ public class VueAjouterMine extends Scene {
         String messageErreurs = "";
 
         try {
-            //conversion et stockage des données écrites sur les labels
+            //conversion et stockage des donnees ecrites sur les labels
             xMine = Double.parseDouble(labelXmine.getText());
             yMine = Double.parseDouble(labelYmine.getText());
             zMine = Double.parseDouble(labelZmine.getText());
             rendementMine = Double.parseDouble(labelRendementMine.getText());
         }catch (Exception e){
-            //exception si la conversion n'a pas fonctionné
+            //exception si la conversion n'a pas fonctionne
             System.out.println(e.getMessage());
-            messageErreurs+=" Veuillez entrer des coordonnées valides";
+            messageErreurs+=" Veuillez entrer des coordonnees valides";
             labelErreurs.setText(messageErreurs);
             erreur = true;
         }
 
         try{
-            //récupération de la ressource
+            //recuperation de la ressource
             String ressource = (String)comboBoxRessources.getValue();
             switch (ressource){
                 case "C":
@@ -507,9 +507,9 @@ public class VueAjouterMine extends Scene {
     }
 
     /**
-     *  Créé une mine avec les données entrées et la retourne
+     *  Cree une mine avec les donnees entrees et la retourne
      *
-     * @return mine créée avec les données entrées par le joueur
+     * @return mine creee avec les donnees entrees par le joueur
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#canvasCoords

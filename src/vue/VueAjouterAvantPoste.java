@@ -22,7 +22,7 @@ import java.util.Random;
 
 /**
  * <b>
- *     Vue Permettant d'ajouter un avant-poste à la planète
+ *     Vue Permettant d'ajouter un avant-poste à la planete
  * </p>
  *
  * @see modele.AvantPoste
@@ -32,7 +32,7 @@ import java.util.Random;
 public class VueAjouterAvantPoste extends Scene {
 
     /**
-     *  Constante définissant le style permettant de mettre du texte en valeur en le mettant en gras
+     *  Constante definissant le style permettant de mettre du texte en valeur en le mettant en gras
      *
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
      * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
@@ -40,7 +40,7 @@ public class VueAjouterAvantPoste extends Scene {
     public static final String STYLE_GRAS = "-fx-font-size: 13; -fx-font-weight: bold;";
 
     /**
-     *  Constante définissant le style des titres de la vue
+     *  Constante definissant le style des titres de la vue
      *
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
      * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
@@ -48,7 +48,7 @@ public class VueAjouterAvantPoste extends Scene {
     public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
 
     /**
-     *  Constante définissant le style du label des erreurs de la vue
+     *  Constante definissant le style du label des erreurs de la vue
      *
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
      * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
@@ -56,7 +56,7 @@ public class VueAjouterAvantPoste extends Scene {
     public static final String STYLE_ERREUR = "-fx-text-fill: red; -fx-font-size: 13; -fx-font-weight: bold";
 
     /**
-     *  Constante définissant le style des boutons de la vue
+     *  Constante definissant le style des boutons de la vue
      *
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
      * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
@@ -64,7 +64,7 @@ public class VueAjouterAvantPoste extends Scene {
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80px";
 
     /**
-     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues
+     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
      * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
@@ -72,7 +72,7 @@ public class VueAjouterAvantPoste extends Scene {
     private controler.ControleurPrincipal controleur = null;
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments de la vue
+     * La grille sur laquelle sont ajoutes les differents elements de la vue
      *
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
      * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
@@ -82,7 +82,7 @@ public class VueAjouterAvantPoste extends Scene {
     protected HBox hBoxBoutons;
 
     /**
-     * Canvas affichant la Carte de la planète, sur laquelle l'avant-poste sera positionné
+     * Canvas affichant la Carte de la planete, sur laquelle l'avant-poste sera positionne
      *
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
      * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
@@ -180,7 +180,7 @@ public class VueAjouterAvantPoste extends Scene {
     private Button btnAjouterAvPoste;
 
     /**
-     * Nom de l'avant-poste, entré par le joueur
+     * Nom de l'avant-poste, entre par le joueur
      *
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
      * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
@@ -213,7 +213,7 @@ public class VueAjouterAvantPoste extends Scene {
 
     /**
      *  Constructeur de VueAjouterAvantPoste
-     *  Créé les différents labels, layouts et boutons de la vue
+     *  Cree les differents labels, layouts et boutons de la vue
      *
      * @see VueAjouterAvantPoste#btnRetourMenuAvantPoste
      * @see VueAjouterAvantPoste#btnAjouterAvPoste
@@ -248,10 +248,10 @@ public class VueAjouterAvantPoste extends Scene {
     }
 
     /**
-     *  Initialise les différents labels, boutons et layouts de la vue,
+     *  Initialise les differents labels, boutons et layouts de la vue,
      *  remplace le Canvas de la vue par le Canvas de la Carte, pour pouvoir y positionner l'avant-poste en cliquant dessus
      *
-     * @param carte Canvas de la Carte de la planète, permet de positionner l'avant-poste
+     * @param carte Canvas de la Carte de la planete, permet de positionner l'avant-poste
      *
      * @see VueAjouterAvantPoste#btnRetourMenuAvantPoste
      * @see VueAjouterAvantPoste#btnAjouterAvPoste
@@ -284,7 +284,7 @@ public class VueAjouterAvantPoste extends Scene {
 
         this.canvasCoords = carte;
         /*
-            Cet EventHandler permet de dessiner la position du nouvel avant-poste sur la carte (si les coordonnées sont valides),
+            Cet EventHandler permet de dessiner la position du nouvel avant-poste sur la carte (si les coordonnees sont valides),
             pour que le joueur puisse visualiser la position du futur avant-poste
         */
         this.canvasCoords.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -320,7 +320,7 @@ public class VueAjouterAvantPoste extends Scene {
             }
         });
 
-        //vérifie les données et ajoute l'avant-poste si il n'y a pas d'erreurs
+        //verifie les donnees et ajoute l'avant-poste si il n'y a pas d'erreurs
         btnAjouterAvPoste.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -341,9 +341,9 @@ public class VueAjouterAvantPoste extends Scene {
     }
 
     /**
-     *  Vérifier les coordonnées de la position choisie par le joueur,
-     *  si les coordonnées sont valides, les coordonnées seront affichés sur des labels,
-     *  et un point sera dessiné à ces coordonnées
+     *  Verifier les coordonnees de la position choisie par le joueur,
+     *  si les coordonnees sont valides, les coordonnees seront affiches sur des labels,
+     *  et un point sera dessine à ces coordonnees
      *
      * @param x longitude de la position choisie par le joueur
      * @param y latitude de la position choisie par le joueur
@@ -351,7 +351,7 @@ public class VueAjouterAvantPoste extends Scene {
      */
     private void dessineAvPoste(double x, double y){
         Random random = new Random();
-        //génère une altitude aléatoire entre -1 et 50
+        //genere une altitude aleatoire entre -1 et 50
         double z = -1 + (50 - (-1)) * random.nextDouble();
         labelXAvPoste.setText("");
         labelYAvPoste.setText("");
@@ -368,7 +368,7 @@ public class VueAjouterAvantPoste extends Scene {
     }
 
     /**
-     *  Vérifie que les données entrées sont valides
+     *  Verifie que les donnees entrees sont valides
      *  puis appelle la fonction du controleur permettant d'ajouter un avant-poste si il n'y a aucune erreur
      *
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
@@ -378,7 +378,7 @@ public class VueAjouterAvantPoste extends Scene {
     private void validerDonnees() {
         boolean erreur = false;
         String messageErreurs = "";
-        //vérification du nom
+        //verification du nom
         if (textFieldNomAvantPoste.getText().isEmpty()){
             erreur = true;
             messageErreurs+="Veuillez entrer un nom";
@@ -394,14 +394,14 @@ public class VueAjouterAvantPoste extends Scene {
             labelErreurs.setText(messageErreurs);
         }
 
-        //vérification des coordonnées
+        //verification des coordonnees
         try {
             xAvanPoste = Double.parseDouble(labelXAvPoste.getText());
             yAvanPoste = Double.parseDouble(labelYAvPoste.getText());
             zAvanPoste = Double.parseDouble(labelZAvPoste.getText());
         }catch (Exception e){
             System.out.println(e.getMessage());
-            messageErreurs+=" Veuillez entrer des coordonnées valides";
+            messageErreurs+=" Veuillez entrer des coordonnees valides";
             labelErreurs.setText(messageErreurs);
             erreur = true;
         }
@@ -413,9 +413,9 @@ public class VueAjouterAvantPoste extends Scene {
     }
 
     /**
-     *  Créé un avant-poste avec les données entrées et le retourne
+     *  Cree un avant-poste avec les donnees entrees et le retourne
      *
-     * @returnun avant-poste créé avec les données entrées les données entrées par le joueur
+     * @returnun avant-poste cree avec les donnees entrees les donnees entrees par le joueur
      *
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
      *

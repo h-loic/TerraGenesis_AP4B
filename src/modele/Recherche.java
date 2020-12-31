@@ -4,12 +4,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * <b>Mine est le modèle qui permet de représenter et manipuler la recherche des différents types de batiments</b>
+ * <b>Mine est le modele qui permet de representer et manipuler la recherche des differents types de batiments</b>
  * <p>
- * Une Recherche est caractérisée par les informations suivantes :
+ * Une Recherche est caracterisee par les informations suivantes :
  * <ul>
- * <li>Un booléen indiquant si un type de batiment est en train d etre recherché.</li>
- * <li>Un type de batiment recherché (null si aucune recherche en cours)</li>
+ * <li>Un booleen indiquant si un type de batiment est en train d etre recherche.</li>
+ * <li>Un type de batiment recherche (null si aucune recherche en cours)</li>
  * <li>Une date de fin de recherche.</li>
  * </ul>
  * </p>
@@ -21,7 +21,7 @@ import java.util.Date;
 public class Recherche {
 
     /**
-     * Booléen indiquant si une recherche est en cours.
+     * Booleen indiquant si une recherche est en cours.
      *
      * @see Recherche#Recherche()
      * @see Recherche#isRechercheEnCours()
@@ -29,7 +29,7 @@ public class Recherche {
     boolean rechercheEnCours;
 
     /**
-     * Le Type de batiment recherché
+     * Le Type de batiment recherche
      *
      * @see Recherche#Recherche()
      * @see Recherche#getTypeBatimentRecherche()
@@ -37,7 +37,7 @@ public class Recherche {
     TypeBatiment typeBatimentRecherche = null;
 
     /**
-     * Date de fin de la recherche (lorsqu'elle est atteinte, le type de batiment recherché est débloqué)
+     * Date de fin de la recherche (lorsqu'elle est atteinte, le type de batiment recherche est debloque)
      *
      * @see Recherche#Recherche()
      * @see Recherche#getDateFinRecherche()
@@ -47,7 +47,7 @@ public class Recherche {
     /**
      * Constructeur Recherche.
      * <p>
-     *     à la création d'une recherche, on met le booléen rechercheEnCours à false et les autres attributs à null
+     *     à la creation d'une recherche, on met le booleen rechercheEnCours à false et les autres attributs à null
      * </p>
      *
      * @see Recherche#rechercheEnCours
@@ -61,7 +61,7 @@ public class Recherche {
     }
 
     /**
-     * Lance la recherche du typeDeBatiment donné en argumant.
+     * Lance la recherche du typeDeBatiment donne en argumant.
      *
      * @param typeBatimentARechercher instance de TypeBatiment à rechercher
      *
@@ -86,7 +86,7 @@ public class Recherche {
     }
 
     /**
-     * Met fin a une recherche en mettant le booléen rechercheEnCours à false et les autres attributs à null
+     * Met fin a une recherche en mettant le booleen rechercheEnCours à false et les autres attributs à null
      *
      * @see Recherche#rechercheEnCours
      * @see Recherche#typeBatimentRecherche
@@ -99,22 +99,22 @@ public class Recherche {
     }
 
     /**
-     * Retourne la valeur du booléen rechercheEnCours pour savoir si une recherche est déjà en cours ou non
+     * Retourne la valeur du booleen rechercheEnCours pour savoir si une recherche est dejà en cours ou non
      *
      * @see Recherche#rechercheEnCours
      *
-     * @return la valeur du booléen rechercheEnCours
+     * @return la valeur du booleen rechercheEnCours
      */
     public boolean isRechercheEnCours() {
         return rechercheEnCours;
     }
 
     /**
-     * Retourne le type de batiment recherché
+     * Retourne le type de batiment recherche
      *
      * @see Recherche#typeBatimentRecherche
      *
-     * @return le type de batiment recherché
+     * @return le type de batiment recherche
      */
     public TypeBatiment getTypeBatimentRecherche() {
         return typeBatimentRecherche;

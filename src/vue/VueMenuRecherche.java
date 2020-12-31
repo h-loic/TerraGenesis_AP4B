@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * <b>
- *     Vue Permettant de rechercher et débloquer des types de batiments
+ *     Vue Permettant de rechercher et debloquer des types de batiments
  * </p>
  *
  * @see modele.Planete
@@ -32,7 +32,7 @@ import java.util.Map;
 public class VueMenuRecherche extends Scene {
 
     /**
-     *  Constante définissant le style des scrollpanes de la vue
+     *  Constante definissant le style des scrollpanes de la vue
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -40,7 +40,7 @@ public class VueMenuRecherche extends Scene {
     public static final String STYLE_SCROLLPANE = "-fx-background-color:transparent;";
 
     /**
-     *  Constante définissant le style permettant de mettre du texte en valeur en le mettant en gras
+     *  Constante definissant le style permettant de mettre du texte en valeur en le mettant en gras
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -48,7 +48,7 @@ public class VueMenuRecherche extends Scene {
     public static final String STYLE_GRAS = "-fx-font-size: 13; -fx-font-weight: bold;";
 
     /**
-     *  Constante définissant le style des titres de la vue
+     *  Constante definissant le style des titres de la vue
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -56,7 +56,7 @@ public class VueMenuRecherche extends Scene {
     public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
 
     /**
-     *  Constante définissant le style du label des erreurs de la vue
+     *  Constante definissant le style du label des erreurs de la vue
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -64,7 +64,7 @@ public class VueMenuRecherche extends Scene {
     public static final String STYLE_ERREUR = "-fx-text-fill: red; -fx-font-size: 13; -fx-font-weight: bold";
 
     /**
-     *  Constante définissant le style des boutons de la vue
+     *  Constante definissant le style des boutons de la vue
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -72,7 +72,7 @@ public class VueMenuRecherche extends Scene {
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80px";
 
     /**
-     * Layout sur lequel seront affichés les boutons Actualiser et Retour
+     * Layout sur lequel seront affiches les boutons Actualiser et Retour
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -80,7 +80,7 @@ public class VueMenuRecherche extends Scene {
     private HBox hBoxBoutons;
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments de la vue
+     * La grille sur laquelle sont ajoutes les differents elements de la vue
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -88,7 +88,7 @@ public class VueMenuRecherche extends Scene {
     private GridPane grillePrincipale;
 
     /**
-     * La grille sur laquelle sont affichés les types de batiments à afficher
+     * La grille sur laquelle sont affiches les types de batiments à afficher
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -96,7 +96,7 @@ public class VueMenuRecherche extends Scene {
     private GridPane grilleBatiments;
 
     /**
-     * La grille sur laquelle sont ajoutés les informations concernant la recherche en cours, s'il y'en a une
+     * La grille sur laquelle sont ajoutes les informations concernant la recherche en cours, s'il y'en a une
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -104,7 +104,7 @@ public class VueMenuRecherche extends Scene {
     private GridPane grilleRechercheEnCours;
 
     /**
-     * Scrollpane dans laquelle sera ajouté la grille des batiments à rechercher
+     * Scrollpane dans laquelle sera ajoute la grille des batiments à rechercher
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -131,7 +131,7 @@ public class VueMenuRecherche extends Scene {
     private Label labelErreur;
 
     /**
-     * Label affichant le nom de type batiment actuellement recherché
+     * Label affichant le nom de type batiment actuellement recherche
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -147,7 +147,7 @@ public class VueMenuRecherche extends Scene {
     private Button btnRetour;
 
     /**
-     * Bouton permettant d'actualiser les données affichées
+     * Bouton permettant d'actualiser les donnees affichees
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -156,7 +156,7 @@ public class VueMenuRecherche extends Scene {
 
     /**
      *  Constructeur de VueMenuRecherche
-     *  Créé différents labels, sliders et boutons de la vue
+     *  Cree differents labels, sliders et boutons de la vue
      *
      * @see VueMenuRecherche#grillePrincipale
      * @see VueMenuRecherche#grilleBatiments
@@ -186,10 +186,10 @@ public class VueMenuRecherche extends Scene {
 
     /**
      *  Initialise la vue
-     *      Affichage des différents types de batiments à rechercher et de la recherche en cours
-     * @param typeBatimentsNonDebloques liste contenant les types de batiments qui ne sont pas encore débloqués
-     * @param rechercheEnCours booléen indiquant si une recherche est en cours
-     * @param batimentRecherche type de batiment actuellement recherché si une recherche est en cours
+     *      Affichage des differents types de batiments à rechercher et de la recherche en cours
+     * @param typeBatimentsNonDebloques liste contenant les types de batiments qui ne sont pas encore debloques
+     * @param rechercheEnCours booleen indiquant si une recherche est en cours
+     * @param batimentRecherche type de batiment actuellement recherche si une recherche est en cours
      *
      * @see TypeBatiment
      * @see VueMenuRecherche#grillePrincipale
@@ -219,14 +219,14 @@ public class VueMenuRecherche extends Scene {
 
         int rowindex = 1;
 
-        //affichage des types de batiments pas encore débloqué
+        //affichage des types de batiments pas encore debloque
         for (TypeBatiment typeBatiment : typeBatimentsNonDebloques){
 
-            if (typeBatiment == batimentRecherche) continue;//saute cette itération pour ne pas afficher le type de batiment actuellement recherché dans la lsite des batiments recherchés
+            if (typeBatiment == batimentRecherche) continue;//saute cette iteration pour ne pas afficher le type de batiment actuellement recherche dans la lsite des batiments recherches
 
             GridPane grillDescription = new GridPane();
-            Label labelBatiment = new Label(typeBatiment.getNom() + ", prix : "+typeBatiment.getCoutRecherche() + ", durée : " + typeBatiment.getTempsRecherche() + " min."
-                    + (typeBatiment.getParent() != null ? ("\nnécessite : " + typeBatiment.getParent() + " (" + (typeBatimentsNonDebloques.contains(typeBatiment.getParent()) ? "pas débloqué)" : "débloqué)")) : ""));
+            Label labelBatiment = new Label(typeBatiment.getNom() + ", prix : "+typeBatiment.getCoutRecherche() + ", duree : " + typeBatiment.getTempsRecherche() + " min."
+                    + (typeBatiment.getParent() != null ? ("\nnecessite : " + typeBatiment.getParent() + " (" + (typeBatimentsNonDebloques.contains(typeBatiment.getParent()) ? "pas debloque)" : "debloque)")) : ""));
             labelBatiment.setStyle(STYLE_GRAS);
             TextFlow textFlowEffet = new TextFlow();
 
@@ -279,7 +279,7 @@ public class VueMenuRecherche extends Scene {
         });
         this.btnRetour.setStyle(STYLE_BOUTONS);
 
-        //affichage des données de la recherche en cours s'il y en a une
+        //affichage des donnees de la recherche en cours s'il y en a une
         if (rechercheEnCours) {
             this.labelErreur.setText("Recherche en cours, impossible de faire une nouvelle recherche");
             this.labelErreur.setVisible(true);

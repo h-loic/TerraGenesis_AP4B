@@ -16,13 +16,13 @@ import modele.Mine;
 import modele.Ressource;
 
 /**
- * <b>VueMenuPrincipale est le menu principale qui permet de naviguer entre les différentes vues du jeu</b>
+ * <b>VueMenuPrincipale est le menu principale qui permet de naviguer entre les differentes vues du jeu</b>
  * <p>
- * La VueMenuPrincipale est possède par :
+ * La VueMenuPrincipale est possede par :
  * <ul>
  * <li>Un controleur principal</li>
- * <li>Une GridPane à laquelle on ajoute les différents éléments de la vue</li>
- * <li>6 Boutons permettant d'accèder à différentes vues</li>
+ * <li>Une GridPane à laquelle on ajoute les differents elements de la vue</li>
+ * <li>6 Boutons permettant d'acceder à differentes vues</li>
  * <li>deux HBox permettant d'afficher chacun trois des six boutons</li>
  * </ul>
  * </p>
@@ -34,7 +34,7 @@ import modele.Ressource;
 public class VueMenuPrincipal extends Scene {
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments de la vue
+     * La grille sur laquelle sont ajoutes les differents elements de la vue
      *
      * @see VueMenuPrincipal#VueMenuPrincipal()
      * @see VueMenuPrincipal#initialiserMenuPrincipal()
@@ -42,7 +42,7 @@ public class VueMenuPrincipal extends Scene {
     protected GridPane grillePrincipale;
 
     /**
-     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues
+     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueMenuPrincipal#setControleur(ControleurPrincipal)
      * @see controler.ControleurPrincipal
@@ -120,7 +120,7 @@ public class VueMenuPrincipal extends Scene {
     private HBox hBoxLigne2;
 
     /**
-     *  Constante définissant le style des boutons de la vue
+     *  Constante definissant le style des boutons de la vue
      *
      * @see VueMenuPrincipal#VueMenuPrincipal()
      * @see VueMenuPrincipal#initialiserMenuPrincipal()
@@ -158,7 +158,7 @@ public class VueMenuPrincipal extends Scene {
     /**
      *  Initialise la Vue:
      *      ajout d'action listeners,
-     *      ajout des éléments aux différents layouts de la vue
+     *      ajout des elements aux differents layouts de la vue
      *
      * @see VueMenuPrincipal#grillePrincipale
      * @see VueMenuPrincipal#actionNaviguerStatistiques

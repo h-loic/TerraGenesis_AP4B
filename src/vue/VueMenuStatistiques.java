@@ -12,7 +12,7 @@ import javafx.scene.layout.GridPane;
 
 /**
  * <b>
- *     Vue affichant les différentes données de la planète à l'aide de sliders et de labels
+ *     Vue affichant les differentes donnees de la planete à l'aide de sliders et de labels
  * </p>
  *
  * @see modele.Planete
@@ -23,7 +23,7 @@ import javafx.scene.layout.GridPane;
 public class VueMenuStatistiques extends Scene {
 
     /**
-     *  Constante définissant le style des titres de la vue
+     *  Constante definissant le style des titres de la vue
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -31,7 +31,7 @@ public class VueMenuStatistiques extends Scene {
     public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
 
     /**
-     *  Constante définissant le style des boutons de la vue
+     *  Constante definissant le style des boutons de la vue
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -39,7 +39,7 @@ public class VueMenuStatistiques extends Scene {
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80px";
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments de la vue
+     * La grille sur laquelle sont ajoutes les differents elements de la vue
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -47,7 +47,7 @@ public class VueMenuStatistiques extends Scene {
     protected GridPane grillePrincipale;
 
     /**
-     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues
+     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueMenuStatistiques#setControleur(ControleurPrincipal)
      * @see controler.ControleurPrincipal
@@ -55,7 +55,7 @@ public class VueMenuStatistiques extends Scene {
     private controler.ControleurPrincipal controleur = null;
 
     /**
-     * Labels affichant les noms des données affichées
+     * Labels affichant les noms des donnees affichees
      */
     private Label labelTemperature;
     private Label labelPression;
@@ -65,7 +65,7 @@ public class VueMenuStatistiques extends Scene {
     private Label labelFinances;
 
     /**
-     * Slider Affichant la température de la planète
+     * Slider Affichant la temperature de la planete
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -73,7 +73,7 @@ public class VueMenuStatistiques extends Scene {
     private Slider sliderTemperature;
 
     /**
-     * Slider Affichant la pression de la planète
+     * Slider Affichant la pression de la planete
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -81,7 +81,7 @@ public class VueMenuStatistiques extends Scene {
     private Slider sliderPression;
 
     /**
-     * Slider Affichant l'oxygène de la planète
+     * Slider Affichant l'oxygene de la planete
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -89,7 +89,7 @@ public class VueMenuStatistiques extends Scene {
     private Slider sliderOxygene;
 
     /**
-     * Slider Affichant la eau de la planète
+     * Slider Affichant la eau de la planete
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -97,7 +97,7 @@ public class VueMenuStatistiques extends Scene {
     private Slider sliderEau;
 
     /**
-     * La Affichant les finances de la planète
+     * La Affichant les finances de la planete
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -105,7 +105,7 @@ public class VueMenuStatistiques extends Scene {
     private Label labelFinancesVal;
 
     /**
-     * La Affichant la population de la planète
+     * La Affichant la population de la planete
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -121,7 +121,7 @@ public class VueMenuStatistiques extends Scene {
     private Button btnRetour;
 
     /**
-     * Bouton permettant d'actualiser les données affichées'
+     * Bouton permettant d'actualiser les donnees affichees'
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -130,7 +130,7 @@ public class VueMenuStatistiques extends Scene {
 
     /**
      *  Constructeur de VueMenuStatistiques
-     *  Créé les différents labels, sliders et boutons de la vue
+     *  Cree les differents labels, sliders et boutons de la vue
      *
      * @see VueMenuStatistiques#grillePrincipale
      * @see VueMenuStatistiques#labelTemperature
@@ -148,7 +148,7 @@ public class VueMenuStatistiques extends Scene {
         super(new GridPane(), 600,400);
 
         grillePrincipale = (GridPane) this.getRoot();
-        this.labelTemperature = new Label("Température : ");
+        this.labelTemperature = new Label("Temperature : ");
         this.labelPression = new Label("Pression : ");
         this.labelOxygene = new Label("Oxygene : ");
         this.labelEau = new Label("Eau : ");
@@ -167,20 +167,20 @@ public class VueMenuStatistiques extends Scene {
         this.btnActualiser = new Button("Actualiser");
     }
 
-    //TODO : créer fct actualisation controleur
+    //TODO : creer fct actualisation controleur
     public void majStatistiques(double finances) {
         this.labelFinancesVal.setText(Double.toString(finances));
     }
 
     /**
      *  Initialise la vue
-     *      Affichage des différentes données de la planète sur les sliders et les labels
-     * @param pression pression de la planète
-     * @param oxygene pression de la planète
-     * @param eau nivrau d'eau de la planète
-     * @param temperature pression de la planète
-     * @param population pression de la planète
-     * @param finances pression de la planète
+     *      Affichage des differentes donnees de la planete sur les sliders et les labels
+     * @param pression pression de la planete
+     * @param oxygene pression de la planete
+     * @param eau nivrau d'eau de la planete
+     * @param temperature pression de la planete
+     * @param population pression de la planete
+     * @param finances pression de la planete
      *
      * @see VueMenuStatistiques#grillePrincipale
      * @see VueMenuStatistiques#labelTemperature
@@ -274,7 +274,7 @@ public class VueMenuStatistiques extends Scene {
         });
         this.btnRetour.setStyle(STYLE_BOUTONS);
 
-        //permet d'actualiser les données affichées
+        //permet d'actualiser les donnees affichees
         btnActualiser.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
