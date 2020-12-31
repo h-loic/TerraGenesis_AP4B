@@ -592,6 +592,8 @@ public class ControleurPrincipal {
         }
         this.planete.payer(batiment.getPrixAmelioration());
         batiment.demarrerAmelioration();
+        this.planete.batimentEnCoursAmelioration(idVille,idBatiment);
+
         this.notifierNaviguerAfficherVille(idVille);
     }
 

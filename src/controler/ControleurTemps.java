@@ -190,10 +190,16 @@ public class ControleurTemps extends Thread{
         for (Ville ville : this.planete.getVilles()) {
             ville.majDonnees();
             for (Map.Entry<Batiment, Date> batimentEnConstruction : ville.getBatimentsEnConstruction().entrySet()) {
-                if (dateCourante.after(batimentEnConstruction.getValue())) ville.finirConstructionBatiment(batimentEnConstruction.getKey());
+                if (dateCourante.after(batimentEnConstruction.getValue())){
+                    ville.finirConstructionBatiment(batimentEnConstruction.getKey());
+                    this.planete.terminerConstructionBatiment(batimentEnConstruction.getKey());
+                }
             }
             for (Batiment batiment : ville.getBatiments()) {
-                if (batiment.estEnCoursAmelioration() && dateCourante.after(batiment.getDateFinAmelioration())) batiment.finirAmelioration();
+                if (batiment.estEnCoursAmelioration() && dateCourante.after(batiment.getDateFinAmelioration())){
+                    batiment.finirAmelioration();
+                    this.planete.terminerAmeliorationBatiment(batiment);
+                }
             }
         }
         this.planete.majPopulation();

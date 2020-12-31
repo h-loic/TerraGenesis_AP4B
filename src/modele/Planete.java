@@ -181,6 +181,30 @@ public class Planete {
     public void construireBatiment(int idVille, Batiment batiment) {
         getVille(idVille).demarrerConstructionBatiment(batiment);
         getVille(idVille).majDonnees();
+    }
+
+    public void terminerConstructionBatiment(Batiment batiment){
+        for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
+            for (Donnee donnee : this.donnees){
+                if (donnee.getTypeDonnee() == typeDonnee){
+                    donnee.setCroissance(donnee.getCroissance() + batiment.getEffets().get(typeDonnee));
+                }
+            }
+        }
+    }
+
+    public void batimentEnCoursAmelioration(int idVille, int idBatiment) {
+        Batiment batiment = getVille(idVille).getBatiment(idBatiment);
+        for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
+            for (Donnee donnee : this.donnees){
+                if (donnee.getTypeDonnee() == typeDonnee){
+                    donnee.setCroissance(donnee.getCroissance() - batiment.getEffets().get(typeDonnee));
+                }
+            }
+        }
+    }
+
+    public void terminerAmeliorationBatiment(Batiment batiment) {
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
                 if (donnee.getTypeDonnee() == typeDonnee){
@@ -287,7 +311,6 @@ public class Planete {
     }
 
     public void detruireBatiment(int idVille, int idBatiment) {
-        getVille(idVille).detruireBatiment(idBatiment);
         Batiment batiment = getVille(idVille).getBatiment(idBatiment);
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
@@ -296,6 +319,7 @@ public class Planete {
                 }
             }
         }
+        getVille(idVille).detruireBatiment(idBatiment);
         getVille(idVille).majDonnees();
     }
 
