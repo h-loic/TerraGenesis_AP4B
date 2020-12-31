@@ -202,6 +202,9 @@ public class ControleurTemps extends Thread{
                 }
             }
         }
+        for ( Donnee donnee : this.planete.getDonnees()){
+            donnee.setValeurActuelle(donnee.getValeurActuelle() + donnee.getCroissance());
+        }
         this.planete.majPopulation();
     }
 }
