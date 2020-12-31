@@ -181,6 +181,13 @@ public class Planete {
     public void construireBatiment(int idVille, Batiment batiment) {
         getVille(idVille).demarrerConstructionBatiment(batiment);
         getVille(idVille).majDonnees();
+        for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
+            for (Donnee donnee : this.donnees){
+                if (donnee.getTypeDonnee() == typeDonnee){
+                    donnee.setCroissance(donnee.getCroissance() + batiment.getEffets().get(typeDonnee));
+                }
+            }
+        }
     }
 
     public void initialiserEtatTypeBatiment() {
@@ -267,7 +274,6 @@ public class Planete {
         return this.cartePlanete.getCanvas();
     }
 
-
     public Carte getCarte(){
         return this.cartePlanete;
     }
@@ -282,10 +288,30 @@ public class Planete {
 
     public void detruireBatiment(int idVille, int idBatiment) {
         getVille(idVille).detruireBatiment(idBatiment);
+        Batiment batiment = getVille(idVille).getBatiment(idBatiment);
+        for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
+            for (Donnee donnee : this.donnees){
+                if (donnee.getTypeDonnee() == typeDonnee){
+                    donnee.setCroissance(donnee.getCroissance() - batiment.getEffets().get(typeDonnee));
+                }
+            }
+        }
         getVille(idVille).majDonnees();
     }
 
     public void activerDesactiverBatiment(int idVille, int idBatiment) {
+        Batiment batiment = getVille(idVille).getBatiment(idBatiment);
+        for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
+            for (Donnee donnee : this.donnees){
+                if (donnee.getTypeDonnee() == typeDonnee){
+                    if (batiment.estDesactive()){
+                        donnee.setCroissance(donnee.getCroissance() + batiment.getEffets().get(typeDonnee));
+                    }else{
+                        donnee.setCroissance(donnee.getCroissance() - batiment.getEffets().get(typeDonnee));
+                    }
+                }
+            }
+        }
         getVille(idVille).getBatiment(idBatiment).activerDesactiver();
         getVille(idVille).majDonnees();
     }

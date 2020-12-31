@@ -96,7 +96,6 @@ public class VueMenuGouverneurs extends Scene {
                 this.grilleGouverneur.add(btnDebloque, 4, lignesGouverneur);
 
             }
-
         }
 
         lignesGouverneur+=2;
