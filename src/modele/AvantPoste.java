@@ -2,6 +2,7 @@ package modele;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * <b>AvantPoste est la classe representant les differents avant-postes de la planete</b>
@@ -20,6 +21,15 @@ import java.util.Random;
  */
 
 public class AvantPoste {
+
+
+    /**
+     * Permet de générer des identifiants uniques
+     *
+     * @see AvantPoste#AvantPoste(String, Coordonnee, ArrayList)
+     * @see AvantPoste#id
+     */
+    private static final AtomicInteger sequence = new AtomicInteger();
 
     /**
      * L'ID de l'avant-poste. Cet avant-poste n'est pas modifiable.
@@ -62,7 +72,7 @@ public class AvantPoste {
     /**
      * Constructeur Mine.
      * <p>
-     * A la construction d'un objet AvantPoste, on lui assigne un identifiant aleatoire,
+     * A la construction d'un objet AvantPoste, on lui assigne un identifiant unique,
      * ainsi qu'un nom, des coordonnees et une liste de mines donnees en parametres
      * </p>
      *
@@ -79,8 +89,7 @@ public class AvantPoste {
      * @see AvantPoste#mines
      */
     public AvantPoste(String nom, Coordonnee coordonnee, ArrayList<Mine> mines) {
-        Random random = new Random();
-        this.id = random.nextInt();
+        this.id = sequence.incrementAndGet(); // génération d'un id unique
         this.nom = nom;
         this.coordonnee = coordonnee;
         this.mines = mines;

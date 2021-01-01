@@ -1,9 +1,11 @@
 package modele;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * <b>Mine est la classe representant les mines des differents avant-postes de la planete</b>
@@ -28,7 +30,24 @@ import java.util.Random;
 
 public class Mine {
 
+
+    /**
+     * Permet de générer des identifiants uniques
+     *
+     * @see Mine#Mine(Ressource, double, Coordonnee)
+     * @see Mine#id
+     */
+    private static final AtomicInteger sequence = new AtomicInteger();
+
+    /**
+     * Le prix de base d'une mine (sert à calculer le prix d'une nouvelle Mine en fonction du nombre
+     * de Mines dejà construites dans l'avant-poste)
+     */
     public static final int PRIX_BASE_MINE = 25000;
+
+    /**
+     * Le prix de base d'amélioration d'une mine (sert à calculer le prix d'une amélioration de Mine en fonction de son niveau)
+     */
     public static final int PRIX_BASE_AMELIORATION   = 1500;
 
     /**
@@ -125,8 +144,8 @@ public class Mine {
      */
     public Mine(Ressource ressource, double rendement, Coordonnee coordonnee) {
         Random random = new Random();
-        this.id = random.nextInt();
-        this.nom = "Mine" + Integer.toString(random.nextInt());
+        this.id = sequence.incrementAndGet();//génération d'un id unique
+        this.nom = "Mine" + Integer.toString(random.nextInt()); // génération d'un nom temporaire, son nom sera attribué par le contrôleur
         this.ressource = ressource;
         this.coordonnee = coordonnee;
         this.dateEpuissement = new Date();
