@@ -54,7 +54,7 @@ public class Gouverneur {
      * estAffecter permet de savoir si le gouverneur est affecter
      *
      * @see Gouverneur#Gouverneur(boolean, int, String, boolean, HashMap)
-     * @see Gouverneur#estAffecter()
+     * @see Gouverneur#estAffecte()
      */
     private boolean estAffecter;
 
@@ -136,7 +136,7 @@ public class Gouverneur {
      *
      * @return  l'etat d'affectation du gouverneur
      */
-    public boolean estAffecter() {
+    public boolean estAffecte() {
         return estAffecter;
     }
 

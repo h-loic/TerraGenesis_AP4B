@@ -97,7 +97,7 @@ public class VueMenuStatistiques extends Scene {
     private Slider sliderEau;
 
     /**
-     * La Affichant les finances de la planete
+     * Label affichant les finances de la planete
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -105,7 +105,39 @@ public class VueMenuStatistiques extends Scene {
     private Label labelFinancesVal;
 
     /**
-     * La Affichant la population de la planete
+     * Label affichant la température de la planete
+     *
+     * @see VueMenuStatistiques#VueMenuStatistiques()
+     * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
+     */
+    private Label labelTemperatureVal;
+
+    /**
+     * Label affichant la pression de la planete
+     *
+     * @see VueMenuStatistiques#VueMenuStatistiques()
+     * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
+     */
+    private Label labelPressionVal;
+
+    /**
+     * Label affichant l'eau de la planete
+     *
+     * @see VueMenuStatistiques#VueMenuStatistiques()
+     * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
+     */
+    private Label labelEauVal;
+
+    /**
+     * Label affichant l'oxygène de la planete
+     *
+     * @see VueMenuStatistiques#VueMenuStatistiques()
+     * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
+     */
+    private Label labelOxygeneVal;
+
+    /**
+     * Label affichant la population de la planete
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -145,7 +177,7 @@ public class VueMenuStatistiques extends Scene {
      * @see VueMenuStatistiques#btnActualiser
      */
     public VueMenuStatistiques() {
-        super(new GridPane(), 600,400);
+        super(new GridPane(), 650,400);
 
         grillePrincipale = (GridPane) this.getRoot();
         this.labelTemperature = new Label("Temperature : ");
@@ -198,56 +230,64 @@ public class VueMenuStatistiques extends Scene {
         this.grillePrincipale.getChildren().clear();
 
         //affichage de la pression
-        this.sliderPression.setMin(10);
-        this.sliderPression.setMax(190);
-        this.sliderPression.setValue(pression);
+        this.sliderPression.setMin(0);
+        this.sliderPression.setMax(500);
+        this.sliderPression.setValue(pression/100);
         this.sliderPression.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                sliderPression.setValue(pression);
+                sliderPression.setValue(pression/100);
             }
         });
         this.sliderPression.setShowTickLabels(true);
-        this.sliderPression.setMinWidth(250);
+        this.sliderPression.setShowTickMarks(true);
+        this.sliderPression.setMinWidth(400);
+        this.labelPressionVal = new Label(Double.toString(pression));
 
         //affichage de l'oxygene
-        this.sliderOxygene.setMin(100);
-        this.sliderOxygene.setMax(320);
-        this.sliderOxygene.setValue(oxygene);
+        this.sliderOxygene.setMin(0);
+        this.sliderOxygene.setMax(500);
+        this.sliderOxygene.setValue(oxygene/100);
         this.sliderOxygene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                sliderOxygene.setValue(oxygene);
+                sliderOxygene.setValue(oxygene/100);
             }
         });
         this.sliderOxygene.setShowTickLabels(true);
+        this.sliderOxygene.setShowTickMarks(true);
         this.sliderOxygene.setMinWidth(250);
+        this.labelOxygeneVal = new Label(Double.toString(oxygene/100));
 
         //affichage du niveau d'eau
-        this.sliderEau.setMin(150);
-        this.sliderEau.setMax(1050);
-        this.sliderEau.setValue(eau);
+        this.sliderEau.setMin(0);
+        this.sliderEau.setMax(500);
+        this.sliderEau.setValue(eau/100);
         this.sliderEau.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                sliderEau.setValue(eau);
+                sliderEau.setValue(eau/100);
             }
         });
         this.sliderEau.setShowTickLabels(true);
+        this.sliderEau.setShowTickMarks(true);
         this.sliderEau.setMinWidth(250);
+        this.labelEauVal = new Label(Double.toString(eau));
 
         //affichage de la temperature
-        this.sliderTemperature.setMin(200);
-        this.sliderTemperature.setMax(374);
-        this.sliderTemperature.setValue(temperature);
+        this.sliderTemperature.setMin(0);
+        this.sliderTemperature.setMax(500);
+        this.sliderTemperature.setValue(temperature/100);
         this.sliderTemperature.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                sliderTemperature.setValue(temperature);
+                sliderTemperature.setValue(temperature/100);
             }
         });
         this.sliderTemperature.setShowTickLabels(true);
+        this.sliderTemperature.setShowTickMarks(true);
         this.sliderTemperature.setMinWidth(250);
+        this.labelTemperatureVal = new Label(Double.toString(temperature));
 
         //affichage de la population
         this.labelPopVal.setText(Double.toString(population));
@@ -285,14 +325,23 @@ public class VueMenuStatistiques extends Scene {
 
         this.grillePrincipale.add(this.labelTemperature, 0, 0);
         this.grillePrincipale.add(this.sliderTemperature, 1, 0);
+        this.grillePrincipale.add(this.labelTemperatureVal, 2, 0);
+
         this.grillePrincipale.add(this.labelEau, 0, 1);
         this.grillePrincipale.add(this.sliderEau, 1, 1);
+        this.grillePrincipale.add(this.labelEauVal, 2, 1);
+
         this.grillePrincipale.add(this.labelOxygene, 0, 2);
         this.grillePrincipale.add(this.sliderOxygene, 1, 2);
+        this.grillePrincipale.add(this.labelOxygeneVal, 2, 2);
+
         this.grillePrincipale.add(this.labelPression, 0, 3);
         this.grillePrincipale.add(this.sliderPression, 1, 3);
+        this.grillePrincipale.add(this.labelPressionVal, 2, 3);
+
         this.grillePrincipale.add(this.labelPopulation, 0, 4);
         this.grillePrincipale.add(this.labelPopVal, 1, 4);
+
         this.grillePrincipale.add(this.labelFinances, 0, 5);
         this.grillePrincipale.add(this.labelFinancesVal, 1, 5);
         this.grillePrincipale.add(this.btnRetour, 0, 6);

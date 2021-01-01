@@ -44,8 +44,8 @@ public class VueGouverneur extends Scene{
         });
         labelNom = new Label(gouverneur.getNom());
         labelNiveau = new Label(Integer.toString(gouverneur.getNiveau()));
-        if (!gouverneur.estAffecter()){
-            labelAffecter = new Label("non affecter");
+        if (!gouverneur.estAffecte()){
+            labelAffecter = new Label("non affecté");
             btnAffecter = new Button("affecter");
             btnAffecter.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -67,7 +67,7 @@ public class VueGouverneur extends Scene{
         grillePrincipale.add(labelNom,1,0);
         grillePrincipale.add(new Label("niveau : "),0,1);
         grillePrincipale.add(labelNiveau,1,1);
-        grillePrincipale.add(new Label("affecter : "),0,2);
+        grillePrincipale.add(new Label("affecté : "),0,2);
         grillePrincipale.add(labelAffecter,1,2);
         grillePrincipale.add(new Label("effets : "),0,3);
         int compteurLigne = 3;
