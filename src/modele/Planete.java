@@ -8,15 +8,91 @@ import java.util.HashMap;
 
 import static modele.TypeDonnee.*;
 
+/**
+ * <b>Planete est la classe representant la planete geree par le joueur, elle centralise les differents modeles</b>
+ * <p>
+ * Une planete est caracterisee par les informations suivantes :
+ * <ul>
+ * <li>Une liste de villes.</li>
+ * <li>Une liste d'avant-postes</li>
+ * <li>Une liste de donnees contenant les differentes donnees de la planete (temperature, pression, finances, population</li>
+ * <li>Une liste associative contenant les differents types de batiments et des booleens indiquant s'ils sont debloques</li>
+ * <li>Une liste associative contenant les differents types de ressources et des booleens indiquant si elles sont debloquees</li>
+ * <li>Une liste de Gouverneurs</li>
+ * <li>Une Carte indiquant la position des avant-postes et des villes de la planete</li>
+ * <li>Une Recherche permettant de chercher des types de batiments</li>
+ * </ul>
+ * </p>
+ *
+ *
+ * @author Zapolatero - Louis Pascuzzi
+ */
+
 public class Planete {
+
+    /**
+     * Liste des Villes de la planete
+     *
+     * @see Planete#Planete()
+     * @see Ville
+     */
     private ArrayList<Ville> villes;
+
+    /**
+     * Liste des AvantPoste de la planete
+     *
+     * @see Planete#Planete()
+     * @see AvantPoste
+     */
     private ArrayList<AvantPoste> avantPostes;
+
+    /**
+     * Liste des donnees de la planete
+     *
+     * @see Planete#Planete()
+     * @see Donnee
+     */
     private ArrayList<Donnee> donnees;
+
+    /**
+     * Hashmap des differents types de batiments et un booleen indiquant s'ils sont recherches
+     *
+     * @see Planete#Planete()
+     * @see TypeBatiment
+     */
     private HashMap<TypeBatiment, Boolean> etatTypesBatiment;
+
+    /**
+     * Hashmap des differents types de batiments et un booleen indiquant s'ils sont recherches
+     *
+     * @see Planete#Planete()
+     * @see Ressource
+     */
     private HashMap<Ressource, Boolean> etatRessources;
+
+    /**
+     * Liste des Gouverneurs de la planete
+     *
+     * @see Planete#Planete()
+     * @see Gouverneur
+     */
     private ArrayList<Gouverneur> gouverneurs;
+
+    /**
+     * Carte de la planete
+     *
+     * @see Planete#Planete()
+     * @see Carte
+     */
     private Carte cartePlanete;
-    Recherche recherche;
+
+    /**
+     * Recherche permettant de chercher des types de batiments
+     *
+     * @see Planete#Planete()
+     * @see Recherche
+     */
+    private Recherche recherche;
 
 
     public Planete(ArrayList<Ville> villes, ArrayList<AvantPoste> avantPostes, ArrayList<Donnee> donnees, HashMap<TypeBatiment, Boolean> etatTypesInfrastructure, ArrayList<Gouverneur> gouverneurs) {
@@ -355,7 +431,7 @@ public class Planete {
     }
 
     /**
-     * Met à jour la population de la planète
+     * Met à jour la population de la planete
      *
      * @see Planete#donnees
      * @see Ville#getPopulation()

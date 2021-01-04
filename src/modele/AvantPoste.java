@@ -1,7 +1,6 @@
 package modele;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -21,7 +20,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 
 public class AvantPoste {
-
 
     /**
      * Permet de générer des identifiants uniques
