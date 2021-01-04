@@ -34,11 +34,10 @@ public class Carte {
     /**
      * La grille sur laquelle sont ajoutes les differents elements de la vue
      *
-     * @see Carte#Carte(ArrayList, ArrayList, ArrayList)
+     * @see Carte#Carte(ArrayList, ArrayList)
      * @see Carte#getCanvas()
      * @see Carte#dessiner()
      * @see Carte#dessinerAvPostes()
-     * @see Carte#dessinerMines()
      * @see Carte#dessinerVilles()
      * */
     private Canvas canvasCarte;
@@ -46,24 +45,15 @@ public class Carte {
     /**
      * Contexte graphique du canvas
      *
-     * @see Carte#Carte(ArrayList, ArrayList, ArrayList)
+     * @see Carte#Carte(ArrayList, ArrayList)
      * @see Carte#canvasCarte
      * */
     private GraphicsContext graphicsContextCarte;
 
     /**
-     * Coordonnees des mines de la planete
-     *
-     * @see Carte#Carte(ArrayList, ArrayList, ArrayList)
-     * @see Mine
-     * @see Coordonnee
-     * */
-    private ArrayList<Coordonnee> coordsMines;
-
-    /**
      * Coordonnees des avant-postes de la planete
      *
-     * @see Carte#Carte(ArrayList, ArrayList, ArrayList)
+     * @see Carte#Carte(ArrayList, ArrayList)
      * @see AvantPoste
      * @see Coordonnee
      * */
@@ -72,7 +62,7 @@ public class Carte {
     /**
      * Coordonnees des villes de la planete
      *
-     * @see Carte#Carte(ArrayList, ArrayList, ArrayList)
+     * @see Carte#Carte(ArrayList, ArrayList)
      * @see Ville
      * @see Coordonnee
      * */
@@ -83,7 +73,7 @@ public class Carte {
     /**
      * Constante indiquant la distance minimale entre deux villes ou avant-postes
      *
-     * @see Carte#Carte(ArrayList, ArrayList, ArrayList)
+     * @see Carte#Carte(ArrayList, ArrayList)
      * @see Mine
      * @see Coordonnee
      * */
@@ -96,22 +86,19 @@ public class Carte {
      * les coordonnees des avant-postes, mines et villes sont stockees dans des attributs.
      * </p>
      *
-     * @param coordsMines coordonnees des differentes mines de la planete
      *
      * @param coordsAvPostes coordonnees des avant-postes de la planete
      *
      * @param coordsVilles coordonnees des villes de la planete
      *
      *
-     * @see Carte#coordsMines
      * @see Carte#coordsAvPostes
      * @see Carte#coordsVilles
      * @see Carte#canvasCarte
      * @see Carte#graphicsContextCarte
      * @see Carte#dessiner()
      * */
-    public Carte(ArrayList<Coordonnee> coordsMines, ArrayList<Coordonnee> coordsAvPostes, ArrayList<Coordonnee> coordsVilles) {
-        this.coordsMines = coordsMines;
+    public Carte(ArrayList<Coordonnee> coordsAvPostes, ArrayList<Coordonnee> coordsVilles) {
         this.coordsAvPostes = coordsAvPostes;
         this.coordsVilles = coordsVilles;
         this.canvasCarte = new Canvas(500, 250);
@@ -126,7 +113,6 @@ public class Carte {
      *      de dessiner la position des avant-postes, mines et villes.
      *  </p>
      *
-     * @see Carte#dessinerMines()
      * @see Carte#dessinerVilles()
      * @see Carte#dessinerAvPostes()
      * */
@@ -136,7 +122,6 @@ public class Carte {
         //dessine un fond orange sur tout le canvas
         graphicsContextCarte.setFill(Color.ORANGERED);
         graphicsContextCarte.fillRect(0, 0, canvasCarte.getWidth(), canvasCarte.getHeight());
-        this.dessinerMines();
         this.dessinerAvPostes();
         this.dessinerVilles();
     }
@@ -172,23 +157,6 @@ public class Carte {
         graphicsContextCarte.setFill(Color.BLUE);//met la couleur du pinceau en bleu
         for (Coordonnee coord : coordsAvPostes){
             graphicsContextCarte.fillRect(coord.getX(), coord.getY(), 10,10);
-        }
-    }
-
-    /**
-     * Dessine la position des mines sur la carte
-     *  <p>
-     *      parcours la liste de coordonnees des mines pour les dessiner sur la carte.
-     *      Les mines sont representees par des cercles gris de 10px de diametre
-     *  </p>
-     *
-     * @see Carte#dessiner()
-     * @see Carte#coordsMines
-     * */
-    private void dessinerMines() {
-        graphicsContextCarte.setFill(Color.GRAY);//met la couleur du pinceau en gris
-        for (Coordonnee coord : coordsMines){
-            graphicsContextCarte.fillOval(coord.getX(), coord.getY(), 10,10);
         }
     }
 

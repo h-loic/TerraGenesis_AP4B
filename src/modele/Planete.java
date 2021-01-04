@@ -94,16 +94,21 @@ public class Planete {
      */
     private Recherche recherche;
 
-
-    public Planete(ArrayList<Ville> villes, ArrayList<AvantPoste> avantPostes, ArrayList<Donnee> donnees, HashMap<TypeBatiment, Boolean> etatTypesInfrastructure, ArrayList<Gouverneur> gouverneurs) {
-        this.villes = villes;
-        this.avantPostes = avantPostes;
-        this.donnees = donnees;
-        this.etatTypesBatiment = etatTypesInfrastructure;
-        this.gouverneurs = gouverneurs;
-        this.recherche = new Recherche();
-    }
-
+    /**
+     * Constructeur de Planete
+     * <p>
+     *     Cree les differentes listes ainsi que la carte et la recherche de la planete
+     * </p>
+     *
+     * @see Planete#villes
+     * @see Planete#avantPostes
+     * @see Planete#donnees
+     * @see Planete#etatTypesBatiment
+     * @see Planete#etatRessources
+     * @see Planete#gouverneurs
+     * @see Planete#cartePlanete
+     * @see Planete#recherche
+     */
     public Planete(){
         this.villes = new ArrayList<Ville>();
         this.avantPostes = new ArrayList<AvantPoste>();
@@ -111,13 +116,104 @@ public class Planete {
         this.etatTypesBatiment = new HashMap<TypeBatiment, Boolean>();
         this.etatRessources = new HashMap<Ressource, Boolean>();
         this.gouverneurs = new ArrayList<Gouverneur>();
-        this.cartePlanete = new Carte(new ArrayList<Coordonnee>(),new ArrayList<Coordonnee>(),new ArrayList<Coordonnee>());
+        this.cartePlanete = new Carte(new ArrayList<Coordonnee>(),new ArrayList<Coordonnee>());
         this.recherche = new Recherche();
     }
 
+    /**
+     * <p>
+     *     Ajoute une ville e la liste des villes de la planete et sur la carte
+     * </p>
+     * 
+     * @param ville ville e ajouter
+     *
+     * @see Planete#villes
+     */
     public void ajouterVille(Ville ville) {
         this.cartePlanete.ajouterVilleCarte(ville.getCoordonnee());
         this.villes.add(ville);
+    }
+
+    /**
+     * <p>
+     *     Ajoute un avantPoste a la liste des avantPostes de la planete et sur la carte
+     * </p>
+     *
+     * @param avantPoste avantposte a ajouter
+     *
+     * @see Planete#avantPostes
+     */
+    public void ajouterAvantPoste(AvantPoste avantPoste) {
+        this.avantPostes.add(avantPoste);
+        this.cartePlanete.ajouterAvPosteCarte(avantPoste.getCoordonnee());
+    }
+
+    /**
+     * <p>
+     *     Detruit l'avant poste dont l'id est donne en parametre
+     * </p>
+     *
+     * @param idAvantPoste id de l'avantposte a detruire
+     *
+     * @see Planete#avantPostes
+     */
+    public void detruireAvantPoste(int idAvantPoste) {
+        //destruction de toutes les mines de l'avant poste
+        AvantPoste avantPoste = getAvantPoste(idAvantPoste);
+        for(Mine mine : avantPoste.getMines()){
+            this.detruireMine(avantPoste.getId(), mine.getId());
+        }
+        //l'efface de la carte
+        this.cartePlanete.effacerAvPosteCarte(avantPoste.getCoordonnee());
+        this.avantPostes.remove(avantPoste);
+    }
+
+    private void ajouterGouverneur(Gouverneur gouverneur) {
+        this.gouverneurs.add(gouverneur);
+    }
+
+    /**
+     * <p>
+     *     Permet de savoir si la planete peut payer un certain montant
+     * </p>
+     *
+     * @param montant montant dont on veut savoir si la planete peut le payer
+     *
+     * @return un booleen indiquant si la planete peut payer ou non
+     *
+     * @see Planete#villes
+     */
+    public boolean peutPayer(double montant){
+        System.out.println(getDonnee(FINANCES).getValeurActuelle() >= montant);
+        System.out.println(getDonnee(FINANCES).getValeurActuelle() - montant);
+        return getDonnee(FINANCES).getValeurActuelle() >= montant;
+    }
+
+    /**
+     * <p>
+     *     Fait payer le montant donne en parametres a la planete
+     * </p>
+     *
+     * @param montant montant que le on fait payer a la planete
+     *
+     * @return un booleen indiquant si la planete peut payer ou non
+     *
+     * @see Planete#donnees
+     */
+    public void payer(double montant){
+        if (this.peutPayer(montant)){
+            getDonnee(FINANCES).setCroissance(-montant);
+            getDonnee(FINANCES).majValeur();
+        }
+    }
+
+    public boolean peutConstruire(Ville ville) {
+        return ville.peutConstruire();
+    }
+
+    public boolean peutRechercher(TypeBatiment typeBatiment) {
+        if (typeBatiment.getParent() == null) return true;
+        return etatTypesBatiment.get(typeBatiment.getParent());
     }
 
     public ArrayList<Ville> getVilles() {
@@ -131,6 +227,15 @@ public class Planete {
         return null;
     }
 
+    /**
+     * <p>
+     *     Accesseur renvoyant la liste des avantPostes de la planete
+     * </p>
+     *
+     * @return la liste des avantPostes de la planete
+     *
+     * @see Planete#avantPostes
+     */
     public ArrayList<AvantPoste> getAvantPostes() {
         return avantPostes;
     }
@@ -139,14 +244,21 @@ public class Planete {
         return donnees;
     }
 
-    public void ajouterAvantPoste(AvantPoste avantPoste){
-        this.avantPostes.add(avantPoste);
-    }
-
     public HashMap<TypeBatiment, Boolean> getEtatTypesInfrastructure() {
         return etatTypesBatiment;
     }
 
+    /**
+     * <p>
+     *     Renvoie l'avantPoste dont l'id est donne en parametre
+     * </p>
+     *
+     * @param id
+     *
+     * @return l'avantPoste dont l'id est donne en parametre
+     *
+     * @see Planete#avantPostes
+     */
     public AvantPoste getAvantPoste(int id){
         for (AvantPoste avantPoste : this.avantPostes) {
             if (avantPoste.getId() == id){
@@ -156,24 +268,7 @@ public class Planete {
         return null;
     }
 
-    public void detruireAvantPoste(int idAvantPoste) {
-        //destruction et effacement de la carte de toutes les mines de l'avant poste
-        AvantPoste avantPoste = getAvantPoste(idAvantPoste);
-        for(Mine mine : avantPoste.getMines()){
-            this.detruireMine(avantPoste.getId(), mine.getId());
-        }
-        this.cartePlanete.effacerAvPosteCarte(avantPoste.getCoordonnee());
-        this.avantPostes.remove(avantPoste);
-    }
 
-    public void AjouterAvantPoste(AvantPoste avantPoste) {
-        this.avantPostes.add(avantPoste);
-        this.cartePlanete.ajouterAvPosteCarte(avantPoste.getCoordonnee());
-    }
-
-    private void ajouterGouverneur(Gouverneur gouverneur) {
-        this.gouverneurs.add(gouverneur);
-    }
 
     public void initialiserGouverneur() {
         this.ajouterGouverneur(new Gouverneur(false, 0, "Michou", false,
@@ -196,6 +291,14 @@ public class Planete {
         );
     }
 
+
+    /**
+     * <p>
+     *     Initialise la carte de la planete
+     * </p>
+     *
+     * @see Planete#cartePlanete
+     */
     public void initialiserCarte(){
         ArrayList<Coordonnee> coordsMine = new ArrayList<Coordonnee>();
         ArrayList<Coordonnee> coordsVille = new ArrayList<Coordonnee>();
@@ -212,33 +315,13 @@ public class Planete {
             }
         }
 
-        this.cartePlanete = new Carte(coordsMine, coordsAvPoste, coordsVille);
+        this.cartePlanete = new Carte( coordsAvPoste, coordsVille);
     }
 
     public ArrayList<Gouverneur> recupererListeGouverneur() {
         return this.gouverneurs;
     }
 
-    public boolean peutPayer(double montant){
-        System.out.println(getDonnee(FINANCES).getValeurActuelle() >= montant);
-        System.out.println(getDonnee(FINANCES).getValeurActuelle() - montant);
-        return getDonnee(FINANCES).getValeurActuelle() >= montant;
-    }
-
-
-    public boolean peutConstruire(Ville ville) {
-        return ville.peutConstruire();
-    }
-
-    public boolean peutRechercher(TypeBatiment typeBatiment) {
-        if (typeBatiment.getParent() == null) return true;
-        return etatTypesBatiment.get(typeBatiment.getParent());
-    }
-
-    public void payer(double montant){
-        getDonnee(FINANCES).setCroissance(-montant);
-        getDonnee(FINANCES).majValeur();
-    }
 
     public double getFinances(){
         return getDonnee(FINANCES).getValeurActuelle();
@@ -431,7 +514,7 @@ public class Planete {
     }
 
     /**
-     * Met à jour la population de la planete
+     * Met e jour la population de la planete
      *
      * @see Planete#donnees
      * @see Ville#getPopulation()

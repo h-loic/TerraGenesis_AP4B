@@ -417,7 +417,7 @@ public class ControleurPrincipal {
      */
     public void notifierAjouterAvantPoste(){
         this.planete.payer((planete.getAvantPostes().size()+1)*AvantPoste.PRIX_BASE_AVPOSTE);
-        this.planete.AjouterAvantPoste(this.vueAjouterAvantPoste.getAvantPoste());
+        this.planete.ajouterAvantPoste(this.vueAjouterAvantPoste.getAvantPoste());
         this.notifierNaviguerMenuPopulation();
     }
 
