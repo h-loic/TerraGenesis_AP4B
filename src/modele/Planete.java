@@ -295,12 +295,15 @@ public class Planete {
     /**
      * <p>
      *     Initialise la carte de la planete
+     *     <ul>
+     *         <li>cree les listes de coordonnees des avant postes et des villes</li>
+     *         <li>construit la Carte avec les coordonnees des mines et avant-postes</li>
+     *     </ul>
      * </p>
      *
      * @see Planete#cartePlanete
      */
     public void initialiserCarte(){
-        ArrayList<Coordonnee> coordsMine = new ArrayList<Coordonnee>();
         ArrayList<Coordonnee> coordsVille = new ArrayList<Coordonnee>();
         ArrayList<Coordonnee> coordsAvPoste = new ArrayList<Coordonnee>();
 
@@ -310,9 +313,6 @@ public class Planete {
 
         for (AvantPoste avantPoste : avantPostes){
             coordsAvPoste.add(avantPoste.getCoordonnee());
-            for (Mine mine : avantPoste.getMines()){
-                coordsMine.add(mine.getCoordonnee());
-            }
         }
 
         this.cartePlanete = new Carte( coordsAvPoste, coordsVille);
@@ -322,17 +322,42 @@ public class Planete {
         return this.gouverneurs;
     }
 
-
+    /**
+     * <p>
+     *     Renvoie les finances de la planete
+     * </p>
+     *
+     * @return renvoie les finances de la planete
+     *
+     * @see Planete#donnees
+     */
     public double getFinances(){
         return getDonnee(FINANCES).getValeurActuelle();
     }
 
+    /**
+     * <p>
+     *     Initialise les donnees de la planete
+     *     <ul>
+     *         <li>ajoute chaque type de deonne à la liste des donnees de la planete</li>
+     *     </ul>
+     * </p>
+     *
+     * @see Planete#donnees
+     */
     public void initialiserDonnees() {
         for (TypeDonnee typeDonnee : TypeDonnee.values()) {
             donnees.add(new Donnee(typeDonnee, typeDonnee.getValeurDefaut(),0));
         }
     }
 
+    /**
+     * <p>
+     *     Initialise la liste des villes de la planete
+     * </p>
+     *
+     * @see Planete#villes
+     */
     public void initialiserVilles() {
         ajouterVille(new Ville("Niederschaeffolsheim", new Coordonnee(100,100,100)));
     }
@@ -463,18 +488,58 @@ public class Planete {
         etatTypesBatiment.replace(typeBatiment, true);
     }
 
+    /**
+     * <p>
+     *     Accesseur du canvas de la carte
+     * </p>
+     *
+     * @return canvas de la carte
+     *
+     * @see Planete#cartePlanete
+     */
     public Canvas getCanvasCarte() {
         return this.cartePlanete.getCanvas();
     }
 
+    /**
+     * <p>
+     *     Accesseur de la carte de la planete
+     * </p>
+     *
+     * @return carte de la planete
+     *
+     * @see Planete#cartePlanete
+     */
     public Carte getCarte(){
         return this.cartePlanete;
     }
 
+    /**
+     * <p>
+     *     Ajoute une mine à un avant poste
+     * </p>
+     *
+     * @param idAvantPoste id de l'avant poste auquel ajouter la mine
+     * @param mine mine a jouter a l'avantposte
+     *
+     * @see Planete#avantPostes
+     * @see Mine
+     */
     public void ajouterMine(int idAvantPoste, Mine mine) {
         getAvantPoste(idAvantPoste).ajouterMine(mine);
     }
 
+    /**
+     * <p>
+     *     détruit une mine d'un avant poste
+     * </p>
+     *
+     * @param idAvantPoste id de l'avant poste duquel on veut detruire une mine
+     * @param idMine mine
+     *
+     * @see Planete#avantPostes
+     * @see Mine
+     */
     public void detruireMine(int idAvantPoste, int idMine) {
         getAvantPoste(idAvantPoste).detruireMine(idMine);
     }
@@ -509,12 +574,21 @@ public class Planete {
         getVille(idVille).majDonnees();
     }
 
+    /**
+     * <p>
+     *     Accesseur de la recherche de la planete
+     * </p>
+     *
+     * @return recherche de la planete
+     *
+     * @see Planete#recherche
+     */
     public Recherche getRecherche(){
         return recherche;
     }
 
     /**
-     * Met e jour la population de la planete
+     * Met a jour la population de la planete
      *
      * @see Planete#donnees
      * @see Ville#getPopulation()

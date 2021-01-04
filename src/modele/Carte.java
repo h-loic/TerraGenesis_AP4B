@@ -18,7 +18,6 @@ import java.util.ArrayList;
  * <ul>
  * <li>Un Canvas sur lequel est dessinee la carte</li>
  * <li>Le contexte graphique du canvas permettant d'y dessiner des elements</li>
- * <li>La liste des coordonnees des mines</li>
  * <li>La liste des coordonnees des villes</li>
  * <li>La liste des coordonnees des avant-postes</li>
  * </ul>
@@ -74,7 +73,6 @@ public class Carte {
      * Constante indiquant la distance minimale entre deux villes ou avant-postes
      *
      * @see Carte#Carte(ArrayList, ArrayList)
-     * @see Mine
      * @see Coordonnee
      * */
     private static final int DISTANCE_MINI = 30; // distance minimum entre deux avant-postes ou villes
@@ -83,7 +81,7 @@ public class Carte {
      * Constructeur Carte
      * <p>
      * A la construction d'un objet Carte, le constructeur cree un canvas sur lequel seront dessinees les coordonnees des avant-postes et des villes de la planetes
-     * les coordonnees des avant-postes, mines et villes sont stockees dans des attributs.
+     * les coordonnees des avant-postes et villes sont stockees dans des attributs.
      * </p>
      *
      *
@@ -110,7 +108,7 @@ public class Carte {
      * Dessine la carte
      *  <p>
      *      efface ce qui est dessine sur le canvas, dessine un fond orange puis appelle les fonctions permettant
-     *      de dessiner la position des avant-postes, mines et villes.
+     *      de dessiner la position des avant-postes et villes.
      *  </p>
      *
      * @see Carte#dessinerVilles()
