@@ -401,10 +401,10 @@ public class ControleurPrincipal {
      * <p>
      *     Ajoute un AvantPoste :
      *     <li>
-     *         fait payer l'avant poste à la planete
+     *         fait payer l'avant poste a la planete
      *     </li>
      *     <li>
-     *         recupere un AvantPoste cree à partir des donnees entrees dans la VueAjouterAvantPoste et l'ajoute à la planete
+     *         recupere un AvantPoste cree a partir des donnees entrees dans la VueAjouterAvantPoste et l'ajoute a la planete
      *     </li>
      *     <li>
      *         Navigue vers la VueMenuPopulation
@@ -426,7 +426,7 @@ public class ControleurPrincipal {
      *     Detruit l'avantPoste dont l'id est donne en parametre et navigue vers la VueMenuPopulation
      * </p>
      *
-     * @param idAvantPoste id de l'avantPoste à detruire
+     * @param idAvantPoste id de l'avantPoste a detruire
      *
      * @see Planete#detruireAvantPoste
      * @see ControleurPrincipal#planete
@@ -466,7 +466,7 @@ public class ControleurPrincipal {
      *     Detruit la ville dont l'id est donne en parametre et navigue vers la VueMenuPopulation
      * </p>
      *
-     * @param idVille id de la ville à detruire
+     * @param idVille id de la ville a detruire
      *
      * @see Planete#detruireVille(int)
      * @see ControleurPrincipal#planete
@@ -498,10 +498,10 @@ public class ControleurPrincipal {
      * <p>
      *     Ajoute une Ville :
      *     <li>
-     *         fait payer la ville à la planete
+     *         fait payer la ville a la planete
      *     </li>
      *     <li>
-     *         recupere une Ville creee à partir des donnees entrees dans la VueAjouterVille et l'ajoute à la planete
+     *         recupere une Ville creee a partir des donnees entrees dans la VueAjouterVille et l'ajoute a la planete
      *     </li>
      *     <li>
      *         Navigue vers la VueMenuPopulation
@@ -538,7 +538,7 @@ public class ControleurPrincipal {
      * <p>
      *     Ajoute une Ville :
      *     <li>
-     *         fait payer le batiment à la planete
+     *         fait payer le batiment a la planete
      *     </li>
      *     <li>
      *         construit le batiment
@@ -602,7 +602,7 @@ public class ControleurPrincipal {
      *     Detruit le Batiment de la ville courante dont l'id est donne en parametre et actualise la vueVille
      * </p>
      *
-     * @param id du batiment à detruire
+     * @param id du batiment a detruire
      *
      * @see Planete#detruireBatiment(int, int)
      * @see ControleurPrincipal#planete
@@ -618,7 +618,7 @@ public class ControleurPrincipal {
      *     Active/desactive le batiment dont l'id est donne en parametre
      * </p>
      *
-     * @param id du batiment à detruire
+     * @param id du batiment a detruire
      *
      * @see Planete#detruireBatiment(int, int)
      * @see ControleurPrincipal#planete
@@ -663,9 +663,9 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     Ajoute une mine à l'avant-poste dont l'id est donne en parametre :
+     *     Ajoute une mine a l'avant-poste dont l'id est donne en parametre :
      *     <li>
-     *         fait payer la mine à la planete
+     *         fait payer la mine a la planete
      *     </li>
      *     <li>
      *         recupere une mine construite avec les informations entrees dans la page AjouterMine,
@@ -716,14 +716,14 @@ public class ControleurPrincipal {
      *     Ameliore une mine
      *     <ul>
      *         <li>lance une exception si la mine ne peut pas être amelioree (pas assez d'argent, niveau maximal ou non fonctionnelle)</li>
-     *         <li>fait payer l'amelioration à la mine</li>
+     *         <li>fait payer l'amelioration a la mine</li>
      *         <li>ameliore la mine</li>
      *         <li>recharge la page VueAvantPoste</li>
      *     </ul>
      * </p>
      *
      * @param idAvantPoste id de l'avantPoste contenant la mine que l'on veut ameliorer
-     * @param idMine id de la mine à ameliorer
+     * @param idMine id de la mine a ameliorer
      *
      * @see VueAvantPoste
      * @see ControleurPrincipal#planete
@@ -755,7 +755,7 @@ public class ControleurPrincipal {
      *     </ul>
      * </p>
      *
-     * @param id id de la mine à detruire
+     * @param id id de la mine a detruire
      *
      * @see VueAvantPoste
      * @see ControleurPrincipal#planete
@@ -768,14 +768,14 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     affecte un gouverneur à une ville
+     *     affecte un gouverneur a une ville
      *     <ul>
-     *         <li>revoque le grouverneur de la ville si elle en a dejà un</li>
-     *         <li>affecte le gouvrneur à la ville</li>
+     *         <li>revoque le grouverneur de la ville si elle en a deja un</li>
+     *         <li>affecte le gouvrneur a la ville</li>
      *         <li>affiche la page du gouverneur</li>
      * </p>
      *
-     * @param idVille id de la mine à laquelle affecter le gouverneur
+     * @param idVille id de la mine a laquelle affecter le gouverneur
      * @param gouverneur gouverneur que l'on vuet affecter
      *
      * @see VueAffecterGouverneur
@@ -810,7 +810,7 @@ public class ControleurPrincipal {
         revoque le gouveneur de la ville dont l'id est donne en parametre et affiche la Vue du gouverneur donne en parametre
      * </p>
      *
-     * @param idVille id de la mine à laquelle affecter le gouverneur
+     * @param idVille id de la mine a laquelle affecter le gouverneur
      * @param gouverneur gouverneur que l'on vuet affecter
      *
      * @see VueAffecterGouverneur
@@ -826,7 +826,7 @@ public class ControleurPrincipal {
      *     Ameliore un Gouverneur
      *     <ul>
      *         <li>Verifie si il est ameliorable</li>
-     *         <li>fait payer l'amelioration à la planete</li>
+     *         <li>fait payer l'amelioration a la planete</li>
      *         <li>ameliore le gouverneur</li>
      *     </ul>
      * </p>
@@ -877,7 +877,7 @@ public class ControleurPrincipal {
 
     /**
      * <p>
-     *     met à jour les donnees de certaines vues en les reinitialisant
+     *     met a jour les donnees de certaines vues en les reinitialisant
      * </p>
      *
      */
@@ -937,7 +937,7 @@ public class ControleurPrincipal {
      *             verifie si la recherche est possible
      *         </li>
      *         <li>
-     *             fait payer la recherche à la planete
+     *             fait payer la recherche a la planete
      *         </li>
      *         <li>
      *             lance la recherche
@@ -951,7 +951,7 @@ public class ControleurPrincipal {
      *     </ul>
      * </p>
      *
-     * @param typeBatiment TypeBatiment à recherche
+     * @param typeBatiment TypeBatiment a recherche
      *
      * @see Recherche
      *
@@ -960,8 +960,8 @@ public class ControleurPrincipal {
         boolean rechercheEnCours = planete.getRecherche().isRechercheEnCours();
 
         if (rechercheEnCours){
-            System.out.println("dejà recherche");
-            throw new Exception("Recherche impossible : recherche dejà en cours");
+            System.out.println("deja recherche");
+            throw new Exception("Recherche impossible : recherche deja en cours");
         }else if (!planete.peutPayer(typeBatiment.getCoutRecherche())){
             System.out.println("trop pauvre");
             throw new Exception("Recherche impossible : fonds insuffisants");
@@ -983,8 +983,8 @@ public class ControleurPrincipal {
      *     verifie les coordonnees en parametre, pour savoir si elles sont trop proches d'une avant-poste ou d'une ville
      * </p>
      *
-     * @param x longitude à verifier
-     * @param y latitude à verifier
+     * @param x longitude a verifier
+     * @param y latitude a verifier
      *
      * @see Carte#verifierCoordonnees(double, double)
      *

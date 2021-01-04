@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  *             Un booleen indiquant s'il est en marche
  *         </li>
  *         <li>
- *             Une planete dont il faut mettre à jour les donnees
+ *             Une planete dont il faut mettre a jour les donnees
  *         </li>
  *         <li>
  *             Un acces au ControleurPrincipal
@@ -80,11 +80,11 @@ public class ControleurTemps extends Thread{
     public void run(){
         this.estEnMarche.set(true);
         while (estEnMarche.get()){
-            //mise à jour des avant-postes
+            //mise a jour des avant-postes
             majAvantPostes();
-            //mise à jour des mines
+            //mise a jour des mines
             majVilles();
-            //mise à jour des villes
+            //mise a jour des villes
             majRecherche();
             try {
                 sleep(1000);
@@ -95,7 +95,7 @@ public class ControleurTemps extends Thread{
     }
 
     /**
-     * Methode arrêtant le Thread et mettant le booleen estEnMarche à false
+     * Methode arrêtant le Thread et mettant le booleen estEnMarche a false
      *
      * @see ControleurTemps#estEnMarche
      *
@@ -107,8 +107,8 @@ public class ControleurTemps extends Thread{
 
     /**
      * <p>
-     *     Met à jour la recherche : si une recherche est en cours et que le temps de recherche est ecoule,
-     *     cette fonction debloque le type de batiment recherche et met fin à la recherche
+     *     Met a jour la recherche : si une recherche est en cours et que le temps de recherche est ecoule,
+     *     cette fonction debloque le type de batiment recherche et met fin a la recherche
      * </p>
      *
      * @see Recherche
@@ -135,13 +135,13 @@ public class ControleurTemps extends Thread{
 
     /**
      * <p>
-     *     met à jour les donnees concernant les avant-postes et leurs mines:
+     *     met a jour les donnees concernant les avant-postes et leurs mines:
      *     <ul>
      *         <li>
      *              recupere la somme des benefices generes par toutes les mines de l'avant-poste par seconde
      *         </li>
      *         <li>
-     *             met les Mines ayant atteint leur date d'epuisment à l'arrêt
+     *             met les Mines ayant atteint leur date d'epuisment a l'arrêt
      *         </li>
      *     </ul>
      * </p>
@@ -169,7 +169,7 @@ public class ControleurTemps extends Thread{
 
     /**
      * <p>
-     *     met à jour les donnees concernant les villes:
+     *     met a jour les donnees concernant les villes:
      *     <ul>
      *         <li>
      *              fini la construction des batiments quand leur date de fin de construction est atteinte

@@ -47,7 +47,7 @@ public class Recherche {
     /**
      * Constructeur Recherche.
      * <p>
-     *     à la creation d'une recherche, on met le booleen rechercheEnCours à false et les autres attributs à null
+     *     a la creation d'une recherche, on met le booleen rechercheEnCours a false et les autres attributs a null
      * </p>
      *
      * @see Recherche#rechercheEnCours
@@ -63,7 +63,7 @@ public class Recherche {
     /**
      * Lance la recherche du typeDeBatiment donne en argumant.
      *
-     * @param typeBatimentARechercher instance de TypeBatiment à rechercher
+     * @param typeBatimentARechercher instance de TypeBatiment a rechercher
      *
      * @see Recherche#rechercheEnCours
      * @see Recherche#typeBatimentRecherche
@@ -75,7 +75,7 @@ public class Recherche {
 
             dateFinRecherche = new Date();
 
-            //ajoute le temps de recherche du type de batiment à la date courante pour obtenir la date de fin de recherche
+            //ajoute le temps de recherche du type de batiment a la date courante pour obtenir la date de fin de recherche
             Calendar c = Calendar.getInstance();
             c.setTime(dateFinRecherche);
             c.add(Calendar.MINUTE, +typeBatimentARechercher.getTempsRecherche());
@@ -86,7 +86,7 @@ public class Recherche {
     }
 
     /**
-     * Met fin a une recherche en mettant le booleen rechercheEnCours à false et les autres attributs à null
+     * Met fin a une recherche en mettant le booleen rechercheEnCours a false et les autres attributs a null
      *
      * @see Recherche#rechercheEnCours
      * @see Recherche#typeBatimentRecherche
@@ -99,7 +99,7 @@ public class Recherche {
     }
 
     /**
-     * Retourne la valeur du booleen rechercheEnCours pour savoir si une recherche est dejà en cours ou non
+     * Retourne la valeur du booleen rechercheEnCours pour savoir si une recherche est deja en cours ou non
      *
      * @see Recherche#rechercheEnCours
      *
@@ -121,7 +121,7 @@ public class Recherche {
     }
 
     /**
-     * Retourne la date à laquelle la recherche se termine
+     * Retourne la date a laquelle la recherche se termine
      *
      * @see Recherche#rechercheEnCours
      *

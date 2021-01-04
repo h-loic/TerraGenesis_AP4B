@@ -81,7 +81,7 @@ public class Ville {
     private int nombrePlaceBatiment;
 
     /**
-     * Le gouverneur actuellement affecter à la ville
+     * Le gouverneur actuellement affecter a la ville
      *
      * @see Ville#affecterGouverneur(Gouverneur)
      * @see Ville#revoquerGouverneur()
@@ -106,7 +106,7 @@ public class Ville {
      * Constructeur Ville.
      * <p>
      * A la construction d'un objet Ville, le nom et les coordonnées sont initialisés avec les valeurs passées en
-     * paramètres. On ajoute un premier batiment dans la liste et on défini à 3 le nombre de place de batiment dans
+     * paramètres. On ajoute un premier batiment dans la liste et on défini a 3 le nombre de place de batiment dans
      * la ville.
      * </p>
      *
@@ -265,7 +265,7 @@ public class Ville {
     }
 
     /**
-     * Affecter un nouveau gouverneur à la ville.
+     * Affecter un nouveau gouverneur a la ville.
      * @param gouverneur le gouverneur affecter
      */
     public void affecterGouverneur(Gouverneur gouverneur) {
@@ -284,7 +284,7 @@ public class Ville {
 
     /**
      * Demarre la construction du batiment.
-     * @param batiment instance de batiment à construire
+     * @param batiment instance de batiment a construire
      */
     public void demarrerConstructionBatiment(Batiment batiment) {
         if (!peutConstruire()) return;
@@ -307,7 +307,7 @@ public class Ville {
     }
 
     /**
-     * Met à jour les données de population et d'habitation de la ville.
+     * Met a jour les données de population et d'habitation de la ville.
      */
     public void majDonnees() {
         double sommeHab = 0.;
@@ -328,7 +328,7 @@ public class Ville {
     }
 
     /**
-     * Met à jour le nombre de place de la ville.
+     * Met a jour le nombre de place de la ville.
      */
     private void majNbPlace() {
         nombrePlaceBatiment = 3 + Math.floorDiv((int)population.getValeurActuelle(), (int) PALIER_POPULATION_NB_BATIMENT);
@@ -338,7 +338,7 @@ public class Ville {
 
     /**
      * Detruire un batiment.
-     * @param idBatiment l'id du batiment à détruire
+     * @param idBatiment l'id du batiment a détruire
      */
     public void detruireBatiment(int idBatiment) {
         this.batiments.remove(getBatiment(idBatiment));

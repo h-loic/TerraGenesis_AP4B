@@ -12,7 +12,7 @@ import javafx.scene.layout.GridPane;
 
 /**
  * <b>
- *     Vue affichant les differentes donnees de la planete à l'aide de sliders et de labels
+ *     Vue affichant les differentes donnees de la planete a l'aide de sliders et de labels
  * </p>
  *
  * @see modele.Planete
@@ -47,7 +47,7 @@ public class VueMenuStatistiques extends Scene {
     protected GridPane grillePrincipale;
 
     /**
-     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
+     * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueMenuStatistiques#setControleur(ControleurPrincipal)
      * @see controler.ControleurPrincipal
@@ -349,7 +349,7 @@ public class VueMenuStatistiques extends Scene {
     }
 
     /**
-     *  Permet d'affecter un controleur à la vue
+     *  Permet d'affecter un controleur a la vue
      *
      * @param controleur
      *

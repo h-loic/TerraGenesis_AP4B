@@ -8,7 +8,7 @@ import javafx.stage.WindowEvent;
  * <b>La classe NavigateurDesVues est le point d’entree de l’application, elle herite de la classe Application de la bibliotheque JavaFX </b>
  * <p>
  *     C’est elle qui va initialiser les differentes vues de l’application, et leur affecter un contrôleur.
- *     Elle va egalement permettre au contrôleur d'acceder aux differentes vues  grâce à des accesseurs.
+ *     Elle va egalement permettre au contrôleur d'acceder aux differentes vues  grâce a des accesseurs.
  *     Elle permet de naviguer facilement entre les differentes vues en changeant la scene du stage
  * </p>
  *
@@ -111,7 +111,7 @@ public class NavigateurDesVues extends Application{
 
     /**
      * <p>
-     *     Vue permettant d'affecter un gouverneur à une ville
+     *     Vue permettant d'affecter un gouverneur a une ville
      * </p>
      *
      * @see VueAffecterGouverneur

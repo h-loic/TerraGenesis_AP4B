@@ -18,7 +18,7 @@ import java.util.Random;
 
 /**
  * <p>
- *     Vue permettant d'ajouter une ville à la planète.
+ *     Vue permettant d'ajouter une ville a la planète.
  * </p>
  *
  * @see modele.Ville
@@ -30,7 +30,7 @@ public class VueAjouterVille extends Scene {
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 50px";
 
     /**
-     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues.
+     * Le controleur de l'application, permet a la vue d'intéragir avec les modèles ou avec le navigateur des vues.
      */
     private controler.ControleurPrincipal controleur = null;
 
@@ -75,7 +75,7 @@ public class VueAjouterVille extends Scene {
     private Label labelErreurs;
 
     /**
-     * Permet à l'utilisateur d'entrée le nom de la ville
+     * Permet a l'utilisateur d'entrée le nom de la ville
      */
     private TextField textFieldNomVille;
 
@@ -247,7 +247,7 @@ public class VueAjouterVille extends Scene {
     private void validerDonnees() {
         boolean erreur = false;
         String messageErreurs = "";
-        //verifie si un nom à été saissie.
+        //verifie si un nom a été saissie.
         if (textFieldNomVille.getText().isEmpty()){
             erreur = true;
             messageErreurs+="Veuillez entrer un nom";
@@ -290,7 +290,7 @@ public class VueAjouterVille extends Scene {
     }
 
     /**
-     * Affecter le controleur à la vue.
+     * Affecter le controleur a la vue.
      * @param controleur le controleur affecté
      */
     public void setControleur(controler.ControleurPrincipal controleur) {

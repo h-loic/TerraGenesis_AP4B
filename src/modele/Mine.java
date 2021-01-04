@@ -40,13 +40,13 @@ public class Mine {
     private static final AtomicInteger sequence = new AtomicInteger();
 
     /**
-     * Le prix de base d'une mine (sert à calculer le prix d'une nouvelle Mine en fonction du nombre
-     * de Mines dejà construites dans l'avant-poste)
+     * Le prix de base d'une mine (sert a calculer le prix d'une nouvelle Mine en fonction du nombre
+     * de Mines deja construites dans l'avant-poste)
      */
     public static final int PRIX_BASE_MINE = 25000;
 
     /**
-     * Le prix de base d'amélioration d'une mine (sert à calculer le prix d'une amélioration de Mine en fonction de son niveau)
+     * Le prix de base d'amélioration d'une mine (sert a calculer le prix d'une amélioration de Mine en fonction de son niveau)
      */
     public static final int PRIX_BASE_AMELIORATION   = 1500;
 
@@ -82,7 +82,7 @@ public class Mine {
     private double benefice;
 
     /**
-     * La date à laquelle la mine cessera de fonctionner.
+     * La date a laquelle la mine cessera de fonctionner.
      *
      * @see Mine#getDateEpuissement()
      */
@@ -121,9 +121,9 @@ public class Mine {
     /**
      * Constructeur Mine.
      * <p>
-     * A la construction d'un objet Mine, le niveau est fixe à 1. On lui assigne un id aleatoire, un nom aleatoire, qui sera remplace par l'avant-poste auquel la mine est assignee
-     * on lui assigne une ressource à puiser et des coordonnees.
-     * On lui assigne comme date d'epuisement la date courante à laquelle on ajoute deux jours.
+     * A la construction d'un objet Mine, le niveau est fixe a 1. On lui assigne un id aleatoire, un nom aleatoire, qui sera remplace par l'avant-poste auquel la mine est assignee
+     * on lui assigne une ressource a puiser et des coordonnees.
+     * On lui assigne comme date d'epuisement la date courante a laquelle on ajoute deux jours.
      * </p>
      *
      * @param ressource
@@ -153,7 +153,7 @@ public class Mine {
 
         Date currentDate = new Date(); // recuperation de la date courante
         
-        //ajout de deux jours à la date courante
+        //ajout de deux jours a la date courante
         Calendar c = Calendar.getInstance();
         c.setTime(currentDate);
         c.add(Calendar.DATE, 2);
@@ -250,7 +250,7 @@ public class Mine {
      *
      * @see Mine#isFonctionnelle
      * @param  fonctionnelle
-     *         l'etat que l'on souhaite affecter à la mine
+     *         l'etat que l'on souhaite affecter a la mine
      */
     public void setFonctionnelle(boolean fonctionnelle) {
         isFonctionnelle = fonctionnelle;

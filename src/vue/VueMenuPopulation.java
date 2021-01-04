@@ -108,7 +108,7 @@ public class VueMenuPopulation extends Scene {
     private ScrollPane scrollPaneVilles;
 
     /**
-     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
+     * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueMenuPopulation#setControleur(ControleurPrincipal)
      * @see controler.ControleurPrincipal
@@ -251,7 +251,7 @@ public class VueMenuPopulation extends Scene {
             ligne.setSpacing(25);
 
             ligne.getChildren().addAll(labelNom, labelPopulation, btnAfficher);
-            //ajout de la ville à la liste des villes
+            //ajout de la ville a la liste des villes
             this.grilleVilles.add(ligne, 0, lignesVilles);
         }
 
@@ -357,7 +357,7 @@ public class VueMenuPopulation extends Scene {
     }
 
     /**
-     *  Permet d'affecter un controleur à la vue
+     *  Permet d'affecter un controleur a la vue
      *
      * @param controleur
      *

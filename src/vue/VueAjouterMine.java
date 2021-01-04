@@ -26,7 +26,7 @@ import java.util.Random;
 
 /**
  * <b>
- *     Vue Permettant d'ajouter une mine à un avant-poste
+ *     Vue Permettant d'ajouter une mine a un avant-poste
  * </p>
  *
  * @see modele.Mine
@@ -76,7 +76,7 @@ public class VueAjouterMine extends Scene {
     public static final int DISTANCE_MINI = 30;
 
     /**
-     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
+     * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -116,7 +116,7 @@ public class VueAjouterMine extends Scene {
 
 
     /**
-     * Canvas sur lequel sont affichees les mines dejà construites dans l'avant-poste
+     * Canvas sur lequel sont affichees les mines deja construites dans l'avant-poste
      * et permettant au joueur de positionner la nouvelle mine
      *
      * @see VueAjouterMine#VueAjouterMine()
@@ -165,7 +165,7 @@ public class VueAjouterMine extends Scene {
     private Label labelRendementMine;
 
     /**
-     * bouton permettant d'annuler l'ajout et de retourner à la page de l'avant-poste
+     * bouton permettant d'annuler l'ajout et de retourner a la page de l'avant-poste
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
@@ -280,13 +280,13 @@ public class VueAjouterMine extends Scene {
      *  Initialise le canvas sur lequel sont affichees les coordonnees des mines de l'avant-poste auquel
      *  on souhaite ajouter une mine
      *
-     * @param mines liste des mines à afficher
+     * @param mines liste des mines a afficher
      *
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#canvasCoords
      */
     private void initCanvas(ArrayList<Mine> mines){
-        //efface ce qui est dejà dessine sur le canvas
+        //efface ce qui est deja dessine sur le canvas
         gcCanva.clearRect(0, 0, canvasCoords.getWidth(), canvasCoords.getHeight());
         gcCanva.setFill(Color.ORANGERED);
         //redessine le fond orange
@@ -311,7 +311,7 @@ public class VueAjouterMine extends Scene {
     }
 
     /**
-     *  Sert à positionner la mine sur le canvans : verifie si elle n'est pas trop proche d'une autre mine,
+     *  Sert a positionner la mine sur le canvans : verifie si elle n'est pas trop proche d'une autre mine,
      *  genere une altitude et un rendement aleatoires,
      *  affiche les coordonnees et le rendement de la mine sur des labels
      *
@@ -356,7 +356,7 @@ public class VueAjouterMine extends Scene {
     /**
      *  Initialise les differents labels, boutons et layouts de la vue
      * @param idAvantPoste id de l'avant-poste auquel on souhaite ajouter une mine
-     * @param mines mines dejà ajoutees dans l'avant-poste
+     * @param mines mines deja ajoutees dans l'avant-poste
      *
      * @see VueAjouterMine#grillePrincipale
      * @see VueAjouterMine#btnRetourMenuAvantPoste
@@ -523,7 +523,7 @@ public class VueAjouterMine extends Scene {
     }
 
     /**
-     *  Permet d'affecter un controleur à la vue
+     *  Permet d'affecter un controleur a la vue
      *
      * @param controleur
      *

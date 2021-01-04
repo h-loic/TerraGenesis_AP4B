@@ -62,8 +62,8 @@ public class AvantPoste {
     private ArrayList<Mine> mines;
 
     /**
-     * Le prix de base d'un AvantPoste (sert à calculer le prix d'un nouvel AvantPoste en fonction du nombre
-     * d'AvantPostes dejà construits sur la planete)
+     * Le prix de base d'un AvantPoste (sert a calculer le prix d'un nouvel AvantPoste en fonction du nombre
+     * d'AvantPostes deja construits sur la planete)
      */
     public static final double PRIX_BASE_AVPOSTE = 1000000.;
 
@@ -94,7 +94,7 @@ public class AvantPoste {
     }
 
     /**
-     * Ajoute une mine à la liste des mines de l'AvantPoste
+     * Ajoute une mine a la liste des mines de l'AvantPoste
      *
      * @see AvantPoste#mines
      */
@@ -200,7 +200,7 @@ public class AvantPoste {
      *
      * @see AvantPoste#mines
      * @see Mine#getId()
-     * @param idMine id de la mine à chercher et retourner
+     * @param idMine id de la mine a chercher et retourner
      * @return Mine dont l'identifiant est donne en parametres. Si aucune mine n'a cette id, retourne null.
      */
     public Mine getMine(int idMine) {

@@ -21,7 +21,7 @@ import java.util.Map;
 
 /**
  * <p>
- *     Vue permettant d'ajouter un batiment à une ville
+ *     Vue permettant d'ajouter un batiment a une ville
  * </p>
  *
  * @see modele.Batiment
@@ -33,7 +33,7 @@ public class VueAjouterBatiment extends Scene {
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 50px";
 
     /**
-     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues
+     * Le controleur de l'application, permet a la vue d'intéragir avec les modèles ou avec le navigateur des vues
      */
     private controler.ControleurPrincipal controleur = null;
 
@@ -88,7 +88,7 @@ public class VueAjouterBatiment extends Scene {
     private TextFlow textFlowEffet;
 
     /**
-     * Bouton permetant de revenir à la vue de la ville sans valider le formulaire.
+     * Bouton permetant de revenir a la vue de la ville sans valider le formulaire.
      */
     private Button btnRetourMenuVille;
 
@@ -180,7 +180,7 @@ public class VueAjouterBatiment extends Scene {
         grilleForm.add(this.labelErreurs, 0, 6);
 
 
-        // assigner une action à chaque bouton
+        // assigner une action a chaque bouton
 
         btnRetourMenuVille.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -241,7 +241,7 @@ public class VueAjouterBatiment extends Scene {
     }
 
     /**
-     * Affecter le controleur à la vue.
+     * Affecter le controleur a la vue.
      * @param controleur le controleur affecté
      */
     public void setControleur(controler.ControleurPrincipal controleur) {

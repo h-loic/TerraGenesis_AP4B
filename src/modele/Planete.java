@@ -339,7 +339,7 @@ public class Planete {
      * <p>
      *     Initialise les donnees de la planete
      *     <ul>
-     *         <li>ajoute chaque type de deonne à la liste des donnees de la planete</li>
+     *         <li>ajoute chaque type de deonne a la liste des donnees de la planete</li>
      *     </ul>
      * </p>
      *
@@ -516,7 +516,7 @@ public class Planete {
 
     /**
      * <p>
-     *     Ajoute une mine à un avant poste
+     *     Ajoute une mine a un avant poste
      * </p>
      *
      * @param idAvantPoste id de l'avant poste auquel ajouter la mine

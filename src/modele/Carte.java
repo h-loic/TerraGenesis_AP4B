@@ -170,7 +170,7 @@ public class Carte {
     }
 
     /**
-     * Ajoute les coordonnees d'une nouvelle ville à la liste des coordonnees de villes de la carte
+     * Ajoute les coordonnees d'une nouvelle ville a la liste des coordonnees de villes de la carte
      *
      * @see Carte#dessinerVilles() ()
      * @see Carte#coordsVilles
@@ -181,7 +181,7 @@ public class Carte {
     }
 
     /**
-     * Ajoute les coordonnees d'un nouvel avant-poste à la liste des coordonnees d'avant-postes de la carte
+     * Ajoute les coordonnees d'un nouvel avant-poste a la liste des coordonnees d'avant-postes de la carte
      *
      * @see Carte#dessinerAvPostes()
      * @see Carte#coordsAvPostes
@@ -197,7 +197,7 @@ public class Carte {
      *     retire les coordonnees de l'avant-poste de la liste et redessine la carte
      * </p>
      *
-     * @param coords coordonnees de l'avant-poste à effacer
+     * @param coords coordonnees de l'avant-poste a effacer
      *
      * @see Carte#dessinerAvPostes()
      * @see Carte#coordsAvPostes
@@ -213,7 +213,7 @@ public class Carte {
      *     Retire les coordonnees de la ville de la liste et redessine la carte
      * </p>
      *
-     * @param coords coordonnees de la ville à effacer
+     * @param coords coordonnees de la ville a effacer
      *
      * @see Carte#dessinerVilles()
      * @see Carte#coordsVilles

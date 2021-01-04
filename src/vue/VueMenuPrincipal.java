@@ -21,8 +21,8 @@ import modele.Ressource;
  * La VueMenuPrincipale est possede par :
  * <ul>
  * <li>Un controleur principal</li>
- * <li>Une GridPane à laquelle on ajoute les differents elements de la vue</li>
- * <li>6 Boutons permettant d'acceder à differentes vues</li>
+ * <li>Une GridPane a laquelle on ajoute les differents elements de la vue</li>
+ * <li>6 Boutons permettant d'acceder a differentes vues</li>
  * <li>deux HBox permettant d'afficher chacun trois des six boutons</li>
  * </ul>
  * </p>
@@ -42,7 +42,7 @@ public class VueMenuPrincipal extends Scene {
     protected GridPane grillePrincipale;
 
     /**
-     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
+     * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueMenuPrincipal#setControleur(ControleurPrincipal)
      * @see controler.ControleurPrincipal
@@ -246,7 +246,7 @@ public class VueMenuPrincipal extends Scene {
     }
 
     /**
-     *  Permet d'affecter un controleur à la vue
+     *  Permet d'affecter un controleur a la vue
      *
      * @param controleur
      *

@@ -108,7 +108,7 @@ public class VueAvantPoste extends Scene {
     private ScrollPane scrollPaneMines;
 
     /**
-     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
+     * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueAvantPoste#VueAvantPoste()
      * @see VueAvantPoste#initialiserVueAvantPoste(AvantPoste)
@@ -258,7 +258,7 @@ public class VueAvantPoste extends Scene {
             grilleMine.setPadding(new Insets(7,0,3,0));
 
             if (mine.getNiveau()>=5 || !mine.isFonctionnelle()){
-                //si la mine a dejà atteint le niveau maximum (5) le bouton pour l'ameliorer est desactive
+                //si la mine a deja atteint le niveau maximum (5) le bouton pour l'ameliorer est desactive
                 btnAmeliorer.setDisable(true);
             }
 
@@ -340,7 +340,7 @@ public class VueAvantPoste extends Scene {
         });
         this.btnAjouterMine.setStyle(STYLE_BOUTONS);
 
-        //ajoute la liste des mines à la scrollpane
+        //ajoute la liste des mines a la scrollpane
         this.scrollPaneMines.setContent(grilleMines);
         this.scrollPaneMines.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         this.scrollPaneMines.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
@@ -361,7 +361,7 @@ public class VueAvantPoste extends Scene {
     }
 
     /**
-     *  Permet d'affecter un controleur à la vue
+     *  Permet d'affecter un controleur a la vue
      *
      * @param controleur
      *

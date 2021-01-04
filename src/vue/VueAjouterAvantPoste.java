@@ -22,7 +22,7 @@ import java.util.Random;
 
 /**
  * <b>
- *     Vue Permettant d'ajouter un avant-poste à la planete
+ *     Vue Permettant d'ajouter un avant-poste a la planete
  * </p>
  *
  * @see modele.AvantPoste
@@ -64,7 +64,7 @@ public class VueAjouterAvantPoste extends Scene {
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80px";
 
     /**
-     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
+     * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
      * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
@@ -312,7 +312,7 @@ public class VueAjouterAvantPoste extends Scene {
         grilleForm.add(this.labelZAvPoste,1,3);
         grilleForm.add(this.labelErreurs, 0, 4);
 
-        //retour à l'avant-poste
+        //retour a l'avant-poste
         btnRetourMenuAvantPoste.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -343,7 +343,7 @@ public class VueAjouterAvantPoste extends Scene {
     /**
      *  Verifier les coordonnees de la position choisie par le joueur,
      *  si les coordonnees sont valides, les coordonnees seront affiches sur des labels,
-     *  et un point sera dessine à ces coordonnees
+     *  et un point sera dessine a ces coordonnees
      *
      * @param x longitude de la position choisie par le joueur
      * @param y latitude de la position choisie par le joueur
@@ -427,7 +427,7 @@ public class VueAjouterAvantPoste extends Scene {
     }
 
     /**
-     *  Permet d'affecter un controleur à la vue
+     *  Permet d'affecter un controleur a la vue
      *
      * @param controleur
      *

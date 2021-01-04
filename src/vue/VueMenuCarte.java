@@ -64,7 +64,7 @@ public class VueMenuCarte extends Scene {
     protected GridPane grillePrincipale;
 
     /**
-     * HBox servant à centrer le titre de la page dans la grille
+     * HBox servant a centrer le titre de la page dans la grille
      *
      * @see VueMenuCarte#VueMenuCarte()
      * @see VueMenuCarte#initialiserMenuCarte(Canvas)
@@ -80,7 +80,7 @@ public class VueMenuCarte extends Scene {
     protected HBox hBoxRetour;
 
     /**
-     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues
+     * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues
      *
      * @see VueMenuCarte#setControleur(ControleurPrincipal)
      * @see controler.ControleurPrincipal
@@ -173,7 +173,7 @@ public class VueMenuCarte extends Scene {
     }
 
     /**
-     *  Permet d'affecter un controleur à la vue
+     *  Permet d'affecter un controleur a la vue
      *
      * @param controleur
      *

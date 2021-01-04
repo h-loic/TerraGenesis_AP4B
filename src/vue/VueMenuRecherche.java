@@ -88,7 +88,7 @@ public class VueMenuRecherche extends Scene {
     private GridPane grillePrincipale;
 
     /**
-     * La grille sur laquelle sont affiches les types de batiments à afficher
+     * La grille sur laquelle sont affiches les types de batiments a afficher
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -104,7 +104,7 @@ public class VueMenuRecherche extends Scene {
     private GridPane grilleRechercheEnCours;
 
     /**
-     * Scrollpane dans laquelle sera ajoute la grille des batiments à rechercher
+     * Scrollpane dans laquelle sera ajoute la grille des batiments a rechercher
      *
      * @see VueMenuRecherche#VueMenuRecherche()
      * @see VueMenuRecherche#initialiserMenuRecherche(ArrayList, boolean, TypeBatiment)
@@ -186,7 +186,7 @@ public class VueMenuRecherche extends Scene {
 
     /**
      *  Initialise la vue
-     *      Affichage des differents types de batiments à rechercher et de la recherche en cours
+     *      Affichage des differents types de batiments a rechercher et de la recherche en cours
      * @param typeBatimentsNonDebloques liste contenant les types de batiments qui ne sont pas encore debloques
      * @param rechercheEnCours booleen indiquant si une recherche est en cours
      * @param batimentRecherche type de batiment actuellement recherche si une recherche est en cours
@@ -311,7 +311,7 @@ public class VueMenuRecherche extends Scene {
     }
 
     /**
-     *  Permet d'affecter un controleur à la vue
+     *  Permet d'affecter un controleur a la vue
      *
      * @param controleur
      *

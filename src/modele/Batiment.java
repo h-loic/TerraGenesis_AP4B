@@ -71,7 +71,7 @@ public class Batiment {
     private boolean estEnCoursAmelioration;
 
     /**
-     * Indique la date à laquelle l'amélioration en cours sera finie. Vaut null si aucune amélioration n'est en cours.
+     * Indique la date a laquelle l'amélioration en cours sera finie. Vaut null si aucune amélioration n'est en cours.
      *
      * @see Batiment#getDateFinAmelioration()
      * @see Batiment#demarrerAmelioration()
@@ -91,9 +91,9 @@ public class Batiment {
     /**
      * Constructeur Batiment.
      * <p>
-     * A la construction d'un objet Batiment, le niveau est fixé à 1. On lui assigne un id, le type du batiment est
+     * A la construction d'un objet Batiment, le niveau est fixé a 1. On lui assigne un id, le type du batiment est
      * initailisé avec la valeur passée en paramètre,
-     * Les état désactivé et en cours d'amélioration sont initialisés à false.
+     * Les état désactivé et en cours d'amélioration sont initialisés a false.
      * Les effets sont initialiser avec la liste d'effets par défaut du type du batiment.
      * </p>
      *
@@ -225,7 +225,7 @@ public class Batiment {
 
     /**
      * Demarre l'amélioration du Batiment en initialisant la date de fin d'amélioration
-     * à la date actuelle + le temps de construction de l'amélioration en minute retourné
+     * a la date actuelle + le temps de construction de l'amélioration en minute retourné
      * par la fonction <code>getTempsConstructionAmelioration()</code>.
      *
      * @see Batiment#getTempsConstructionAmelioration()
