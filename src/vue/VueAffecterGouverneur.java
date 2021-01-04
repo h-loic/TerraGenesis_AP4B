@@ -72,7 +72,7 @@ public class VueAffecterGouverneur extends Scene{
             });
         }
         compteurLigne++;
-        grillePrincipale.add(btnRetour,1,compteurLigne);
+        grillePrincipale.add(btnRetour,2,compteurLigne);
     }
 
     public void setControleur(controler.ControleurPrincipal controleur) {
