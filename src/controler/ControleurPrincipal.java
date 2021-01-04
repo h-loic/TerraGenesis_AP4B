@@ -839,17 +839,19 @@ public class ControleurPrincipal {
      */
     public void notifierAmeliorerGouverneur(Gouverneur gouverneur) {
         if (gouverneur.getNiveau() < 5 && this.planete.peutPayer(gouverneur.getPrixAmelioration())){
-            for (Donnee effet : gouverneur.getEffets().keySet()){
-                for (Donnee donnee : this.planete.getDonnees()){
-                    if (donnee == effet){
-                        donnee.setCroissance(donnee.getCroissance() - gouverneur.getEffets().get(effet));
+            if (gouverneur.estAffecte()){
+                for (Donnee effet : gouverneur.getEffets().keySet()){
+                    for (Donnee donnee : this.planete.getDonnees()){
+                        if (donnee == effet){
+                            donnee.setCroissance(donnee.getCroissance() - gouverneur.getEffets().get(effet));
+                        }
                     }
                 }
-            }
-            for (Donnee effet : gouverneur.getEffets().keySet()){
-                for (Donnee donnee : this.planete.getDonnees()){
-                    if (donnee == effet){
-                        donnee.setCroissance(donnee.getCroissance() + gouverneur.getEffets().get(effet));
+                for (Donnee effet : gouverneur.getEffets().keySet()){
+                    for (Donnee donnee : this.planete.getDonnees()){
+                        if (donnee == effet){
+                            donnee.setCroissance(donnee.getCroissance() + gouverneur.getEffets().get(effet));
+                        }
                     }
                 }
             }
