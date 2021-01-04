@@ -9,7 +9,26 @@ import javafx.scene.layout.GridPane;
 import modele.Donnee;
 import modele.Gouverneur;
 
+import java.util.ArrayList;
+
 public class VueGouverneur extends Scene{
+
+    /**
+     *  Constante definissant le style des titres de la vue
+     *
+     * @see VueMenuGouverneurs#VueMenuGouverneurs()
+     * @see VueMenuGouverneurs#initialiserMenuGouverneurs(ArrayList)
+     */
+    public static final String STYLE_TITRE = " -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 15px";
+
+    /**
+     *  Constante definissant le style des boutons de la vue
+     *
+     * @see VueMenuGouverneurs#VueMenuGouverneurs()
+     * @see VueMenuGouverneurs#initialiserMenuGouverneurs(ArrayList)
+     */
+    public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80;";
+
 
     protected GridPane grillePrincipale;
     private controler.ControleurPrincipal controleur = null;
@@ -21,9 +40,10 @@ public class VueGouverneur extends Scene{
     private Button btnAffecter;
 
     public VueGouverneur() {
-        super(new GridPane(), 400,400);
+        super(new GridPane(), 500,400);
         grillePrincipale = (GridPane) this.getRoot();
         btnRetour = new Button("Retour");
+        this.btnRetour.setStyle(STYLE_BOUTONS);
     }
 
     public void initialiserVueGouverneur(Gouverneur gouverneur) {
@@ -35,6 +55,7 @@ public class VueGouverneur extends Scene{
             }
         });
         btnAmeliorer = new Button("ameliorer");
+        this.btnAmeliorer.setStyle(STYLE_BOUTONS);
         btnAmeliorer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -43,10 +64,12 @@ public class VueGouverneur extends Scene{
             }
         });
         labelNom = new Label(gouverneur.getNom());
+        this.labelNom.setStyle(STYLE_TITRE);
         labelNiveau = new Label(Integer.toString(gouverneur.getNiveau()));
         if (!gouverneur.estAffecte()){
             labelAffecter = new Label("non affecté");
             btnAffecter = new Button("affecter");
+            this.btnAffecter.setStyle(STYLE_BOUTONS);
             btnAffecter.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -57,6 +80,7 @@ public class VueGouverneur extends Scene{
             System.out.println(gouverneur.getVilleAffecter());
             labelAffecter = new Label(gouverneur.getVilleAffecter().getNom());
             btnAffecter = new Button("révoquer");
+            this.btnAffecter.setStyle(STYLE_BOUTONS);
             btnAffecter.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
