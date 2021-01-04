@@ -527,7 +527,7 @@ public class ControleurPrincipal {
      * @see NavigateurDesVues#getVueAjouterBatiment()
      */
     public void notifierNaviguerAjouterBatiment(int idVille) throws Exception{
-        if (!planete.peutConstruire(planete.getVille(idVille))){
+        if (!planete.getVille(idVille).peutConstruire()){
             throw new Exception("Plus de places disponible pour construire");
         }
         this.vueAjouterBatiment.initialiserVueAjouterBatiment(idVille, planete.getTypeBatimentDebloque());

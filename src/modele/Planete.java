@@ -63,7 +63,7 @@ public class Planete {
     private HashMap<TypeBatiment, Boolean> etatTypesBatiment;
 
     /**
-     * Hashmap des differents types de batiments et un booleen indiquant s'ils sont recherches
+     * Hashmap des differents types de ressources et un booleen indiquant s'ils sont recherches
      *
      * @see Planete#Planete()
      * @see Ressource
@@ -207,19 +207,24 @@ public class Planete {
         }
     }
 
-    public boolean peutConstruire(Ville ville) {
-        return ville.peutConstruire();
-    }
-
     public boolean peutRechercher(TypeBatiment typeBatiment) {
         if (typeBatiment.getParent() == null) return true;
         return etatTypesBatiment.get(typeBatiment.getParent());
     }
 
+    /**
+     * Accesseur de la liste de villes de la planète.
+     * @return la liste de villes de la planète
+     */
     public ArrayList<Ville> getVilles() {
         return villes;
     }
 
+    /**
+     * Permet de trouver et retourner une ville dans la liste
+     * @param id l'id de la ville
+     * @return si trouvé : la ville avec l'id, sinon : <code>null</code>
+     */
     public Ville getVille(int id) {
         for (Ville ville : villes) {
             if (ville.getId() == id) return ville;
@@ -240,10 +245,18 @@ public class Planete {
         return avantPostes;
     }
 
+    /**
+     * Accesseur de la liste des données de la ville
+     * @return la liste des données de la ville
+     */
     public ArrayList<Donnee> getDonnees() {
         return donnees;
     }
 
+    /**
+     * Accesseur de la liste d'état des types de batiment.
+     * @return la liste associative : type de batiment, est débolque
+     */
     public HashMap<TypeBatiment, Boolean> getEtatTypesInfrastructure() {
         return etatTypesBatiment;
     }
@@ -362,6 +375,11 @@ public class Planete {
         ajouterVille(new Ville("Niederschaeffolsheim", new Coordonnee(100,100,100)));
     }
 
+    /**
+     * Demarrer la construction d'un batiment dans une ville de la planète.
+     * @param idVille l'id de la ville
+     * @param batiment le batiment à construire
+     */
     public void construireBatiment(int idVille, Batiment batiment) {
         getVille(idVille).demarrerConstructionBatiment(batiment);
         getVille(idVille).majDonnees();
@@ -398,16 +416,28 @@ public class Planete {
         }
     }
 
+    /**
+     * Initialise les états des types de batiment.
+     */
     public void initialiserEtatTypeBatiment() {
         for (TypeBatiment typeBatiment : TypeBatiment.values()) {
             etatTypesBatiment.put(typeBatiment, typeBatiment.estDebloqueParDefaut());
         }
     }
 
+    /**
+     * Permet de savoir si un type de batiment est débloqué (recherché) ou pas.
+     * @param typeBatiment le type de batiment
+     * @return <code>true</code> si le batiment est débloqué, sinon <code>false</code>
+     */
     public boolean typeBatimentEstDebloque(TypeBatiment typeBatiment) {
         return etatTypesBatiment.get(typeBatiment);
     }
 
+    /**
+     * Permet d'obtenir la liste de tous les types de batiments débloqués de la planète.
+     * @return la liste de tous les types de batiments débloqués de la planète
+     */
     public ArrayList<TypeBatiment> getTypeBatimentDebloque() {
         ArrayList<TypeBatiment> typeBatimentDebloque = new ArrayList<>();
         for (TypeBatiment typeBatiment : TypeBatiment.values()) {
@@ -416,6 +446,10 @@ public class Planete {
         return  typeBatimentDebloque;
     }
 
+    /**
+     * Permet d'obtenir la liste de tous les types de batiments non débloqués de la planète.
+     * @return la liste de tous les types de batiments non débloqués de la planète
+     */
     public ArrayList<TypeBatiment> getTypeBatimentNonDebloque() {
         ArrayList<TypeBatiment> typeBatimentNonDebloque = new ArrayList<>();
         for (TypeBatiment typeBatiment : TypeBatiment.values()) {
@@ -424,12 +458,20 @@ public class Planete {
         return  typeBatimentNonDebloque;
     }
 
+    /**
+     * Initialise l'état des ressources.
+     */
     public void initialiserEtatRessource() {
         for (Ressource ressource : Ressource.values()) {
             etatRessources.put(ressource, ressource.getParent() == null);
         }
     }
 
+    /**
+     * Accesseur à une données de la liste selon son type
+     * @param typeDonnee le type de la données
+     * @return si trouvée : la donnée, sinon : <code>null</code>
+     */
     public Donnee getDonnee(TypeDonnee typeDonnee) {
         for (Donnee donnee : donnees) {
             if (donnee.getTypeDonnee() == typeDonnee) return donnee;
@@ -469,6 +511,10 @@ public class Planete {
         Collections.sort(gouverneurs, Gouverneur.ComparatorDebloque);
     }
 
+    /**
+     * Permet de détruire une ville de la planète
+     * @param idVille l'id de la ville à détruire
+     */
     public void detruireVille(int idVille) {
         Ville ville = getVille(idVille);
         for (Batiment batiment : ville.getBatiments()){
@@ -484,6 +530,10 @@ public class Planete {
         this.villes.remove(getVille(idVille));
     }
 
+    /**
+     * Débloquer un type de batiment.
+     * @param typeBatiment le type de batiment
+     */
     public void debloquerTypeBatiment(TypeBatiment typeBatiment){
         etatTypesBatiment.replace(typeBatiment, true);
     }
