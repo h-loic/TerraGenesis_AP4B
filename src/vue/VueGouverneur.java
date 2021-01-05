@@ -11,6 +11,15 @@ import modele.Gouverneur;
 
 import java.util.ArrayList;
 
+/**
+ * <p>
+ *     Vue permettant d'afficher un gouverneur.
+ * </p>
+ *
+ * @see modele.Gouverneur
+ *
+ * @author Loïc HUG - h-loic
+ * */
 public class VueGouverneur extends Scene{
 
     /**
@@ -29,16 +38,49 @@ public class VueGouverneur extends Scene{
      */
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80;";
 
-
+    /**
+     * La grille sur laquelle sont ajoutés les différents éléments de la vue.
+     */
     protected GridPane grillePrincipale;
+
+    /**
+     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues.
+     */
     private controler.ControleurPrincipal controleur = null;
+
+    /**
+     * Label affichant le nom du gouverneur.
+     */
     private Label labelNom;
+
+    /**
+     * Label affichant le niveau du gouverneur.
+     */
     private Label labelNiveau;
+
+    /**
+     * Label affichant la ville a laquelle le gouverneur est affecté.
+     */
     private Label labelAffecter;
+
+    /**
+     * bouton permettant d'améliorer le gouverneur
+     */
     private Button btnAmeliorer;
+
+    /**
+     * bouton de retour vers la liste des gouverneurs
+     */
     private Button btnRetour;
+
+    /**
+     * bouton permettant d'affecter le gouverneur
+     */
     private Button btnAffecter;
 
+    /**
+     * Constructeur VueVille. Créer les différents éléments de la vue.
+     */
     public VueGouverneur() {
         super(new GridPane(), 500,400);
         grillePrincipale = (GridPane) this.getRoot();
@@ -46,6 +88,10 @@ public class VueGouverneur extends Scene{
         this.btnRetour.setStyle(STYLE_BOUTONS);
     }
 
+    /**
+     * Initialise la vue.
+     * @param gouverneur la ville à afficher
+     */
     public void initialiserVueGouverneur(Gouverneur gouverneur) {
         grillePrincipale.getChildren().clear();
         btnRetour.setOnAction(new EventHandler<ActionEvent>() {
@@ -104,6 +150,11 @@ public class VueGouverneur extends Scene{
         grillePrincipale.add(btnAffecter,1,compteurLigne+1);
         grillePrincipale.add(btnRetour,1,compteurLigne+2);
     }
+
+    /**
+     * Affecter le controleur à la vue.
+     * @param controleur le controleur affecté
+     */
     public void setControleur(controler.ControleurPrincipal controleur) {
         this.controleur = controleur;
     }
