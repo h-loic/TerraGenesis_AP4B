@@ -98,7 +98,7 @@ public class AvantPoste {
      *
      * @see AvantPoste#mines
      */
-    public void ajouterMine(Mine mine){
+    synchronized public void ajouterMine(Mine mine){
         this.mines.add(mine);
     }
 
@@ -109,7 +109,7 @@ public class AvantPoste {
      * @see Mine#getBenefice()
      * @return somme des benefices de chaque mine de l'AvantPoste
      */
-    public synchronized double getBeneficesMines(){
+    synchronized public double getBeneficesMines(){
         double benefices = 0;
         for(Mine mine : this.mines){
             benefices+=mine.getBenefice();
@@ -123,7 +123,7 @@ public class AvantPoste {
      * @see AvantPoste#nom
      * @return nom de l'AvantPoste
      */
-    public String getNom() {
+    synchronized public String getNom() {
         return nom;
     }
 
@@ -132,7 +132,7 @@ public class AvantPoste {
      *
      * @see AvantPoste#nom
      */
-    public void setNom(String nom) {
+    synchronized public void setNom(String nom) {
         this.nom = nom;
     }
 
@@ -142,7 +142,7 @@ public class AvantPoste {
      * @see AvantPoste#coordonnee
      * @return coordonnees de l'AvantPoste
      */
-    public Coordonnee getCoordonnee() {
+    synchronized public Coordonnee getCoordonnee() {
         return coordonnee;
     }
 
@@ -151,7 +151,7 @@ public class AvantPoste {
      *
      * @see AvantPoste#coordonnee
      */
-    public void setCoordonnee(Coordonnee coordonnee) {
+    synchronized public void setCoordonnee(Coordonnee coordonnee) {
         this.coordonnee = coordonnee;
     }
 
@@ -161,7 +161,7 @@ public class AvantPoste {
      * @see AvantPoste#mines
      * @return liste des mines de l'AvantPoste
      */
-    public ArrayList<Mine> getMines() {
+    synchronized public ArrayList<Mine> getMines() {
         return mines;
     }
 
@@ -171,7 +171,7 @@ public class AvantPoste {
      * @see AvantPoste#id
      * @return l'id de l'AvantPoste
      */
-    public int getId() {
+    synchronized public int getId() {
         return id;
     }
 
@@ -181,7 +181,7 @@ public class AvantPoste {
      * @see Mine#PRIX_BASE_MINE
      * @return prix de construction d'une nouvelle mine
      */
-    public int getPrixNouvMine(){
+    synchronized public int getPrixNouvMine(){
         return (this.mines.size()+1)*Mine.PRIX_BASE_MINE;
     }
 
@@ -190,7 +190,7 @@ public class AvantPoste {
      *
      * @see AvantPoste#mines
      */
-    public void detruireMine(int idAvantPoste) {
+    synchronized public void detruireMine(int idAvantPoste) {
         this.mines.remove(getMine(idAvantPoste));
     }
 
@@ -203,7 +203,7 @@ public class AvantPoste {
      * @param idMine id de la mine a chercher et retourner
      * @return Mine dont l'identifiant est donne en parametres. Si aucune mine n'a cette id, retourne null.
      */
-    public Mine getMine(int idMine) {
+    synchronized public Mine getMine(int idMine) {
         for (Mine mine : this.mines){
             if (mine.getId() == idMine){
                 return mine;

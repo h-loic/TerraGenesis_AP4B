@@ -114,7 +114,7 @@ public class Carte {
      * @see Carte#dessinerVilles()
      * @see Carte#dessinerAvPostes()
      * */
-    public void dessiner() {
+    synchronized public void dessiner() {
         //efface ce qui est dessine sur le canvas
         graphicsContextCarte.clearRect(0, 0, canvasCarte.getWidth(), canvasCarte.getHeight());
         //dessine un fond orange sur tout le canvas
@@ -134,7 +134,7 @@ public class Carte {
      * @see Carte#dessiner()
      * @see Carte#coordsVilles
      * */
-    private void dessinerVilles(){
+    synchronized private void dessinerVilles(){
         graphicsContextCarte.setFill(Color.GREEN);//met la couleur du pinceau en vert
         for (Coordonnee coord : coordsVilles){
             graphicsContextCarte.fillRect(coord.getX(), coord.getY(), 10,10);
@@ -151,7 +151,7 @@ public class Carte {
      * @see Carte#dessiner()
      * @see Carte#coordsAvPostes
      * */
-    private void dessinerAvPostes() {
+    synchronized private void dessinerAvPostes() {
         graphicsContextCarte.setFill(Color.BLUE);//met la couleur du pinceau en bleu
         for (Coordonnee coord : coordsAvPostes){
             graphicsContextCarte.fillRect(coord.getX(), coord.getY(), 10,10);
@@ -165,7 +165,7 @@ public class Carte {
      *
      * @see Carte#canvasCarte
      * */
-    public Canvas getCanvas() {
+    synchronized public Canvas getCanvas() {
         return canvasCarte;
     }
 
@@ -175,7 +175,7 @@ public class Carte {
      * @see Carte#dessinerVilles() ()
      * @see Carte#coordsVilles
      * */
-    public void ajouterVilleCarte(Coordonnee coords){
+    synchronized public void ajouterVilleCarte(Coordonnee coords){
         this.coordsVilles.add(coords);
         this.dessiner();
     }
@@ -186,7 +186,7 @@ public class Carte {
      * @see Carte#dessinerAvPostes()
      * @see Carte#coordsAvPostes
      * */
-    public void ajouterAvPosteCarte(Coordonnee coords){
+    synchronized public void ajouterAvPosteCarte(Coordonnee coords){
         this.coordsAvPostes.add(coords);
         this.dessiner();
     }
@@ -202,7 +202,7 @@ public class Carte {
      * @see Carte#dessinerAvPostes()
      * @see Carte#coordsAvPostes
      * */
-    public void effacerAvPosteCarte(Coordonnee coords){
+    synchronized public void effacerAvPosteCarte(Coordonnee coords){
         this.coordsAvPostes.remove(coords);
         this.dessiner();
     }
@@ -218,7 +218,7 @@ public class Carte {
      * @see Carte#dessinerVilles()
      * @see Carte#coordsVilles
      * */
-    public void effacerVilleCarte(Coordonnee coords){
+    synchronized public void effacerVilleCarte(Coordonnee coords){
         this.coordsVilles.remove(coords);
         this.dessiner();
     }
@@ -239,7 +239,7 @@ public class Carte {
      * @see Coordonnee
      * @see Carte#DISTANCE_MINI
      * */
-    public boolean verifierCoordonnees(double x, double y) {
+    synchronized public boolean verifierCoordonnees(double x, double y) {
         this.dessiner();
         for (Coordonnee coords : coordsAvPostes){
             //verifie que les coordonnees entrees respectent la distance minimale avec un avant-poste

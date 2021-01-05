@@ -17,27 +17,27 @@ public class Donnee {
         this.croissance = croissance;
     }
 
-    public synchronized  void setCroissance(double croissance) {
+    synchronized public void setCroissance(double croissance) {
         this.croissance = croissance;
     }
 
-    public synchronized void majValeur(){
+    synchronized public void majValeur(){
         this.valeurActuelle+=croissance;
     }
 
-    public double getValeurActuelle(){
+    synchronized public double getValeurActuelle(){
         return valeurActuelle;
     }
 
-    public void setValeurActuelle(double valeur){
+    synchronized public void setValeurActuelle(double valeur){
         this.valeurActuelle = valeur;
     }
 
-    public double getCroissance() {
+    synchronized public double getCroissance() {
         return croissance;
     }
 
-    public TypeDonnee getTypeDonnee() {
+    synchronized public TypeDonnee getTypeDonnee() {
         return typeDonnee;
     }
 }

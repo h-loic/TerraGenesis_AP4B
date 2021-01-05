@@ -121,7 +121,7 @@ public class Batiment {
     /**
      * Génère l'id unique du Batiment.
      */
-    private int genererId() {
+    synchronized private int genererId() {
         return sequence.incrementAndGet();
     }
 
@@ -130,7 +130,7 @@ public class Batiment {
      *
      * @return  l'id du Batiment
      */
-    public int getId() {
+    synchronized public int getId() {
         return this.id;
     }
 
@@ -139,7 +139,7 @@ public class Batiment {
      *
      * @return le type du Batiment
      */
-    public TypeBatiment getTypeBatiment() {
+    synchronized public TypeBatiment getTypeBatiment() {
         return this.typeBatiment;
     }
 
@@ -148,7 +148,7 @@ public class Batiment {
      *
      * @return le niveau actuel du Batiment
      */
-    public int getNiveau() {
+    synchronized public int getNiveau() {
         return this.niveau;
     }
 
@@ -157,7 +157,7 @@ public class Batiment {
      *
      * @return <code>true</code> si le Batiment est désactivé sinon <code>false</code>
      */
-    public boolean estDesactive() {
+    synchronized public boolean estDesactive() {
         return this.estDesactive;
     }
 
@@ -166,7 +166,7 @@ public class Batiment {
      *
      * @return <code>true</code> si le Batiment est en cours d'amélioration sinon <code>false</code>
      */
-    public boolean estEnCoursAmelioration() {
+    synchronized public boolean estEnCoursAmelioration() {
         return this.estEnCoursAmelioration;
     }
 
@@ -175,7 +175,7 @@ public class Batiment {
      *
      * @return les effets du Batiment
      */
-    public HashMap<TypeDonnee, Double> getEffets() {
+    synchronized public HashMap<TypeDonnee, Double> getEffets() {
         return effets;
     }
 
@@ -184,7 +184,7 @@ public class Batiment {
      *
      * @return la date de fin d'amélioration du Batiment
      */
-    public Date getDateFinAmelioration() {
+    synchronized public Date getDateFinAmelioration() {
         return this.dateFinAmelioration;
     }
 
@@ -193,7 +193,7 @@ public class Batiment {
      *
      * @return le prix de l'amélioration
      */
-    public double getPrixAmelioration() {
+    synchronized public double getPrixAmelioration() {
         return this.typeBatiment.getCoutConstructionParDefaut() * this.niveau;
     }
 
@@ -202,7 +202,7 @@ public class Batiment {
      *
      * @return le temps de construction de l'amélioration
      */
-    public int getTempsConstructionAmelioration() {
+    synchronized public int getTempsConstructionAmelioration() {
         return this.typeBatiment.getTempsConstructionParDefaut() + ((this.typeBatiment.getTempsConstructionParDefaut()/4) * this.niveau);
     }
 
@@ -212,14 +212,14 @@ public class Batiment {
      *
      * @return <code>true</code> si le Batiment peut être amélioré sinon <code>false</code>
      */
-    public boolean peutAmeliorer() {
+    synchronized public boolean peutAmeliorer() {
         return ((this.niveau < typeBatiment.getNiveauMax()) && !this.estEnCoursAmelioration);
     }
 
     /**
      * Active ou désactive le batiment selon son état actuel
      */
-    public void activerDesactiver() {
+    synchronized public void activerDesactiver() {
         this.estDesactive = !this.estDesactive;
     }
 
@@ -230,7 +230,7 @@ public class Batiment {
      *
      * @see Batiment#getTempsConstructionAmelioration()
      */
-    public void demarrerAmelioration() {
+    synchronized public void demarrerAmelioration() {
         if (!peutAmeliorer()) return;
         this.dateFinAmelioration = new Date();
         Calendar c = Calendar.getInstance();
@@ -245,7 +245,7 @@ public class Batiment {
      *
      * @see Batiment#ameliorerEffets()
      */
-    public synchronized void finirAmelioration() {
+    synchronized public void finirAmelioration() {
         if (!this.estEnCoursAmelioration) return;
         this.dateFinAmelioration = null;
         this.estEnCoursAmelioration = false;
@@ -256,7 +256,7 @@ public class Batiment {
     /**
      * Améliore les effets
      */
-    private void ameliorerEffets() {
+    synchronized private void ameliorerEffets() {
         TypeDonnee typeDonnee;
         double effetParDefaut;
         double resultat;

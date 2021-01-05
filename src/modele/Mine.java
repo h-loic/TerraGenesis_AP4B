@@ -177,7 +177,7 @@ public class Mine {
      * @see Mine#benefice
      * @see Mine#rendement
      */
-    public synchronized void ameliorerMine(){
+    synchronized public void ameliorerMine(){
         if(this.isFonctionnelle){
             niveau++;
             rendement *= 1.5;
@@ -200,7 +200,7 @@ public class Mine {
      *
      * @return prix de base d'une amelioration * niveau de la mine
      */
-    public int  getPrixAmelioration(){
+    synchronized public int  getPrixAmelioration(){
         return  PRIX_BASE_AMELIORATION * this.niveau;
     }
 
@@ -208,7 +208,7 @@ public class Mine {
      * @see Mine#ressource
      * @return la ressrouce puisee par la mine
      */
-    public Ressource getRessource() {
+    synchronized public Ressource getRessource() {
         return ressource;
     }
 
@@ -218,7 +218,7 @@ public class Mine {
      * @see Mine#rendement
      * @return le rendement de la mine
      */
-    public double getRendement() {
+    synchronized public double getRendement() {
         return rendement;
     }
 
@@ -228,7 +228,7 @@ public class Mine {
      * @see Mine#benefice
      * @return le benefice de la mine
      */
-    public double getBenefice() {
+    synchronized public double getBenefice() {
         if (!isFonctionnelle){
             return 0;
         }
@@ -241,7 +241,7 @@ public class Mine {
      * @see Mine#isFonctionnelle
      * @return l'etat de la mine
      */
-    public boolean isFonctionnelle() {
+    synchronized public boolean isFonctionnelle() {
         return isFonctionnelle;
     }
 
@@ -252,7 +252,7 @@ public class Mine {
      * @param  fonctionnelle
      *         l'etat que l'on souhaite affecter a la mine
      */
-    public synchronized void setFonctionnelle(boolean fonctionnelle) {
+    synchronized public void setFonctionnelle(boolean fonctionnelle) {
         isFonctionnelle = fonctionnelle;
     }
 
@@ -262,7 +262,7 @@ public class Mine {
      * @see Mine#dateEpuissement
      * @return la date d'epuisement de la mine
      */
-    public Date getDateEpuissement() {
+    synchronized public Date getDateEpuissement() {
         return dateEpuissement;
     }
 
@@ -272,7 +272,7 @@ public class Mine {
      * @see Mine#coordonnee
      * @return les coordonnees de ma mine.
      */
-    public Coordonnee getCoordonnee() {
+    synchronized public Coordonnee getCoordonnee() {
         return coordonnee;
     }
 
@@ -282,7 +282,7 @@ public class Mine {
      * @see Mine#nom
      * @return le nom de la mine
      */
-    public String getNom() {
+    synchronized public String getNom() {
         return nom;
     }
 
@@ -292,7 +292,7 @@ public class Mine {
      * @see Mine#niveau
      * @return le niveau de la mine
      */
-    public int getNiveau() {
+    synchronized public int getNiveau() {
         return niveau;
     }
 
@@ -303,7 +303,7 @@ public class Mine {
      * @param nom
      * le nouveau nom de la mine
      */
-    public void setNom(String nom) {
+    synchronized public void setNom(String nom) {
         this.nom = nom;
     }
 
@@ -313,7 +313,7 @@ public class Mine {
      * @see Mine#id
      * @return l'identifiant de la mine'
      */
-    public int getId(){
+    synchronized public int getId(){
         return this.id;
     }
 }

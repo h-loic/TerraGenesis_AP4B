@@ -129,7 +129,7 @@ public class Planete {
      *
      * @see Planete#villes
      */
-    public void ajouterVille(Ville ville) {
+    synchronized public void ajouterVille(Ville ville) {
         this.cartePlanete.ajouterVilleCarte(ville.getCoordonnee());
         this.villes.add(ville);
     }
@@ -143,7 +143,7 @@ public class Planete {
      *
      * @see Planete#avantPostes
      */
-    public void ajouterAvantPoste(AvantPoste avantPoste) {
+    synchronized public void ajouterAvantPoste(AvantPoste avantPoste) {
         this.avantPostes.add(avantPoste);
         this.cartePlanete.ajouterAvPosteCarte(avantPoste.getCoordonnee());
     }
@@ -157,7 +157,7 @@ public class Planete {
      *
      * @see Planete#avantPostes
      */
-    public void detruireAvantPoste(int idAvantPoste) {
+    synchronized public void detruireAvantPoste(int idAvantPoste) {
         //destruction de toutes les mines de l'avant poste
         AvantPoste avantPoste = getAvantPoste(idAvantPoste);
         for(Mine mine : avantPoste.getMines()){
@@ -168,7 +168,7 @@ public class Planete {
         this.avantPostes.remove(avantPoste);
     }
 
-    private void ajouterGouverneur(Gouverneur gouverneur) {
+    synchronized private void ajouterGouverneur(Gouverneur gouverneur) {
         this.gouverneurs.add(gouverneur);
     }
 
@@ -183,7 +183,7 @@ public class Planete {
      *
      * @see Planete#villes
      */
-    public boolean peutPayer(double montant){
+    synchronized public boolean peutPayer(double montant){
         System.out.println(getDonnee(FINANCES).getValeurActuelle() >= montant);
         System.out.println(getDonnee(FINANCES).getValeurActuelle() - montant);
         return getDonnee(FINANCES).getValeurActuelle() >= montant;
@@ -200,14 +200,14 @@ public class Planete {
      *
      * @see Planete#donnees
      */
-    public void payer(double montant){
+    synchronized public void payer(double montant){
         if (this.peutPayer(montant)){
             getDonnee(FINANCES).setCroissance(-montant);
             getDonnee(FINANCES).majValeur();
         }
     }
 
-    public boolean peutRechercher(TypeBatiment typeBatiment) {
+    synchronized public boolean peutRechercher(TypeBatiment typeBatiment) {
         if (typeBatiment.getParent() == null) return true;
         return etatTypesBatiment.get(typeBatiment.getParent());
     }
@@ -216,7 +216,7 @@ public class Planete {
      * Accesseur de la liste de villes de la planète.
      * @return la liste de villes de la planète
      */
-    public ArrayList<Ville> getVilles() {
+    synchronized public ArrayList<Ville> getVilles() {
         return villes;
     }
 
@@ -225,7 +225,7 @@ public class Planete {
      * @param id l'id de la ville
      * @return si trouvé : la ville avec l'id, sinon : <code>null</code>
      */
-    public Ville getVille(int id) {
+    synchronized public Ville getVille(int id) {
         for (Ville ville : villes) {
             if (ville.getId() == id) return ville;
         }
@@ -241,7 +241,7 @@ public class Planete {
      *
      * @see Planete#avantPostes
      */
-    public ArrayList<AvantPoste> getAvantPostes() {
+    synchronized public ArrayList<AvantPoste> getAvantPostes() {
         return avantPostes;
     }
 
@@ -249,7 +249,7 @@ public class Planete {
      * Accesseur de la liste des données de la ville
      * @return la liste des données de la ville
      */
-    public ArrayList<Donnee> getDonnees() {
+    synchronized public ArrayList<Donnee> getDonnees() {
         return donnees;
     }
 
@@ -257,7 +257,7 @@ public class Planete {
      * Accesseur de la liste d'état des types de batiment.
      * @return la liste associative : type de batiment, est débolque
      */
-    public HashMap<TypeBatiment, Boolean> getEtatTypesInfrastructure() {
+    synchronized public HashMap<TypeBatiment, Boolean> getEtatTypesInfrastructure() {
         return etatTypesBatiment;
     }
 
@@ -272,7 +272,7 @@ public class Planete {
      *
      * @see Planete#avantPostes
      */
-    public AvantPoste getAvantPoste(int id){
+    synchronized public AvantPoste getAvantPoste(int id){
         for (AvantPoste avantPoste : this.avantPostes) {
             if (avantPoste.getId() == id){
                 return avantPoste;
@@ -292,7 +292,7 @@ public class Planete {
      *
      * @see Planete#cartePlanete
      */
-    public void initialiserGouverneur() {
+    synchronized public void initialiserGouverneur() {
         this.ajouterGouverneur(new Gouverneur(false, 0, "Michou", false,
                 new HashMap<Donnee, Double>(){{ put(getDonnee(TEMPERATURE), 30.0);put(getDonnee(FINANCES), 10.0); }})
         );
@@ -325,7 +325,7 @@ public class Planete {
      *
      * @see Planete#cartePlanete
      */
-    public void initialiserCarte(){
+    synchronized public void initialiserCarte(){
         ArrayList<Coordonnee> coordsVille = new ArrayList<Coordonnee>();
         ArrayList<Coordonnee> coordsAvPoste = new ArrayList<Coordonnee>();
 
@@ -340,7 +340,7 @@ public class Planete {
         this.cartePlanete = new Carte( coordsAvPoste, coordsVille);
     }
 
-    public ArrayList<Gouverneur> recupererListeGouverneur() {
+    synchronized public ArrayList<Gouverneur> recupererListeGouverneur() {
         return this.gouverneurs;
     }
 
@@ -353,7 +353,7 @@ public class Planete {
      *
      * @see Planete#donnees
      */
-    public double getFinances(){
+    synchronized public double getFinances(){
         return getDonnee(FINANCES).getValeurActuelle();
     }
 
@@ -367,7 +367,7 @@ public class Planete {
      *
      * @see Planete#donnees
      */
-    public void initialiserDonnees() {
+    synchronized public void initialiserDonnees() {
         for (TypeDonnee typeDonnee : TypeDonnee.values()) {
             donnees.add(new Donnee(typeDonnee, typeDonnee.getValeurDefaut(),0));
         }
@@ -380,7 +380,7 @@ public class Planete {
      *
      * @see Planete#villes
      */
-    public void initialiserVilles() {
+    synchronized public void initialiserVilles() {
         ajouterVille(new Ville("Niederschaeffolsheim", new Coordonnee(100,100,100)));
     }
 
@@ -389,7 +389,7 @@ public class Planete {
      * @param idVille l'id de la ville
      * @param batiment le batiment à construire
      */
-    public void construireBatiment(int idVille, Batiment batiment) {
+    synchronized public void construireBatiment(int idVille, Batiment batiment) {
         getVille(idVille).demarrerConstructionBatiment(batiment);
         getVille(idVille).majDonnees();
     }
@@ -398,7 +398,7 @@ public class Planete {
      * ajoute les effets du batiment au données de la planète
      * @param batiment le batiment améliorer
      */
-    public synchronized void terminerConstructionBatiment(Batiment batiment){
+    synchronized public void terminerConstructionBatiment(Batiment batiment){
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
                 if (donnee.getTypeDonnee() == typeDonnee){
@@ -413,7 +413,7 @@ public class Planete {
      * @param idVille id de la ville possèdant le batiment en cours d'amélioration
      * @param idBatiment id du batiment en cours d'amélioration
      */
-    public void batimentEnCoursAmelioration(int idVille, int idBatiment) {
+    synchronized public void batimentEnCoursAmelioration(int idVille, int idBatiment) {
         Batiment batiment = getVille(idVille).getBatiment(idBatiment);
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
@@ -428,7 +428,7 @@ public class Planete {
      * ajoute les effets du batiment au données de la planète
      * @param batiment le batiment améliorer
      */
-    public synchronized void terminerAmeliorationBatiment(Batiment batiment) {
+    synchronized public void terminerAmeliorationBatiment(Batiment batiment) {
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
                 if (donnee.getTypeDonnee() == typeDonnee){
@@ -441,7 +441,7 @@ public class Planete {
     /**
      * Initialise les états des types de batiment.
      */
-    public void initialiserEtatTypeBatiment() {
+    synchronized public void initialiserEtatTypeBatiment() {
         for (TypeBatiment typeBatiment : TypeBatiment.values()) {
             etatTypesBatiment.put(typeBatiment, typeBatiment.estDebloqueParDefaut());
         }
@@ -452,7 +452,7 @@ public class Planete {
      * @param typeBatiment le type de batiment
      * @return <code>true</code> si le batiment est débloqué, sinon <code>false</code>
      */
-    public boolean typeBatimentEstDebloque(TypeBatiment typeBatiment) {
+    synchronized public boolean typeBatimentEstDebloque(TypeBatiment typeBatiment) {
         return etatTypesBatiment.get(typeBatiment);
     }
 
@@ -460,7 +460,7 @@ public class Planete {
      * Permet d'obtenir la liste de tous les types de batiments débloqués de la planète.
      * @return la liste de tous les types de batiments débloqués de la planète
      */
-    public ArrayList<TypeBatiment> getTypeBatimentDebloque() {
+    synchronized public ArrayList<TypeBatiment> getTypeBatimentDebloque() {
         ArrayList<TypeBatiment> typeBatimentDebloque = new ArrayList<>();
         for (TypeBatiment typeBatiment : TypeBatiment.values()) {
             if (typeBatimentEstDebloque(typeBatiment)) typeBatimentDebloque.add(typeBatiment);
@@ -472,7 +472,7 @@ public class Planete {
      * Permet d'obtenir la liste de tous les types de batiments non débloqués de la planète.
      * @return la liste de tous les types de batiments non débloqués de la planète
      */
-    public ArrayList<TypeBatiment> getTypeBatimentNonDebloque() {
+    synchronized public ArrayList<TypeBatiment> getTypeBatimentNonDebloque() {
         ArrayList<TypeBatiment> typeBatimentNonDebloque = new ArrayList<>();
         for (TypeBatiment typeBatiment : TypeBatiment.values()) {
             if (!typeBatimentEstDebloque(typeBatiment)) typeBatimentNonDebloque.add(typeBatiment);
@@ -483,7 +483,7 @@ public class Planete {
     /**
      * Initialise l'état des ressources.
      */
-    public void initialiserEtatRessource() {
+    synchronized public void initialiserEtatRessource() {
         for (Ressource ressource : Ressource.values()) {
             etatRessources.put(ressource, ressource.getParent() == null);
         }
@@ -494,7 +494,7 @@ public class Planete {
      * @param typeDonnee le type de la données
      * @return si trouvée : la donnée, sinon : <code>null</code>
      */
-    public Donnee getDonnee(TypeDonnee typeDonnee) {
+    synchronized public Donnee getDonnee(TypeDonnee typeDonnee) {
         for (Donnee donnee : donnees) {
             if (donnee.getTypeDonnee() == typeDonnee) return donnee;
         }
@@ -505,7 +505,7 @@ public class Planete {
      * Supprimer le gouverneur de la ville et retire ses effets aux données de la planète
      * @param idVille id de la ville a la laquelle on veut revoquer le gouverneur
      */
-    public void revoquerGouverneur(int idVille) {
+    synchronized public void revoquerGouverneur(int idVille) {
         Gouverneur gouverneurRevoquer = this.getVille(idVille).getGouverneur();
         for (Donnee effet : gouverneurRevoquer.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
@@ -521,7 +521,7 @@ public class Planete {
      * Ajoute un gouverneur a la ville en paramètre et ajoute les effets du gouverneurs aux données de la planète
      * @param idVille id de la ville a la laquelle on veut ajouter le gouverneur
      */
-    public void affecterGouverneur(Gouverneur gouverneur, int idVille){
+    synchronized public void affecterGouverneur(Gouverneur gouverneur, int idVille){
         this.getVille(idVille).affecterGouverneur(gouverneur);
         gouverneur.setVilleAffecter(this.getVille(idVille));
         for (Donnee effet : gouverneur.getEffets().keySet()){
@@ -536,14 +536,14 @@ public class Planete {
     /**
      * trier la liste de gouverneurs de la planète en fonction de leurs nom
      */
-    public void trierGouverneurParNom() {
+    synchronized public void trierGouverneurParNom() {
         Collections.sort(gouverneurs, Gouverneur.ComparatorNom);
     }
 
     /**
      * trier la liste de gouverneurs de la planète en fonction de leurs états estDebloque
      */
-    public void trierGouverneurParDebloque() {
+    synchronized public void trierGouverneurParDebloque() {
         Collections.sort(gouverneurs, Gouverneur.ComparatorDebloque);
     }
 
@@ -551,7 +551,7 @@ public class Planete {
      * Permet de détruire une ville de la planète et retire les effets qu'avait cette ville sur la planète
      * @param idVille l'id de la ville à détruire
      */
-    public void detruireVille(int idVille) {
+    synchronized public void detruireVille(int idVille) {
         Ville ville = getVille(idVille);
         for (Batiment batiment : ville.getBatiments()){
             for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
@@ -570,7 +570,7 @@ public class Planete {
      * Débloquer un type de batiment.
      * @param typeBatiment le type de batiment
      */
-    public synchronized void debloquerTypeBatiment(TypeBatiment typeBatiment){
+    synchronized public void debloquerTypeBatiment(TypeBatiment typeBatiment){
         etatTypesBatiment.replace(typeBatiment, true);
     }
 
@@ -583,7 +583,7 @@ public class Planete {
      *
      * @see Planete#cartePlanete
      */
-    public Canvas getCanvasCarte() {
+    synchronized public Canvas getCanvasCarte() {
         return this.cartePlanete.getCanvas();
     }
 
@@ -596,7 +596,7 @@ public class Planete {
      *
      * @see Planete#cartePlanete
      */
-    public Carte getCarte(){
+    synchronized public Carte getCarte(){
         return this.cartePlanete;
     }
 
@@ -611,7 +611,7 @@ public class Planete {
      * @see Planete#avantPostes
      * @see Mine
      */
-    public void ajouterMine(int idAvantPoste, Mine mine) {
+    synchronized public void ajouterMine(int idAvantPoste, Mine mine) {
         getAvantPoste(idAvantPoste).ajouterMine(mine);
     }
 
@@ -626,7 +626,7 @@ public class Planete {
      * @see Planete#avantPostes
      * @see Mine
      */
-    public void detruireMine(int idAvantPoste, int idMine) {
+    synchronized public void detruireMine(int idAvantPoste, int idMine) {
         getAvantPoste(idAvantPoste).detruireMine(idMine);
     }
 
@@ -640,7 +640,7 @@ public class Planete {
      * @param idBatiment id du batiment à détruire
      *
      */
-    public void detruireBatiment(int idVille, int idBatiment) {
+    synchronized public void detruireBatiment(int idVille, int idBatiment) {
         Batiment batiment = getVille(idVille).getBatiment(idBatiment);
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
@@ -662,7 +662,7 @@ public class Planete {
      * @param idBatiment id du batiment à activer/desactiver
      *
      */
-    public void activerDesactiverBatiment(int idVille, int idBatiment) {
+    synchronized public void activerDesactiverBatiment(int idVille, int idBatiment) {
         Batiment batiment = getVille(idVille).getBatiment(idBatiment);
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
@@ -688,7 +688,7 @@ public class Planete {
      *
      * @see Planete#recherche
      */
-    public Recherche getRecherche(){
+    synchronized public Recherche getRecherche(){
         return recherche;
     }
 
@@ -698,7 +698,7 @@ public class Planete {
      * @see Planete#donnees
      * @see Ville#getPopulation()
      */
-    public void majPopulation() {
+    synchronized public void majPopulation() {
         double population = 0;
         for(Ville ville : this.villes){
             population+=ville.getPopulation().getValeurActuelle();

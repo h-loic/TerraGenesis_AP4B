@@ -109,7 +109,7 @@ public class Gouverneur {
      *
      * @return  l'etat debloaué du gouverneur
      */
-    public boolean estDebloque(){
+    synchronized public boolean estDebloque(){
         return  this.estDebloque;
     }
 
@@ -118,7 +118,7 @@ public class Gouverneur {
      *
      * @return  le niveau du gouverneur
      */
-    public int getNiveau() {
+    synchronized public int getNiveau() {
         return niveau;
     }
 
@@ -127,7 +127,7 @@ public class Gouverneur {
      *
      * @return  le nom du gouverneur
      */
-    public String getNom() {
+    synchronized public String getNom() {
         return nom;
     }
 
@@ -136,7 +136,7 @@ public class Gouverneur {
      *
      * @return  l'etat d'affectation du gouverneur
      */
-    public boolean estAffecte() {
+    synchronized public boolean estAffecte() {
         return estAffecter;
     }
 
@@ -145,14 +145,14 @@ public class Gouverneur {
      *
      * @return  la liste d'effets du gouverneur
      */
-    public HashMap<Donnee, Double> getEffets() {
+    synchronized public HashMap<Donnee, Double> getEffets() {
         return effets;
     }
 
     /**
      * attribut l'etat true a l'attribut estDebloque
      */
-    public void setEstDebloque() {
+    synchronized public void setEstDebloque() {
         this.estDebloque = true;
     }
 
@@ -161,7 +161,7 @@ public class Gouverneur {
      *
      * @return  le prix de base du gouverneur
      */
-    public int getPrixBaseGouverneur() {
+    synchronized public int getPrixBaseGouverneur() {
         return PRIX_BASE_GOUVERNEUR;
     }
 
@@ -170,7 +170,7 @@ public class Gouverneur {
      *
      * @return  le prix de l'amelioration du gouverneur
      */
-    public int getPrixAmelioration() {
+    synchronized public int getPrixAmelioration() {
         return PRIX_BASE_AMELIORATION * this.niveau;
     }
 
@@ -179,7 +179,7 @@ public class Gouverneur {
      *
      * @param  estAffecter l'état que l'on souhaite affecter
      */
-    public void setEstAffecter(boolean estAffecter) {
+    synchronized public void setEstAffecter(boolean estAffecter) {
         this.estAffecter = estAffecter;
     }
 
@@ -188,7 +188,7 @@ public class Gouverneur {
      *
      * @return  la ville affecter par le gouverneur
      */
-    public Ville getVilleAffecter() {
+    synchronized public Ville getVilleAffecter() {
         return villeAffecter;
     }
 
@@ -197,7 +197,7 @@ public class Gouverneur {
      *
      * @param  villeAffecter la ville que l'on souhaite affecter au gouverneur
      */
-    public void setVilleAffecter(Ville villeAffecter) {
+    synchronized public void setVilleAffecter(Ville villeAffecter) {
         this.villeAffecter = villeAffecter;
     }
 
@@ -205,7 +205,7 @@ public class Gouverneur {
      * Améliore le gouverneur en imcrémentant de 1 son niveau
      * et en multipliant ses effets par 1.5
      */
-    public void ameliorer(){
+    synchronized public void ameliorer(){
         this.niveau = this.niveau + 1;
         for (Donnee donnee : effets.keySet()) {
             this.effets.put(donnee, this.effets.get(donnee)*1.5);
@@ -217,7 +217,7 @@ public class Gouverneur {
      */
     public static Comparator<Gouverneur> ComparatorNom = new Comparator<Gouverneur>() {
         @Override
-        public int compare(Gouverneur gouv1, Gouverneur gouv2) {
+        synchronized public int compare(Gouverneur gouv1, Gouverneur gouv2) {
             return gouv1.getNom().compareTo(gouv2.getNom());
         }
     };
@@ -227,7 +227,7 @@ public class Gouverneur {
      */
     public static Comparator<Gouverneur> ComparatorDebloque = new Comparator<Gouverneur>() {
         @Override
-        public int compare(Gouverneur gouv1, Gouverneur gouv2) {
+        synchronized public int compare(Gouverneur gouv1, Gouverneur gouv2) {
             return Boolean.compare(gouv2.estDebloque, gouv1.estDebloque);
         }
     };

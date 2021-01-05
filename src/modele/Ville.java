@@ -140,7 +140,7 @@ public class Ville {
     /**
      * Génère l'id unique de la Ville.
      */
-    private int genererId() {
+    synchronized private int genererId() {
         return sequence.incrementAndGet();
     }
 
@@ -150,7 +150,7 @@ public class Ville {
      *
      * @return  l'id de la Ville
      */
-    public int getId() {
+    synchronized public int getId() {
         return this.id;
     }
 
@@ -160,7 +160,7 @@ public class Ville {
      *
      * @return  le nom de la Ville
      */
-    public String getNom() {
+    synchronized public String getNom() {
         return nom;
     }
 
@@ -169,7 +169,7 @@ public class Ville {
      *
      * @return  les batiments de la Ville
      */
-    public ArrayList<Batiment> getBatiments() {
+    synchronized public ArrayList<Batiment> getBatiments() {
         return batiments;
     }
 
@@ -178,7 +178,7 @@ public class Ville {
      *
      * @return  les batiments en construction et leur date de fin de construction de la Ville
      */
-    public HashMap<Batiment, Date> getBatimentsEnConstruction() {
+    synchronized public HashMap<Batiment, Date> getBatimentsEnConstruction() {
         return this.batimentsEnConstruction;
     }
 
@@ -187,7 +187,7 @@ public class Ville {
      *
      * @return  les coordonnees de la Ville
      */
-    public Coordonnee getCoordonnee() {
+    synchronized public Coordonnee getCoordonnee() {
         return coordonnee;
     }
 
@@ -196,7 +196,7 @@ public class Ville {
      *
      * @return  le nombre de place de batiment de la Ville
      */
-    public int getNombrePlaceBatiment() {
+    synchronized public int getNombrePlaceBatiment() {
         return nombrePlaceBatiment;
     }
 
@@ -205,7 +205,7 @@ public class Ville {
      *
      * @return  le gouverneur de la Ville
      */
-    public Gouverneur getGouverneur() {
+    synchronized public Gouverneur getGouverneur() {
         return gouverneur;
     }
 
@@ -214,7 +214,7 @@ public class Ville {
      *
      * @return  la donnée de population de la Ville
      */
-    public Donnee getPopulation() {
+    synchronized public Donnee getPopulation() {
         return population;
     }
 
@@ -223,7 +223,7 @@ public class Ville {
      *
      * @return  la donnée d'habitation de la Ville
      */
-    public Donnee getHabitation() {
+    synchronized public Donnee getHabitation() {
         return habitation;
     }
 
@@ -232,7 +232,7 @@ public class Ville {
      * @param idBatiment l'id du batiment cherché
      * @return le batiment si il est trouvé sinon <code>null</code>
      */
-    public Batiment getBatiment(int idBatiment) {
+    synchronized public Batiment getBatiment(int idBatiment) {
         for (Batiment batiment : batiments) {
             if (batiment.getId() == idBatiment) return batiment;
         }
@@ -243,7 +243,7 @@ public class Ville {
      *
      * @return le nombre de places de batiments restant dans la ville actuellement
      */
-    public int getNombrePlaceRestante() {
+    synchronized public int getNombrePlaceRestante() {
         return this.nombrePlaceBatiment - (batiments.size() + batimentsEnConstruction.size());
     }
 
@@ -251,14 +251,14 @@ public class Ville {
      * Calcul le pallier en nombre de population qui permet de débloquer une nouvelle place de batiments.
      * @return le pallier
      */
-    public double getProchainPallierBatiment() {
+    synchronized public double getProchainPallierBatiment() {
         return (this.nombrePlaceBatiment - 2) * PALIER_POPULATION_NB_BATIMENT;
     }
 
     /**
      * Révoquer le gouverneur actuellment en place.
      */
-    public void revoquerGouverneur() {
+    synchronized public void revoquerGouverneur() {
         if (this.gouverneur == null) return;
         this.gouverneur.setEstAffecter(false);
         this.gouverneur = null;
@@ -268,7 +268,7 @@ public class Ville {
      * Affecter un nouveau gouverneur a la ville.
      * @param gouverneur le gouverneur affecter
      */
-    public void affecterGouverneur(Gouverneur gouverneur) {
+    synchronized public void affecterGouverneur(Gouverneur gouverneur) {
         revoquerGouverneur();
         this.gouverneur = gouverneur;
         this.gouverneur.setEstAffecter(true);
@@ -278,7 +278,7 @@ public class Ville {
      * Permet de savoir si il y a une place disponible dans la ville pour construire.
      * @return <code>true</code> si il y a assez de place pour construire sinon <code>false</code>
      */
-    public boolean peutConstruire() {
+    synchronized public boolean peutConstruire() {
         return this.getNombrePlaceBatiment() > (this.batiments.size() + this.batimentsEnConstruction.size());
     }
 
@@ -286,7 +286,7 @@ public class Ville {
      * Demarre la construction du batiment.
      * @param batiment instance de batiment a construire
      */
-    public void demarrerConstructionBatiment(Batiment batiment) {
+    synchronized public void demarrerConstructionBatiment(Batiment batiment) {
         if (!peutConstruire()) return;
         Date dateFinConstruction = new Date();
         Calendar c = Calendar.getInstance();
@@ -300,7 +300,7 @@ public class Ville {
      * Finaliser la construction du batiment.
      * @param batiment instance de batiment qui finalise sa construction
      */
-    public synchronized void finirConstructionBatiment(Batiment batiment) {
+    synchronized public void finirConstructionBatiment(Batiment batiment) {
         if (!peutConstruire()) return;
         this.batimentsEnConstruction.remove(batiment);
         this.batiments.add(batiment);
@@ -309,7 +309,7 @@ public class Ville {
     /**
      * Met a jour les données de population et d'habitation de la ville.
      */
-    public synchronized void majDonnees() {
+    synchronized public void majDonnees() {
         double sommeHab = 0.;
         double sommePop = this.population.getValeurActuelle() + 1.;
         for (Batiment batiment : batiments) {
@@ -330,7 +330,7 @@ public class Ville {
     /**
      * Met a jour le nombre de place de la ville.
      */
-    private void majNbPlace() {
+    synchronized private void majNbPlace() {
         nombrePlaceBatiment = 3 + Math.floorDiv((int)population.getValeurActuelle(), (int) PALIER_POPULATION_NB_BATIMENT);
         if (nombrePlaceBatiment < batiments.size()) nombrePlaceBatiment = batiments.size();
 
@@ -340,7 +340,7 @@ public class Ville {
      * Detruire un batiment.
      * @param idBatiment l'id du batiment a détruire
      */
-    public void detruireBatiment(int idBatiment) {
+    synchronized public void detruireBatiment(int idBatiment) {
         this.batiments.remove(getBatiment(idBatiment));
     }
 

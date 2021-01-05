@@ -69,7 +69,7 @@ public class Recherche {
      * @see Recherche#typeBatimentRecherche
      * @see Recherche#dateFinRecherche
      */
-    public void rechercher(TypeBatiment typeBatimentARechercher){
+    synchronized public void rechercher(TypeBatiment typeBatimentARechercher){
         if (!rechercheEnCours){
             this.typeBatimentRecherche = typeBatimentARechercher;
 
@@ -92,7 +92,7 @@ public class Recherche {
      * @see Recherche#typeBatimentRecherche
      * @see Recherche#dateFinRecherche
      */
-    public synchronized void finDeRecherche(){
+    synchronized public void finDeRecherche(){
         this.typeBatimentRecherche = null;
         this.dateFinRecherche = null;
         this.rechercheEnCours = false;
@@ -105,7 +105,7 @@ public class Recherche {
      *
      * @return la valeur du booleen rechercheEnCours
      */
-    public boolean isRechercheEnCours() {
+    synchronized public boolean isRechercheEnCours() {
         return rechercheEnCours;
     }
 
@@ -116,7 +116,7 @@ public class Recherche {
      *
      * @return le type de batiment recherche
      */
-    public TypeBatiment getTypeBatimentRecherche() {
+    synchronized public TypeBatiment getTypeBatimentRecherche() {
         return typeBatimentRecherche;
     }
 
@@ -127,7 +127,7 @@ public class Recherche {
      *
      * @return la date de fin de recherche
      */
-    public Date getDateFinRecherche() {
+    synchronized public Date getDateFinRecherche() {
         return dateFinRecherche;
     }
 }
