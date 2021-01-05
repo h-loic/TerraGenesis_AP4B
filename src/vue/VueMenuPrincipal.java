@@ -77,15 +77,6 @@ public class VueMenuPrincipal extends Scene {
     private Button actionNaviguerPopulation;
 
     /**
-     * Bouton permettant de naviguer vers la VueMenuCulture
-     *
-     * @see VueMenuPrincipal#VueMenuPrincipal()
-     * @see VueMenuPrincipal#initialiserMenuPrincipal()
-     * @see VueMenuCulture
-     */
-    private Button actionNaviguerPointsCulture;
-
-    /**
      * Bouton permettant de naviguer vers la VueMenuCarte
      *
      * @see VueMenuPrincipal#VueMenuPrincipal()
@@ -136,7 +127,6 @@ public class VueMenuPrincipal extends Scene {
      * @see VueMenuPrincipal#actionNaviguerStatistiques
      * @see VueMenuPrincipal#actionNaviguerRecherche
      * @see VueMenuPrincipal#actionNaviguerPopulation
-     * @see VueMenuPrincipal#actionNaviguerPointsCulture
      * @see VueMenuPrincipal#actionNaviguerCarte
      * @see VueMenuPrincipal#actionNaviguerGouverneurs
      * @see VueMenuPrincipal#hBoxLigne1
@@ -148,7 +138,6 @@ public class VueMenuPrincipal extends Scene {
         this.actionNaviguerStatistiques = new Button("Statistiques");
         this.actionNaviguerRecherche = new Button("Recherche");
         this.actionNaviguerPopulation = new Button("Population");
-        this.actionNaviguerPointsCulture = new Button("Culture");
         this.actionNaviguerCarte = new Button("Carte");
         this.actionNaviguerGouverneurs = new Button("Gouverneurs");
         hBoxLigne1 = new HBox();
@@ -164,7 +153,6 @@ public class VueMenuPrincipal extends Scene {
      * @see VueMenuPrincipal#actionNaviguerStatistiques
      * @see VueMenuPrincipal#actionNaviguerRecherche
      * @see VueMenuPrincipal#actionNaviguerPopulation
-     * @see VueMenuPrincipal#actionNaviguerPointsCulture
      * @see VueMenuPrincipal#actionNaviguerCarte
      * @see VueMenuPrincipal#actionNaviguerGouverneurs
      * @see VueMenuPrincipal#hBoxLigne1
@@ -175,7 +163,7 @@ public class VueMenuPrincipal extends Scene {
         hBoxLigne1.getChildren().clear();
         hBoxLigne2.getChildren().clear();
         hBoxLigne1.getChildren().addAll(actionNaviguerStatistiques, actionNaviguerRecherche, actionNaviguerPopulation);
-        hBoxLigne2.getChildren().addAll(actionNaviguerPointsCulture, actionNaviguerCarte, actionNaviguerGouverneurs);
+        hBoxLigne2.getChildren().addAll(actionNaviguerCarte, actionNaviguerGouverneurs);
 
         hBoxLigne1.setSpacing(30);
         hBoxLigne2.setSpacing(30);
@@ -186,7 +174,6 @@ public class VueMenuPrincipal extends Scene {
         this.actionNaviguerStatistiques.setStyle(STYLE_BOUTONS);
         this.actionNaviguerRecherche.setStyle(STYLE_BOUTONS);
         this.actionNaviguerPopulation.setStyle(STYLE_BOUTONS);
-        this.actionNaviguerPointsCulture.setStyle(STYLE_BOUTONS);
         this.actionNaviguerCarte.setStyle(STYLE_BOUTONS);
         this.actionNaviguerGouverneurs.setStyle(STYLE_BOUTONS);
 
@@ -217,15 +204,6 @@ public class VueMenuPrincipal extends Scene {
                 controleur.notifierNaviguerMenuPopulation();
             }
         });
-
-
-        this.actionNaviguerPointsCulture.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                controleur.notifierNaviguerMenuCulture();
-            }
-        });
-
 
         this.actionNaviguerCarte.setOnAction(new EventHandler<ActionEvent>() {
             @Override
