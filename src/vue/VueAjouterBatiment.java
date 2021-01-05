@@ -73,6 +73,11 @@ public class VueAjouterBatiment extends Scene {
     private Label labelDescription;
 
     /**
+     * Afficher le temps de construction du type sélectionné.
+     */
+    private Label labelTempsConstruction;
+
+    /**
      * Afficher le prix du type sélectionné.
      */
     private Label labelPrix;
@@ -121,6 +126,7 @@ public class VueAjouterBatiment extends Scene {
         this.btnAjouterBatiment.setStyle(STYLE_BOUTONS);
         this.labelTypeBatiment = new Label("Type de batiment : ");
         this.labelPrix = new Label("Prix :");
+        this.labelTempsConstruction = new Label("Temps de construction :");
         this.labelDescription = new Label("Description :");
         this.labelEffet = new Label("Effets :");
         this.textFlowEffet = new TextFlow();
@@ -133,6 +139,7 @@ public class VueAjouterBatiment extends Scene {
             TypeBatiment typeBatimentSelectionne = (TypeBatiment) newVal;
             labelDescription.setText("Description : " +  typeBatimentSelectionne.getDescription());
             labelPrix.setText("Prix : " + typeBatimentSelectionne.getCoutConstructionParDefaut() + "" + TypeDonnee.FINANCES.getUnite());
+            labelTempsConstruction.setText("Temps de construction : " + typeBatimentSelectionne.getTempsConstructionParDefaut() + " min.");
             textFlowEffet.getChildren().clear();
             for (Map.Entry effet : typeBatimentSelectionne.getEffetsParDefaut().entrySet()){
                 Text text =  new Text("    |> " + effet.getKey() + ": " + effet.getValue() + "\n");
@@ -175,9 +182,10 @@ public class VueAjouterBatiment extends Scene {
         grilleForm.add(this.comboBoxTypeBatiment, 0, 1);
         grilleForm.add(this.labelDescription,0,2);
         grilleForm.add(this.labelPrix, 0,3);
-        grilleForm.add(this.labelEffet,0,4);
-        grilleForm.add(this.textFlowEffet,0,5);
-        grilleForm.add(this.labelErreurs, 0, 6);
+        grilleForm.add(this.labelTempsConstruction, 0,4);
+        grilleForm.add(this.labelEffet,0,5);
+        grilleForm.add(this.textFlowEffet,0,6);
+        grilleForm.add(this.labelErreurs, 0, 7);
 
 
         // assigner une action a chaque bouton
