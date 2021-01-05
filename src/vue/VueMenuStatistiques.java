@@ -10,6 +10,9 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import static modele.TypeDonnee.*;
 
 
@@ -24,6 +27,8 @@ import static modele.TypeDonnee.*;
  * */
 
 public class VueMenuStatistiques extends Scene {
+
+    private NumberFormat formatNombre;
 
     /**
      *  Constante definissant le style des titres de la vue
@@ -200,6 +205,8 @@ public class VueMenuStatistiques extends Scene {
 
         this.btnRetour = new Button("Retour");
         this.btnActualiser = new Button("Actualiser");
+
+        this.formatNombre = new DecimalFormat("0.##");
     }
 
     //TODO : creer fct actualisation controleur
@@ -245,7 +252,7 @@ public class VueMenuStatistiques extends Scene {
         this.sliderPression.setShowTickLabels(true);
         this.sliderPression.setShowTickMarks(true);
         this.sliderPression.setMinWidth(400);
-        this.labelPressionVal = new Label(Double.toString(pression) + " " + PRESSION.getUnite());
+        this.labelPressionVal = new Label(formatNombre.format(pression) + " " + PRESSION.getUnite());
 
         //affichage de l'oxygene
         this.sliderOxygene.setMin(0);
@@ -260,7 +267,7 @@ public class VueMenuStatistiques extends Scene {
         this.sliderOxygene.setShowTickLabels(true);
         this.sliderOxygene.setShowTickMarks(true);
         this.sliderOxygene.setMinWidth(250);
-        this.labelOxygeneVal = new Label(Double.toString(oxygene/100)+ " " + OXYGENE.getUnite());
+            this.labelOxygeneVal = new Label(formatNombre.format(oxygene)+ " " + OXYGENE.getUnite());
 
         //affichage du niveau d'eau
         this.sliderEau.setMin(0);
@@ -275,7 +282,7 @@ public class VueMenuStatistiques extends Scene {
         this.sliderEau.setShowTickLabels(true);
         this.sliderEau.setShowTickMarks(true);
         this.sliderEau.setMinWidth(250);
-        this.labelEauVal = new Label(Double.toString(eau) + " " + EAU.getUnite());
+        this.labelEauVal = new Label(formatNombre.format(eau) + " " + EAU.getUnite());
 
         //affichage de la temperature
         this.sliderTemperature.setMin(0);
@@ -290,14 +297,14 @@ public class VueMenuStatistiques extends Scene {
         this.sliderTemperature.setShowTickLabels(true);
         this.sliderTemperature.setShowTickMarks(true);
         this.sliderTemperature.setMinWidth(250);
-        this.labelTemperatureVal = new Label(Double.toString(temperature) + " " + TEMPERATURE.getUnite());
+        this.labelTemperatureVal = new Label(formatNombre.format(temperature) + " " + TEMPERATURE.getUnite());
 
         //affichage de la population
-        this.labelPopVal.setText(Double.toString(population));
+        this.labelPopVal.setText(formatNombre.format(population));
         System.out.println("POPULATION : "+population);
 
         //affichage des finances
-        this.labelFinancesVal.setText(String.valueOf(finances) + " " + FINANCES.getUnite());
+        this.labelFinancesVal.setText(formatNombre.format(finances) + " " + FINANCES.getUnite());
         this.labelFinancesVal.setMinWidth(100);
 
 

@@ -30,6 +30,7 @@ import static modele.TypeDonnee.*;
 
 public class Planete {
 
+    private static final double SECONDES_DANS_MINUTE = 60.;
     /**
      * Liste des Villes de la planete
      *
@@ -402,7 +403,7 @@ public class Planete {
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
                 if (donnee.getTypeDonnee() == typeDonnee){
-                    donnee.setCroissance(donnee.getCroissance() + batiment.getEffets().get(typeDonnee));
+                    donnee.setCroissance(donnee.getCroissance() + (batiment.getEffets().get(typeDonnee) / SECONDES_DANS_MINUTE));
                 }
             }
         }
@@ -418,7 +419,7 @@ public class Planete {
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
                 if (donnee.getTypeDonnee() == typeDonnee){
-                    donnee.setCroissance(donnee.getCroissance() - batiment.getEffets().get(typeDonnee));
+                    donnee.setCroissance(donnee.getCroissance() - (batiment.getEffets().get(typeDonnee) / SECONDES_DANS_MINUTE));
                 }
             }
         }
@@ -432,7 +433,7 @@ public class Planete {
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
                 if (donnee.getTypeDonnee() == typeDonnee){
-                    donnee.setCroissance(donnee.getCroissance() + batiment.getEffets().get(typeDonnee));
+                    donnee.setCroissance(donnee.getCroissance() + (batiment.getEffets().get(typeDonnee)/ SECONDES_DANS_MINUTE));
                 }
             }
         }
@@ -510,7 +511,7 @@ public class Planete {
         for (Donnee effet : gouverneurRevoquer.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
                 if (donnee == effet){
-                    donnee.setCroissance(donnee.getCroissance() - gouverneurRevoquer.getEffets().get(effet));
+                    donnee.setCroissance(donnee.getCroissance() - (gouverneurRevoquer.getEffets().get(effet) / SECONDES_DANS_MINUTE));
                 }
             }
         }
@@ -527,7 +528,7 @@ public class Planete {
         for (Donnee effet : gouverneur.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
                 if (donnee == effet){
-                    donnee.setCroissance(donnee.getCroissance() + gouverneur.getEffets().get(effet));
+                    donnee.setCroissance(donnee.getCroissance() + (gouverneur.getEffets().get(effet)/ SECONDES_DANS_MINUTE));
                 }
             }
         }
@@ -557,7 +558,7 @@ public class Planete {
             for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
                 for (Donnee donnee : this.donnees){
                     if (donnee.getTypeDonnee() == typeDonnee){
-                        donnee.setCroissance(donnee.getCroissance() - batiment.getEffets().get(typeDonnee));
+                        donnee.setCroissance(donnee.getCroissance() - (batiment.getEffets().get(typeDonnee)/ SECONDES_DANS_MINUTE));
                     }
                 }
             }
@@ -645,7 +646,7 @@ public class Planete {
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
                 if (donnee.getTypeDonnee() == typeDonnee){
-                    donnee.setCroissance(donnee.getCroissance() - batiment.getEffets().get(typeDonnee));
+                    donnee.setCroissance(donnee.getCroissance() - (batiment.getEffets().get(typeDonnee) / SECONDES_DANS_MINUTE));
                 }
             }
         }
@@ -668,9 +669,9 @@ public class Planete {
             for (Donnee donnee : this.donnees){
                 if (donnee.getTypeDonnee() == typeDonnee){
                     if (batiment.estDesactive()){
-                        donnee.setCroissance(donnee.getCroissance() + batiment.getEffets().get(typeDonnee));
+                        donnee.setCroissance(donnee.getCroissance() + (batiment.getEffets().get(typeDonnee) / SECONDES_DANS_MINUTE));
                     }else{
-                        donnee.setCroissance(donnee.getCroissance() - batiment.getEffets().get(typeDonnee));
+                        donnee.setCroissance(donnee.getCroissance() - (batiment.getEffets().get(typeDonnee) / SECONDES_DANS_MINUTE));
                     }
                 }
             }
