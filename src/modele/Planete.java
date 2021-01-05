@@ -30,7 +30,12 @@ import static modele.TypeDonnee.*;
 
 public class Planete {
 
+    /**
+     * Nombre de seconde dans une minute. Utile dans notre cas car les effets des batiments sont par minutes
+     * mais nous actualisons les données toutes les secondes.
+     */
     private static final double SECONDES_DANS_MINUTE = 60.;
+
     /**
      * Liste des Villes de la planete
      *

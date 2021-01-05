@@ -28,6 +28,9 @@ import static modele.TypeDonnee.*;
 
 public class VueMenuStatistiques extends Scene {
 
+    /**
+     * Permet de définir un format d'affichage des doubles.
+     */
     private NumberFormat formatNombre;
 
     /**
