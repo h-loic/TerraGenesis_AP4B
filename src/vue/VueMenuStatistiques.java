@@ -10,6 +10,9 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import static modele.TypeDonnee.*;
+
+
 /**
  * <b>
  *     Vue affichant les differentes donnees de la planete a l'aide de sliders et de labels
@@ -242,7 +245,7 @@ public class VueMenuStatistiques extends Scene {
         this.sliderPression.setShowTickLabels(true);
         this.sliderPression.setShowTickMarks(true);
         this.sliderPression.setMinWidth(400);
-        this.labelPressionVal = new Label(Double.toString(pression));
+        this.labelPressionVal = new Label(Double.toString(pression) + " " + PRESSION.getUnite());
 
         //affichage de l'oxygene
         this.sliderOxygene.setMin(0);
@@ -257,7 +260,7 @@ public class VueMenuStatistiques extends Scene {
         this.sliderOxygene.setShowTickLabels(true);
         this.sliderOxygene.setShowTickMarks(true);
         this.sliderOxygene.setMinWidth(250);
-        this.labelOxygeneVal = new Label(Double.toString(oxygene/100));
+        this.labelOxygeneVal = new Label(Double.toString(oxygene/100)+ " " + OXYGENE.getUnite());
 
         //affichage du niveau d'eau
         this.sliderEau.setMin(0);
@@ -272,7 +275,7 @@ public class VueMenuStatistiques extends Scene {
         this.sliderEau.setShowTickLabels(true);
         this.sliderEau.setShowTickMarks(true);
         this.sliderEau.setMinWidth(250);
-        this.labelEauVal = new Label(Double.toString(eau));
+        this.labelEauVal = new Label(Double.toString(eau) + " " + EAU.getUnite());
 
         //affichage de la temperature
         this.sliderTemperature.setMin(0);
@@ -287,14 +290,14 @@ public class VueMenuStatistiques extends Scene {
         this.sliderTemperature.setShowTickLabels(true);
         this.sliderTemperature.setShowTickMarks(true);
         this.sliderTemperature.setMinWidth(250);
-        this.labelTemperatureVal = new Label(Double.toString(temperature));
+        this.labelTemperatureVal = new Label(Double.toString(temperature) + " " + TEMPERATURE.getUnite());
 
         //affichage de la population
         this.labelPopVal.setText(Double.toString(population));
         System.out.println("POPULATION : "+population);
 
         //affichage des finances
-        this.labelFinancesVal.setText(String.valueOf(finances));
+        this.labelFinancesVal.setText(String.valueOf(finances) + " " + FINANCES.getUnite());
         this.labelFinancesVal.setMinWidth(100);
 
 
