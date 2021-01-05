@@ -282,7 +282,16 @@ public class Planete {
     }
 
 
-
+    /**
+     * <p>
+     *     Initialise la liste des gouverneurs de la planète
+     *     <ul>
+     *         <li>ajoute des gouverneur à la liste de la planète</li>
+     *     </ul>
+     * </p>
+     *
+     * @see Planete#cartePlanete
+     */
     public void initialiserGouverneur() {
         this.ajouterGouverneur(new Gouverneur(false, 0, "Michou", false,
                 new HashMap<Donnee, Double>(){{ put(getDonnee(TEMPERATURE), 30.0);put(getDonnee(FINANCES), 10.0); }})
@@ -385,6 +394,10 @@ public class Planete {
         getVille(idVille).majDonnees();
     }
 
+    /**
+     * ajoute les effets du batiment au données de la planète
+     * @param batiment le batiment améliorer
+     */
     public void terminerConstructionBatiment(Batiment batiment){
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
@@ -395,6 +408,11 @@ public class Planete {
         }
     }
 
+    /**
+     * retire les effets du batiment au données de la planète
+     * @param idVille id de la ville possèdant le batiment en cours d'amélioration
+     * @param idBatiment id du batiment en cours d'amélioration
+     */
     public void batimentEnCoursAmelioration(int idVille, int idBatiment) {
         Batiment batiment = getVille(idVille).getBatiment(idBatiment);
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
@@ -406,6 +424,10 @@ public class Planete {
         }
     }
 
+    /**
+     * ajoute les effets du batiment au données de la planète
+     * @param batiment le batiment améliorer
+     */
     public void terminerAmeliorationBatiment(Batiment batiment) {
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
@@ -479,6 +501,10 @@ public class Planete {
         return null;
     }
 
+    /**
+     * Supprimer le gouverneur de la ville et retire ses effets aux données de la planète
+     * @param idVille id de la ville a la laquelle on veut revoquer le gouverneur
+     */
     public void revoquerGouverneur(int idVille) {
         Gouverneur gouverneurRevoquer = this.getVille(idVille).getGouverneur();
         for (Donnee effet : gouverneurRevoquer.getEffets().keySet()){
@@ -491,6 +517,10 @@ public class Planete {
         this.getVille(idVille).revoquerGouverneur();
     }
 
+    /**
+     * Ajoute un gouverneur a la ville en paramètre et ajoute les effets du gouverneurs aux données de la planète
+     * @param idVille id de la ville a la laquelle on veut ajouter le gouverneur
+     */
     public void affecterGouverneur(Gouverneur gouverneur, int idVille){
         this.getVille(idVille).affecterGouverneur(gouverneur);
         gouverneur.setVilleAffecter(this.getVille(idVille));
@@ -503,16 +533,22 @@ public class Planete {
         }
     }
 
+    /**
+     * trier la liste de gouverneurs de la planète en fonction de leurs nom
+     */
     public void trierGouverneurParNom() {
         Collections.sort(gouverneurs, Gouverneur.ComparatorNom);
     }
 
+    /**
+     * trier la liste de gouverneurs de la planète en fonction de leurs états estDebloque
+     */
     public void trierGouverneurParDebloque() {
         Collections.sort(gouverneurs, Gouverneur.ComparatorDebloque);
     }
 
     /**
-     * Permet de détruire une ville de la planète
+     * Permet de détruire une ville de la planète et retire les effets qu'avait cette ville sur la planète
      * @param idVille l'id de la ville à détruire
      */
     public void detruireVille(int idVille) {
@@ -594,6 +630,16 @@ public class Planete {
         getAvantPoste(idAvantPoste).detruireMine(idMine);
     }
 
+
+    /**
+     * <p>
+     *     Détruit le bâtiment en paramètre et retire ses effets des données de la planète
+     * </p>
+     *
+     * @param idVille id de la ville possèdant le bâtiment a détruire
+     * @param idBatiment id du batiment à détruire
+     *
+     */
     public void detruireBatiment(int idVille, int idBatiment) {
         Batiment batiment = getVille(idVille).getBatiment(idBatiment);
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
@@ -607,6 +653,15 @@ public class Planete {
         getVille(idVille).majDonnees();
     }
 
+    /**
+     * <p>
+     *     activer ou désactive un batiment et ajoute ou enleve les effets du batiment des données de la planète
+     * </p>
+     *
+     * @param idVille id de la ville possèdant le bâtiment a activer/desactiver
+     * @param idBatiment id du batiment à activer/desactiver
+     *
+     */
     public void activerDesactiverBatiment(int idVille, int idBatiment) {
         Batiment batiment = getVille(idVille).getBatiment(idBatiment);
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
