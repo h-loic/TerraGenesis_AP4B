@@ -160,16 +160,18 @@ public class VueMenuPrincipal extends Scene {
      */
     public void initialiserMenuPrincipal() {
         this.grillePrincipale.getChildren().clear();
-        hBoxLigne1.getChildren().clear();
-        hBoxLigne2.getChildren().clear();
-        hBoxLigne1.getChildren().addAll(actionNaviguerStatistiques, actionNaviguerRecherche, actionNaviguerPopulation);
-        hBoxLigne2.getChildren().addAll(actionNaviguerCarte, actionNaviguerGouverneurs);
+        this.hBoxLigne1.getChildren().clear();
+        this.hBoxLigne2.getChildren().clear();
+        this.hBoxLigne1.getChildren().addAll(actionNaviguerStatistiques, actionNaviguerRecherche, actionNaviguerPopulation);
+        this.hBoxLigne2.getChildren().addAll(actionNaviguerCarte, actionNaviguerGouverneurs);
 
-        hBoxLigne1.setSpacing(30);
-        hBoxLigne2.setSpacing(30);
+        this.hBoxLigne1.setSpacing(30);
+        this.hBoxLigne2.setSpacing(30);
 
-        hBoxLigne1.setPadding(new Insets(15,0,15,0));
-        hBoxLigne2.setPadding(new Insets(15,0,15,0));
+        this.hBoxLigne1.setPadding(new Insets(15,0,15,0));
+        this.hBoxLigne2.setPadding(new Insets(15,0,15,0));
+
+        this.hBoxLigne2.setAlignment(Pos.CENTER);
 
         this.actionNaviguerStatistiques.setStyle(STYLE_BOUTONS);
         this.actionNaviguerRecherche.setStyle(STYLE_BOUTONS);
@@ -177,10 +179,10 @@ public class VueMenuPrincipal extends Scene {
         this.actionNaviguerCarte.setStyle(STYLE_BOUTONS);
         this.actionNaviguerGouverneurs.setStyle(STYLE_BOUTONS);
 
-        grillePrincipale.setAlignment(Pos.CENTER);
-        grillePrincipale.add(hBoxLigne1, 0, 0);
-        grillePrincipale.add(hBoxLigne2, 0, 1);
-        grillePrincipale.setStyle("-fx-background-color: #7680AD;");
+        this.grillePrincipale.setAlignment(Pos.CENTER);
+        this.grillePrincipale.add(hBoxLigne1, 0, 0);
+        this.grillePrincipale.add(hBoxLigne2, 0, 1);
+        this.grillePrincipale.setStyle("-fx-background-color: #7680AD;");
 
         this.actionNaviguerStatistiques.setOnAction(new EventHandler<ActionEvent>() {
             @Override
