@@ -245,7 +245,7 @@ public class Batiment {
      *
      * @see Batiment#ameliorerEffets()
      */
-    public void finirAmelioration() {
+    public synchronized void finirAmelioration() {
         if (!this.estEnCoursAmelioration) return;
         this.dateFinAmelioration = null;
         this.estEnCoursAmelioration = false;

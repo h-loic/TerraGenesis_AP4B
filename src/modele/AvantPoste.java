@@ -109,7 +109,7 @@ public class AvantPoste {
      * @see Mine#getBenefice()
      * @return somme des benefices de chaque mine de l'AvantPoste
      */
-    public double getBeneficesMines(){
+    public synchronized double getBeneficesMines(){
         double benefices = 0;
         for(Mine mine : this.mines){
             benefices+=mine.getBenefice();

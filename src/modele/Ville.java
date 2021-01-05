@@ -300,7 +300,7 @@ public class Ville {
      * Finaliser la construction du batiment.
      * @param batiment instance de batiment qui finalise sa construction
      */
-    public void finirConstructionBatiment(Batiment batiment) {
+    public synchronized void finirConstructionBatiment(Batiment batiment) {
         if (!peutConstruire()) return;
         this.batimentsEnConstruction.remove(batiment);
         this.batiments.add(batiment);
@@ -309,7 +309,7 @@ public class Ville {
     /**
      * Met a jour les données de population et d'habitation de la ville.
      */
-    public void majDonnees() {
+    public synchronized void majDonnees() {
         double sommeHab = 0.;
         double sommePop = this.population.getValeurActuelle() + 1.;
         for (Batiment batiment : batiments) {

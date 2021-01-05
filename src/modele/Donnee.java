@@ -17,11 +17,11 @@ public class Donnee {
         this.croissance = croissance;
     }
 
-    public void setCroissance(double croissance) {
+    public synchronized  void setCroissance(double croissance) {
         this.croissance = croissance;
     }
 
-    public void majValeur(){
+    public synchronized void majValeur(){
         this.valeurActuelle+=croissance;
     }
 

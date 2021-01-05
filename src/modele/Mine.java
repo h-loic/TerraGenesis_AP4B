@@ -177,7 +177,7 @@ public class Mine {
      * @see Mine#benefice
      * @see Mine#rendement
      */
-    public void ameliorerMine(){
+    public synchronized void ameliorerMine(){
         if(this.isFonctionnelle){
             niveau++;
             rendement *= 1.5;
@@ -252,7 +252,7 @@ public class Mine {
      * @param  fonctionnelle
      *         l'etat que l'on souhaite affecter a la mine
      */
-    public void setFonctionnelle(boolean fonctionnelle) {
+    public synchronized void setFonctionnelle(boolean fonctionnelle) {
         isFonctionnelle = fonctionnelle;
     }
 

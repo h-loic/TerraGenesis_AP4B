@@ -398,7 +398,7 @@ public class Planete {
      * ajoute les effets du batiment au données de la planète
      * @param batiment le batiment améliorer
      */
-    public void terminerConstructionBatiment(Batiment batiment){
+    public synchronized void terminerConstructionBatiment(Batiment batiment){
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
                 if (donnee.getTypeDonnee() == typeDonnee){
@@ -428,7 +428,7 @@ public class Planete {
      * ajoute les effets du batiment au données de la planète
      * @param batiment le batiment améliorer
      */
-    public void terminerAmeliorationBatiment(Batiment batiment) {
+    public synchronized void terminerAmeliorationBatiment(Batiment batiment) {
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
             for (Donnee donnee : this.donnees){
                 if (donnee.getTypeDonnee() == typeDonnee){
@@ -570,7 +570,7 @@ public class Planete {
      * Débloquer un type de batiment.
      * @param typeBatiment le type de batiment
      */
-    public void debloquerTypeBatiment(TypeBatiment typeBatiment){
+    public synchronized void debloquerTypeBatiment(TypeBatiment typeBatiment){
         etatTypesBatiment.replace(typeBatiment, true);
     }
 

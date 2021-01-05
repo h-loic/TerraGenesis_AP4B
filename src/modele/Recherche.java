@@ -92,7 +92,7 @@ public class Recherche {
      * @see Recherche#typeBatimentRecherche
      * @see Recherche#dateFinRecherche
      */
-    public void finDeRecherche(){
+    public synchronized void finDeRecherche(){
         this.typeBatimentRecherche = null;
         this.dateFinRecherche = null;
         this.rechercheEnCours = false;
