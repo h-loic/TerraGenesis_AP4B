@@ -589,6 +589,8 @@ public class ControleurPrincipal {
             throw exception;
         }else if (!this.planete.peutPayer(batiment.getPrixAmelioration())){
             throw new Exception("Fonds insuffisants : " + (batiment.getPrixAmelioration()) + " requis, disponibles : "+planete.getFinances());
+        }else if (batiment.estEnCoursAmelioration()){
+            throw new Exception("Le batiment est déjà en cours d'amélioration");
         }
         this.planete.payer(batiment.getPrixAmelioration());
         batiment.demarrerAmelioration();
