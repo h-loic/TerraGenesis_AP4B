@@ -32,7 +32,7 @@ public class Planete {
 
     /**
      * Nombre de seconde dans une minute. Utile dans notre cas car les effets des batiments sont par minutes
-     * mais nous actualisons les données toutes les secondes.
+     * mais nous actualisons les donnees toutes les secondes.
      */
     private static final double SECONDES_DANS_MINUTE = 60.;
 
@@ -219,8 +219,8 @@ public class Planete {
     }
 
     /**
-     * Accesseur de la liste de villes de la planète.
-     * @return la liste de villes de la planète
+     * Accesseur de la liste de villes de la planete.
+     * @return la liste de villes de la planete
      */
     synchronized public ArrayList<Ville> getVilles() {
         return villes;
@@ -229,7 +229,7 @@ public class Planete {
     /**
      * Permet de trouver et retourner une ville dans la liste
      * @param id l'id de la ville
-     * @return si trouvé : la ville avec l'id, sinon : <code>null</code>
+     * @return si trouve : la ville avec l'id, sinon : <code>null</code>
      */
     synchronized public Ville getVille(int id) {
         for (Ville ville : villes) {
@@ -252,16 +252,16 @@ public class Planete {
     }
 
     /**
-     * Accesseur de la liste des données de la ville
-     * @return la liste des données de la ville
+     * Accesseur de la liste des donnees de la ville
+     * @return la liste des donnees de la ville
      */
     synchronized public ArrayList<Donnee> getDonnees() {
         return donnees;
     }
 
     /**
-     * Accesseur de la liste d'état des types de batiment.
-     * @return la liste associative : type de batiment, est débolque
+     * Accesseur de la liste d'etat des types de batiment.
+     * @return la liste associative : type de batiment, est debolque
      */
     synchronized public HashMap<TypeBatiment, Boolean> getEtatTypesInfrastructure() {
         return etatTypesBatiment;
@@ -290,9 +290,9 @@ public class Planete {
 
     /**
      * <p>
-     *     Initialise la liste des gouverneurs de la planète
+     *     Initialise la liste des gouverneurs de la planete
      *     <ul>
-     *         <li>ajoute des gouverneur à la liste de la planète</li>
+     *         <li>ajoute des gouverneur à la liste de la planete</li>
      *     </ul>
      * </p>
      *
@@ -391,7 +391,7 @@ public class Planete {
     }
 
     /**
-     * Demarrer la construction d'un batiment dans une ville de la planète.
+     * Demarrer la construction d'un batiment dans une ville de la planete.
      * @param idVille l'id de la ville
      * @param batiment le batiment à construire
      */
@@ -401,8 +401,8 @@ public class Planete {
     }
 
     /**
-     * ajoute les effets du batiment au données de la planète
-     * @param batiment le batiment améliorer
+     * ajoute les effets du batiment au donnees de la planete
+     * @param batiment le batiment ameliorer
      */
     synchronized public void terminerConstructionBatiment(Batiment batiment){
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
@@ -415,9 +415,9 @@ public class Planete {
     }
 
     /**
-     * retire les effets du batiment au données de la planète
-     * @param idVille id de la ville possèdant le batiment en cours d'amélioration
-     * @param idBatiment id du batiment en cours d'amélioration
+     * retire les effets du batiment au donnees de la planete
+     * @param idVille id de la ville possedant le batiment en cours d'amelioration
+     * @param idBatiment id du batiment en cours d'amelioration
      */
     synchronized public void batimentEnCoursAmelioration(int idVille, int idBatiment) {
         Batiment batiment = getVille(idVille).getBatiment(idBatiment);
@@ -431,8 +431,8 @@ public class Planete {
     }
 
     /**
-     * ajoute les effets du batiment au données de la planète
-     * @param batiment le batiment améliorer
+     * ajoute les effets du batiment au donnees de la planete
+     * @param batiment le batiment ameliorer
      */
     synchronized public void terminerAmeliorationBatiment(Batiment batiment) {
         for (TypeDonnee typeDonnee : batiment.getEffets().keySet()){
@@ -445,7 +445,7 @@ public class Planete {
     }
 
     /**
-     * Initialise les états des types de batiment.
+     * Initialise les etats des types de batiment.
      */
     synchronized public void initialiserEtatTypeBatiment() {
         for (TypeBatiment typeBatiment : TypeBatiment.values()) {
@@ -454,17 +454,17 @@ public class Planete {
     }
 
     /**
-     * Permet de savoir si un type de batiment est débloqué (recherché) ou pas.
+     * Permet de savoir si un type de batiment est debloque (recherche) ou pas.
      * @param typeBatiment le type de batiment
-     * @return <code>true</code> si le batiment est débloqué, sinon <code>false</code>
+     * @return <code>true</code> si le batiment est debloque, sinon <code>false</code>
      */
     synchronized public boolean typeBatimentEstDebloque(TypeBatiment typeBatiment) {
         return etatTypesBatiment.get(typeBatiment);
     }
 
     /**
-     * Permet d'obtenir la liste de tous les types de batiments débloqués de la planète.
-     * @return la liste de tous les types de batiments débloqués de la planète
+     * Permet d'obtenir la liste de tous les types de batiments debloques de la planete.
+     * @return la liste de tous les types de batiments debloques de la planete
      */
     synchronized public ArrayList<TypeBatiment> getTypeBatimentDebloque() {
         ArrayList<TypeBatiment> typeBatimentDebloque = new ArrayList<>();
@@ -475,8 +475,8 @@ public class Planete {
     }
 
     /**
-     * Permet d'obtenir la liste de tous les types de batiments non débloqués de la planète.
-     * @return la liste de tous les types de batiments non débloqués de la planète
+     * Permet d'obtenir la liste de tous les types de batiments non debloques de la planete.
+     * @return la liste de tous les types de batiments non debloques de la planete
      */
     synchronized public ArrayList<TypeBatiment> getTypeBatimentNonDebloque() {
         ArrayList<TypeBatiment> typeBatimentNonDebloque = new ArrayList<>();
@@ -487,7 +487,7 @@ public class Planete {
     }
 
     /**
-     * Initialise l'état des ressources.
+     * Initialise l'etat des ressources.
      */
     synchronized public void initialiserEtatRessource() {
         for (Ressource ressource : Ressource.values()) {
@@ -496,9 +496,9 @@ public class Planete {
     }
 
     /**
-     * Accesseur à une données de la liste selon son type
-     * @param typeDonnee le type de la données
-     * @return si trouvée : la donnée, sinon : <code>null</code>
+     * Accesseur à une donnees de la liste selon son type
+     * @param typeDonnee le type de la donnees
+     * @return si trouvee : la donnee, sinon : <code>null</code>
      */
     synchronized public Donnee getDonnee(TypeDonnee typeDonnee) {
         for (Donnee donnee : donnees) {
@@ -508,7 +508,7 @@ public class Planete {
     }
 
     /**
-     * Supprimer le gouverneur de la ville et retire ses effets aux données de la planète
+     * Supprimer le gouverneur de la ville et retire ses effets aux donnees de la planete
      * @param idVille id de la ville a la laquelle on veut revoquer le gouverneur
      */
     synchronized public void revoquerGouverneur(int idVille) {
@@ -524,7 +524,7 @@ public class Planete {
     }
 
     /**
-     * Ajoute un gouverneur a la ville en paramètre et ajoute les effets du gouverneurs aux données de la planète
+     * Ajoute un gouverneur a la ville en parametre et ajoute les effets du gouverneurs aux donnees de la planete
      * @param idVille id de la ville a la laquelle on veut ajouter le gouverneur
      */
     synchronized public void affecterGouverneur(Gouverneur gouverneur, int idVille){
@@ -540,22 +540,22 @@ public class Planete {
     }
 
     /**
-     * trier la liste de gouverneurs de la planète en fonction de leurs nom
+     * trier la liste de gouverneurs de la planete en fonction de leurs nom
      */
     synchronized public void trierGouverneurParNom() {
         Collections.sort(gouverneurs, Gouverneur.ComparatorNom);
     }
 
     /**
-     * trier la liste de gouverneurs de la planète en fonction de leurs états estDebloque
+     * trier la liste de gouverneurs de la planete en fonction de leurs etats estDebloque
      */
     synchronized public void trierGouverneurParDebloque() {
         Collections.sort(gouverneurs, Gouverneur.ComparatorDebloque);
     }
 
     /**
-     * Permet de détruire une ville de la planète et retire les effets qu'avait cette ville sur la planète
-     * @param idVille l'id de la ville à détruire
+     * Permet de detruire une ville de la planete et retire les effets qu'avait cette ville sur la planete
+     * @param idVille l'id de la ville à detruire
      */
     synchronized public void detruireVille(int idVille) {
         Ville ville = getVille(idVille);
@@ -573,7 +573,7 @@ public class Planete {
     }
 
     /**
-     * Débloquer un type de batiment.
+     * Debloquer un type de batiment.
      * @param typeBatiment le type de batiment
      */
     synchronized public void debloquerTypeBatiment(TypeBatiment typeBatiment){
@@ -623,7 +623,7 @@ public class Planete {
 
     /**
      * <p>
-     *     détruit une mine d'un avant poste
+     *     detruit une mine d'un avant poste
      * </p>
      *
      * @param idAvantPoste id de l'avant poste duquel on veut detruire une mine
@@ -639,11 +639,11 @@ public class Planete {
 
     /**
      * <p>
-     *     Détruit le bâtiment en paramètre et retire ses effets des données de la planète
+     *     Detruit le bâtiment en parametre et retire ses effets des donnees de la planete
      * </p>
      *
-     * @param idVille id de la ville possèdant le bâtiment a détruire
-     * @param idBatiment id du batiment à détruire
+     * @param idVille id de la ville possedant le bâtiment a detruire
+     * @param idBatiment id du batiment à detruire
      *
      */
     synchronized public void detruireBatiment(int idVille, int idBatiment) {
@@ -661,10 +661,10 @@ public class Planete {
 
     /**
      * <p>
-     *     activer ou désactive un batiment et ajoute ou enleve les effets du batiment des données de la planète
+     *     activer ou desactive un batiment et ajoute ou enleve les effets du batiment des donnees de la planete
      * </p>
      *
-     * @param idVille id de la ville possèdant le bâtiment a activer/desactiver
+     * @param idVille id de la ville possedant le bâtiment a activer/desactiver
      * @param idBatiment id du batiment à activer/desactiver
      *
      */

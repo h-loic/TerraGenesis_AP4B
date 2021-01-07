@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AvantPoste {
 
     /**
-     * Permet de générer des identifiants uniques
+     * Permet de generer des identifiants uniques
      *
      * @see AvantPoste#AvantPoste(String, Coordonnee, ArrayList)
      * @see AvantPoste#id
@@ -87,7 +87,7 @@ public class AvantPoste {
      * @see AvantPoste#mines
      */
     public AvantPoste(String nom, Coordonnee coordonnee, ArrayList<Mine> mines) {
-        this.id = sequence.incrementAndGet(); // génération d'un id unique
+        this.id = sequence.incrementAndGet(); // generation d'un id unique
         this.nom = nom;
         this.coordonnee = coordonnee;
         this.mines = mines;

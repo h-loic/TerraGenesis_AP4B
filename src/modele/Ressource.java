@@ -1,12 +1,12 @@
 package modele;
 
 /**
- * <b>Ressource est l'énumération représentant les différentes ressources présentes dans le jeu</b>
+ * <b>Ressource est l'enumeration representant les differentes ressources presentes dans le jeu</b>
  * <p>
- * Une Ressource est caractérisé par les informations suivantes :
+ * Une Ressource est caracterise par les informations suivantes :
  * <ul>
  * <li>Un symbole</li>
- * <li>Une rareté</li>
+ * <li>Une rarete</li>
  * <li>Une valeur</li>
  * <li>Un cout de recherche</li>
  * <li>Une ressource parente</li>
@@ -49,7 +49,7 @@ public enum Ressource {
     private String symbole;
 
     /**
-     * La rareté de la ressource
+     * La rarete de la ressource
      */
     private Rarete rarete;
 
@@ -64,16 +64,16 @@ public enum Ressource {
     private double coutRecherche;
 
     /**
-     * La ressource parente. Permet de gérer les dépendances de recherche.
+     * La ressource parente. Permet de gerer les dependances de recherche.
      */
     private Ressource parent;
 
     /**
      *
-     * Constructeur Ressource. Initialise les attributs avec les valeurs passées en paramètres.
+     * Constructeur Ressource. Initialise les attributs avec les valeurs passees en parametres.
      *
      * @param symbole symbole de la ressource
-     * @param rarete rareté de la ressource
+     * @param rarete rarete de la ressource
      * @param valeur valeur de la ressource
      * @param coutRecherche cout de recherche de la ressource
      * @param parent ressource parente
@@ -95,8 +95,8 @@ public enum Ressource {
     }
 
     /**
-     * Accesseur de la rareté.
-     * @return la rareté.
+     * Accesseur de la rarete.
+     * @return la rarete.
      */
     public Rarete getRarete() {
         return rarete;

@@ -3,9 +3,9 @@ package modele;
 import java.util.HashMap;
 
 /**
- * <b>TypeBatiment est l'énumération représentant les différents types de batiments constructibles dans le jeu</b>
+ * <b>TypeBatiment est l'enumeration representant les differents types de batiments constructibles dans le jeu</b>
  * <p>
- * Un type de batiment est caractérisé par les informations suivantes :
+ * Un type de batiment est caracterise par les informations suivantes :
  * <ul>
  * <li>Un nom</li>
  * <li>Une description</li>
@@ -15,8 +15,8 @@ import java.util.HashMap;
  * <li>Un cout de construction</li>
  * <li>Un temps de construction en minutes</li>
  * <li>Un liste associative d'effets permettant d'initialiser les batiments</li>
- * <li>Un type parent permettant de gérer les dépendances de recherches</li>
- * <li>Un booléen permettant de signaler si ce type est débloquer par défaut dans le jeu</li>
+ * <li>Un type parent permettant de gerer les dependances de recherches</li>
+ * <li>Un booleen permettant de signaler si ce type est debloquer par defaut dans le jeu</li>
  * </ul>
  * </p>
  *
@@ -34,9 +34,9 @@ public enum TypeBatiment {
     }},null, true),
 
     /**
-     * Type de batiment : Plateforme aérostat
+     * Type de batiment : Plateforme aerostat
      */
-    PLATEFORME_AEROSTAT("Plateforme aérostat", "description", 10,2000000.,20, 1000000.,10, new HashMap<TypeDonnee, Double>(){{
+    PLATEFORME_AEROSTAT("Plateforme aerostat", "description", 10,2000000.,20, 1000000.,10, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.TEMPERATURE, -40.0);
         put(TypeDonnee.FINANCES, 3000.0);
     }}, USINE_DE_REFROIDISSEMENT, false),
@@ -50,9 +50,9 @@ public enum TypeBatiment {
     }}, PLATEFORME_AEROSTAT, false),
 
     /**
-     * Type de batiment : Pole de réchauffement
+     * Type de batiment : Pole de rechauffement
      */
-    POLE_DE_RECHAUFFEMENT("Pole de réchauffement", "description", 10,0., 0,500000., 5,new HashMap<TypeDonnee, Double>(){{
+    POLE_DE_RECHAUFFEMENT("Pole de rechauffement", "description", 10,0., 0,500000., 5,new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.TEMPERATURE, 4.0);
     }}, null, true),
 
@@ -75,9 +75,9 @@ public enum TypeBatiment {
 
     /* PRESSION */
     /**
-     * Type de batiment : Usine de séquestration
+     * Type de batiment : Usine de sequestration
      */
-    USINE_DE_SEQUESTRATION("Usine de séquestration", "description", 10,1000000., 10,500000., 5, new HashMap<TypeDonnee, Double>(){{
+    USINE_DE_SEQUESTRATION("Usine de sequestration", "description", 10,1000000., 10,500000., 5, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.PRESSION, -4.);
     }}, null,false),
 
@@ -89,18 +89,18 @@ public enum TypeBatiment {
     }}, USINE_DE_SEQUESTRATION,false),
 
     /**
-     * Type de batiment : Transformateur d'hydrogène
+     * Type de batiment : Transformateur d'hydrogene
      */
-    TRANSFORMATEUR_HYDROGENE("Transformateur d'hydrogène", "description", 10,4000000.,40, 2000000.,20, new HashMap<TypeDonnee, Double>(){{
+    TRANSFORMATEUR_HYDROGENE("Transformateur d'hydrogene", "description", 10,4000000.,40, 2000000.,20, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.PRESSION, -100.);
         put(TypeDonnee.EAU, 20.);
         put(TypeDonnee.TEMPERATURE, 10.);
     }}, LABORATOIRE_DE_BIODIVISION,false),
 
     /**
-     * Type de batiment : Poussière thermique
+     * Type de batiment : Poussiere thermique
      */
-    POUSSIERE_THERMIQUE("Poussière thermique", "description", 10,2000000.,20, 1000000.,10, new HashMap<TypeDonnee, Double>(){{
+    POUSSIERE_THERMIQUE("Poussiere thermique", "description", 10,2000000.,20, 1000000.,10, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.PRESSION, 4.);
     }}, null,false),
 
@@ -139,17 +139,17 @@ public enum TypeBatiment {
     }}, FILTRE_O2,false),
 
     /**
-     * Type de batiment : Générateur hydro
+     * Type de batiment : Generateur hydro
      */
-    GENERATEUR_HYDRO("Générateur hydro", "description", 10,4000000.,40, 2000000.,20, new HashMap<TypeDonnee, Double>(){{
+    GENERATEUR_HYDRO("Generateur hydro", "description", 10,4000000.,40, 2000000.,20, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.OXYGENE, -80.);
         put(TypeDonnee.EAU, 20.);
     }}, FIXATEUR_DE_CARBONE,false),
 
     /**
-     * Type de batiment : Usine d'oxygène
+     * Type de batiment : Usine d'oxygene
      */
-    USINE_OXYGENE("Usine d'oxygène", "description", 10,1000000., 10,500000., 5, new HashMap<TypeDonnee, Double>(){{
+    USINE_OXYGENE("Usine d'oxygene", "description", 10,1000000., 10,500000., 5, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.OXYGENE, 4.);
     }}, null,false),
 
@@ -172,16 +172,16 @@ public enum TypeBatiment {
 
     /* EAU */
     /**
-     * Type de batiment : Géociterne
+     * Type de batiment : Geociterne
      */
-    GEOCITERNE("Géociterne", "description", 10,2000000.,20, 1000000.,10, new HashMap<TypeDonnee, Double>(){{
+    GEOCITERNE("Geociterne", "description", 10,2000000.,20, 1000000.,10, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.EAU, 4.);
     }}, null,false),
 
     /**
-     * Type de batiment : Usine d'électrolyse
+     * Type de batiment : Usine d'electrolyse
      */
-    USINE_ELECTROLYSE("Usine d'électrolyse", "description", 10,2000000.,20, 1000000.,10, new HashMap<TypeDonnee, Double>(){{
+    USINE_ELECTROLYSE("Usine d'electrolyse", "description", 10,2000000.,20, 1000000.,10, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.EAU, -40.);
         put(TypeDonnee.OXYGENE, 10.);
     }}, GEOCITERNE,false),
@@ -203,17 +203,17 @@ public enum TypeBatiment {
     }}, null,false),
 
     /**
-     * Type de batiment : Réseau aquifère
+     * Type de batiment : Reseau aquifere
      */
-    RESEAU_AQUIFERE("Réseau aquifère", "description", 10,2000000.,20, 1000000.,10, new HashMap<TypeDonnee, Double>(){{
+    RESEAU_AQUIFERE("Reseau aquifere", "description", 10,2000000.,20, 1000000.,10, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.EAU, 40.);
         put(TypeDonnee.PRESSION, 10.);
     }}, SEMEUR_DE_NUAGES,false),
 
     /**
-     * Type de batiment : Redirection de comètes
+     * Type de batiment : Redirection de cometes
      */
-    REDIRECTION_DE_COMETES("Redirection de comètes", "description", 10,4000000.,40, 2000000.,20,new HashMap<TypeDonnee, Double>(){{
+    REDIRECTION_DE_COMETES("Redirection de cometes", "description", 10,4000000.,40, 2000000.,20,new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.EAU, 120.);
         put(TypeDonnee.FINANCES, 8000.);
     }}, RESEAU_AQUIFERE,false),
@@ -221,9 +221,9 @@ public enum TypeBatiment {
 
     /* POPULATION */
     /**
-     * Type de batiment : Unité d'habitation
+     * Type de batiment : Unite d'habitation
      */
-    UNITE_HABITATION("Unité d'habitation", "description", 10,0., 0,500000., 5, new HashMap<TypeDonnee, Double>(){{
+    UNITE_HABITATION("Unite d'habitation", "description", 10,0., 0,500000., 5, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.HABITATION, 66.);
     }}, null,true),
 
@@ -243,16 +243,16 @@ public enum TypeBatiment {
     }}, COMPLEXE_HABITATION,false),
 
     /**
-     * Type de batiment : Crèche pour enfant
+     * Type de batiment : Creche pour enfant
      */
-    CRECHE("Crèche pour enfant", "description", 10,1000000., 10,500000., 5,new HashMap<TypeDonnee, Double>(){{
+    CRECHE("Creche pour enfant", "description", 10,1000000., 10,500000., 5,new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.POPULATION, 10.);
     }}, null,false),
 
     /**
-     * Type de batiment : Réseau de transport
+     * Type de batiment : Reseau de transport
      */
-    RESEAU_TRANSPORT("Réseau de transport", "description", 10,2000000.,20, 1000000.,10, new HashMap<TypeDonnee, Double>(){{
+    RESEAU_TRANSPORT("Reseau de transport", "description", 10,2000000.,20, 1000000.,10, new HashMap<TypeDonnee, Double>(){{
         put(TypeDonnee.POPULATION, 88.);
     }}, CRECHE,false),
 
@@ -291,44 +291,44 @@ public enum TypeBatiment {
     private int tempsRecherche;
 
     /**
-     * Le cout de construction par défaut d'un batiment de ce type.
+     * Le cout de construction par defaut d'un batiment de ce type.
      */
     private double coutConstructionParDefaut;
 
     /**
-     * Le temps de construction par défaut d'un batiment de ce type.
+     * Le temps de construction par defaut d'un batiment de ce type.
      */
     private int tempsConstructionParDefaut;
 
     /**
-     * Les effets sur les données par défaut d'un batiment de ce type.
+     * Les effets sur les donnees par defaut d'un batiment de ce type.
      */
     private HashMap<TypeDonnee, Double> effetsParDefaut;
 
     /**
-     * Le type parent. Permet de gérer les dépendances de recherches.
+     * Le type parent. Permet de gerer les dependances de recherches.
      */
     private TypeBatiment parent;
 
     /**
-     * Indique si le type est débloqué au début de la partie.
+     * Indique si le type est debloque au debut de la partie.
      */
     private boolean estDebloqueParDefaut;
 
     /**
      *
-     * Constructeur TypeBatiment. Initialise les attributs avec les valeurs passées en paramètres.
+     * Constructeur TypeBatiment. Initialise les attributs avec les valeurs passees en parametres.
      *
      * @param nom le nom du type de batiment
      * @param description la description
      * @param niveauMax le niveau maximum
      * @param coutRecherche le cout de recherche
      * @param tempsRecherche le temps de recherche
-     * @param coutConstructionParDefaut le cout de construction par défaut
-     * @param tempsConstructionParDefaut le temps de construction par défaut
-     * @param effetsParDefaut les effets par défaut
+     * @param coutConstructionParDefaut le cout de construction par defaut
+     * @param tempsConstructionParDefaut le temps de construction par defaut
+     * @param effetsParDefaut les effets par defaut
      * @param parent le type parent
-     * @param estDebloqueParDefaut l'état du type au début de la partie
+     * @param estDebloqueParDefaut l'etat du type au debut de la partie
      *
      *
      */
@@ -386,8 +386,8 @@ public enum TypeBatiment {
     }
 
     /**
-     * Accesseur des effets sur les données par défaut.
-     * @return une copie des effets par défaut, afin que la liste associative de base ne soit pas modifiable
+     * Accesseur des effets sur les donnees par defaut.
+     * @return une copie des effets par defaut, afin que la liste associative de base ne soit pas modifiable
      */
     public HashMap<TypeDonnee, Double> getEffetsParDefaut() {
         return new HashMap<TypeDonnee, Double>(effetsParDefaut);
@@ -402,8 +402,8 @@ public enum TypeBatiment {
     }
 
     /**
-     * Accesseur du booléen indiquant si le type est débloqué par défaut.
-     * @return <code>true</code> si le type de batiment est débloqué par défaut sinon <code>flase</code>
+     * Accesseur du booleen indiquant si le type est debloque par defaut.
+     * @return <code>true</code> si le type de batiment est debloque par defaut sinon <code>flase</code>
      */
     public boolean estDebloqueParDefaut() {
         return estDebloqueParDefaut;
@@ -418,8 +418,8 @@ public enum TypeBatiment {
     }
 
     /**
-     * Accesseur du temps de construction par défaut.
-     * @return le temps de construction par défaut
+     * Accesseur du temps de construction par defaut.
+     * @return le temps de construction par defaut
      */
     public int getTempsConstructionParDefaut() {
         return tempsConstructionParDefaut;

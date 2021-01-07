@@ -29,17 +29,17 @@ public class VueVille extends Scene {
     public static final String STYLE_SCROLLPANE = "-fx-background-color:transparent; -fx-border-width: 2px; -fx-border-color: black;";
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments de la vue.
+     * La grille sur laquelle sont ajoutes les differents elements de la vue.
      */
     private GridPane grillePrincipale;
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments de la ville.
+     * La grille sur laquelle sont ajoutes les differents elements de la ville.
      */
     private GridPane grilleVille;
 
     /**
-     * La grille sur laquelle sont ajoutés les différent batiments.
+     * La grille sur laquelle sont ajoutes les different batiments.
      */
     private GridPane grilleBatiments;
 
@@ -49,7 +49,7 @@ public class VueVille extends Scene {
     private ScrollPane scrollPaneBatiments;
 
     /**
-     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues.
+     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues.
      */
     private controler.ControleurPrincipal controleur = null;
 
@@ -59,7 +59,7 @@ public class VueVille extends Scene {
     private Label labelNom;
 
     /**
-     * Label affichant les coordonnées de la ville.
+     * Label affichant les coordonnees de la ville.
      */
     private Label labelCoordonnees;
 
@@ -79,12 +79,12 @@ public class VueVille extends Scene {
     private Label labelPlace;
 
     /**
-     * Label affichant le nom du gouveneur assigné à la ville.
+     * Label affichant le nom du gouveneur assigne à la ville.
      */
     private Label labelGouverneur;
 
     /**
-     * Label affichant les effets du gouveneur assigné à la ville.
+     * Label affichant les effets du gouveneur assigne à la ville.
      */
     private Label labelEffetsGouverneur;
 
@@ -110,7 +110,7 @@ public class VueVille extends Scene {
     private Button btnRetour;
 
     /**
-     * Bouton pour détruire la ville.
+     * Bouton pour detruire la ville.
      */
     private Button btnDetruire;
 
@@ -125,17 +125,17 @@ public class VueVille extends Scene {
     private Button btnNaviguerGouverneurs;
 
     /**
-     * Bouton de navigation vers le gouverneur assigné à la ville.
+     * Bouton de navigation vers le gouverneur assigne à la ville.
      */
     private Button btnNaviguerGouverneurAssigne;
 
     /**
-     * Bouton permettant de révoquer le gouverneur assigné.
+     * Bouton permettant de revoquer le gouverneur assigne.
      */
     private Button btnRevoquerGouverneur;
 
     /**
-     * Constructeur VueVille. Créer les différents éléments de la vue.
+     * Constructeur VueVille. Creer les differents elements de la vue.
      */
     public VueVille() {
         super(new GridPane(), 400,400);
@@ -147,7 +147,7 @@ public class VueVille extends Scene {
         scrollPaneBatiments.setStyle(STYLE_SCROLLPANE);
         btnRetour = new Button("Retour");
         btnRetour.setStyle(STYLE_BOUTONS);
-        btnDetruire = new Button("Détruire");
+        btnDetruire = new Button("Detruire");
         btnDetruire.setStyle(STYLE_BOUTONS);
         btnAjouterBatiment = new Button("+ Batiment");
         btnAjouterBatiment.setStyle(STYLE_BOUTONS);
@@ -155,7 +155,7 @@ public class VueVille extends Scene {
         btnNaviguerGouverneurs.setStyle(STYLE_BOUTONS);
         btnNaviguerGouverneurAssigne = new Button("Afficher");
         btnNaviguerGouverneurAssigne.setStyle(STYLE_BOUTONS);
-        btnRevoquerGouverneur= new Button("Révoquer");
+        btnRevoquerGouverneur= new Button("Revoquer");
         btnRevoquerGouverneur.setStyle(STYLE_BOUTONS);
         labelMessages = new Label("");
     }
@@ -177,7 +177,7 @@ public class VueVille extends Scene {
 
         //affichage des batiments en construction
         for (Map.Entry<Batiment, Date> batimentsEnConstruction : ville.getBatimentsEnConstruction().entrySet()) {
-            Label labelNomBatiment = new Label(batimentsEnConstruction.getKey().getTypeBatiment().getNom()+" : en construction\ndurée des travaux : "
+            Label labelNomBatiment = new Label(batimentsEnConstruction.getKey().getTypeBatiment().getNom()+" : en construction\nduree des travaux : "
                     + batimentsEnConstruction.getKey().getTypeBatiment().getTempsConstructionParDefaut() + " min.\n");
             GridPane grilleBatiment = new GridPane();
             grilleBatiment.add(labelNomBatiment, 0, 0);
@@ -187,10 +187,10 @@ public class VueVille extends Scene {
             ligneBatiment++;
         }
 
-        //affichage des listes et de leurs données
+        //affichage des listes et de leurs donnees
         for(Batiment batiment : ville.getBatiments()){
             Label labelNomBatiment = new Label(batiment.getTypeBatiment().getNom()+" : niv." + batiment.getNiveau() + (batiment.estEnCoursAmelioration() ? "+" : "")
-                    + " état." + (batiment.estDesactive() ? "Désactivé" : "Activé"));
+                    + " etat." + (batiment.estDesactive() ? "Desactive" : "Active"));
             Label labelEffet = new Label("effets :");
             TypeDonnee typeDonnee;
             double valeur;
@@ -200,10 +200,10 @@ public class VueVille extends Scene {
                 labelEffet.setText(labelEffet.getText() + " | " + typeDonnee.name() + ": " + valeur);
             }
 
-            Button btnAmeliorer = new Button("Améliorer");
+            Button btnAmeliorer = new Button("Ameliorer");
             btnAmeliorer.setStyle(STYLE_BOUTONS);
             btnAmeliorer.setUserData(batiment.getId());
-            Button btnActiverDesactiver = new Button(batiment.estDesactive() ? "Activer" : "Désactiver");
+            Button btnActiverDesactiver = new Button(batiment.estDesactive() ? "Activer" : "Desactiver");
             btnActiverDesactiver.setStyle(STYLE_BOUTONS);
             Button btnDetruireBatiment = new Button("Detruire");
             btnDetruireBatiment.setStyle(STYLE_BOUTONS);
@@ -221,7 +221,7 @@ public class VueVille extends Scene {
             }
             if (batiment.estEnCoursAmelioration()) {
                 btnAmeliorer.setDisable(true);
-                btnAmeliorer.setText("Amélioration en cours");
+                btnAmeliorer.setText("Amelioration en cours");
             }
 
             btnAmeliorer.setOnAction(new EventHandler<ActionEvent>() {
@@ -361,7 +361,7 @@ public class VueVille extends Scene {
 
     /**
      * Affecter le controleur à la vue.
-     * @param controleur le controleur affecté
+     * @param controleur le controleur affecte
      */
     public void setControleur(controler.ControleurPrincipal controleur) {
         this.controleur = controleur;

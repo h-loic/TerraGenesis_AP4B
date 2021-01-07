@@ -29,7 +29,7 @@ import static modele.TypeDonnee.*;
 public class VueMenuStatistiques extends Scene {
 
     /**
-     * Permet de définir un format d'affichage des doubles.
+     * Permet de definir un format d'affichage des doubles.
      */
     private NumberFormat formatNombre;
 
@@ -116,7 +116,7 @@ public class VueMenuStatistiques extends Scene {
     private Label labelFinancesVal;
 
     /**
-     * Label affichant la température de la planete
+     * Label affichant la temperature de la planete
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
@@ -140,7 +140,7 @@ public class VueMenuStatistiques extends Scene {
     private Label labelEauVal;
 
     /**
-     * Label affichant l'oxygène de la planete
+     * Label affichant l'oxygene de la planete
      *
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)

@@ -18,7 +18,7 @@ import java.util.Random;
 
 /**
  * <p>
- *     Vue permettant d'ajouter une ville a la planète.
+ *     Vue permettant d'ajouter une ville a la planete.
  * </p>
  *
  * @see modele.Ville
@@ -30,22 +30,22 @@ public class VueAjouterVille extends Scene {
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 50px";
 
     /**
-     * Le controleur de l'application, permet a la vue d'intéragir avec les modèles ou avec le navigateur des vues.
+     * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues.
      */
     private controler.ControleurPrincipal controleur = null;
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments de la vue.
+     * La grille sur laquelle sont ajoutes les differents elements de la vue.
      */
     protected GridPane grillePrincipale;
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments du formulaire.
+     * La grille sur laquelle sont ajoutes les differents elements du formulaire.
      */
     protected GridPane grilleForm;
 
     /**
-     * La grille sur laquelle sont ajoutés les différents boutons.
+     * La grille sur laquelle sont ajoutes les differents boutons.
      */
     protected GridPane grilleBoutons;
 
@@ -75,28 +75,28 @@ public class VueAjouterVille extends Scene {
     private Label labelErreurs;
 
     /**
-     * Permet a l'utilisateur d'entrée le nom de la ville
+     * Permet a l'utilisateur d'entree le nom de la ville
      */
     private TextField textFieldNomVille;
 
     /**
-     * Canvas affichant la Carte de la planète, sur laquelle la ville sera positionnée
+     * Canvas affichant la Carte de la planete, sur laquelle la ville sera positionnee
      */
     private Canvas canvasCoords;
     private GraphicsContext gcCanva;
 
     /**
-     * Label affichant la longitude du point sélectionné par l'utilisateur
+     * Label affichant la longitude du point selectionne par l'utilisateur
      */
     private Label labelXville;
 
     /**
-     * Label affichant la latitude du point sélectionné par l'utilisateur
+     * Label affichant la latitude du point selectionne par l'utilisateur
      */
     private Label labelYville;
 
     /**
-     * Label affichant l'altitude du point sélectionné par l'utilisateur
+     * Label affichant l'altitude du point selectionne par l'utilisateur
      */
     private Label labelZville;
 
@@ -132,7 +132,7 @@ public class VueAjouterVille extends Scene {
 
     /**
      *
-     * Constructeur VueAjouterVille. Créer les différents éléments de la vue.
+     * Constructeur VueAjouterVille. Creer les differents elements de la vue.
      *
      */
     public VueAjouterVille() {
@@ -165,7 +165,7 @@ public class VueAjouterVille extends Scene {
 
     /**
      * Initialise la vue.
-     * @param carte la carte qui sera affichée
+     * @param carte la carte qui sera affichee
      */
     public void initialiserVueAjouterVille(Canvas carte) {
         this.grillePrincipale.getChildren().clear();
@@ -225,7 +225,7 @@ public class VueAjouterVille extends Scene {
 
     private void dessineAvPoste(double x, double y){
         Random random = new Random();
-        // l'altitude est générée aléatoirement
+        // l'altitude est generee aleatoirement
         double z = -1 + (50 - (-1)) * random.nextDouble();
         labelXville.setText("");
         labelYville.setText("");
@@ -241,13 +241,13 @@ public class VueAjouterVille extends Scene {
     }
 
     /**
-     * Valider les données du formulaire rentrées par l'utilisateur.
-     * Puis notifier le controleur de créer la ville.
+     * Valider les donnees du formulaire rentrees par l'utilisateur.
+     * Puis notifier le controleur de creer la ville.
      */
     private void validerDonnees() {
         boolean erreur = false;
         String messageErreurs = "";
-        //verifie si un nom a été saissie.
+        //verifie si un nom a ete saissie.
         if (textFieldNomVille.getText().isEmpty()){
             erreur = true;
             messageErreurs+="Veuillez entrer un nom";
@@ -263,13 +263,13 @@ public class VueAjouterVille extends Scene {
             labelErreurs.setText(messageErreurs);
         }
         try {
-            //verifie si les coordonées ont été sélectionnées.
+            //verifie si les coordonees ont ete selectionnees.
             xVille = Double.parseDouble(labelXville.getText());
             yVille = Double.parseDouble(labelYville.getText());
             zVille = Double.parseDouble(labelZville.getText());
         }catch (Exception e){
             System.out.println(e.getMessage());
-            messageErreurs+=" Veuillez entrer des coordonnées valides";
+            messageErreurs+=" Veuillez entrer des coordonnees valides";
             labelErreurs.setText(messageErreurs);
             erreur = true;
         }
@@ -280,8 +280,8 @@ public class VueAjouterVille extends Scene {
 
 
     /**
-     * Créer une ville avec les données entrées par l'utilisateur et le retourne.
-     * @return la ville crée
+     * Creer une ville avec les donnees entrees par l'utilisateur et le retourne.
+     * @return la ville cree
      */
     public Ville getVille()
     {
@@ -291,7 +291,7 @@ public class VueAjouterVille extends Scene {
 
     /**
      * Affecter le controleur a la vue.
-     * @param controleur le controleur affecté
+     * @param controleur le controleur affecte
      */
     public void setControleur(controler.ControleurPrincipal controleur) {
         this.controleur = controleur;

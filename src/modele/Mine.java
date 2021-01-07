@@ -32,7 +32,7 @@ public class Mine {
 
 
     /**
-     * Permet de générer des identifiants uniques
+     * Permet de generer des identifiants uniques
      *
      * @see Mine#Mine(Ressource, double, Coordonnee)
      * @see Mine#id
@@ -46,7 +46,7 @@ public class Mine {
     public static final int PRIX_BASE_MINE = 25000;
 
     /**
-     * Le prix de base d'amélioration d'une mine (sert a calculer le prix d'une amélioration de Mine en fonction de son niveau)
+     * Le prix de base d'amelioration d'une mine (sert a calculer le prix d'une amelioration de Mine en fonction de son niveau)
      */
     public static final int PRIX_BASE_AMELIORATION   = 1500;
 
@@ -144,8 +144,8 @@ public class Mine {
      */
     public Mine(Ressource ressource, double rendement, Coordonnee coordonnee) {
         Random random = new Random();
-        this.id = sequence.incrementAndGet();//génération d'un id unique
-        this.nom = "Mine" + Integer.toString(random.nextInt()); // génération d'un nom temporaire, son nom sera attribué par le contrôleur
+        this.id = sequence.incrementAndGet();//generation d'un id unique
+        this.nom = "Mine" + Integer.toString(random.nextInt()); // generation d'un nom temporaire, son nom sera attribue par le contrôleur
         this.ressource = ressource;
         this.coordonnee = coordonnee;
         this.dateEpuissement = new Date();

@@ -7,16 +7,16 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * <b>Batiment est la classe représentant les batiments des différentes villes de la planète</b>
+ * <b>Batiment est la classe representant les batiments des differentes villes de la planete</b>
  * <p>
- * Un batiment est caractérisé par les informations suivantes :
+ * Un batiment est caracterise par les informations suivantes :
  * <ul>
- * <li>Un identifiant unique attribué définitivement.</li>
+ * <li>Un identifiant unique attribue definitivement.</li>
  * <li>Un Type</li>
- * <li>Un niveau, le niveau maximal étant 5</li>
- * <li>Un booléen estDesactive indiquant si le batiment est desactivé</li>
- * <li>Un booléen estEnCoursAmelioration indiquant si le batiment est en cours d'amélioration</li>
- * <li>Une Date de fin d'amélioration</li>
+ * <li>Un niveau, le niveau maximal etant 5</li>
+ * <li>Un booleen estDesactive indiquant si le batiment est desactive</li>
+ * <li>Un booleen estEnCoursAmelioration indiquant si le batiment est en cours d'amelioration</li>
+ * <li>Une Date de fin d'amelioration</li>
  * <li>Une liste associative d'effets</li>
  * </ul>
  * </p>
@@ -54,7 +54,7 @@ public class Batiment {
     private int niveau;
 
     /**
-     * Un booléen indiquant si le batiment est désactivé ou non.
+     * Un booleen indiquant si le batiment est desactive ou non.
      *
      * @see Batiment#activerDesactiver()
      * @see Batiment#estDesactive()
@@ -62,7 +62,7 @@ public class Batiment {
     private boolean estDesactive;
 
     /**
-     * Un booléen indiquant si le batiment est en cours d'amélioration ou non.
+     * Un booleen indiquant si le batiment est en cours d'amelioration ou non.
      *
      * @see Batiment#estEnCoursAmelioration()
      * @see Batiment#demarrerAmelioration()
@@ -71,7 +71,7 @@ public class Batiment {
     private boolean estEnCoursAmelioration;
 
     /**
-     * Indique la date a laquelle l'amélioration en cours sera finie. Vaut null si aucune amélioration n'est en cours.
+     * Indique la date a laquelle l'amelioration en cours sera finie. Vaut null si aucune amelioration n'est en cours.
      *
      * @see Batiment#getDateFinAmelioration()
      * @see Batiment#demarrerAmelioration()
@@ -80,8 +80,8 @@ public class Batiment {
     private Date dateFinAmelioration;
 
     /**
-     * Liste associative représentant les effets du batiment sur les données de la planète. La clé est le type de la
-     * donnée et la valeur l'effet sur ce type.
+     * Liste associative representant les effets du batiment sur les donnees de la planete. La cle est le type de la
+     * donnee et la valeur l'effet sur ce type.
      *
      * @see Batiment#getEffets()
      * @see Batiment#finirAmelioration()
@@ -91,10 +91,10 @@ public class Batiment {
     /**
      * Constructeur Batiment.
      * <p>
-     * A la construction d'un objet Batiment, le niveau est fixé a 1. On lui assigne un id, le type du batiment est
-     * initailisé avec la valeur passée en paramètre,
-     * Les état désactivé et en cours d'amélioration sont initialisés a false.
-     * Les effets sont initialiser avec la liste d'effets par défaut du type du batiment.
+     * A la construction d'un objet Batiment, le niveau est fixe a 1. On lui assigne un id, le type du batiment est
+     * initailise avec la valeur passee en parametre,
+     * Les etat desactive et en cours d'amelioration sont initialises a false.
+     * Les effets sont initialiser avec la liste d'effets par defaut du type du batiment.
      * </p>
      *
      * @param typeBatiment le type du batiment.
@@ -119,7 +119,7 @@ public class Batiment {
     }
 
     /**
-     * Génère l'id unique du Batiment.
+     * Genere l'id unique du Batiment.
      */
     synchronized private int genererId() {
         return sequence.incrementAndGet();
@@ -153,18 +153,18 @@ public class Batiment {
     }
 
     /**
-     * Accesseur de l'état d'activation du Batiment.
+     * Accesseur de l'etat d'activation du Batiment.
      *
-     * @return <code>true</code> si le Batiment est désactivé sinon <code>false</code>
+     * @return <code>true</code> si le Batiment est desactive sinon <code>false</code>
      */
     synchronized public boolean estDesactive() {
         return this.estDesactive;
     }
 
     /**
-     * Accesseur de l'état d'amélioration du Batiment.
+     * Accesseur de l'etat d'amelioration du Batiment.
      *
-     * @return <code>true</code> si le Batiment est en cours d'amélioration sinon <code>false</code>
+     * @return <code>true</code> si le Batiment est en cours d'amelioration sinon <code>false</code>
      */
     synchronized public boolean estEnCoursAmelioration() {
         return this.estEnCoursAmelioration;
@@ -180,27 +180,27 @@ public class Batiment {
     }
 
     /**
-     * Accesseur de la date de fin d'amélioration du Batiment.
+     * Accesseur de la date de fin d'amelioration du Batiment.
      *
-     * @return la date de fin d'amélioration du Batiment
+     * @return la date de fin d'amelioration du Batiment
      */
     synchronized public Date getDateFinAmelioration() {
         return this.dateFinAmelioration;
     }
 
     /**
-     * Calcul le prix de l'amélioration.
+     * Calcul le prix de l'amelioration.
      *
-     * @return le prix de l'amélioration
+     * @return le prix de l'amelioration
      */
     synchronized public double getPrixAmelioration() {
         return this.typeBatiment.getCoutConstructionParDefaut() * this.niveau;
     }
 
     /**
-     * Calcul le temps de construction de l'amélioration
+     * Calcul le temps de construction de l'amelioration
      *
-     * @return le temps de construction de l'amélioration
+     * @return le temps de construction de l'amelioration
      */
     synchronized public int getTempsConstructionAmelioration() {
         return this.typeBatiment.getTempsConstructionParDefaut() + ((this.typeBatiment.getTempsConstructionParDefaut()/4) * this.niveau);
@@ -208,24 +208,24 @@ public class Batiment {
 
 
     /**
-     * Permet de vérifier si le Batiment peut être amélioré.
+     * Permet de verifier si le Batiment peut être ameliore.
      *
-     * @return <code>true</code> si le Batiment peut être amélioré sinon <code>false</code>
+     * @return <code>true</code> si le Batiment peut être ameliore sinon <code>false</code>
      */
     synchronized public boolean peutAmeliorer() {
         return ((this.niveau < typeBatiment.getNiveauMax()) && !this.estEnCoursAmelioration);
     }
 
     /**
-     * Active ou désactive le batiment selon son état actuel
+     * Active ou desactive le batiment selon son etat actuel
      */
     synchronized public void activerDesactiver() {
         this.estDesactive = !this.estDesactive;
     }
 
     /**
-     * Demarre l'amélioration du Batiment en initialisant la date de fin d'amélioration
-     * a la date actuelle + le temps de construction de l'amélioration en minute retourné
+     * Demarre l'amelioration du Batiment en initialisant la date de fin d'amelioration
+     * a la date actuelle + le temps de construction de l'amelioration en minute retourne
      * par la fonction <code>getTempsConstructionAmelioration()</code>.
      *
      * @see Batiment#getTempsConstructionAmelioration()
@@ -241,7 +241,7 @@ public class Batiment {
     }
 
     /**
-     * Fini l'amélioration en cours en augmentant le niveau et les effets.
+     * Fini l'amelioration en cours en augmentant le niveau et les effets.
      *
      * @see Batiment#ameliorerEffets()
      */
@@ -254,7 +254,7 @@ public class Batiment {
     }
 
     /**
-     * Améliore les effets
+     * Ameliore les effets
      */
     synchronized private void ameliorerEffets() {
         TypeDonnee typeDonnee;

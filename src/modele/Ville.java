@@ -7,15 +7,15 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * <b>Batiment est la classe représentant les différentes villes de la planète</b>
+ * <b>Batiment est la classe representant les differentes villes de la planete</b>
  * <p>
- * Une ville est caractérisé par les informations suivantes :
+ * Une ville est caracterise par les informations suivantes :
  * <ul>
- * <li>Un identifiant unique attribué définitivement.</li>
+ * <li>Un identifiant unique attribue definitivement.</li>
  * <li>Un nom</li>
  * <li>Une liste de batiments</li>
- * <li>Une liste associative de batiments en construction (clé) avec la date de fin de construction (valeur)</li>
- * <li>Des Coordonnées sur la carte</li>
+ * <li>Une liste associative de batiments en construction (cle) avec la date de fin de construction (valeur)</li>
+ * <li>Des Coordonnees sur la carte</li>
  * <li>Un nombre de place de batiment</li>
  * <li>Un gouverneur</li>
  * <li>Un nombre d'habitations</li>
@@ -65,7 +65,7 @@ public class Ville {
     private HashMap<Batiment, Date> batimentsEnConstruction;
 
     /**
-     * Coordonnées x, y, z permettant de placer la ville dans la carte
+     * Coordonnees x, y, z permettant de placer la ville dans la carte
      *
      * @see Ville#Ville(String, Coordonnee)
      * @see Ville#getCoordonnee()
@@ -105,13 +105,13 @@ public class Ville {
     /**
      * Constructeur Ville.
      * <p>
-     * A la construction d'un objet Ville, le nom et les coordonnées sont initialisés avec les valeurs passées en
-     * paramètres. On ajoute un premier batiment dans la liste et on défini a 3 le nombre de place de batiment dans
+     * A la construction d'un objet Ville, le nom et les coordonnees sont initialises avec les valeurs passees en
+     * parametres. On ajoute un premier batiment dans la liste et on defini a 3 le nombre de place de batiment dans
      * la ville.
      * </p>
      *
      * @param nom le nom de la Ville.
-     * @param coordonnee les coordonnées de la Ville.
+     * @param coordonnee les coordonnees de la Ville.
      *
      * @see Ville#id
      * @see Ville#nom
@@ -138,7 +138,7 @@ public class Ville {
     }
 
     /**
-     * Génère l'id unique de la Ville.
+     * Genere l'id unique de la Ville.
      */
     synchronized private int genererId() {
         return sequence.incrementAndGet();
@@ -210,18 +210,18 @@ public class Ville {
     }
 
     /**
-     * Accesseur de la donnée de population de la Ville.
+     * Accesseur de la donnee de population de la Ville.
      *
-     * @return  la donnée de population de la Ville
+     * @return  la donnee de population de la Ville
      */
     synchronized public Donnee getPopulation() {
         return population;
     }
 
     /**
-     * Accesseur de la donnée d'habitation de la Ville.
+     * Accesseur de la donnee d'habitation de la Ville.
      *
-     * @return  la donnée d'habitation de la Ville
+     * @return  la donnee d'habitation de la Ville
      */
     synchronized public Donnee getHabitation() {
         return habitation;
@@ -229,8 +229,8 @@ public class Ville {
 
     /**
      * Cherche un batiment dans la liste de batiments de la ville
-     * @param idBatiment l'id du batiment cherché
-     * @return le batiment si il est trouvé sinon <code>null</code>
+     * @param idBatiment l'id du batiment cherche
+     * @return le batiment si il est trouve sinon <code>null</code>
      */
     synchronized public Batiment getBatiment(int idBatiment) {
         for (Batiment batiment : batiments) {
@@ -248,7 +248,7 @@ public class Ville {
     }
 
     /**
-     * Calcul le pallier en nombre de population qui permet de débloquer une nouvelle place de batiments.
+     * Calcul le pallier en nombre de population qui permet de debloquer une nouvelle place de batiments.
      * @return le pallier
      */
     synchronized public double getProchainPallierBatiment() {
@@ -256,7 +256,7 @@ public class Ville {
     }
 
     /**
-     * Révoquer le gouverneur actuellment en place.
+     * Revoquer le gouverneur actuellment en place.
      */
     synchronized public void revoquerGouverneur() {
         if (this.gouverneur == null) return;
@@ -307,7 +307,7 @@ public class Ville {
     }
 
     /**
-     * Met a jour les données de population et d'habitation de la ville.
+     * Met a jour les donnees de population et d'habitation de la ville.
      */
     synchronized public void majDonnees() {
         double sommeHab = 0.;
@@ -338,7 +338,7 @@ public class Ville {
 
     /**
      * Detruire un batiment.
-     * @param idBatiment l'id du batiment a détruire
+     * @param idBatiment l'id du batiment a detruire
      */
     synchronized public void detruireBatiment(int idBatiment) {
         this.batiments.remove(getBatiment(idBatiment));

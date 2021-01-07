@@ -4,16 +4,16 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 /**
- * <b>Gouverneur est la classe représentant les différents Gouverneur de la planète</b>
+ * <b>Gouverneur est la classe representant les differents Gouverneur de la planete</b>
  * <p>
- * Un gouverneur est caractérisé par les informations suivantes :
+ * Un gouverneur est caracterise par les informations suivantes :
  * <ul>
- * <li>Un etat pour savoir s'il est débloqué</li>
+ * <li>Un etat pour savoir s'il est debloque</li>
  * <li>Un niveau</li>
  * <li>Un nom</li>
  * <li>Un etat pour savoir s'il est affecter</li>
  * <li>Une ville a laquelle il est affecter</li>
- * <li>Une liste associative de Donnee (clé) avec la valeur de l'effet (valeur)</li>
+ * <li>Une liste associative de Donnee (cle) avec la valeur de l'effet (valeur)</li>
  * </ul>
  * </p>
  *
@@ -27,7 +27,7 @@ public class Gouverneur {
     private static final int PRIX_BASE_AMELIORATION   = 1500;
 
     /**
-     * estDebloque permet de savoir si le gouverneur est debloqué
+     * estDebloque permet de savoir si le gouverneur est debloque
      *
      * @see Gouverneur#Gouverneur(boolean, int, String, boolean, HashMap)
      * @see Gouverneur#estDebloque()
@@ -79,8 +79,8 @@ public class Gouverneur {
      * Constructeur Gouverneur.
      * <p>
      * A la construction d'un objet Gouverneur, le nom et le niveau l'etat debloque et affecter ainsi que sa liste d'effets
-     * sont initialisés avec les valeurs passées en
-     * paramètres.
+     * sont initialises avec les valeurs passees en
+     * parametres.
      * </p>
      *
      * @param estDebloque etat debloque du gouverneur
@@ -105,9 +105,9 @@ public class Gouverneur {
     }
 
     /**
-     * Accesseur de l'etat debloqué du gouverneur
+     * Accesseur de l'etat debloque du gouverneur
      *
-     * @return  l'etat debloaué du gouverneur
+     * @return  l'etat debloaue du gouverneur
      */
     synchronized public boolean estDebloque(){
         return  this.estDebloque;
@@ -175,9 +175,9 @@ public class Gouverneur {
     }
 
     /**
-     * Attribut un état a l'attribut estAffecter
+     * Attribut un etat a l'attribut estAffecter
      *
-     * @param  estAffecter l'état que l'on souhaite affecter
+     * @param  estAffecter l'etat que l'on souhaite affecter
      */
     synchronized public void setEstAffecter(boolean estAffecter) {
         this.estAffecter = estAffecter;
@@ -202,7 +202,7 @@ public class Gouverneur {
     }
 
     /**
-     * Améliore le gouverneur en imcrémentant de 1 son niveau
+     * Ameliore le gouverneur en imcrementant de 1 son niveau
      * et en multipliant ses effets par 1.5
      */
     synchronized public void ameliorer(){
@@ -213,7 +213,7 @@ public class Gouverneur {
     }
 
     /**
-     * Compare le gouverneur d'après son nom
+     * Compare le gouverneur d'apres son nom
      */
     public static Comparator<Gouverneur> ComparatorNom = new Comparator<Gouverneur>() {
         @Override
@@ -223,7 +223,7 @@ public class Gouverneur {
     };
 
     /**
-     * Compare le gouverneur d'après son etat estDebloque
+     * Compare le gouverneur d'apres son etat estDebloque
      */
     public static Comparator<Gouverneur> ComparatorDebloque = new Comparator<Gouverneur>() {
         @Override

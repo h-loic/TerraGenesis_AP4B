@@ -1,13 +1,13 @@
 package modele;
 
 /**
- * <b>TypeDonnee est l'énumération représentant les différents type de données présents dans le jeu</b>
+ * <b>TypeDonnee est l'enumeration representant les differents type de donnees presents dans le jeu</b>
  * <p>
- * Un type de donnée est caractérisé par les informations suivantes :
+ * Un type de donnee est caracterise par les informations suivantes :
  * <ul>
  * <li>Une description</li>
- * <li>Une unité de mesure</li>
- * <li>Une valeur par défaut</li>
+ * <li>Une unite de mesure</li>
+ * <li>Une valeur par defaut</li>
  * </ul>
  * </p>
  *
@@ -17,62 +17,62 @@ package modele;
 public enum TypeDonnee {
 
     /**
-     * Type de données : Temperature
+     * Type de donnees : Temperature
      */
     TEMPERATURE("blabla", "°C",0),
 
     /**
-     * Type de données : Pression
+     * Type de donnees : Pression
      */
     PRESSION("blabla", "Pa",0),
 
     /**
-     * Type de données : Oxygène
+     * Type de donnees : Oxygene
      */
     OXYGENE("blabla", "ppm",0),
 
     /**
-     * Type de données : Eau
+     * Type de donnees : Eau
      */
     EAU("blabla", "cm",0),
 
     /**
-     * Type de données : Population
+     * Type de donnees : Population
      */
     POPULATION("blabla", "",0),
 
     /**
-     * Type de données : Habitation
+     * Type de donnees : Habitation
      */
     HABITATION("blabla", "",0),
 
     /**
-     * Type de données : Finances
+     * Type de donnees : Finances
      */
     FINANCES("Fonds disponibles", "c", 10000000);
 
     /**
-     * Description du type de donnée.
+     * Description du type de donnee.
      */
     private String description;
 
     /**
-     * Unité de mesure du type de donnée.
+     * Unite de mesure du type de donnee.
      */
     private String unite;
 
     /**
-     * Valeur par défaut du type de données au début du jeu.
+     * Valeur par defaut du type de donnees au debut du jeu.
      */
     private double valeurDefaut;
 
     /**
      *
-     * Constructeur TypeDonnee. Initialise les attributs avec les valeurs passées en paramètres.
+     * Constructeur TypeDonnee. Initialise les attributs avec les valeurs passees en parametres.
      *
      * @param description la description
-     * @param unite l'unité
-     * @param valeurDefaut la valeur par défaut
+     * @param unite l'unite
+     * @param valeurDefaut la valeur par defaut
      *
      *
      */
@@ -92,16 +92,16 @@ public enum TypeDonnee {
     }
 
     /**
-     * Accesseur de l'unité de mesure.
-     * @return l'unité de mesure
+     * Accesseur de l'unite de mesure.
+     * @return l'unite de mesure
      */
     public String getUnite() {
         return unite;
     }
 
     /**
-     * Accesseur de la valeur par défaut.
-     * @return la valeur par défaut
+     * Accesseur de la valeur par defaut.
+     * @return la valeur par defaut
      */
     public double getValeurDefaut() {
         return valeurDefaut;

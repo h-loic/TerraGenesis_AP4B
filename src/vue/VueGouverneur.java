@@ -39,12 +39,12 @@ public class VueGouverneur extends Scene{
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80;";
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments de la vue.
+     * La grille sur laquelle sont ajoutes les differents elements de la vue.
      */
     protected GridPane grillePrincipale;
 
     /**
-     * Le controleur de l'application, permet à la vue d'intéragir avec les modèles ou avec le navigateur des vues.
+     * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues.
      */
     private controler.ControleurPrincipal controleur = null;
 
@@ -59,12 +59,12 @@ public class VueGouverneur extends Scene{
     private Label labelNiveau;
 
     /**
-     * Label affichant la ville a laquelle le gouverneur est affecté.
+     * Label affichant la ville a laquelle le gouverneur est affecte.
      */
     private Label labelAffecter;
 
     /**
-     * bouton permettant d'améliorer le gouverneur
+     * bouton permettant d'ameliorer le gouverneur
      */
     private Button btnAmeliorer;
 
@@ -79,7 +79,7 @@ public class VueGouverneur extends Scene{
     private Button btnAffecter;
 
     /**
-     * Constructeur VueVille. Créer les différents éléments de la vue.
+     * Constructeur VueVille. Creer les differents elements de la vue.
      */
     public VueGouverneur() {
         super(new GridPane(), 500,400);
@@ -113,7 +113,7 @@ public class VueGouverneur extends Scene{
         this.labelNom.setStyle(STYLE_TITRE);
         labelNiveau = new Label(Integer.toString(gouverneur.getNiveau()));
         if (!gouverneur.estAffecte()){
-            labelAffecter = new Label("non affecté");
+            labelAffecter = new Label("non affecte");
             btnAffecter = new Button("affecter");
             this.btnAffecter.setStyle(STYLE_BOUTONS);
             btnAffecter.setOnAction(new EventHandler<ActionEvent>() {
@@ -125,7 +125,7 @@ public class VueGouverneur extends Scene{
         }else{
             System.out.println(gouverneur.getVilleAffecter());
             labelAffecter = new Label(gouverneur.getVilleAffecter().getNom());
-            btnAffecter = new Button("révoquer");
+            btnAffecter = new Button("revoquer");
             this.btnAffecter.setStyle(STYLE_BOUTONS);
             btnAffecter.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -137,7 +137,7 @@ public class VueGouverneur extends Scene{
         grillePrincipale.add(labelNom,1,0);
         grillePrincipale.add(new Label("niveau : "),0,1);
         grillePrincipale.add(labelNiveau,1,1);
-        grillePrincipale.add(new Label("affecté : "),0,2);
+        grillePrincipale.add(new Label("affecte : "),0,2);
         grillePrincipale.add(labelAffecter,1,2);
         grillePrincipale.add(new Label("effets : "),0,3);
         int compteurLigne = 3;
@@ -153,7 +153,7 @@ public class VueGouverneur extends Scene{
 
     /**
      * Affecter le controleur à la vue.
-     * @param controleur le controleur affecté
+     * @param controleur le controleur affecte
      */
     public void setControleur(controler.ControleurPrincipal controleur) {
         this.controleur = controleur;

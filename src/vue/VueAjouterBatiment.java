@@ -33,22 +33,22 @@ public class VueAjouterBatiment extends Scene {
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 50px";
 
     /**
-     * Le controleur de l'application, permet a la vue d'intéragir avec les modèles ou avec le navigateur des vues
+     * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues
      */
     private controler.ControleurPrincipal controleur = null;
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments de la vue
+     * La grille sur laquelle sont ajoutes les differents elements de la vue
      */
     protected GridPane grillePrincipale;
 
     /**
-     * La grille sur laquelle sont ajoutés les différents éléments du formulaire
+     * La grille sur laquelle sont ajoutes les differents elements du formulaire
      */
     protected GridPane grilleForm;
 
     /**
-     * La grille sur laquelle sont ajoutés les différents boutons
+     * La grille sur laquelle sont ajoutes les differents boutons
      */
     protected GridPane grilleBoutons;
 
@@ -68,17 +68,17 @@ public class VueAjouterBatiment extends Scene {
     private Label labelErreurs;
 
     /**
-     * Afficher la description du type sélectionné.
+     * Afficher la description du type selectionne.
      */
     private Label labelDescription;
 
     /**
-     * Afficher le temps de construction du type sélectionné.
+     * Afficher le temps de construction du type selectionne.
      */
     private Label labelTempsConstruction;
 
     /**
-     * Afficher le prix du type sélectionné.
+     * Afficher le prix du type selectionne.
      */
     private Label labelPrix;
 
@@ -88,7 +88,7 @@ public class VueAjouterBatiment extends Scene {
     private Label labelEffet;
 
     /**
-     * Permet de lister tous les effets du type de batiments sélectionner.
+     * Permet de lister tous les effets du type de batiments selectionner.
      */
     private TextFlow textFlowEffet;
 
@@ -103,7 +103,7 @@ public class VueAjouterBatiment extends Scene {
     private Button btnAjouterBatiment;
 
     /**
-     * Liste déroulante permettant de choisir le type de batiment parmi ceux débloqués.
+     * Liste deroulante permettant de choisir le type de batiment parmi ceux debloques.
      */
     private ComboBox comboBoxTypeBatiment;
 
@@ -114,7 +114,7 @@ public class VueAjouterBatiment extends Scene {
 
     /**
      *
-     * Constructeur VueAjouterBatiment. Créer les différents éléments de la vue.
+     * Constructeur VueAjouterBatiment. Creer les differents elements de la vue.
      *
      */
     public VueAjouterBatiment() {
@@ -133,7 +133,7 @@ public class VueAjouterBatiment extends Scene {
         this.labelErreurs = new Label("");
         this.comboBoxTypeBatiment = new ComboBox();
 
-        //affecte un listener écoutant le changement de valeur de la combobox
+        //affecte un listener ecoutant le changement de valeur de la combobox
         this.comboBoxTypeBatiment.valueProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal == null) return;
             TypeBatiment typeBatimentSelectionne = (TypeBatiment) newVal;
@@ -159,7 +159,7 @@ public class VueAjouterBatiment extends Scene {
     /**
      * Initialise la vue.
      * @param idVille id de la ville dans laquelle on veut ajouter le batiment
-     * @param typeBatimentDebloque la liste des types de batiment débloqués
+     * @param typeBatimentDebloque la liste des types de batiment debloques
      */
     public void initialiserVueAjouterBatiment(int idVille, ArrayList<TypeBatiment> typeBatimentDebloque) {
         this.idVille = idVille;
@@ -169,7 +169,7 @@ public class VueAjouterBatiment extends Scene {
 
         labelErreurs.setText("");
 
-        // créer et affecter les options de la combobox.
+        // creer et affecter les options de la combobox.
         ObservableList<TypeBatiment> options = FXCollections.observableArrayList();
         for (TypeBatiment typeBatiment : typeBatimentDebloque) {
             options.add(typeBatiment);
@@ -177,7 +177,7 @@ public class VueAjouterBatiment extends Scene {
         this.comboBoxTypeBatiment.setItems(options);
         this.comboBoxTypeBatiment.setValue(options.get(0));
 
-        //placer les éléments
+        //placer les elements
         grilleForm.add(this.labelTypeBatiment,0,0);
         grilleForm.add(this.comboBoxTypeBatiment, 0, 1);
         grilleForm.add(this.labelDescription,0,2);
@@ -216,8 +216,8 @@ public class VueAjouterBatiment extends Scene {
     }
 
     /**
-     * Valider les données du formulaire rentrées par l'utilisateur.
-     * Puis notifier le controleur de créer le batiment.
+     * Valider les donnees du formulaire rentrees par l'utilisateur.
+     * Puis notifier le controleur de creer le batiment.
      *
      * @throws Exception
      */
@@ -225,7 +225,7 @@ public class VueAjouterBatiment extends Scene {
         boolean erreur = false;
         String messageErreurs = "";
         try{
-            //verifie si un type de batiment est selectionné
+            //verifie si un type de batiment est selectionne
             this.typeBatimentDuBatiment = (TypeBatiment) comboBoxTypeBatiment.getValue();
         }catch (Exception e){
             messageErreurs+=" Veuillez choisir un type de batiment";
@@ -239,8 +239,8 @@ public class VueAjouterBatiment extends Scene {
     }
 
     /**
-     * Créer un batiment avec les données entrées par l'utilisateur et le retourne.
-     * @return le batiment créé
+     * Creer un batiment avec les donnees entrees par l'utilisateur et le retourne.
+     * @return le batiment cree
      */
     public Batiment getBatiment()
     {
@@ -250,7 +250,7 @@ public class VueAjouterBatiment extends Scene {
 
     /**
      * Affecter le controleur a la vue.
-     * @param controleur le controleur affecté
+     * @param controleur le controleur affecte
      */
     public void setControleur(controler.ControleurPrincipal controleur) {
         this.controleur = controleur;

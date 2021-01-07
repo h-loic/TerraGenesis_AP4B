@@ -1,9 +1,9 @@
 package modele;
 
 /**
- * <b>Coordonnee est la classe permettant de positionner les éléments sur la carte</b>
+ * <b>Coordonnee est la classe permettant de positionner les elements sur la carte</b>
  * <p>
- * Une Coordonnee est caractérisée par les informations suivantes :
+ * Une Coordonnee est caracterisee par les informations suivantes :
  * <ul>
  * <li>Une longitude</li>
  * <li>Une latitude</li>
@@ -33,7 +33,7 @@ public class Coordonnee {
 
     /**
      *
-     * Constructeur Coordonnee. Initialise les attributs avec les valeurs passées en paramètre.
+     * Constructeur Coordonnee. Initialise les attributs avec les valeurs passees en parametre.
      *
      * @param x la longitude
      * @param y la latitude
