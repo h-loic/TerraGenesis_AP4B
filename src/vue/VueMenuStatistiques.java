@@ -245,11 +245,11 @@ public class VueMenuStatistiques extends Scene {
         //affichage de la pression
         this.sliderPression.setMin(0);
         this.sliderPression.setMax(500);
-        this.sliderPression.setValue(pression/100);
+        this.sliderPression.setValue(pression);
         this.sliderPression.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                sliderPression.setValue(pression/100);
+                sliderPression.setValue(pression);
             }
         });
         this.sliderPression.setShowTickLabels(true);
@@ -260,11 +260,11 @@ public class VueMenuStatistiques extends Scene {
         //affichage de l'oxygene
         this.sliderOxygene.setMin(0);
         this.sliderOxygene.setMax(500);
-        this.sliderOxygene.setValue(oxygene/100);
+        this.sliderOxygene.setValue(oxygene);
         this.sliderOxygene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                sliderOxygene.setValue(oxygene/100);
+                sliderOxygene.setValue(oxygene);
             }
         });
         this.sliderOxygene.setShowTickLabels(true);
@@ -275,11 +275,11 @@ public class VueMenuStatistiques extends Scene {
         //affichage du niveau d'eau
         this.sliderEau.setMin(0);
         this.sliderEau.setMax(500);
-        this.sliderEau.setValue(eau/100);
+        this.sliderEau.setValue(eau);
         this.sliderEau.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                sliderEau.setValue(eau/100);
+                sliderEau.setValue(eau);
             }
         });
         this.sliderEau.setShowTickLabels(true);
@@ -290,11 +290,11 @@ public class VueMenuStatistiques extends Scene {
         //affichage de la temperature
         this.sliderTemperature.setMin(0);
         this.sliderTemperature.setMax(500);
-        this.sliderTemperature.setValue(temperature/100);
+        this.sliderTemperature.setValue(temperature);
         this.sliderTemperature.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                sliderTemperature.setValue(temperature/100);
+                sliderTemperature.setValue(temperature);
             }
         });
         this.sliderTemperature.setShowTickLabels(true);
