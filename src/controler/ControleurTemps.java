@@ -20,9 +20,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
  *         <li>
  *             Une planete dont il faut mettre a jour les donnees
  *         </li>
- *         <li>
- *             Un acces au ControleurPrincipal
- *         </li>
  *     </ul>
  * </p>
  *
@@ -35,7 +32,7 @@ public class ControleurTemps extends Thread{
     /**
      * Booleen indiquant si le controleur est en marche
      *
-     * @see ControleurTemps#ControleurTemps(Planete, ControleurPrincipal)
+     * @see ControleurTemps#ControleurTemps(Planete)
      * @see ControleurTemps#arreter()
      */
     private AtomicBoolean estEnMarche = new AtomicBoolean();
@@ -43,32 +40,21 @@ public class ControleurTemps extends Thread{
     /**
      * Planete dont il faut gerer l'evolution du temps
      *
-     * @see ControleurTemps#ControleurTemps(Planete, ControleurPrincipal)
+     * @see ControleurTemps#ControleurTemps(Planete)
      * @see Planete
      */
     private Planete planete;
 
     /**
-     * Instance du ControleurPrincipal
-     *
-     * @see ControleurTemps#ControleurTemps(Planete, ControleurPrincipal)
-     * @see ControleurPrincipal
-     */
-    private ControleurPrincipal controleurPrincipal;
-
-    /**
      * Constructeur de ControleurTemps
      *
      * @param planete planete que le controleur temps doit gerer
-     * @param controleurPrincipal instance du ControleurPrincipal, permettant d'interagir avec celui ci
      *
      * @see Planete
-     * @see ControleurPrincipal
      * */
-    public ControleurTemps(Planete planete, ControleurPrincipal controleurPrincipal){
+    public ControleurTemps(Planete planete) {
         super("temps");
         this.planete = planete;
-        this.controleurPrincipal = controleurPrincipal;
     }
 
     /**

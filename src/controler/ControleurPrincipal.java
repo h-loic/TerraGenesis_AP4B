@@ -187,7 +187,7 @@ public class ControleurPrincipal {
         this.planete.initialiserDonnees();
         this.planete.initialiserGouverneur();
         this.planete.initialiserCarte();
-        this.controleurTemps = new ControleurTemps(planete, this);
+        this.controleurTemps = new ControleurTemps(planete);
         this.controleurTemps.start();
     }
 
