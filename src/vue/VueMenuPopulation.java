@@ -71,7 +71,7 @@ public class VueMenuPopulation extends Scene {
      * @see VueMenuPopulation#VueMenuPopulation()
      * @see VueMenuPopulation#initialiserMenuPopulation(ArrayList, ArrayList) ()
      */
-    protected GridPane grillePrincipale;
+    private GridPane grillePrincipale;
 
     /**
      * La grille sur laquelle sont listees les villes de la planete
@@ -79,7 +79,7 @@ public class VueMenuPopulation extends Scene {
      * @see VueMenuPopulation#VueMenuPopulation()
      * @see VueMenuPopulation#initialiserMenuPopulation(ArrayList, ArrayList) ()
      */
-    protected GridPane grilleVilles;
+    private GridPane grilleVilles;
 
     /**
      * La grille sur laquelle sont listees les avant-postes de la planete
@@ -87,7 +87,7 @@ public class VueMenuPopulation extends Scene {
      * @see VueMenuPopulation#VueMenuPopulation()
      * @see VueMenuPopulation#initialiserMenuPopulation(ArrayList, ArrayList) ()
      */
-    protected GridPane grilleAvPostes;
+    private GridPane grilleAvPostes;
 
     /**
      * Scrollpane dans laquelle sera affiche la gridPane des avant-postes

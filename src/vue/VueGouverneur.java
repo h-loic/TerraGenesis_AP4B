@@ -41,7 +41,7 @@ public class VueGouverneur extends Scene{
     /**
      * La grille sur laquelle sont ajoutes les differents elements de la vue.
      */
-    protected GridPane grillePrincipale;
+    private GridPane grillePrincipale;
 
     /**
      * Le controleur de l'application, permet à la vue d'interagir avec les modeles ou avec le navigateur des vues.

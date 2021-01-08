@@ -89,9 +89,9 @@ public class VueAjouterMine extends Scene {
      * @see VueAjouterMine#VueAjouterMine()
      * @see VueAjouterMine#initialiserVueAjouterMine(int, ArrayList)
      */
-    protected GridPane grillePrincipale;
-    protected GridPane grilleForm;
-    protected HBox hboxBoutons;
+    private GridPane grillePrincipale;
+    private GridPane grilleForm;
+    private HBox hboxBoutons;
 
     /**
      * id de l'avant-poste auquel on ajoute la mine

@@ -56,7 +56,7 @@ public class VueMenuGouverneurs extends Scene {
      * @see VueMenuGouverneurs#VueMenuGouverneurs() ()
      * @see VueMenuGouverneurs#initialiserMenuGouverneurs(ArrayList)()
      */
-    protected GridPane grillePrincipale;
+    private GridPane grillePrincipale;
 
     /**
      * La grille sur laquelle sont listees les gouverneurs de la planete
@@ -64,7 +64,7 @@ public class VueMenuGouverneurs extends Scene {
      * @see VueMenuGouverneurs#VueMenuGouverneurs() ()
      * @see VueMenuGouverneurs#initialiserMenuGouverneurs(ArrayList)()
      */
-    protected GridPane grilleGouverneur;
+    private GridPane grilleGouverneur;
 
     /**
      * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues

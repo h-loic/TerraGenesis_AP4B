@@ -39,7 +39,7 @@ public class VueMenuPrincipal extends Scene {
      * @see VueMenuPrincipal#VueMenuPrincipal()
      * @see VueMenuPrincipal#initialiserMenuPrincipal()
      */
-    protected GridPane grillePrincipale;
+    private GridPane grillePrincipale;
 
     /**
      * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues

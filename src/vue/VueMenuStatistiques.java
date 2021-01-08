@@ -55,7 +55,7 @@ public class VueMenuStatistiques extends Scene {
      * @see VueMenuStatistiques#VueMenuStatistiques()
      * @see VueMenuStatistiques#initialiserMenuStatistiques(double, double, double, double, double, double)
      */
-    protected GridPane grillePrincipale;
+    private GridPane grillePrincipale;
 
     /**
      * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues

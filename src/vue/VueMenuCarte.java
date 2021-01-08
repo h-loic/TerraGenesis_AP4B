@@ -61,7 +61,7 @@ public class VueMenuCarte extends Scene {
      * @see VueMenuCarte#VueMenuCarte()
      * @see VueMenuCarte#initialiserMenuCarte(Canvas)
      * */
-    protected GridPane grillePrincipale;
+    private GridPane grillePrincipale;
 
     /**
      * HBox servant a centrer le titre de la page dans la grille
@@ -69,7 +69,7 @@ public class VueMenuCarte extends Scene {
      * @see VueMenuCarte#VueMenuCarte()
      * @see VueMenuCarte#initialiserMenuCarte(Canvas)
      * */
-    protected HBox hBoxTitre;
+    private HBox hBoxTitre;
 
     /**
      * HBox contenant le bouton de retour
@@ -77,7 +77,7 @@ public class VueMenuCarte extends Scene {
      * @see VueMenuCarte#VueMenuCarte()
      * @see VueMenuCarte#initialiserMenuCarte(Canvas)
      * */
-    protected HBox hBoxRetour;
+    private HBox hBoxRetour;
 
     /**
      * Le controleur de l'application, permet a la vue d'interagir avec les modeles ou avec le navigateur des vues

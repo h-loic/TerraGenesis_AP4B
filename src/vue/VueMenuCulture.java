@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 
 public class VueMenuCulture extends Scene {
 
-    protected GridPane grillePrincipale;
+    private GridPane grillePrincipale;
     private controler.ControleurPrincipal controleur = null;
     private Label labelCulture;
     private Button boutonRetour;

@@ -31,7 +31,7 @@ public class VueAffecterGouverneur extends Scene{
      */
     public static final String STYLE_BOUTONS = "-fx-background-color: #25467F; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;-fx-min-width: 80;";
 
-    protected GridPane grillePrincipale;
+    private GridPane grillePrincipale;
     private controler.ControleurPrincipal controleur = null;
     private Button btnRetour;
 

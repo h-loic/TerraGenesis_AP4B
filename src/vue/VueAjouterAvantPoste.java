@@ -77,9 +77,9 @@ public class VueAjouterAvantPoste extends Scene {
      * @see VueAjouterAvantPoste#VueAjouterAvantPoste()
      * @see VueAjouterAvantPoste#initialiserVueAjouterAvantPoste(Canvas)
      */
-    protected GridPane grillePrincipale;
-    protected GridPane grilleForm;
-    protected HBox hBoxBoutons;
+    private GridPane grillePrincipale;
+    private GridPane grilleForm;
+    private HBox hBoxBoutons;
 
     /**
      * Canvas affichant la Carte de la planete, sur laquelle l'avant-poste sera positionne

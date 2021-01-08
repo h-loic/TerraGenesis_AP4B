@@ -37,17 +37,17 @@ public class VueAjouterVille extends Scene {
     /**
      * La grille sur laquelle sont ajoutes les differents elements de la vue.
      */
-    protected GridPane grillePrincipale;
+    private GridPane grillePrincipale;
 
     /**
      * La grille sur laquelle sont ajoutes les differents elements du formulaire.
      */
-    protected GridPane grilleForm;
+    private GridPane grilleForm;
 
     /**
      * La grille sur laquelle sont ajoutes les differents boutons.
      */
-    protected GridPane grilleBoutons;
+    private GridPane grilleBoutons;
 
     /**
      * Label affichant "Nom:".
