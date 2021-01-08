@@ -147,7 +147,7 @@ public class ControleurTemps extends Thread{
                     mine.setFonctionnelle(false);
                 }
             }
-            benefices+=avantPoste.getBeneficesMines()/60;
+            benefices+=avantPoste.getBeneficesMines()/60; //divisé par 60 car getBeneficesMines renvoie benefices / min
         }
         planete.getDonnee(TypeDonnee.FINANCES).setCroissance(benefices);
         planete.getDonnee(TypeDonnee.FINANCES).majValeur();
